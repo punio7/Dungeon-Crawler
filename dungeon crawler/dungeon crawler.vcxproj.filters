@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki źródłowe\zasoby">
+      <UniqueIdentifier>{349e957a-9674-421d-a5bf-728da5163405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\util">
+      <UniqueIdentifier>{918514db-7200-463c-ada6-a992833f363b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\util">
+      <UniqueIdentifier>{1c8911a2-d858-41d0-bead-54606297e555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\komendy">
+      <UniqueIdentifier>{5bcb035c-a087-474b-8d12-bc18646cab78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\komendy">
+      <UniqueIdentifier>{7daf4fa3-0ceb-427b-8a39-8d78ae475a7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{f3bce8a8-a4a6-491e-8cde-9136a1b45204}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\midi">
+      <UniqueIdentifier>{cf4fa547-d589-4090-b2c4-5c36f0f844dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{90dee3b6-b09d-479e-8ead-063435fc3be1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\modele">
+      <UniqueIdentifier>{d3b3ecbc-9daa-4fe8-97a1-2f119dcdb0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\modele\items">
+      <UniqueIdentifier>{e0ae00c1-799e-4ed8-9512-de069b715f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\modele">
+      <UniqueIdentifier>{42cbc534-7195-43ac-bcea-583dfa399a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\modele\items">
+      <UniqueIdentifier>{34025ade-c7e6-4817-b719-d44e1db8d93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\modele\Gra">
+      <UniqueIdentifier>{0f27e289-5445-4b2a-8346-127517d4aa39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\modele\Gra">
+      <UniqueIdentifier>{b74e6928-6386-4660-9903-5dc9a9b1f901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\komendy\rozmowa">
+      <UniqueIdentifier>{630df927-05c8-4d88-b772-16cd14543b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\komendy\rozmowa">
+      <UniqueIdentifier>{eae381ee-cbf3-40a5-9ee2-ebd98a05d9ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\modele\statusy">
+      <UniqueIdentifier>{68c228cc-2ffd-42dc-b9f6-d43621b3b14f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\modele\statusy">
+      <UniqueIdentifier>{50fe2f98-46c3-4174-8203-350e16070e7e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="item_container.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytaj_lokacje.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="item_quest.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="item_1hbron.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="item_zbroja.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="create_item.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="createChar.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="gra.cpp">
+      <Filter>Pliki źródłowe\modele\Gra</Filter>
+    </ClCompile>
+    <ClCompile Include="licznikKomend.cpp">
+      <Filter>Pliki źródłowe\modele\Gra</Filter>
+    </ClCompile>
+    <ClCompile Include="zdarzeniaCiagle.cpp">
+      <Filter>Pliki źródłowe\modele\Gra</Filter>
+    </ClCompile>
+    <ClCompile Include="zdarzeniaPrzySpotkaniu.cpp">
+      <Filter>Pliki źródłowe\modele\Gra</Filter>
+    </ClCompile>
+    <ClCompile Include="item_dzwignia.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="zdarzeniaGlobalne.cpp">
+      <Filter>Pliki źródłowe\modele\Gra</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajQuesty.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajRasy.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="command_tree.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="create_command_tree.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="randomGenerator.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="wersalikuj.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajKlasy.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="drukuj.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="status.cpp">
+      <Filter>Pliki źródłowe\modele\statusy</Filter>
+    </ClCompile>
+    <ClCompile Include="odpoczynek.cpp">
+      <Filter>Pliki źródłowe\modele\statusy</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajOpisyWalki.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="zwiekszenieCechy.cpp">
+      <Filter>Pliki źródłowe\modele\statusy</Filter>
+    </ClCompile>
+    <ClCompile Include="item_miksturaStatusu.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="midi.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Komenda.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Look.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Go.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="North.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="South.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="West.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Up.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Down.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="East.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Take.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="playerMsg.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaKomend.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="KomendaTemplate.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Scan.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Examine.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Put.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Consider.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Open.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Cheat.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Drink.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Talk.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Journal.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sell.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Buy.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Offer.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Wear.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Wield.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Remove.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Hold.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Kill.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Quit.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Push.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Turn.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Pull.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Unlock.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="StackWalker\StackWalker.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Upadek.cpp">
+      <Filter>Pliki źródłowe\modele\statusy</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajRozmowy.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="Manual.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Log4CppLogger.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleSize.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Kwestia.cpp">
+      <Filter>Pliki źródłowe\komendy\rozmowa</Filter>
+    </ClCompile>
+    <ClCompile Include="Rozmowa.cpp">
+      <Filter>Pliki źródłowe\komendy\rozmowa</Filter>
+    </ClCompile>
+    <ClCompile Include="KwestiaOdpowiedzWymaganie.cpp">
+      <Filter>Pliki źródłowe\komendy\rozmowa</Filter>
+    </ClCompile>
+    <ClCompile Include="gracz.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="lokacja.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="postac.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="PostacNpc.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseDTO.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="Walka.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="color.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Rasa.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+    <ClCompile Include="Klasa.cpp">
+      <Filter>Pliki źródłowe\modele</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="item.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="item_container.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="item_types.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="item_quest.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="item_1hbron.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="item_zbroja.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="gra.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="licznikKomend.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="item_dzwignia.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="command_tree.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="randomGenerator.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="wersalikuj.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="drukuj.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="status.h">
+      <Filter>Pliki nagłówkowe\modele\statusy</Filter>
+    </ClInclude>
+    <ClInclude Include="statuses.h">
+      <Filter>Pliki nagłówkowe\modele\statusy</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="odpoczynek.h">
+      <Filter>Pliki nagłówkowe\modele\statusy</Filter>
+    </ClInclude>
+    <ClInclude Include="zdarzeniaGlobalne.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="item_miksturaStatusu.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="zwiekszenieCechy.h">
+      <Filter>Pliki nagłówkowe\modele\statusy</Filter>
+    </ClInclude>
+    <ClInclude Include="midi.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Komenda.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Look.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Go.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="North.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="South.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="West.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="East.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Up.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Down.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseDTO.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Take.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="playerMsg.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaKomend.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="KomendaTemplate.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Scan.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Examine.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Put.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Consider.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Open.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Cheat.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Drink.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Journal.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sell.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Offer.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Buy.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Wear.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Wield.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Hold.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Remove.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Kill.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Quit.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Push.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Turn.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Pull.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaItemow.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="kierunkiSwiata.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="Unlock.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="StackWalker\StackWalker.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="StackCrawler.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSlot.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Manual.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="languageUtils.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Pliki nagłówkowe\komendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Log4CppLogger.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleSize.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Kwestia.h">
+      <Filter>Pliki nagłówkowe\komendy\rozmowa</Filter>
+    </ClInclude>
+    <ClInclude Include="Rozmowa.h">
+      <Filter>Pliki nagłówkowe\komendy\rozmowa</Filter>
+    </ClInclude>
+    <ClInclude Include="KwestiaOdpowiedzWymaganie.h">
+      <Filter>Pliki nagłówkowe\komendy\rozmowa</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaPostaci.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaZdarzenGlobalnych.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaQuestow.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="gracz.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="lokacja.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="postac.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="PostacNpc.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="Walka.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Upadek.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumKomendy.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="errors.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Klasa.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="Rasa.h">
+      <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="res\costam.xml">
+      <Filter>Resources</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\log4cpp.property">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="res\midi\bitwa_podziemia_Rod Lazo.mid">
+      <Filter>Resources\midi</Filter>
+    </None>
+    <None Include="res\midi\calm.mid">
+      <Filter>Resources\midi</Filter>
+    </None>
+    <None Include="res\midi\explore.mid">
+      <Filter>Resources\midi</Filter>
+    </None>
+  </ItemGroup>
+</Project>
