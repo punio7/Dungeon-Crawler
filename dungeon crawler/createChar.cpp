@@ -68,7 +68,7 @@ Postac* Gra::createChar(int id)
 #pragma region szczur_jaskiniowy
 	case ListaPostaci::SzczurJaskiniowy:
 		temp = createChar(id, 1, RASA_SZCZUR, KLASA_BRAK,
-			"szczur jaskiniowy",															 //poza lini¹ konsoli
+			"szczur jaskiniowy",															 
 			"Szczur jaskiniowy s¹ nieco wiêksze od szczurów miejskich, s¹ jednak "
 			"porównywalnie obrzydliwe. Bure, mokre futerko pokrywa prawie jedno ³okciowego "
 			"gryzonia, który skrzêtnie przeszukuje otoczenie w poszukiwaniu po¿ywienia. "
@@ -116,7 +116,7 @@ Postac* Gra::createChar(int id)
 			tempNpc = createNpc(id, 50,RASA_CZLOWIEK, KLASA_BRAK, "test NPC", 
 				"To tylko testowy NPC, nie oczekuj epickich opisów. "
 				"Jedyne czego mo¿esz siê spodziewaæ to sztucznie wyd³u¿one opisy "
-				"maj¹ce na celu sprawdzenie wersalikowania opisów psotaci.",
+				"maj¹ce na celu sprawdzenie wersalikowania opisów postaci.",
 				"stoi i zachêca do rozmowy", 
 				80,80,80,80,80);
 
@@ -146,7 +146,7 @@ Postac* Gra::createChar(int id)
 	case ListaPostaci::GoblinZbieracz:
 		temp = createChar(id, 2, RASA_GOBLIN, KLASA_ROBOTNIK,
 			"goblin zbieracz",
-			"opis goblina zbieracza.",
+			"Goblin ten jest przedstawicielem najni¿szej kasty w spo³eczeñstwie goblinów. Jak ka¿dy goblin ma on ciemno zielon¹ skórê, pokryt¹ licznymi zmarszczkami i bruzdami. Wysoki na oko³o dwa ³okcie, ma nieproporcjonalnie d³ugie rêce i du¿¹ g³owê raz pochylon¹ postawê. Jego twarz to g³ównie para wy³upiastych oczu, du¿y spiczasty nos, oraz równie du¿e i stercz¹ce na boki uszy. Zbieracz ubrany jest w jedynie stary, lniany wór, którego równie¿ u¿ywa do przechowywania zebranych grzybów.",
 			"rozgl¹da siê dooko³a",
 			7,9,9,10,7);
 		return temp;
@@ -154,7 +154,7 @@ Postac* Gra::createChar(int id)
 		//////////////////	6	//////////////////
 	case ListaPostaci::GoblinGwardzista:
 		temp = createChar(id, 3, RASA_GOBLIN, KLASA_GWARDZISTA,
-			"goblin gwardzista",
+			"Zadaniem gobliñskich gwardzistów jest pilnowanie obozowiska, oraz alarmowanie o zbli¿aj¹cym siê zagro¿eniu. Ich ubiór stanowi najciê¿szy pancerz jaki mo¿na znaleŸæ wœród goblinów- daje to wiêksz¹ szansê na wydanie alarmuj¹cego okrzyku zanim gwardzista siê zu¿yje. Jego zbrojê stanowi¹ metalowe przedmioty zrabowane od ludzi- garnki, p³ytki, kawa³ki w³aœciwych zbroi lub kolczug, czy tarcz, powi¹zane razem linami b¹dŸ paskami. Co do reszty wygl¹du to gobliñscy gwardziœci s¹ równie paskudni co reszta przedstawicieli ich rasy.",
 			"Opis goblina zbieracza.",
 			"opiera siê na w³óczni",
 			12, 14, 12, 14, 12);
@@ -164,7 +164,7 @@ Postac* Gra::createChar(int id)
 	case ListaPostaci::GoblinBerserker:
 		temp = createChar(id, 4, RASA_GOBLIN, KLASA_BERSERKER,
 			"goblin berserker",
-			"Opis gobliñskiego berserkera",
+			"Berserkerzy nale¿¹ do najzdolniejszych wojowników wœród gobliñskiego plemienia. Za ubranie s³u¿¹ im jedynie skurzane spodnie, wytworzone rêcznie ze skóry jednej ze swoich ofiar. Ich odkryt¹ klatê ozdabiaj¹ im blizny a twarzy zazwyczaj brakuje jednego ucha, nosa, b¹dŸ oka. Pe³ni dumy berserkerzy zachowuj¹ siê pogardliwie do innych goblinów oraz ogólnie do innych stworzeñ. Maj¹ szacunek jedynie do szamana, stanowi¹c jego osobist¹ ochronê.",
 			"bacznie siê tobie przygl¹da",
 			14, 16, 14, 10, 15);
 		return temp;
@@ -173,7 +173,7 @@ Postac* Gra::createChar(int id)
 	case ListaPostaci::GoblinSzaman:
 		tempNpc = createNpc(id, 5, RASA_GOBLIN, KLASA_MNICH,
 			"goblin szaman",
-			"Opis gobliñskiego szamana.",
+			"Szamani s¹ jednoczeœnie przywódcami goblinœkiego plemienia. Ich wygl¹d ma u reszty goblinów wywo³aæ strach przed mocami dysponowanymi przez szamana, nawet je¿eli takowych on nie ma. Jego cia³o jest pokryte dziwnymi tatua¿ami i malunkami z b³ota i krwi a w uszach i nosie ma mnóstwo kolczyków. Jego szata jest gruba i wykonana z lnu. Wszyto w ni¹ kawa³ki zwierzêcego futra, oraz namalowano jakimiœ barwnikami dziwne symbole. Na szyi szaman nosi naszyjnik z rzemienia, oraz zwierzêcych koœci, a na g³owie nosi koronê wykonan¹ z poro¿a jelenia. Szaman stara siê robiæ mistyczne wra¿enie, machaj¹c co chwila rêkami oraz podskakuje bez powodu.",
 			"nerwowo rozgl¹da siê dooko³a",
 			13, 14, 14, 18, 19);
 		wczytajRozmowe(tempNpc->id, tempNpc);

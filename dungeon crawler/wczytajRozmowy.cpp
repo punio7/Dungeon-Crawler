@@ -8,6 +8,12 @@
 
 using namespace ListaItemow;
 
+enum RozmowaSpecjanleWartosci
+{
+	KoniecRozmowyWalka = -2,
+	KoniecRozmowy = -1
+};
+
 void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 {
 	Kwestia* kwestia = NULL;
@@ -286,7 +292,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(4, 4,
-			"„Goba nie twój wróg. Bia³y demon wiêziæ goba, my nie jego s³ugi. Torag rozmawiaæ tora, goba nie gin¹æ wiêcej.”");
+			"„Goba nie twój wróg. Bia³y demon wiêziæ goba, my nie jego s³ugi. Torag rozmawiaæ " + temp + ", goba nie gin¹æ wiêcej.”");
 		kwestia->dodajOdpowiedz("Dalej", 5)
 			->DodajWymaganieQuestFaza(ListaQuestow::GoblinyWPodziemiach, { 3 });
 		kwestia->dodajOdpowiedz("Dalej", 6)
@@ -294,7 +300,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(5, 5,
-			"„Twoja broñ mieæ krew goba, Torag martwiæ siê nie zgin¹æ. Tora oddaæ broñ i my iœæ do chata, tam my rozmawiaæ.”");
+			"„Twoja broñ mieæ krew goba, Torag martwiæ siê nie zgin¹æ. " + temp + " oddaæ broñ i my iœæ do chata, tam my rozmawiaæ.”");
 		kwestia->dodajOdpowiedz("Oddaj mu broñ", 7);
 		kwestia->dodajOdpowiedz("„Nie nabierzesz mnie na takie sztuczki! Giñ!”", -2);
 		kwestia->dodajOdpowiedz("Zabij go na miejscu", 2, -10)
@@ -309,13 +315,13 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(7, 9,
-			"„Torag rad, tora wiedza. Rozmowa du¿o dobra. My iœæ.”");
+			"„Torag rad, " + temp + " wiedza.Rozmowa du¿o dobra.My iœæ.”");
 		kwestia->dodajOdpowiedz("Zakoñcz rozmowê", -1)
 			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni);
 		postac->dodajKwestie(kwestia);
 		
 		kwestia = new Kwestia(8, 9,
-			"„Tora zabiæ silne goba. My nie wiêcej tutaj, nie chcieæ gin¹æ. Bia³y demon s³uchaæ. Torag mówiæ tutaj demon zabijaæ goba. Isæ! Iœæ!”");
+			"„" + temp + " zabiæ silne goba.My nie wiêcej tutaj, nie chcieæ gin¹æ.Bia³y demon s³uchaæ.Torag mówiæ tutaj demon zabijaæ goba.Isæ!Iœæ!”");
 		kwestia->dodajOdpowiedz("„Niech bêdzie. ProwadŸ.”", -1)
 			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinow);
 		kwestia->dodajOdpowiedz("„Nie ufam Ci ropucho. ProwadŸ, ale nie wykonuj ¿adnych gwa³townych ruchów.”", -1)
@@ -336,7 +342,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(11, 11,
-			"„Goba nie znieœæ tego wiêcej, woli raczej zgniæ. Ty Tora wielki wojownik. Wzi¹æ ten klucz, one otworz¹ drzwi bia³ego demona. Ty z nim walczyæ i zabiæ- goba byæ wolne. Ty zgin¹æ, goba zgin¹æ tak¿e.”");
+			"„Goba nie znieœæ tego wiêcej, woli raczej zgniæ. Ty " + temp + " wielki wojownik.Wzi¹æ ten klucz, one otworz¹ drzwi bia³ego demona.Ty z nim walczyæ i zabiæ - goba byæ wolne.Ty zgin¹æ, goba zgin¹æ tak¿e.”");
 		kwestia->dodajOdpowiedz("„Dlaczego niby mia³bym to robiæ?”", 12);
 		kwestia->dodajOdpowiedz("„Co to jest ten ca³y bia³y demon?”", 16);
 		kwestia->dodajOdpowiedz("„Co bêdziecie robiæ kiedy odzyskacie wolnoœæ?”", 14);
@@ -344,9 +350,46 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(12, 12,
-			"„Torag pomóc Tora i daæ klucz. Teraz Tora musieæ pomóc Goba.”");
-		kwestia->dodajOdpowiedz("Dalej", 11);
+			"„Torag pomóc " + temp + " i daæ klucz. Teraz " + temp + " musieæ pomóc Goba.”");
+		kwestia->dodajOdpowiedz("„Zatem niech tak bêdzie. Spróbujê wam pomóc.”", 13);
+		kwestia->dodajOdpowiedz("„Ma³o mnie obchodz¹ wasze problemy, ale chyba i tak przyjdzie mi siê zmierzyæ z tym ca³ym bia³ym demonem.", 13);
+		kwestia->dodajOdpowiedz("„Co bêdziecie robiæ kiedy odzyskacie wolnoœæ?”", 14);
+		kwestia->dodajOdpowiedz("„Co to jest ten ca³y bia³y demon?”", 16);
 		postac->dodajKwestie(kwestia);
+
+		kwestia = new Kwestia(13, 17,
+			"„|^" + temp + " ruszaæ natychmiast. Bia³y demon wielka magia, wiedzieæ du¿o. Torag zmartwiony o ¿ycie goba. Iœæ! Iœæ!”");
+		kwestia->dodajOdpowiedz("Zakoñcz rozmowê.", KoniecRozmowy);
+		postac->dodajKwestie(kwestia);
+
+		kwestia = new Kwestia(14, 14,
+			"„Torag Mora chcieæ odzyskaæ zaszczyt swojego imienia. Robiæ wielkie rzeczy aby jego bracia znowu robiæ strach. |+ " + temp + " nie rozumieæ.”");
+		kwestia->dodajOdpowiedz(" „Rozumiem wiêcej ni¿ Ci siê zdaje.”", 15)
+			->DodajWymaganieRasa(RASA_CZLOWIEK);
+		kwestia->dodajOdpowiedz("„W sumie i tak ma³o mnie to obchodzi.”", 13);
+		kwestia->dodajOdpowiedz("„Nie wierzê w ani jedno twoje s³owo, pod³a kreaturo, a teraz giñ!”", KoniecRozmowyWalka);
+		kwestia->dodajOdpowiedz("„Bardzo ciekawa historia, ale wolê nie zostawiaæ zgrai gobelinów za plecami. Da³eœ mi klucz, wiêc mo¿esz spokojnie zdychaæ.”", KoniecRozmowyWalka);
+		postac->dodajKwestie(kwestia);
+
+		kwestia = new Kwestia(15, 15,
+			"„Co Tora mówiæ?”");
+		kwestia->dodajOdpowiedz("„Ci¹gle mówisz na mnie Tora, musi to oznaczaæ „cz³owiek”. Mora brzmi jak „zag³ada”. Twoje parszywe plemiê sczeŸnie w tej jaskini, a ty zap³acisz za swoje zbrodnie!”", KoniecRozmowyWalka);
+		kwestia->dodajOdpowiedz("„W sumie nie wa¿ne.”", 13);
+		postac->dodajKwestie(kwestia);
+
+		kwestia = new Kwestia(16, 16,
+			"„Demon jest magia. Wielki, stary, z³y i straszny. Zabijaæ Goba ruchem rêki i kruszyæ g³azy s³owami.”");
+		kwestia->dodajOdpowiedz("„Dlaczego mia³bym wam pomóc?”", 12);
+		kwestia->dodajOdpowiedz("„Zatem niech bêdzie, spróbujê wam pomóc.”", 13);
+		kwestia->dodajOdpowiedz("„Co bêdziecie robiæ kiedy odzyskacie wolnoœæ?”", 14);
+		kwestia->dodajOdpowiedz("„Wkurza mnie ju¿ to twoje pieprzenie, myœlê, ¿e ciê zabijê.”", KoniecRozmowyWalka);
+		postac->dodajKwestie(kwestia);
+
+		kwestia = new Kwestia(17, 17,
+			"„|^" + temp +" dzia³aæ, Goba nic nie mieæ mówiæ wiêcej!”");
+		kwestia->dodajOdpowiedz("Zakoñcz rozmowê.", KoniecRozmowy);
+		postac->dodajKwestie(kwestia);
+
 		break;
 
 #pragma endregion
