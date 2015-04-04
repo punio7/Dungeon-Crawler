@@ -1,4 +1,5 @@
 #include "zdarzeniaGlobalne.h"
+#include "ListaItemow.h"
 #include "ListaZdarzenGlobalnych.h"
 #include "gra.h"
 #include "item.h"
@@ -30,7 +31,7 @@ bool Gra::zdarzenieGlobalne(int id)
 #pragma region 1: butelka w piwniczce
 	case ListaZdarzenGlobalnych::ButelkaWPiwniczce:			
 		polozenie=getLokacja(9);
-		przedmiot=(polozenie->przedmioty)->znajdz(,1);
+		przedmiot=(polozenie->przedmioty)->znajdz(ListaItemow::Dzwignie::ButelkaPoWinie,1);
 		if (przedmiot->dzwigniaStatus() == 0)
 		{
 			polozenie->zamek[NORTH] = 0;

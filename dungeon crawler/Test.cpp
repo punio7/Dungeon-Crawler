@@ -27,6 +27,10 @@ void Test::execute(ParseDTO argumenty)
 	//questy[1].spelnijRozmowa(1);
 	//questy[1].spelnijPotwor(2);
 	//questy[1].spelnijPotwor(2);
+
+	//test segv
+	//Gracz* cos = 0;
+	//cos->imie = L"";
 		
 	/*wcout<<"go lvl1"<<endl;
 	midiPlayer->play(MIDI_LVL1);
