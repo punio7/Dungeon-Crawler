@@ -18,11 +18,11 @@ public:
 	bool jestRozmowny();	//rozmowna postac wymusza rozmowe przy pierwszym spotkaniu
 	bool jestTrenerem();
 	bool jestKupcem();
-	string list();			//wypisuje liste przedmiotow na sprzedaz
+	wstring list();			//wypisuje liste przedmiotow na sprzedaz
 	void setSklep(Item* sklep);	//ustawia magazyn sklepowy
 	void sklepSprzedaj(Item *item, int cena);	//usuwa item ze sklepu i dodaje zloto
 	void sklepKup(Item *item, int cena);		//dodaje item do sklepu i odejmuje zloto
-	Item* sklepZnajdz(string cel, int ktory);	//znajduje w sklepie item
+	Item* sklepZnajdz(wstring cel, int ktory);	//znajduje w sklepie item
 	int trener(Cecha cecha);
 	void ustawRozmowny(bool cel);
 	void dodajKwestie(Kwestia* kwestia);

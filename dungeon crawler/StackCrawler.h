@@ -9,7 +9,7 @@ public:
 protected:
   virtual void OnOutput(LPCSTR szText)
     { 
-		std::cout<<szText;
+		std::wcout<<szText;
 		StackWalker::OnOutput(szText); 
   }
 };

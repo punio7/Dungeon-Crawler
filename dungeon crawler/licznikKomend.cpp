@@ -22,6 +22,6 @@ void licznikKomend::wypiszLicznik()
 {
 	for (int i=0;i<ILOSC_KOMEND;i++)
 	{
-		cout<<iloscWywolan[i]<<' ';
+		wcout<<iloscWywolan[i]<<' ';
 	}
 }

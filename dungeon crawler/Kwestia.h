@@ -24,7 +24,7 @@ class KwestiaOdpowiedz
 {
 public:
 	KwestiaOdpowiedz();
-	KwestiaOdpowiedz(string tekst, int nast, int charakter=0);
+	KwestiaOdpowiedz(wstring tekst, int nast, int charakter=0);
 	~KwestiaOdpowiedz();
 	KwestiaOdpowiedz* DodajWymaganieQuestFaza(int quest, vector<int> fazy);
 	KwestiaOdpowiedz* DodajWymaganieZloto(int ilosc);
@@ -33,7 +33,7 @@ public:
 	KwestiaOdpowiedz* DodajWymaganieRasa(int maskaRas);
 	KwestiaOdpowiedz* DodajWymaganieZdarzenieGlobalne(int numer);
 
-	string tekst;
+	wstring tekst;
 	int nast;				//numer nastepnej kwestii, -1- koniec rozmowy, -2- koneic rozmowy i walka
 	int charakter;			//wypowiadanie tej odpowiedzi zmienia charakter
 	list<KwestiaOdpowiedzWymaganie*> wymagania;	//wymagania danej odpowiedzi
@@ -44,11 +44,11 @@ class Kwestia
 {
 public:
 	Kwestia(void);
-	Kwestia(int numer, int domyslnaNastepna, string tekst);
+	Kwestia(int numer, int domyslnaNastepna, wstring tekst);
 	~Kwestia(void);
 	//usuwa z kwestii wszystkie odpowiedzi prowadzace do kwestii o numerze nast
 	void usunOdpowiedz(int nast);
-	KwestiaOdpowiedz* dodajOdpowiedz(string tekst, int nastepnaKwestia, int charakter = 0);
+	KwestiaOdpowiedz* dodajOdpowiedz(wstring tekst, int nastepnaKwestia, int charakter = 0);
 	//dodaje nagrode do listy nagrod, kazda nagroda ma wlasne argumenty
 	//Kwestia* dodajNagrode(KwestiaNagrody::KwestiaNagrodyEnum, int arg1, int arg2=0, int arg3=0, int arg4=0);
 	Kwestia* dodajNagrodeQuestFaza(int quest, int faza);
@@ -67,6 +67,6 @@ public:
 	//int exp;									//exp dawany graczowi przy rozpoczeciu kwestii
 	//int quest;									//wskazuje, który quest ulegnie zmianie, 0- nic sie nie dzieje
 	//int questFaza;								//zmienia faze wskazanego wyzej questu na podana tutaj
-	string tekst;								//w³aœciwy tekst kwestii
+	wstring tekst;								//w³aœciwy tekst kwestii
 
 };

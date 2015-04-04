@@ -4,18 +4,23 @@
 #include <windows.h>
 #include "wersalikuj.h"
 
-void drukuj(string wejsciowy, int delay)
+void drukuj(wstring wejsciowy, int delay)
 {
 	locale loc;
-	string msg = wersalikuj(wejsciowy);
-	for (int i=0;i < msg.length(); i++)
+	wstring msg = wersalikuj(wejsciowy);
+	for (int i = 0; i < msg.length(); i++)
 	{
-		cout<<msg[i];
+		wcout << msg[i];
+		if (msg[i] == L'\n')
+		{
+			wcout.flush();
+		}
 		if (GetAsyncKeyState(VK_ESCAPE))
 		{
-              delay=0;
+			delay = 0;
 		}
-		if (!isspace(msg[i],loc)) Sleep(delay);		//delay przy spacjach powodowalby odczucie skokowego drukwoania tekstu
+		if (!isspace(msg[i], loc)) Sleep(delay);		//delay przy spacjach powodowalby odczucie skokowego drukwoania tekstu
 	}
-	Sleep(delay*10);
+	wcout << endl << endl;
+	Sleep(delay * 10);
 }

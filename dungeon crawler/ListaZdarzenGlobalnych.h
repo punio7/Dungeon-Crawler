@@ -13,7 +13,7 @@ namespace ListaZdarzenGlobalnych
 		TestNpcKoniecRozmowy,
 
 		//Zabicie postaci, dodanie expa, stworzenie zw³ok
-		ZabicieSzamanaGoblinow,
+		MorderstwoSzamanaGoblinow,
 
 		//Przeniesienie szamana do chaty
 		UcieczkaSzamanaGoblinow,
@@ -22,6 +22,8 @@ namespace ListaZdarzenGlobalnych
 		AgresjaGoblinow,
 
 		TeleportacjaDoChatySzamanaGoblinow,
-		TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni
+		TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni,
+
+		ZagrodzenieDrogiPrzezGwardzisteGoblinow
 	};
 }

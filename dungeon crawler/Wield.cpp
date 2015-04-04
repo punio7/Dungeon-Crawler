@@ -9,7 +9,7 @@ extern ListaKomend *listaKomend;
 Wield::Wield(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="wield";
+	nazwa = L"wield";
 }
 
 
@@ -23,7 +23,7 @@ void Wield::execute(ParseDTO argumenty)
 
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz na³o¿yæ?");
+		playerMsg(L"Co chcesz na³o¿yæ?");
 		return;
 	}
 
@@ -31,13 +31,13 @@ void Wield::execute(ParseDTO argumenty)
 
 	if (przedmiot==NULL)
 	{
-		playerMsg("Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
+		playerMsg(L"Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
 		return;
 	}
 
 	if (!przedmiot->jestBronia())
 	{
-		playerMsg("|^|0 nie jest broni¹ w konwencjonalnym tego s³owa znaczeniu.", przedmiot->nazwa);
+		playerMsg(L"|^|0 nie jest broni¹ w konwencjonalnym tego s³owa znaczeniu.", przedmiot->nazwa);
 		return;
 	}
 
@@ -53,17 +53,17 @@ void Wield::execute(ParseDTO argumenty)
 	}
 	gracz.przedmioty->usun(przedmiot);
 	gracz.eq[SLOT_PREKA]=przedmiot;
-	playerMsg("Dobywasz |0.", przedmiot->nazwa);
+	playerMsg(L"Dobywasz |0.", przedmiot->nazwa);
 	gracz.przelicz();
 	dynamic_cast<Wear*>(listaKomend->komendy[COMM_WEAR])->sprawdzWymagania(przedmiot);
 }
 
 void Wield::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   wield(wi)\n\n"
-				"U¿ycia:\n\n"
-				"   wield <nazwa_przedmiotu> - rozkazuje postaci dobycie wskazanej broni. Musi siê ona znajdowaæ w inwentarzu gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   wear, hold, remove");
+	playerMsg(L"Synonimy:\n"
+			 L"   wield(wi)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   wield <nazwa_przedmiotu> - rozkazuje postaci dobycie wskazanej broni. Musi siê ona znajdowaæ w inwentarzu gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   wear, hold, remove");
 }

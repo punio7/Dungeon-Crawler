@@ -3,4 +3,4 @@
 
 using namespace std;
 
-void drukuj(string wiadomosc, int delay = 60);
+void drukuj(wstring wiadomosc, int delay = 60);

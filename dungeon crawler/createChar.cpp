@@ -8,7 +8,7 @@
 #include "Kwestia.h"
 #include "randomGenerator.h"
 
-Postac* Gra::createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, string imie, string opis, string idle, int sila, int zr, int zw, int wyt, int zyw)
+Postac* Gra::createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, wstring imie, wstring opis, wstring idle, int sila, int zr, int zw, int wyt, int zyw)
 {
 	Postac *aktualny = new Postac;
 	
@@ -27,7 +27,7 @@ Postac* Gra::createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, st
 	return aktualny;
 }
 
-PostacNpc* Gra::createNpc(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, string imie, string opis, string idle, int sila, int zr, int zw, int wyt, int zyw)
+PostacNpc* Gra::createNpc(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, wstring imie, wstring opis, wstring idle, int sila, int zr, int zw, int wyt, int zyw)
 {
 	PostacNpc *aktualny = new PostacNpc;
 	
@@ -68,13 +68,13 @@ Postac* Gra::createChar(int id)
 #pragma region szczur_jaskiniowy
 	case ListaPostaci::SzczurJaskiniowy:
 		temp = createChar(id, 1, RASA_SZCZUR, KLASA_BRAK,
-			"szczur jaskiniowy",															 
-			"Szczur jaskiniowy s¹ nieco wiêksze od szczurów miejskich, s¹ jednak "
-			"porównywalnie obrzydliwe. Bure, mokre futerko pokrywa prawie jedno ³okciowego "
-			"gryzonia, który skrzêtnie przeszukuje otoczenie w poszukiwaniu po¿ywienia. "
-			"Odg³os ma³ych pazurków uderzaj¹cych w kamienn¹ posadzkê towarzyszy ka¿demu "
-			"ruchowi szczura.",
-			"szpera dooko³a",
+		 L"szczur jaskiniowy",															 
+		 L"Szczur jaskiniowy s¹ nieco wiêksze od szczurów miejskich, s¹ jednak "
+		 L"porównywalnie obrzydliwe. Bure, mokre futerko pokrywa prawie jedno ³okciowego "
+		 L"gryzonia, który skrzêtnie przeszukuje otoczenie w poszukiwaniu po¿ywienia. "
+		 L"Odg³os ma³ych pazurków uderzaj¹cych w kamienn¹ posadzkê towarzyszy ka¿demu "
+		 L"ruchowi szczura.",
+		 L"szpera dooko³a",
 			5,6,6,4,3);
 		//temp->agresywny = true;
 		temp->equip( create_item(BronieDzikie::SzczurzeKly) );
@@ -87,12 +87,12 @@ Postac* Gra::createChar(int id)
 		//////////////////	2	//////////////////
 #pragma region zakapturzona_postac
 	case ListaPostaci::ZakapturzonaPostac:
-		tempNpc = createNpc(id,50,RASA_CZLOWIEK, KLASA_BRAK, "zakapturzona postaæ", 
-			"Wpatruj¹c siê w zakapturzonego cz³owieka nie dostrzegasz w nim nic "
-			"nadzwyczajnego. Nosi on d³ugie br¹zowe szaty, które dok³adnie zakrywaj¹ "
-			"jego cia³o. Kaptur ca³kowicie zas³ania mu twarz. Nieznajomy wpatruje siê "
-			"ca³y czas w pod³ogê, nie wykonuj¹c przy tym nawet najmniejszych ruchów.",
-			"wpatruje siê w pod³ogê", 
+		tempNpc = createNpc(id,50,RASA_CZLOWIEK, KLASA_BRAK, L"zakapturzona postaæ", 
+		 L"Wpatruj¹c siê w zakapturzonego cz³owieka nie dostrzegasz w nim nic "
+		 L"nadzwyczajnego. Nosi on d³ugie br¹zowe szaty, które dok³adnie zakrywaj¹ "
+		 L"jego cia³o. Kaptur ca³kowicie zas³ania mu twarz. Nieznajomy wpatruje siê "
+		 L"ca³y czas w pod³ogê, nie wykonuj¹c przy tym nawet najmniejszych ruchów.",
+		 L"wpatruje siê w pod³ogê", 
 			80,80,80,80,80);
 		(tempNpc->trening)[SILA] = 34;
 		(tempNpc->trening)[ZRECZNOSC] = 34;
@@ -113,11 +113,11 @@ Postac* Gra::createChar(int id)
 		//////////////////	3	//////////////////
 #pragma region test_NPC
 	case ListaPostaci::TestNPC:
-			tempNpc = createNpc(id, 50,RASA_CZLOWIEK, KLASA_BRAK, "test NPC", 
-				"To tylko testowy NPC, nie oczekuj epickich opisów. "
-				"Jedyne czego mo¿esz siê spodziewaæ to sztucznie wyd³u¿one opisy "
-				"maj¹ce na celu sprawdzenie wersalikowania opisów postaci.",
-				"stoi i zachêca do rozmowy", 
+			tempNpc = createNpc(id, 50,RASA_CZLOWIEK, KLASA_BRAK, L"test NPC", 
+			 L"To tylko testowy NPC, nie oczekuj epickich opisów. "
+			 L"Jedyne czego mo¿esz siê spodziewaæ to sztucznie wyd³u¿one opisy "
+			 L"maj¹ce na celu sprawdzenie wersalikowania opisów postaci.",
+			 L"stoi i zachêca do rozmowy", 
 				80,80,80,80,80);
 
 			tempNpc->zloto=100;
@@ -132,9 +132,9 @@ Postac* Gra::createChar(int id)
 		//////////////////	4	//////////////////
 	case ListaPostaci::OgarStrazniczy:
 		temp = createChar(id, 10, RASA_OGAR, KLASA_BRAK,
-			"ogar stra¿niczy",															 //poza lini¹ konsoli
-			"Alan napisz opis.",
-			"szpera dooko³a",
+		 L"ogar stra¿niczy",															 //poza lini¹ konsoli
+		 L"Alan napisz opis.",
+		 L"szpera dooko³a",
 			27,26,22,21,22);
 		temp->agresywny = true;
 		temp->equip( create_item(BronieDzikie::KlyOgara) );
@@ -145,36 +145,36 @@ Postac* Gra::createChar(int id)
 		//////////////////	5	//////////////////
 	case ListaPostaci::GoblinZbieracz:
 		temp = createChar(id, 2, RASA_GOBLIN, KLASA_ROBOTNIK,
-			"goblin zbieracz",
-			"Goblin ten jest przedstawicielem najni¿szej kasty w spo³eczeñstwie goblinów. Jak ka¿dy goblin ma on ciemno zielon¹ skórê, pokryt¹ licznymi zmarszczkami i bruzdami. Wysoki na oko³o dwa ³okcie, ma nieproporcjonalnie d³ugie rêce i du¿¹ g³owê raz pochylon¹ postawê. Jego twarz to g³ównie para wy³upiastych oczu, du¿y spiczasty nos, oraz równie du¿e i stercz¹ce na boki uszy. Zbieracz ubrany jest w jedynie stary, lniany wór, którego równie¿ u¿ywa do przechowywania zebranych grzybów.",
-			"rozgl¹da siê dooko³a",
+		 L"goblin zbieracz",
+		 L"Goblin ten jest przedstawicielem najni¿szej kasty w spo³eczeñstwie goblinów. Jak ka¿dy goblin ma on ciemno zielon¹ skórê, pokryt¹ licznymi zmarszczkami i bruzdami. Wysoki na oko³o dwa ³okcie, ma nieproporcjonalnie d³ugie rêce i du¿¹ g³owê raz pochylon¹ postawê. Jego twarz to g³ównie para wy³upiastych oczu, du¿y spiczasty nos, oraz równie du¿e i stercz¹ce na boki uszy. Zbieracz ubrany jest w jedynie stary, lniany wór, którego równie¿ u¿ywa do przechowywania zebranych grzybów.",
+		 L"rozgl¹da siê dooko³a",
 			7,9,9,10,7);
 		return temp;
 
 		//////////////////	6	//////////////////
 	case ListaPostaci::GoblinGwardzista:
 		temp = createChar(id, 3, RASA_GOBLIN, KLASA_GWARDZISTA,
-			"Zadaniem gobliñskich gwardzistów jest pilnowanie obozowiska, oraz alarmowanie o zbli¿aj¹cym siê zagro¿eniu. Ich ubiór stanowi najciê¿szy pancerz jaki mo¿na znaleŸæ wœród goblinów- daje to wiêksz¹ szansê na wydanie alarmuj¹cego okrzyku zanim gwardzista siê zu¿yje. Jego zbrojê stanowi¹ metalowe przedmioty zrabowane od ludzi- garnki, p³ytki, kawa³ki w³aœciwych zbroi lub kolczug, czy tarcz, powi¹zane razem linami b¹dŸ paskami. Co do reszty wygl¹du to gobliñscy gwardziœci s¹ równie paskudni co reszta przedstawicieli ich rasy.",
-			"Opis goblina zbieracza.",
-			"opiera siê na w³óczni",
+		 L"Zadaniem gobliñskich gwardzistów jest pilnowanie obozowiska, oraz alarmowanie o zbli¿aj¹cym siê zagro¿eniu. Ich ubiór stanowi najciê¿szy pancerz jaki mo¿na znaleŸæ wœród goblinów- daje to wiêksz¹ szansê na wydanie alarmuj¹cego okrzyku zanim gwardzista siê zu¿yje. Jego zbrojê stanowi¹ metalowe przedmioty zrabowane od ludzi- garnki, p³ytki, kawa³ki w³aœciwych zbroi lub kolczug, czy tarcz, powi¹zane razem linami b¹dŸ paskami. Co do reszty wygl¹du to gobliñscy gwardziœci s¹ równie paskudni co reszta przedstawicieli ich rasy.",
+		 L"Opis goblina zbieracza.",
+		 L"opiera siê na w³óczni",
 			12, 14, 12, 14, 12);
 		return temp;
 
 		//////////////////	7	//////////////////
 	case ListaPostaci::GoblinBerserker:
 		temp = createChar(id, 4, RASA_GOBLIN, KLASA_BERSERKER,
-			"goblin berserker",
-			"Berserkerzy nale¿¹ do najzdolniejszych wojowników wœród gobliñskiego plemienia. Za ubranie s³u¿¹ im jedynie skurzane spodnie, wytworzone rêcznie ze skóry jednej ze swoich ofiar. Ich odkryt¹ klatê ozdabiaj¹ im blizny a twarzy zazwyczaj brakuje jednego ucha, nosa, b¹dŸ oka. Pe³ni dumy berserkerzy zachowuj¹ siê pogardliwie do innych goblinów oraz ogólnie do innych stworzeñ. Maj¹ szacunek jedynie do szamana, stanowi¹c jego osobist¹ ochronê.",
-			"bacznie siê tobie przygl¹da",
+		 L"goblin berserker",
+		 L"Berserkerzy nale¿¹ do najzdolniejszych wojowników wœród gobliñskiego plemienia. Za ubranie s³u¿¹ im jedynie skurzane spodnie, wytworzone rêcznie ze skóry jednej ze swoich ofiar. Ich odkryt¹ klatê ozdabiaj¹ im blizny a twarzy zazwyczaj brakuje jednego ucha, nosa, b¹dŸ oka. Pe³ni dumy berserkerzy zachowuj¹ siê pogardliwie do innych goblinów oraz ogólnie do innych stworzeñ. Maj¹ szacunek jedynie do szamana, stanowi¹c jego osobist¹ ochronê.",
+		 L"bacznie siê tobie przygl¹da",
 			14, 16, 14, 10, 15);
 		return temp;
 
 		//////////////////	8	//////////////////
 	case ListaPostaci::GoblinSzaman:
 		tempNpc = createNpc(id, 5, RASA_GOBLIN, KLASA_MNICH,
-			"goblin szaman",
-			"Szamani s¹ jednoczeœnie przywódcami goblinœkiego plemienia. Ich wygl¹d ma u reszty goblinów wywo³aæ strach przed mocami dysponowanymi przez szamana, nawet je¿eli takowych on nie ma. Jego cia³o jest pokryte dziwnymi tatua¿ami i malunkami z b³ota i krwi a w uszach i nosie ma mnóstwo kolczyków. Jego szata jest gruba i wykonana z lnu. Wszyto w ni¹ kawa³ki zwierzêcego futra, oraz namalowano jakimiœ barwnikami dziwne symbole. Na szyi szaman nosi naszyjnik z rzemienia, oraz zwierzêcych koœci, a na g³owie nosi koronê wykonan¹ z poro¿a jelenia. Szaman stara siê robiæ mistyczne wra¿enie, machaj¹c co chwila rêkami oraz podskakuje bez powodu.",
-			"nerwowo rozgl¹da siê dooko³a",
+		 L"goblin szaman",
+		 L"Szamani s¹ jednoczeœnie przywódcami goblinœkiego plemienia. Ich wygl¹d ma u reszty goblinów wywo³aæ strach przed mocami dysponowanymi przez szamana, nawet je¿eli takowych on nie ma. Jego cia³o jest pokryte dziwnymi tatua¿ami i malunkami z b³ota i krwi a w uszach i nosie ma mnóstwo kolczyków. Jego szata jest gruba i wykonana z lnu. Wszyto w ni¹ kawa³ki zwierzêcego futra, oraz namalowano jakimiœ barwnikami dziwne symbole. Na szyi szaman nosi naszyjnik z rzemienia, oraz zwierzêcych koœci, a na g³owie nosi koronê wykonan¹ z poro¿a jelenia. Szaman stara siê robiæ mistyczne wra¿enie, machaj¹c co chwila rêkami oraz podskakuje bez powodu.",
+		 L"nerwowo rozgl¹da siê dooko³a",
 			13, 14, 14, 18, 19);
 		wczytajRozmowe(tempNpc->id, tempNpc);
 		return tempNpc;
@@ -1204,9 +1204,7 @@ Postac* Gra::createChar(int id)
 		
 		//////////////////	350	//////////////////
 	default:
-		cout<<"BUONT! niepoprawny int dla createChar "<<id<<" koncze\n";
-		system("pause");
-		exit(CRITICAL_ERROR_CREATECHAR_WRONG_ID);
+		throw new wstring(L"BUONT! niepoprawny int dla createChar");
 }
 
 	

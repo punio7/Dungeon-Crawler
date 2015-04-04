@@ -1,6 +1,6 @@
 #include "wersalikuj.h"
 
-string wersalikuj(string wejsciowy, int dlugoscWiersza)
+wstring wersalikuj(wstring wejsciowy, int dlugoscWiersza)
 {
 	if (wejsciowy.empty()) return wejsciowy;
 	int obecnyZnak=0;

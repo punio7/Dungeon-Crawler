@@ -5,7 +5,7 @@
 Scan::Scan(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="scan";
+	nazwa = L"scan";
 }
 
 
@@ -22,52 +22,52 @@ void Scan::scan()
 {
 	Gracz &gracz = gra->gracz;
 	
-	playerMsg("Rozgl¹daj¹c siê dooko³a dostrzegasz:");
+	playerMsg(L"Rozgl¹daj¹c siê dooko³a dostrzegasz:");
 
-	playerMsg("|gTutaj:");
+	playerMsg(L"|gTutaj:");
 	playerMsg(gracz.polozenie->postacie-> wypisz(CHARLIST_WYPISZ_SCAN));
 
 	for (int i = NORTH; i < KIERUNEK_NIEPOPRAWNY; i++)
 	{
 	if ((gracz.polozenie->wyjscie)[i]) 
 		{
-			playerMsg("|gNa |0:", celownikKierunkuSwiata((KierunekSwiata)i));
+			playerMsg(L"|gNa |0:", celownikKierunkuSwiata((KierunekSwiata)i));
 			if((gracz.polozenie->zamek)[i]>0) 
-				playerMsg("\t|gdrzwi s¹ zamkniête.");
+				playerMsg(L"\t|gdrzwi s¹ zamkniête.");
 			else 
 				playerMsg(( ( (gracz.polozenie->wyjscie)[i] )->postacie ) -> wypisz(CHARLIST_WYPISZ_SCAN));
 		}
 	}
 }
 
-string Scan::celownikKierunkuSwiata(KierunekSwiata kierunek)
+wstring Scan::celownikKierunkuSwiata(KierunekSwiata kierunek)
 {
 	switch (kierunek)
 	{
 	case NORTH:
-		return "pó³nocy";
+		return L"pó³nocy";
 	case SOUTH:
-		return "po³udniu";
+		return L"po³udniu";
 	case WEST:
-		return "zachodzie";
+		return L"zachodzie";
 	case EAST:
-		return "wschodzie";
+		return L"wschodzie";
 	case UP:
-		return "górze";
+		return L"górze";
 	case DOWN:
-		return "dole";
+		return L"dole";
 		break;
 	default:
-		return "";
+		return L"";
 	}
 }
 
 void Scan::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   scan(sc)\n\n"
-				"U¿ycia:\n\n"
-				"   scan - wyœwietla listê postaci znajduj¹cych siê w okolicy.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   look, examine");
+	playerMsg(L"Synonimy:\n"
+			 L"   scan(sc)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   scan - wyœwietla listê postaci znajduj¹cych siê w okolicy.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   look, examine");
 }

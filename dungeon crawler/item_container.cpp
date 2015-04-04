@@ -3,10 +3,10 @@
 item_container::item_container()
 {
 	Item::Item();
-	typ=ITEM_CONTAINER;
-	lista=new ItemList;
-	zlotoIlosc=0;
-	zamek=0;
+	typ = ITEM_CONTAINER;
+	lista = new ItemList;
+	zlotoIlosc = 0;
+	zamek = 0;
 }
 
 item_container::~item_container()
@@ -14,21 +14,21 @@ item_container::~item_container()
 
 }
 
-string item_container::examine()
+wstring item_container::examine()
 {
-	string temp;
-	temp+=opis;
-	temp+="\n\n";
+	wstring temp;
+	temp += opis;
+	temp += L"\n\n";
 	if (!zamek)	//jezeli nie jest zamkniety na klucz
 	{
-		temp+="|^";
-		temp+=nazwa;
-		temp+=" zawiera w sobie:\n";
+		temp += L"|^";
+		temp += nazwa;
+		temp += L" zawiera w sobie:\n";
 		lista->wypisz(temp);
 	}
 	else
 	{
-		temp+="\tPojemnik jest zamkniêty";
+		temp += L"\tPojemnik jest zamkniêty";
 	}
 	return temp;
 }
@@ -55,17 +55,17 @@ int item_container::zloto()
 
 void item_container::dodajZloto(int ilosc)
 {
-	zlotoIlosc+=ilosc;
+	zlotoIlosc += ilosc;
 }
 
 void item_container::usunZloto(int ilosc)
 {
-	if ( (zlotoIlosc-=ilosc) < 0) zlotoIlosc=0;
+	if ((zlotoIlosc -= ilosc) < 0) zlotoIlosc = 0;
 }
 
 void item_container::ustawZamek(int id)
 {
-	zamek=id;
+	zamek = id;
 }
 
 int item_container::numerZamka()
@@ -83,7 +83,7 @@ ItemList* item_container::getItemList()
 	return lista;
 }
 
-Item* item_container::lista_znajdz(string szukany, int ktory)
+Item* item_container::lista_znajdz(wstring szukany, int ktory)
 {
 	return lista->znajdz(szukany, ktory);
 }

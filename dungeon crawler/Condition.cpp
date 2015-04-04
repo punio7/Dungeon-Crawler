@@ -5,7 +5,7 @@
 Condition::Condition(Gra *gra):
 	Komenda(gra)
 {
-	nazwa = "condition";
+	nazwa = L"condition";
 }
 
 
@@ -20,10 +20,10 @@ void Condition::execute(ParseDTO argumenty)
 
 void Condition::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   condition(c)\n\n"
-				"U¿ycia:\n\n"
-				"   condition - wyœwietla listê efektów wp³ywaj¹cych na gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   drink");
+	playerMsg(L"Synonimy:\n"
+				L"   condition(c)\n\n"
+				L"U¿ycia:\n\n"
+				L"   condition - wyœwietla listê efektów wp³ywaj¹cych na gracza.\n\n"
+				L"SprawdŸ równie¿:\n"
+				L"   drink");
 }

@@ -24,7 +24,7 @@ public:
 	bool jestUzbrojony();
 	
 	void sprawdzWymagania(Item* item);
-	void hold(string cel, int ktory);
+	void hold(wstring cel, int ktory);
 
 	int exp;
 	int pktCech;

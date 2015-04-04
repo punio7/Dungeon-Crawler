@@ -10,7 +10,7 @@ class ParseDTO
 {
 public:
 
-	string argument1, argument2;
+	wstring argument1, argument2;
 	KierunekSwiata kierunek1;
 	Ekomenda komenda1;
 	int ktory1, ktory2;

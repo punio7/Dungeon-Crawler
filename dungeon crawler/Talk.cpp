@@ -13,7 +13,7 @@ extern ListaKomend *listaKomend;
 Talk::Talk(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="talk";
+	nazwa = L"talk";
 }
 
 
@@ -30,13 +30,13 @@ void Talk::talk(Postac *npc)
 {
 	if (!npc)
 	{
-		playerMsg("Tu nie ma nikogo takiego.");
+		playerMsg(L"Tu nie ma nikogo takiego.");
 		return;
 	}
 
 	if ( !npc->chceRozmawiac() )
 	{
-		playerMsg("|^|0 nie ma nic do powiedzenia.", npc->imie);
+		playerMsg(L"|^|0 nie ma nic do powiedzenia.", npc->imie);
 		return;
 	}
 
@@ -52,7 +52,7 @@ void Talk::talk(Postac *npc)
 
 		if ( rozmowa->obecnaKwestia == -2 )
 		{
-			playerMsg("|^|0 dobywa broni i rzuca siê na ciebie!", npc->imie);
+			playerMsg(L"|^|0 dobywa broni i rzuca siê na ciebie!", npc->imie);
 			npc->agresywny=true;
 			dynamic_cast<Kill*>(listaKomend->komendy[COMM_KILL])->rozpocznijWalke(npc);
 			break;
@@ -63,9 +63,9 @@ void Talk::talk(Postac *npc)
 
 		dajNagrody(kwestia, npc);	//nagrody za uruchomienie danej kwestii
 
-		playerMsg("|B|^|0:", npc->imie);
+		playerMsg(L"|B|^|0:", npc->imie);
 		playerMsg(kwestia->tekst);
-		playerMsg("");
+		playerMsg(L"");
 
 		wypiszMozliweOdpowiedzi(kwestia); //wypisuj mozliwe dla gracza odpowiedzi
 
@@ -73,9 +73,10 @@ void Talk::talk(Postac *npc)
 		while (!odpowiedz)
 		{
 			int wybor;
-			cin>>wybor;
-			cin.clear();
-			cin.ignore(999,'\n');
+			wcin>>wybor;
+			wcin.clear();
+			wcin.ignore(999,'\n');
+			wcin.sync();
 			odpowiedz = znajdzOdpowiedz(rozmowa, wybor);
 		}
 
@@ -88,12 +89,12 @@ void Talk::talk(Postac *npc)
 
 void Talk::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   talk(tal)\n\n"
-				"U¿ycia:\n\n"
-				"   talk <nazwa_postaci> - gracz rozpoczyna rozmowê ze wskazan¹ postaci¹ (o ile nie chce ci ona wyd³ubaæ oczu).\n\n"
-				"SprawdŸ równie¿:\n"
-				"   examine, consider, kill, journal");
+	playerMsg(L"Synonimy:\n"
+			 L"   talk(tal)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   talk <nazwa_postaci> - gracz rozpoczyna rozmowê ze wskazan¹ postaci¹ (o ile nie chce ci ona wyd³ubaæ oczu).\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   examine, consider, kill, journal");
 }
 
 void Talk::dajNagrody(Kwestia *kwestia, Postac *npc)
@@ -110,7 +111,7 @@ void Talk::dajNagrody(Kwestia *kwestia, Postac *npc)
 		case KwestiaNagrody::NagrodaQuestFaza:
 			if (nagroda[1] > LICZBA_QUESTOW)
 			{
-				playerMsg("|RB³¹d, nie mo¿na spe³niæ wymogów questu |0, dany quest nie istnieje.", intToStr(nagroda[1]));
+				playerMsg(L"|RB³¹d, nie mo¿na spe³niæ wymogów questu |0, dany quest nie istnieje.", intToStr(nagroda[1]));
 			}
 			else
 			{
@@ -118,21 +119,21 @@ void Talk::dajNagrody(Kwestia *kwestia, Postac *npc)
 			}
 			break;
 		case KwestiaNagrody::NagrodaGraczDoswiadczenie:
-			playerMsg("|YOtrzymano |0 punktów doœwiadczenia", intToStr(nagroda[1]));
+			playerMsg(L"|YOtrzymano |0 punktów doœwiadczenia", intToStr(nagroda[1]));
 			gra->gracz.dodajEXP(nagroda[1]);
 			break;
 		case KwestiaNagrody::NagrodaGraczZloto:
 			if (nagroda[1] > npc->zloto)
 			{										//jezeli npc nie ma wystarczajaco zlota aby wyplacic nagrode
 				gra->gracz.dodajZloto(npc->zloto);	//to wyplaci tyle ile ma
-				playerMsg("|YOtrzymano |0 szt. z³ota.", intToStr(npc->zloto));
+				playerMsg(L"|YOtrzymano |0 szt. z³ota.", intToStr(npc->zloto));
 				npc->usunZloto(npc->zloto);
 			}
 			else 
 			{
 				gra->gracz.dodajZloto(nagroda[1]);
 				npc->usunZloto(nagroda[1]);
-				playerMsg("|YOtrzymano |0 szt. z³ota.", intToStr(nagroda[1]));
+				playerMsg(L"|YOtrzymano |0 szt. z³ota.", intToStr(nagroda[1]));
 			}
 			break;
 		case KwestiaNagrody::NagrodaGraczItem:
@@ -140,7 +141,7 @@ void Talk::dajNagrody(Kwestia *kwestia, Postac *npc)
 			{
 				npc->przedmioty->usun(przedmiot);
 				gra->gracz.dodajPrzedmiot(przedmiot);
-				playerMsg("|YOtrzyma³eœ |0.", przedmiot->nazwa);
+				playerMsg(L"|YOtrzyma³eœ |0.", przedmiot->nazwa);
 			}
 			break;
 		case KwestiaNagrody::NagrodaZdarzenieGlobalne:
@@ -156,13 +157,12 @@ void Talk::dajNagrody(Kwestia *kwestia, Postac *npc)
 void Talk::wypiszMozliweOdpowiedzi(Kwestia *kwestia)
 {
 	int i=1;	//numeracja mozliwych odpowiedzi	
-	ostringstream tempString;
 
 	for (KwestiaOdpowiedz *aktualny : kwestia->odpowiedzi)
 	{
 		if (graczSpelniaWymaganiaOdpowiedzi(aktualny))
 		{	//jezeli gracz nie spelnia wymagan jakiejs odpowiedzi to nie zostanie ona wypisana
-			playerMsg("|0. |1", intToStr(i), aktualny->tekst);	//np. "1. Oddawaj swoje zloto!"
+			playerMsg(L"|0. |1", intToStr(i), aktualny->tekst);	//np. "1. Oddawaj swoje zloto!"
 			i++;
 		}
 	}

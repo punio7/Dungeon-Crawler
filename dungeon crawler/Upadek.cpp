@@ -22,7 +22,7 @@ void Upadek::aktywujWalka(Postac &posiadacz, Postac &wrog)
 	{
 		iloscUpadkow++;
 		posiadacz.currentPanc = ceil((float)posiadacz.currentPanc/2);
-		posiadacz.jestGraczem() ? playerMsg("Zaczynasz opadaæ z si³.") : playerMsg("Przeciwnik wygl¹da na zmêczonego.");
+		posiadacz.jestGraczem() ? playerMsg(L"Zaczynasz opadaæ z si³.") : playerMsg(L"Przeciwnik wygl¹da na zmêczonego.");
 	}
 }
 

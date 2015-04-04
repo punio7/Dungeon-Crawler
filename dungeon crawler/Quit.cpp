@@ -5,7 +5,7 @@
 Quit::Quit(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="quit";
+	nazwa = L"quit";
 }
 
 
@@ -15,14 +15,14 @@ Quit::~Quit(void)
 
 void Quit::execute(ParseDTO argumenty)
 {
-	playerMsg("I tak wrócisz.");
+	playerMsg(L"I tak wrócisz.");
 	gra->stan=STAN_QUIT;
 }
 
 void Quit::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   quit(q)\n\n"
-				"U¿ycia:\n\n"
-				"   quit - koñczy grê.\n");
+	playerMsg(L"Synonimy:\n"
+			 L"   quit(q)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   quit - koñczy grê.\n");
 }

@@ -16,6 +16,6 @@ public:
 	virtual void manual();
 
 	Gra *gra;
-	string nazwa;	//nazwa wyswietlana w liscie komend komendy manual, pusty string aby ukryc komende
+	wstring nazwa;	//nazwa wyswietlana w liscie komend komendy manual, pusty wstring aby ukryc komende
 };
 

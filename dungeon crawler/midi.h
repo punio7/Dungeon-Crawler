@@ -2,11 +2,11 @@
 
 #include <iostream>
 #include <windows.h>
-#include <mmsystem.h>  // mciSendString()
+#include <mmsystem.h>  // mciSendwstring()
 #include <iostream>
 #include <conio.h>
 #include <thread>
-using namespace std;   // std::cout, std::cin
+using namespace std;   // std::wcout, std::cin
 
 namespace MidiFiles
 {

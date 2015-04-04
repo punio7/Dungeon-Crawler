@@ -2,7 +2,7 @@
 
 static locale loc;
 
-void playerMsg(string msg, string in0, string in1, string in2, string in3, string in4, string in5, string in6, string in7, string in8, string in9)
+void playerMsg(wstring msg, wstring in0, wstring in1, wstring in2, wstring in3, wstring in4, wstring in5, wstring in6, wstring in7, wstring in8, wstring in9)
 {
 	bool flagNewLine = true;	// |_ powoduje usuniecie akapitu na koniec tekstu
 	Format format = FORMAT_NORMAL;
@@ -75,7 +75,7 @@ void playerMsg(string msg, string in0, string in1, string in2, string in3, strin
 
 	msg = wersalikuj(msg);
 
-	char c;
+	wchar_t c;
 	color(HWHITE);
 	for (int i=0; i < msg.length(); i++)	//kolorowanie
 	{
@@ -94,7 +94,7 @@ void playerMsg(string msg, string in0, string in1, string in2, string in3, strin
 			default:
 				break;
 			}
-			cout<<c;
+			wcout<<c;
 			continue;
 		}
 
@@ -127,25 +127,25 @@ void playerMsg(string msg, string in0, string in1, string in2, string in3, strin
 	}
 	color(HWHITE);
 	if (flagNewLine)
-		cout<<endl;
+		wcout<<endl;
 
 }
 
-string intToStr(int i)
+wstring intToStr(int i)
 {
-	ostringstream temp;
+	wstringstream temp;
 	temp<<i;
 	return temp.str();
 }
 
-string floatToStr(float f)
+wstring floatToStr(float f)
 {
-	ostringstream temp;
+	wstringstream temp;
 	temp<<f;
 	return temp.str();
 }
 
-string czystyTekst(string text)
+wstring czystyTekst(wstring text)
 {
 	char c;
 	for (int i=0; i<text.length(); i++)

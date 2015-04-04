@@ -23,7 +23,7 @@ void Gra::zdarzeniaPrzySpotkaniu()
 
 	if (Postac* postac = (polozenie->postacie)->znajdzAgresywny() )
 	{
-		playerMsg("|^|0 rzuca siê na ciebie bez ostrze¿enia!", postac->imie);
+		playerMsg(L"|^|0 rzuca siê na ciebie bez ostrze¿enia!", postac->imie);
 		dynamic_cast<Kill*>(listaKomend->komendy[COMM_KILL])->rozpocznijWalke(postac);
 	}
 }

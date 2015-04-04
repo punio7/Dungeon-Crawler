@@ -3,10 +3,10 @@
 #include "item.h"
 #include "Lokacja.h"
 
-Unlock::Unlock(Gra *gra):
-	Komenda(gra)
+Unlock::Unlock(Gra *gra) :
+Komenda(gra)
 {
-	nazwa="unlock";
+	nazwa = L"unlock";
 }
 
 
@@ -18,33 +18,33 @@ void Unlock::execute(ParseDTO argumenty)
 {
 	if (argumenty.kierunek1 != KIERUNEK_NIEPOPRAWNY)
 	{
-		if (!(gra->gracz.polozenie->zamek[argumenty.kierunek1]>1))
+		if (!(gra->gracz.polozenie->zamek[argumenty.kierunek1] > 1))
 		{
-			playerMsg("Tam nie ma nic do odkluczenia.");
+			playerMsg(L"Tam nie ma nic do odkluczenia.");
 			return;
 		}
-		
+
 		unlockDoor(argumenty.kierunek1);
 	}
 	else
 	{
 		if (argumenty.argument1.empty())
 		{
-			playerMsg("Co chcia³byœ odkluczyæ?");
+			playerMsg(L"Co chcia³byœ odkluczyæ?");
 			return;
 		}
-		
+
 		Item *chest = gra->gracz.polozenie->przedmioty->znajdz(argumenty.argument1, argumenty.ktory1);
 
 		if (!chest)
 		{
-			playerMsg("Tutaj nie ma nic takiego.");
+			playerMsg(L"Tutaj nie ma nic takiego.");
 			return;
 		}
 
 		if (!chest->jestPojemnikiem() || !chest->numerZamka())
 		{
-			playerMsg("|^|0 nie ma ¿adnego zamka.", chest->nazwa);
+			playerMsg(L"|^|0 nie ma ¿adnego zamka.", chest->nazwa);
 			return;
 		}
 
@@ -54,13 +54,13 @@ void Unlock::execute(ParseDTO argumenty)
 
 void Unlock::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   unlock(un)\n\n"
-				"U¿ycia:\n\n"
-				"   unlock <kierunek> - gracz spróbuje odkluczyæ drzwi/klapê we wskazanym kierunku. Musisz posiadaæ w inwentarzu klucz pasuj¹cy do zamka.\n\n"
-				"   unlock <nazwa_pojemnika> - gracz spróbuje odkluczyæ wskazan¹ skrzyniê, sejf, szafê, kolzetkê, szkatu³kê b¹dŸ inny pojemnik. Oczywiœcie musisz posiadaæ klucz.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   open, examine");
+	playerMsg(L"Synonimy:\n"
+		L"   unlock(un)\n\n"
+		L"U¿ycia:\n\n"
+		L"   unlock <kierunek> - gracz spróbuje odkluczyæ drzwi/klapê we wskazanym kierunku. Musisz posiadaæ w inwentarzu klucz pasuj¹cy do zamka.\n\n"
+		L"   unlock <nazwa_pojemnika> - gracz spróbuje odkluczyæ wskazan¹ skrzyniê, sejf, szafê, kolzetkê, szkatu³kê b¹dŸ inny pojemnik. Oczywiœcie musisz posiadaæ klucz.\n\n"
+		L"SprawdŸ równie¿:\n"
+		L"   open, examine");
 }
 
 void Unlock::unlockDoor(KierunekSwiata kierunek)
@@ -71,13 +71,13 @@ void Unlock::unlockDoor(KierunekSwiata kierunek)
 
 	if (!klucz)
 	{
-		playerMsg("¯aden z twoich kluczy nie pasuje do zamka.");
+		playerMsg(L"¯aden z twoich kluczy nie pasuje do zamka.");
 		return;
 	}
 
-	playerMsg("Odkluczasz |0 przy pomocy |1.", (kierunek==UP||kierunek==DOWN)?"klapê":"przejœcie", klucz->nazwa);
-	gracz.polozenie->zamek[kierunek]=1;
-	gracz.polozenie->wyjscie[kierunek]->zamek[kierunekPrzeciwny(kierunek)]=1; //z drugiej strony rowniez zdejmujemy zamek
+	playerMsg(L"Odkluczasz |0 przy pomocy |1.", (kierunek == UP || kierunek == DOWN) ? L"klapê" : L"przejœcie", klucz->nazwa);
+	gracz.polozenie->zamek[kierunek] = 1;
+	gracz.polozenie->wyjscie[kierunek]->zamek[kierunekPrzeciwny(kierunek)] = 1; //z drugiej strony rowniez zdejmujemy zamek
 }
 
 void Unlock::unlockChest(Item *chest)
@@ -88,10 +88,10 @@ void Unlock::unlockChest(Item *chest)
 
 	if (!klucz)
 	{
-		playerMsg("¯aden z twoich kluczy nie pasuje do zamka.");
+		playerMsg(L"¯aden z twoich kluczy nie pasuje do zamka.");
 		return;
 	}
 
-	playerMsg("Odkluczasz |0 przy pomocy |1.", chest->nazwa, klucz->nazwa);
+	playerMsg(L"Odkluczasz |0 przy pomocy |1.", chest->nazwa, klucz->nazwa);
 	chest->ustawZamek(0);
 }

@@ -5,7 +5,7 @@
 Remove::Remove(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="remove";
+	nazwa = L"remove";
 }
 
 
@@ -19,16 +19,16 @@ void Remove::execute(ParseDTO argumenty)
 
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz zdj¹æ?");
+		playerMsg(L"Co chcesz zdj¹æ?");
 		return;
 	}
 
-	if (argumenty.argument1 != "all")
+	if (argumenty.argument1 != L"all")
 	{
 		ItemSlot slot = gracz.znajdzEQ(argumenty.argument1, argumenty.ktory1);
 		if (slot == -1)
 		{
-			playerMsg("Aktualnie nie u¿ywasz ¿adnego |0.", argumenty.argument1);
+			playerMsg(L"Aktualnie nie u¿ywasz ¿adnego |0.", argumenty.argument1);
 			return;
 		}
 		remove(slot); 
@@ -45,12 +45,12 @@ void Remove::execute(ParseDTO argumenty)
 
 void Remove::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   remove(r)\n\n"
-				"U¿ycia:\n\n"
-				"   remove <nazwa_przedmiotu> - gracz przestaje u¿ywaæ/nosiæ wskazany przedmiot z ekwipunku i odk³ada go do inwentarza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   inventory, equipment, wear, wield, hold");
+	playerMsg(L"Synonimy:\n"
+			 L"   remove(r)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   remove <nazwa_przedmiotu> - gracz przestaje u¿ywaæ/nosiæ wskazany przedmiot z ekwipunku i odk³ada go do inwentarza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   inventory, equipment, wear, wield, hold");
 }
 
 void Remove::remove(ItemSlot slot)
@@ -61,9 +61,9 @@ void Remove::remove(ItemSlot slot)
 		return;
 
 	if (gracz.eq[slot]->jestPancerzem()) 
-		playerMsg("Zdejmujesz |0.", gracz.eq[slot]->nazwa);
+		playerMsg(L"Zdejmujesz |0.", gracz.eq[slot]->nazwa);
 	else 
-		playerMsg("Przestajesz dzier¿yæ |0.", gracz.eq[slot]->nazwa);
+		playerMsg(L"Przestajesz dzier¿yæ |0.", gracz.eq[slot]->nazwa);
 	gracz.przedmioty->dodaj(gracz.eq[slot]);
 	gracz.eq[slot]=NULL;
 }

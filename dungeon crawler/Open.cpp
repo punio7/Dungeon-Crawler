@@ -5,7 +5,7 @@
 Open::Open(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="open";
+	nazwa = L"open";
 }
 
 
@@ -22,33 +22,33 @@ void Open::execute(ParseDTO argumenty)
 		switch ( ((polozenie)->zamek)[kierunek] )
 		{
 		case 0:
-			playerMsg("Tam nie ma czego otworzyæ.");
+			playerMsg(L"Tam nie ma czego otworzyæ.");
 			return;
 		case -1:
-			playerMsg("Tam nie ma czego otworzyæ.");
+			playerMsg(L"Tam nie ma czego otworzyæ.");
 			return;
 		case 1:
-			playerMsg("Otwierasz przejœcie.");
+			playerMsg(L"Otwierasz przejœcie.");
 			(polozenie->zamek)[kierunek] = 0;
 			(((polozenie->wyjscie)[kierunek])->zamek)[kierunekPrzeciwny(kierunek)] = 0;	//jezeli otwieramy drzwi od poludnia
 			return;																			//to od polnocy tez beda otwarte
 		default:
-			playerMsg("Zamkniête na klucz.");
+			playerMsg(L"Zamkniête na klucz.");
 			return;
 		}
 	}
 	else
 	{
-		playerMsg("Chcesz otworzyæ przejscie w którym kierunku?");
+		playerMsg(L"Chcesz otworzyæ przejscie w którym kierunku?");
 	}
 }
 
 void Open::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   open(o)\n\n"
-				"U¿ycia:\n\n"
-				"   open <kierunek_œwiata> - gracz podejmie próbê otworzenia przejœcia w danym kierunku. Oczywiœcie przejœcie mo¿e okazaæ siê zamkniête na klucz.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   unlock, north, south, west, east, up, down");
+	playerMsg(L"Synonimy:\n"
+			 L"   open(o)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   open <kierunek_œwiata> - gracz podejmie próbê otworzenia przejœcia w danym kierunku. Oczywiœcie przejœcie mo¿e okazaæ siê zamkniête na klucz.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   unlock, north, south, west, east, up, down");
 }

@@ -9,7 +9,7 @@ extern ListaKomend* listaKomend;
 Manual::Manual(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="manual";
+	nazwa = L"manual";
 }
 
 
@@ -40,16 +40,16 @@ void Manual::execute(ParseDTO argumenty)
 
 void Manual::manual()
 {
-	playerMsg(	"Synonimy:\n"
-				"   manual(m), help(he), commands(com)\n\n"
-				"U¿ycia:\n\n"
-				"   manual - wyœwietla listê wszystkich komend\n\n"
-				"   manual <komenda> - wyœwietla pomoc dla danej komendy");
+	playerMsg( L"Synonimy:\n"
+			 L"   manual(m), help(he), commands(com)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   manual - wyœwietla listê wszystkich komend\n\n"
+			 L"   manual <komenda> - wyœwietla pomoc dla danej komendy");
 }
 
 void Manual::wyswietlListeKomend()
 {
-	playerMsg("Lista dostêpnych komend. U¿yj manual <komenda> aby przeczytaæ szczegó³ow¹ pomoc.\n");
+	playerMsg(L"Lista dostêpnych komend. U¿yj manual <komenda> aby przeczytaæ szczegó³ow¹ pomoc.\n");
 	
 	Komenda **komendy = listaKomend->komendy;
 	
@@ -58,7 +58,7 @@ void Manual::wyswietlListeKomend()
 	int wypisaneKomendy = 0;
 	for (int i = startowaKomenda; i < LICZBA_KOMEND; i++)
 	{
-		if (komendy[i] == NULL || komendy[i]->nazwa == "")
+		if (komendy[i] == NULL || komendy[i]->nazwa == L"")
 		{
 			continue;
 		}
@@ -66,16 +66,16 @@ void Manual::wyswietlListeKomend()
 		{
 			if (komendy[i]->nazwa.length() < 8)
 			{
-				playerMsg("|0\t\t|_", komendy[i]->nazwa);
+				playerMsg(L"|0\t\t|_", komendy[i]->nazwa);
 			}
 			else
 			{
-				playerMsg("|0\t|_", komendy[i]->nazwa);
+				playerMsg(L"|0\t|_", komendy[i]->nazwa);
 			}
 			wypisaneKomendy++;
 			if (wypisaneKomendy % 5 == 0)
 			{
-				//playerMsg("");
+				//playerMsg(L"");
 			}
 		}
 	}

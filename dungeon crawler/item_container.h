@@ -10,7 +10,7 @@ public:
 	item_container();
 	~item_container();
 
-	string examine();
+	wstring examine();
 	void lista_dodaj(Item* przedmiot);
 	void lista_usun(Item* przedmiot);
 	void lista_usunPierwszy();
@@ -20,7 +20,7 @@ public:
 	void ustawZamek(int id);
 	int numerZamka();
 	ItemList* getItemList();
-	Item* lista_znajdz(string szukany, int ktory);
+	Item* lista_znajdz(wstring szukany, int ktory);
 	Item* lista_znajdz(int ktory);
 	bool lista_pusta();
 

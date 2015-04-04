@@ -9,7 +9,7 @@ extern ListaKomend *listaKomend;
 Hold::Hold(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="hold";
+	nazwa = L"hold";
 }
 
 
@@ -22,7 +22,7 @@ void Hold::execute(ParseDTO argumenty)
 	Gracz &gracz = gra->gracz;
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz na³o¿yæ?");
+		playerMsg(L"Co chcesz na³o¿yæ?");
 		return;
 	}
 
@@ -30,13 +30,13 @@ void Hold::execute(ParseDTO argumenty)
 
 	if (przedmiot==NULL)
 	{
-		playerMsg("Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
+		playerMsg(L"Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
 		return;
 	}
 
 	if(!(przedmiot->jestBronia() || przedmiot->jestTarcza()))
 	{
-		playerMsg("|^|0 nie jest broni¹ ani tarcz¹.", przedmiot->nazwa);
+		playerMsg(L"|^|0 nie jest broni¹ ani tarcz¹.", przedmiot->nazwa);
 		return;
 	}
 
@@ -47,17 +47,17 @@ void Hold::execute(ParseDTO argumenty)
 	}
 	gracz.przedmioty->usun(przedmiot);
 	gracz.eq[SLOT_LREKA]=przedmiot;
-	playerMsg("Chwytasz |0 w lew¹ rêkê.", przedmiot->nazwa);
+	playerMsg(L"Chwytasz |0 w lew¹ rêkê.", przedmiot->nazwa);
 	gracz.przelicz();
 	dynamic_cast<Wear*>(listaKomend->komendy[COMM_WEAR])->sprawdzWymagania(przedmiot);
 }
 
 void Hold::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   hold(h)\n\n"
-				"U¿ycia:\n\n"
-				"   hold <nazwa_przedmiotu> - rozkazuje postaci gracza u¿ywaæ danego przedmiotu w lewej rêce. Mo¿e to byæ broñ, tarcza, lub coœ innego. Przedmiot musi siê znajdowaæ w inwentarzu gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   wield, wear, remove");
+	playerMsg(L"Synonimy:\n"
+			 L"   hold(h)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   hold <nazwa_przedmiotu> - rozkazuje postaci gracza u¿ywaæ danego przedmiotu w lewej rêce. Mo¿e to byæ broñ, tarcza, lub coœ innego. Przedmiot musi siê znajdowaæ w inwentarzu gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   wield, wear, remove");
 }

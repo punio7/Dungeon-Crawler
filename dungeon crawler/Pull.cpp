@@ -6,7 +6,7 @@
 Pull::Pull(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="pull";
+	nazwa = L"pull";
 }
 
 
@@ -18,7 +18,7 @@ void Pull::execute(ParseDTO argumenty)
 {
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz poci¹gn¹æ?");
+		playerMsg(L"Co chcesz poci¹gn¹æ?");
 		return;
 	}
 
@@ -26,13 +26,13 @@ void Pull::execute(ParseDTO argumenty)
 
 	if (!dzwignia)
 	{
-		playerMsg("Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument1);
+		playerMsg(L"Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument1);
 		return;
 	}
 
 	if (!dzwignia->dzwigniaUzycie(DZWIGNIA_PULL))
 	{
-		playerMsg("To nic nie da.");
+		playerMsg(L"To nic nie da.");
 		return;
 	}
 
@@ -41,10 +41,10 @@ void Pull::execute(ParseDTO argumenty)
 
 void Pull::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   pull(pul)\n\n"
-				"U¿ycia:\n\n"
-				"   pull <nazwa_przedmiotu> - gracz podejmie próbê pociagniêcia za wskazany przedmiot. Mo¿e to byæ lina, dŸwignia albo coœ innego znajdujacego siê w lokacji gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   push, turn");
+	playerMsg(L"Synonimy:\n"
+			 L"   pull(pul)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   pull <nazwa_przedmiotu> - gracz podejmie próbê pociagniêcia za wskazany przedmiot. Mo¿e to byæ lina, dŸwignia albo coœ innego znajdujacego siê w lokacji gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   push, turn");
 }

@@ -5,7 +5,7 @@
 KomendaTemplate::KomendaTemplate(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="";	//TODO zmienic na nazwe komendy
+	nazwa = L"";	//TODO zmienic na nazwe komendy
 }
 
 

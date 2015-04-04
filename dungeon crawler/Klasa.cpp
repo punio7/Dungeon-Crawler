@@ -2,7 +2,7 @@
 
 extern Klasa** klasy;
 
-Klasa::Klasa(string nazwa, float si, float zr, float zw, float wyt, float zyw)
+Klasa::Klasa(wstring nazwa, float si, float zr, float zw, float wyt, float zyw)
 {
 	this->nazwa = nazwa;
 	this->si = si;

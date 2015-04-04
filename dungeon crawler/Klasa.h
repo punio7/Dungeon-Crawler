@@ -25,7 +25,7 @@ enum KlasaNazwa{
 class Klasa
 {
 public:
-	Klasa(string nazwa, float si, float zr, float zw, float wyt, float zyw);
+	Klasa(wstring nazwa, float si, float zr, float zw, float wyt, float zyw);
 	~Klasa(void);
 	float getSi(int lvl);
 	float getZr(int lvl);
@@ -33,7 +33,7 @@ public:
 	float getWyt(int lvl);
 	float getZyw(int lvl);
 
-	string nazwa;
+	wstring nazwa;
 	float si, zr, zw, wyt, zyw;
 };
 

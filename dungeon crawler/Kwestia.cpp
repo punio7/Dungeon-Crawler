@@ -9,7 +9,7 @@ Kwestia::Kwestia(void)
 	nagrody.clear();
 }
 
-Kwestia::Kwestia(int numer, int domyslnaNastepna, string tekst)
+Kwestia::Kwestia(int numer, int domyslnaNastepna, wstring tekst)
 {
 	Kwestia::numer=numer;
 	Kwestia::domyslnaNastepna=domyslnaNastepna;
@@ -41,7 +41,7 @@ void Kwestia::usunOdpowiedz(int nast)
 	}
 }
 
-KwestiaOdpowiedz* Kwestia::dodajOdpowiedz(string tekst, int nastepnaKwestia, int charakter)
+KwestiaOdpowiedz* Kwestia::dodajOdpowiedz(wstring tekst, int nastepnaKwestia, int charakter)
 {
 	KwestiaOdpowiedz *odpowiedz = new KwestiaOdpowiedz();
 	odpowiedz->tekst = tekst;
@@ -105,7 +105,7 @@ KwestiaOdpowiedz::KwestiaOdpowiedz()
 	wymagania.clear();
 }
 
-KwestiaOdpowiedz::KwestiaOdpowiedz(string tekst, int nast, int charakter)
+KwestiaOdpowiedz::KwestiaOdpowiedz(wstring tekst, int nast, int charakter)
 {
 	KwestiaOdpowiedz::tekst=tekst;
 	KwestiaOdpowiedz::nast=nast;

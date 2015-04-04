@@ -23,7 +23,7 @@ Walka::~Walka(void)
 void Walka::kolejnaTura()
 {
 	if (DEBUG_WALKA)
-		playerMsg("Runda |0", intToStr(runda));
+		playerMsg(L"Runda |0", intToStr(runda));
 	gracz.aktywujStatusyWalka(wrog);
 	gracz.przelicz();
 	wrog.aktywujStatusyWalka(gracz);
@@ -58,7 +58,7 @@ void Walka::turaGracza()
 		
 		if (DEBUG_WALKA)
 		{
-			playerMsg("|GWyrzuci³eœ |0 atak |1 przeciwko |2. Trafienie!",
+			playerMsg(L"|GWyrzuci³eœ |0 atak |1 przeciwko |2. Trafienie!",
 				intToStr(rzut), 
 				floatToStr(((float)rzut/100)*(gracz.at_calk)),
 				floatToStr((float)wrog.obr_calk/2));
@@ -80,7 +80,7 @@ void Walka::turaGracza()
 		
 		if (DEBUG_WALKA) 
 		{
-			playerMsg("|sWyrzuci³eœ |0 atak |1 przeciwko |2. Pud³o!",
+			playerMsg(L"|sWyrzuci³eœ |0 atak |1 przeciwko |2. Pud³o!",
 				intToStr(rzut), 
 				floatToStr(((float)rzut/100)*(gracz.at_calk)),
 				floatToStr((float)wrog.obr_calk/2));
@@ -99,7 +99,7 @@ void Walka::turaPrzeciwnika()
 		
 		if (DEBUG_WALKA)
 		{
-			playerMsg("|RWróg wyrzuci³ |0 atak |1 przeciwko |2. Trafienie!", 
+			playerMsg(L"|RWróg wyrzuci³ |0 atak |1 przeciwko |2. Trafienie!", 
 				intToStr(rzut), 
 				floatToStr(((float)rzut/100)*(wrog.at_calk)),
 				floatToStr((float)gracz.obr_calk/2));
@@ -120,7 +120,7 @@ void Walka::turaPrzeciwnika()
 	{
 		if (DEBUG_WALKA) 
 		{
-			playerMsg("|sWróg wyrzuci³ |0 atak |1 przeciwko |2. Pud³o!", 
+			playerMsg(L"|sWróg wyrzuci³ |0 atak |1 przeciwko |2. Pud³o!", 
 				intToStr(rzut), 
 				floatToStr(((float)rzut/100)*(wrog.at_calk)),
 				floatToStr((float)gracz.obr_calk/2));
@@ -142,11 +142,11 @@ void Walka::zadajObrazenia(Postac &cel, double ilosc)
 	{
 		if (cel.jestGraczem())
 		{
-			playerMsg("|RWróg zadaje ci |0 obra¿eñ. |_", intToStr(ilosc));
+			playerMsg(L"|RWróg zadaje ci |0 obra¿eñ. |_", intToStr(ilosc));
 		}
 		else
 		{
-			playerMsg("|GZadajesz wrogowi |0 obra¿eñ. |_", intToStr(ilosc));
+			playerMsg(L"|GZadajesz wrogowi |0 obra¿eñ. |_", intToStr(ilosc));
 		}
 	}
 	
@@ -157,10 +157,10 @@ void Walka::zadajObrazenia(Postac &cel, double ilosc)
 		if (dmg >= cel.currentPanc)
 		{
 			if (DEBUG_WALKA) 
-				playerMsg("Pancerz poch³on¹³ |0 obra¿eñ.", intToStr(cel.currentPanc));
+				playerMsg(L"Pancerz poch³on¹³ |0 obra¿eñ.", intToStr(cel.currentPanc));
 			else
 			{
-				cel.jestGraczem() ? playerMsg("Wróg przebi³ twój pancerz!") : playerMsg("Uda³o ci siê przebiæ wrogi pancerz!");
+				cel.jestGraczem() ? playerMsg(L"Wróg przebi³ twój pancerz!") : playerMsg(L"Uda³o ci siê przebiæ wrogi pancerz!");
 				cel.jestGraczem() ? opisObrazenGracza(ilosc, &cel) : opisObrazenWroga(ilosc, &cel);
 			}
 			ilosc -= cel.currentPanc;
@@ -170,7 +170,7 @@ void Walka::zadajObrazenia(Postac &cel, double ilosc)
 		else
 		{
 			if (DEBUG_WALKA) 
-				playerMsg("Pancerz poch³on¹³ |0 obra¿eñ.", intToStr(dmg));
+				playerMsg(L"Pancerz poch³on¹³ |0 obra¿eñ.", intToStr(dmg));
 			else
 				cel.jestGraczem() ? opisObrazenGracza(ilosc-dmg, &cel) : opisObrazenWroga(ilosc-dmg, &cel);
 			cel.currentPanc -= dmg;
@@ -180,7 +180,7 @@ void Walka::zadajObrazenia(Postac &cel, double ilosc)
 	else
 	{
 		if (DEBUG_WALKA) 
-			playerMsg("Pancerz poch³on¹³ 0 obra¿eñ.");
+			playerMsg(L"Pancerz poch³on¹³ 0 obra¿eñ.");
 		else
 			cel.jestGraczem() ? opisObrazenGracza(ilosc, &cel) : opisObrazenWroga(ilosc, &cel);
 		cel.currentHP -= ilosc;
@@ -192,12 +192,12 @@ void Walka::opisAtakuGracza(bool trafienie)
 	if (trafienie)
 	{
 		int opcja = rzucaj(opisyWalki.opisyGraczTrafienie.size());
-		playerMsg("|G|0", opisyWalki.opisyGraczTrafienie[opcja-1]);
+		playerMsg(L"|G|0", opisyWalki.opisyGraczTrafienie[opcja-1]);
 	}
 	else
 	{
 		int opcja = rzucaj(opisyWalki.opisyGraczPudlo.size());
-		playerMsg("|s|0", opisyWalki.opisyGraczPudlo[opcja-1]);
+		playerMsg(L"|s|0", opisyWalki.opisyGraczPudlo[opcja-1]);
 	}
 }
 
@@ -206,12 +206,12 @@ void Walka::opisAtakuWroga(bool trafienie)
 	if (trafienie)
 	{
 		int opcja = rzucaj(opisyWalki.opisyWrogTrafienie.size());
-		playerMsg("|R|0", opisyWalki.opisyWrogTrafienie[opcja-1]);
+		playerMsg(L"|R|0", opisyWalki.opisyWrogTrafienie[opcja-1]);
 	}
 	else
 	{
 		int opcja = rzucaj(opisyWalki.opisyWrogPudlo.size());
-		playerMsg("|s|0", opisyWalki.opisyWrogPudlo[opcja-1]);
+		playerMsg(L"|s|0", opisyWalki.opisyWrogPudlo[opcja-1]);
 	}
 }
 
@@ -221,19 +221,19 @@ void Walka::opisObrazenGracza(int ilosc, Postac *postac)
 
 	if (procent < 5 )
 	{
-		playerMsg("|RCios przeciwnika ledwie ciê zadrapa³.");
+		playerMsg(L"|RCios przeciwnika ledwie ciê zadrapa³.");
 	}
 	else if (procent < 10) 
 	{
-		playerMsg("|RCios przeciwnika lekko ciê zrani³.");
+		playerMsg(L"|RCios przeciwnika lekko ciê zrani³.");
 	}
 	else if (procent <15)
 	{
-		playerMsg("|RCios przeciwnika powa¿nie ciê zrani³.");
+		playerMsg(L"|RCios przeciwnika powa¿nie ciê zrani³.");
 	}
 	else
 	{
-		playerMsg("|RCios przeciwnika bardzo powa¿nie ciê zrani³.");
+		playerMsg(L"|RCios przeciwnika bardzo powa¿nie ciê zrani³.");
 	}
 }
 
@@ -243,32 +243,32 @@ void Walka::opisObrazenWroga(int ilosc, Postac *postac)
 
 	if (procent < 5 )
 	{
-		playerMsg("|GTwój cios ledwie zadrapa³ przeciwnika.");
+		playerMsg(L"|GTwój cios ledwie zadrapa³ przeciwnika.");
 	}
 	else if (procent < 10) 
 	{
-		playerMsg("|GTwój cios lekko zrani³ przeciwnika.");
+		playerMsg(L"|GTwój cios lekko zrani³ przeciwnika.");
 	}
 	else if (procent <15)
 	{
-		playerMsg("|GTwój cios powa¿nie zrani³ przeciwnika.");
+		playerMsg(L"|GTwój cios powa¿nie zrani³ przeciwnika.");
 	}
 	else
 	{
-		playerMsg("|GTwój cios bardzo pwoa¿nie zrani³ przeciwnika.");
+		playerMsg(L"|GTwój cios bardzo pwoa¿nie zrani³ przeciwnika.");
 	}
 }
 
 void Walka::prompt()
 {
 	if (!DEBUG_WALKA)
-		playerMsg("\n[|0: |1 |2: |3]", gracz.imie, gracz.poziomZdrowia(), wrog.imie, wrog.poziomZdrowia());
+		playerMsg(L"\n[|0: |1 |2: |3]", gracz.imie, gracz.poziomZdrowia(), wrog.imie, wrog.poziomZdrowia());
 	else
 	{
-		playerMsg("\n[|0: |1 |2/|3 |4/|5|_",
+		playerMsg(L"\n[|0: |1 |2/|3 |4/|5|_",
 		gracz.imie, gracz.poziomZdrowia(),
 		intToStr(gracz.currentHP), intToStr(gracz.zdr_calk), intToStr(gracz.currentPanc), intToStr(gracz.panc_calk) );
-		playerMsg("|0: |1 |2/|3 |4/|5]",
+		playerMsg(L"|0: |1 |2/|3 |4/|5]",
 		wrog.imie, wrog.poziomZdrowia(),
 		intToStr(wrog.currentHP), intToStr(wrog.zdr_calk), intToStr(wrog.currentPanc), intToStr(wrog.panc_calk) );
 	}

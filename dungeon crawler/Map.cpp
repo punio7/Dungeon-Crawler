@@ -10,7 +10,7 @@
 Map::Map(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="map";
+	nazwa = L"map";
 }
 
 
@@ -22,7 +22,7 @@ void Map::execute(ParseDTO argumenty)
 {
 	if (!gra->gracz.przedmioty->znajdz(ListaItemow::Questowe::Mapa, 1))
 	{
-		playerMsg("Do tego potrzebujesz mapy.");
+		playerMsg(L"Do tego potrzebujesz mapy.");
 		return;
 	}
 	
@@ -30,10 +30,10 @@ void Map::execute(ParseDTO argumenty)
 	const int wysokosc = 22;
 	list<Lokacja*> stosLokacji;
 	list< array<int,2> > stosWspolrzednych;
-	string pustyWiersz(dlugosc +1, ' ');
+	wstring pustyWiersz(dlugosc +1, ' ');
 	pustyWiersz[dlugosc + 1] = '\n';
 
-	vector< string > mapa(wysokosc, pustyWiersz);
+	vector< wstring > mapa(wysokosc, pustyWiersz);
 
 	stosLokacji.push_front(gra->gracz.polozenie);
 	stosWspolrzednych.push_front(utworzWspolrzedne(wysokosc/2, dlugosc/2));
@@ -108,9 +108,9 @@ void Map::execute(ParseDTO argumenty)
 		}
 	}
 
-	for (string &wiersz : mapa)
+	for (wstring &wiersz : mapa)
 	{
-		cout << wiersz;
+		wcout << wiersz;
 	}
 }
 

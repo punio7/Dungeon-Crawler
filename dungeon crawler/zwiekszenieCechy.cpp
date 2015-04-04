@@ -1,7 +1,7 @@
 #include "zwiekszenieCechy.h"
 #include "gracz.h"
 
-zwiekszenieCechy::zwiekszenieCechy(string nazwa, string opis, string enterMsg, string exitMsg, Cecha cecha, int moc, int czas)
+zwiekszenieCechy::zwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas)
 {
 	this->nazwa = nazwa;
 	this->opis = opis;

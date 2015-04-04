@@ -2,10 +2,10 @@
 #include "gra.h"
 #include "Lokacja.h"
 
-Train::Train(Gra *gra):
-	Komenda(gra)
+Train::Train(Gra *gra) :
+Komenda(gra)
 {
-	nazwa="train";
+	nazwa = L"train";
 }
 
 
@@ -18,9 +18,9 @@ void Train::execute(ParseDTO argumenty)
 	Postac* trener;
 	Gracz &gracz = gra->gracz;
 
-	if (gracz.pktCech <=0 )
+	if (gracz.pktCech <= 0)
 	{
-		cout<<wersalikuj("Wystarczy tego treningu, idŸ przeæwicz swoje zdolnoœci w walce.")<<endl;
+		wcout << wersalikuj(L"Wystarczy tego treningu, idŸ przeæwicz swoje zdolnoœci w walce.") << endl;
 		return;
 	}
 	if (argumenty.argument2.empty())
@@ -28,21 +28,21 @@ void Train::execute(ParseDTO argumenty)
 		trener = (gracz.polozenie->postacie)->znajdzTrener();
 		if (!trener)
 		{
-			cout<<"Tutaj nie ma nikogo z kim móg³byœ potrenowaæ."<<endl;
+			wcout << "Tutaj nie ma nikogo z kim móg³byœ potrenowaæ." << endl;
 			return;
 		}
 	}
-	else 
+	else
 	{
 		trener = (gracz.polozenie->postacie)->znajdz(argumenty.argument2, argumenty.ktory2);
 		if (!trener)
 		{
-			cout<<"Tutaj nie ma nikogo takiego."<<endl;
+			wcout << "Tutaj nie ma nikogo takiego." << endl;
 			return;
 		}
-		if (! trener->jestTrenerem() )
+		if (!trener->jestTrenerem())
 		{
-			cout<<trener->imie<<" nie oferuje ¿adnego treningu.";
+			wcout << trener->imie << " nie oferuje ¿adnego treningu.";
 			return;
 		}
 	}
@@ -59,78 +59,78 @@ void Train::execute(ParseDTO argumenty)
 
 void Train::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   train(tr)\n\n"
-				"U¿ycia:\n\n"
-				"   train - wyœwietla dostêpne mo¿liwoœci treningu u trenera w danej lokacji.\n\n"
-				"   train <nazwa_cechy> - gracz podejmuje trening wskazanej cechy, w lokacji musi siê znajdowaæ trener który prowadzi trening danej cechy.\n\n"
-				"   train <nazwa_cechy> <nazwa_postaci> - to co wy¿ej tylko specyfikuje kto ma byæ trenerem.\n\n"
-				"W obu przypadkach za nazwê cechy nale¿y podaæ jedno z: si³a(s), zrêcznoœæ(z), zwinnoœæ(zw), wytrzyma³oœæ(w), ¿ywotnoœæ(¿).");
+	playerMsg(L"Synonimy:\n"
+		L"   train(tr)\n\n"
+		L"U¿ycia:\n\n"
+		L"   train - wyœwietla dostêpne mo¿liwoœci treningu u trenera w danej lokacji.\n\n"
+		L"   train <nazwa_cechy> - gracz podejmuje trening wskazanej cechy, w lokacji musi siê znajdowaæ trener który prowadzi trening danej cechy.\n\n"
+		L"   train <nazwa_cechy> <nazwa_postaci> - to co wy¿ej tylko specyfikuje kto ma byæ trenerem.\n\n"
+		L"W obu przypadkach za nazwê cechy nale¿y podaæ jedno z: si³a(s), zrêcznoœæ(z), zwinnoœæ(zw), wytrzyma³oœæ(w), ¿ywotnoœæ(¿).");
 }
 
 void Train::wypiszMozliwyTrening(Postac *trener)
 {
 	Gracz &gracz = gra->gracz;
 
-	playerMsg("|^|0 oferuje trening nastêpuj¹cych cech:", trener->imie);
+	playerMsg(L"|^|0 oferuje trening nastêpuj¹cych cech:", trener->imie);
 
 	if (trener->trener(SILA) > 0)
 	{
 		if (gracz.sil_baz <= trener->trener(SILA))
-			playerMsg("|GSi³a");
+			playerMsg(L"|GSi³a");
 		else
-			playerMsg("|sSi³a");
+			playerMsg(L"|sSi³a");
 	}
 	if (trener->trener(ZRECZNOSC) > 0)
 	{
 		if (gracz.sil_baz <= trener->trener(ZRECZNOSC))
-			playerMsg("|GZrêcznoœæ");
+			playerMsg(L"|GZrêcznoœæ");
 		else
-			playerMsg("|sZrêcznoœæ");
+			playerMsg(L"|sZrêcznoœæ");
 	}
 	if (trener->trener(ZWINNOSC) > 0)
 	{
 		if (gracz.sil_baz <= trener->trener(ZWINNOSC))
-			playerMsg("|GZwinnoœæ");
+			playerMsg(L"|GZwinnoœæ");
 		else
-			playerMsg("|sZwinnoœæ");
+			playerMsg(L"|sZwinnoœæ");
 	}
 	if (trener->trener(WYTRZYMALOSC) > 0)
 	{
 		if (gracz.sil_baz <= trener->trener(WYTRZYMALOSC))
-			playerMsg("|GWytrzyma³oœæ");
+			playerMsg(L"|GWytrzyma³oœæ");
 		else
-			playerMsg("|sWytrzyma³oœæ");
+			playerMsg(L"|sWytrzyma³oœæ");
 	}
 	if (trener->trener(ZYWOTNOSC) > 0)
 	{
 		if (gracz.sil_baz <= trener->trener(ZYWOTNOSC))
-			playerMsg("|G¯ywotnoœæ");
+			playerMsg(L"|G¯ywotnoœæ");
 		else
-			playerMsg("|s¯ywotnoœæ");
+			playerMsg(L"|s¯ywotnoœæ");
 	}
 }
 
-Cecha Train::znajdzCeche(string cecha)
+Cecha Train::znajdzCeche(wstring cecha)
 {
-	string porownawczy;
-	
+	wstring porownawczy;
+
 	if (cecha[0] == 's')
 	{
-		porownawczy="si³a";
+		porownawczy = L"si³a";
 		if (porownawczy.find(cecha) != -1)
 			return SILA;
 		else
 			return CECHA_NIEPOPRAWNA;
-	 }
+	}
 
 	if (cecha[0] == 'z')
 	{
-		porownawczy="zrêcznoœæ";
+		porownawczy = L"zrêcznoœæ";
 		if (porownawczy.find(cecha) != -1)
 			return ZRECZNOSC;
 
-		porownawczy="zwinnoœæ";
+		porownawczy = L"zwinnoœæ";
 		if (porownawczy.find(cecha) != -1)
 			return ZWINNOSC;
 
@@ -139,7 +139,7 @@ Cecha Train::znajdzCeche(string cecha)
 
 	if (cecha[0] == 'w')
 	{
-		porownawczy="wytrzyma³oœæ";
+		porownawczy = L"wytrzyma³oœæ";
 		if (porownawczy.find(cecha) != -1)
 			return WYTRZYMALOSC;
 		else
@@ -148,7 +148,7 @@ Cecha Train::znajdzCeche(string cecha)
 
 	if (cecha[0] == '¿')
 	{
-		porownawczy="¿ywotnoœæ";
+		porownawczy = L"¿ywotnoœæ";
 		if (porownawczy.find(cecha) != -1)
 			return ZYWOTNOSC;
 		else
@@ -161,13 +161,13 @@ Cecha Train::znajdzCeche(string cecha)
 void Train::train(Cecha cecha, Postac* trener)
 {
 	Gracz &gracz = gra->gracz;
-	
+
 	switch (cecha)
 	{
 	case SILA:
 		if (gracz.sil_baz <= trener->trener(SILA))
 		{
-			playerMsg("|YZwiêkszasz swoj¹ si³ê.");
+			playerMsg(L"|YZwiêkszasz swoj¹ si³ê.");
 			gracz.pktCech--;
 			gracz.sil_baz++;
 			gracz.przelicz();
@@ -175,15 +175,15 @@ void Train::train(Cecha cecha, Postac* trener)
 		}
 		else
 		{
-			playerMsg("|^|0 nauczy³ ciê ju¿ wszystkiego co wie o sile.", trener->imie);
+			playerMsg(L"|^|0 nauczy³ ciê ju¿ wszystkiego co wie o sile.", trener->imie);
 			return;
 		}
 		break;
 
 	case ZRECZNOSC:
-		if (gracz.zr_baz <= trener->trener(ZRECZNOSC) )
+		if (gracz.zr_baz <= trener->trener(ZRECZNOSC))
 		{
-			playerMsg("|YZwiêkszasz swoj¹ zrêcznoœæ.");
+			playerMsg(L"|YZwiêkszasz swoj¹ zrêcznoœæ.");
 			gracz.pktCech--;
 			gracz.zr_baz++;
 			gracz.przelicz();
@@ -191,15 +191,15 @@ void Train::train(Cecha cecha, Postac* trener)
 		}
 		else
 		{
-			playerMsg("|^|0 nauczy³ ciê ju¿ wszystkiego co wie o ¿ywotnoœci.", trener->imie);
+			playerMsg(L"|^|0 nauczy³ ciê ju¿ wszystkiego co wie o ¿ywotnoœci.", trener->imie);
 			return;
 		}
 		break;
 
 	case ZWINNOSC:
-		if (gracz.zw_baz <= trener->trener(ZWINNOSC) )
+		if (gracz.zw_baz <= trener->trener(ZWINNOSC))
 		{
-			playerMsg("|YZwiêkszasz swoj¹ zwinnoœæ.");
+			playerMsg(L"|YZwiêkszasz swoj¹ zwinnoœæ.");
 			gracz.pktCech--;
 			gracz.zw_baz++;
 			gracz.przelicz();
@@ -207,15 +207,15 @@ void Train::train(Cecha cecha, Postac* trener)
 		}
 		else
 		{
-			playerMsg("|^|0 nauczy³ ciê ju¿ wszystkiego co wie o zwinnoœci.", trener->imie);
+			playerMsg(L"|^|0 nauczy³ ciê ju¿ wszystkiego co wie o zwinnoœci.", trener->imie);
 			return;
 		}
 		break;
 
 	case WYTRZYMALOSC:
-		if (gracz.wyt_baz <= trener->trener(WYTRZYMALOSC) )
+		if (gracz.wyt_baz <= trener->trener(WYTRZYMALOSC))
 		{
-			playerMsg("|YZwiêkszasz swoj¹ wytrzyma³oœæ.");
+			playerMsg(L"|YZwiêkszasz swoj¹ wytrzyma³oœæ.");
 			gracz.pktCech--;
 			gracz.wyt_baz++;
 			gracz.przelicz();
@@ -223,15 +223,15 @@ void Train::train(Cecha cecha, Postac* trener)
 		}
 		else
 		{
-			playerMsg("|^|0 nauczy³ ciê ju¿ wszystkiego co wie o wytrzyma³oœci.", trener->imie);
+			playerMsg(L"|^|0 nauczy³ ciê ju¿ wszystkiego co wie o wytrzyma³oœci.", trener->imie);
 			return;
 		}
 		break;
 
 	case ZYWOTNOSC:
-		if (gracz.zyw_baz <= trener->trener(ZYWOTNOSC) )
+		if (gracz.zyw_baz <= trener->trener(ZYWOTNOSC))
 		{
-			playerMsg("|YZwiêkszasz swoj¹ ¿ywotnoœæ.");
+			playerMsg(L"|YZwiêkszasz swoj¹ ¿ywotnoœæ.");
 			gracz.pktCech--;
 			gracz.zyw_baz++;
 			gracz.przelicz();
@@ -239,12 +239,12 @@ void Train::train(Cecha cecha, Postac* trener)
 		}
 		else
 		{
-			playerMsg("|^|0 nauczy³ ciê ju¿ wszystkiego co wie o ¿ywotnoœci.", trener->imie);
+			playerMsg(L"|^|0 nauczy³ ciê ju¿ wszystkiego co wie o ¿ywotnoœci.", trener->imie);
 			return;
 		}
 		break;
 	default:
-		playerMsg("Co chcia³byœ trenowaæ?");
+		playerMsg(L"Co chcia³byœ trenowaæ?");
 		break;
 	}
 

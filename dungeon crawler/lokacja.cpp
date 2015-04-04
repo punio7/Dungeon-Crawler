@@ -26,18 +26,18 @@ KierunekSwiata kierunekPrzeciwny(KierunekSwiata kierunek)
 
 ListaLokacji::ListaLokacji()
 {
-	id=-1;
-	element=NULL;
-	nast=NULL;
+	id = -1;
+	element = NULL;
+	nast = NULL;
 }
 
 Lokacja* ListaLokacji::znajdz(int a)
 {
-	ListaLokacji* aktualny=this;		//zacznij od poczatku
-	for (int i=0;i<a;i++)					//przegladaj liste az dojdziesz do wymaganego numeru
+	ListaLokacji* aktualny = this;		//zacznij od poczatku
+	for (int i = 0; i < a; i++)					//przegladaj liste az dojdziesz do wymaganego numeru
 	{
-		if (aktualny->nast==NULL) return NULL;
-		else aktualny=aktualny->nast;
+		if (aktualny->nast == NULL) return NULL;
+		else aktualny = aktualny->nast;
 	}
 	return aktualny->element;
 
@@ -45,17 +45,17 @@ Lokacja* ListaLokacji::znajdz(int a)
 
 Lokacja::Lokacja()
 {
-	nazwa="Bezimienna Lokacja";
-	opis="Ktoœ zapomnia³ nadaæ opis tej lokacji";
-	przedmioty=new ItemList;
-	postacie=new CharList;
-	for (int i=0;i<6;i++) 
+	nazwa = L"Bezimienna Lokacja";
+	opis = L"Ktoœ zapomnia³ nadaæ opis tej lokacji";
+	przedmioty = new ItemList;
+	postacie = new CharList;
+	for (int i = 0; i < 6; i++)
 	{
-		zamek[i]=0;
-		wyjscie[i]=NULL;
+		zamek[i] = 0;
+		wyjscie[i] = NULL;
 	}
 	zdGlob = 0;
 	jednorazoweZdGlob = 0;
-	backgroundMusic = (MidiFiles::MidiFile)-1;
-	naturalneOswietlenie=false;
+	backgroundMusic = (MidiFiles::MidiFile) - 1;
+	naturalneOswietlenie = false;
 }

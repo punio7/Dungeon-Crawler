@@ -4,23 +4,23 @@
 StatusOdpoczynek::StatusOdpoczynek()
 {
 	czas =3;
-	nazwa = "odpoczynek";
-	opis = "Twoje rany goj¹ siê, kiedy jesteœ poza walk¹.";
-	exitMsg = "Czujesz jak¹œ wewnêtrzn¹ pustkê.";
+	nazwa = L"odpoczynek";
+	opis = L"Twoje rany goj¹ siê, kiedy jesteœ poza walk¹.";
+	exitMsg = L"Czujesz jak¹œ wewnêtrzn¹ pustkê.";
 }
 
 void StatusOdpoczynek::aktywujExplor(Gracz *gracz, int time)
 {
 	if (gracz->currentHP < gracz->zdr_calk)
 	{
-		//playerMsg("|GOdpoczynek |0.", intToStr(time*((gracz->wyt_calk/5)+(gracz->zyw_calk/20))));
+		//playerMsg(L"|GOdpoczynek |0.", intToStr(time*((gracz->wyt_calk/5)+(gracz->zyw_calk/20))));
 		gracz->ulecz(time*((gracz->wyt_calk/5)+(gracz->zyw_calk/20)));
 	}
 }
 
 //void StatusOdpoczynek::aktywujPasywCecha(Postac *postac)
 //{
-//	cout<<"Dostajesz pasywne bonusy do cech"<<endl;
+//	wcout<<"Dostajesz pasywne bonusy do cech"<<endl;
 //	postac->sil_bon+=3;
 //	postac->zr_bon+=3;
 //	postac->zw_bon+=3;
@@ -30,7 +30,7 @@ void StatusOdpoczynek::aktywujExplor(Gracz *gracz, int time)
 //
 //void StatusOdpoczynek::aktywujPasywAtryb(Postac *postac)
 //{
-//	cout<<"Dostajesz pasywne bonusy do atrybutow"<<endl;
+//	wcout<<"Dostajesz pasywne bonusy do atrybutow"<<endl;
 //	postac->at_bon+=3;
 //	postac->obr_bon+=3;
 //	postac->zdr_bon+=3;
@@ -49,7 +49,7 @@ void StatusOdpoczynek::aktywujExplor(Gracz *gracz, int time)
 //
 //void StatusOdpoczynek::aktywujWalka(Walka *walka)
 //{
-//	cout<<"Zmniejszenie licznika czasu o 1"<<endl;
+//	wcout<<"Zmniejszenie licznika czasu o 1"<<endl;
 //	czas--;
 //}
 

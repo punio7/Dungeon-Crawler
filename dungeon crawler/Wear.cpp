@@ -8,7 +8,7 @@ extern ListaKomend *listaKomend;
 Wear::Wear(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="wear";
+	nazwa = L"wear";
 }
 
 
@@ -22,7 +22,7 @@ void Wear::execute(ParseDTO argumenty)
 	
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz na³o¿yæ?");
+		playerMsg(L"Co chcesz na³o¿yæ?");
 		return;
 	}
 
@@ -30,13 +30,13 @@ void Wear::execute(ParseDTO argumenty)
 
 	if (przedmiot==NULL)
 	{
-		playerMsg("Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
+		playerMsg(L"Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
 		return;
 	}
 
 	if (!przedmiot->jestPancerzem())
 	{
-		playerMsg("|^|0 nie da siê w ¿aden sposób na³o¿yæ.", przedmiot->nazwa);
+		playerMsg(L"|^|0 nie da siê w ¿aden sposób na³o¿yæ.", przedmiot->nazwa);
 		return;
 	}
 
@@ -55,7 +55,7 @@ void Wear::execute(ParseDTO argumenty)
 	}
 	gracz.przedmioty->usun(przedmiot);
 	gracz.eq[slot] = przedmiot;
-	playerMsg("Nak³adasz |0.", przedmiot->nazwa);
+	playerMsg(L"Nak³adasz |0.", przedmiot->nazwa);
 	gracz.przelicz();
 	sprawdzWymagania(przedmiot);
 	
@@ -63,12 +63,12 @@ void Wear::execute(ParseDTO argumenty)
 
 void Wear::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   wear(wea)\n\n"
-				"U¿ycia:\n\n"
-				"   wear <nazwa_przedmiotu> - rozkazuje postaci na³o¿enie wskazanego przedmiotu. Mo¿e to byæ pancerz, ubranie itp. Musi siê ono znajdowaæ w inwentarzu gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   wield, hold, remove");
+	playerMsg(L"Synonimy:\n"
+			 L"   wear(wea)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   wear <nazwa_przedmiotu> - rozkazuje postaci na³o¿enie wskazanego przedmiotu. Mo¿e to byæ pancerz, ubranie itp. Musi siê ono znajdowaæ w inwentarzu gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   wield, hold, remove");
 }
 
 void Wear::sprawdzWymagania(Item *item)
@@ -78,22 +78,22 @@ void Wear::sprawdzWymagania(Item *item)
 	Staty staty = item->czytaj_staty();
 	if (gracz.sil_calk < staty.sil)
 	{
-		playerMsg("Twoja si³a jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
+		playerMsg(L"Twoja si³a jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
 	}
 	if (gracz.zr_calk < staty.zr)
 	{
-		playerMsg("Twoja zrêcznoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
+		playerMsg(L"Twoja zrêcznoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
 	}
 	if (gracz.zw_calk < staty.zw)
 	{
-		playerMsg("Twoja zwinnoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
+		playerMsg(L"Twoja zwinnoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
 	}
 	if (gracz.wyt_calk < staty.wyt)
 	{
-		playerMsg("Twoja wytrzyma³oœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
+		playerMsg(L"Twoja wytrzyma³oœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
 	}
 	if (gracz.zyw_calk < staty.zyw)
 	{
-		playerMsg("Twoja ¿ywotnoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
+		playerMsg(L"Twoja ¿ywotnoœæ jest za ma³a aby sprawnie pos³ugiwaæ siê tym przedmiotem.");
 	}
 }

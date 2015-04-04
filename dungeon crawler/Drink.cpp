@@ -5,7 +5,7 @@
 Drink::Drink(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="drink";
+	nazwa = L"drink";
 }
 
 
@@ -20,17 +20,17 @@ void Drink::execute(ParseDTO argumenty)
 
 	if (mikstura == NULL)
 	{
-		playerMsg("Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
+		playerMsg(L"Nie masz przy sobie czegoœ takiego jak |0.", argumenty.argument1);
 		return;
 	}
 
 	if (! mikstura->jestMikstura() )
 	{
-		playerMsg("|^|0 nie jest do picia!", mikstura->nazwa);
+		playerMsg(L"|^|0 nie jest do picia!", mikstura->nazwa);
 		return;
 	}
 
-	playerMsg("Wypijasz |0.", mikstura->nazwa);
+	playerMsg(L"Wypijasz |0.", mikstura->nazwa);
 	bool destroy = mikstura->drink(&gracz);
 	gracz.przelicz();
 	if (destroy)
@@ -42,10 +42,10 @@ void Drink::execute(ParseDTO argumenty)
 
 void Drink::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   drink(dri)\n\n"
-				"U¿ycia:\n\n"
-				"   drink <nazwa_mikstury> - wypija wskazan¹ miksturê. Mikstura musi siê znajdowaæ w inwentarzu, po wypicu zostanie ona zniszczona.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   condition");
+	playerMsg(L"Synonimy:\n"
+			 L"   drink(dri)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   drink <nazwa_mikstury> - wypija wskazan¹ miksturê. Mikstura musi siê znajdowaæ w inwentarzu, po wypicu zostanie ona zniszczona.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   condition");
 }

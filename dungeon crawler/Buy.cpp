@@ -7,7 +7,7 @@
 Buy::Buy(Gra *gra):
 	Komenda(gra)
 {
-	nazwa = "buy";
+	nazwa = L"buy";
 }
 
 
@@ -24,42 +24,42 @@ void Buy::execute(ParseDTO argumenty)
 
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcia³byœ kupiæ?");
+		playerMsg(L"Co chcia³byœ kupiæ?");
 		return;
 	}
 
 	Item *przed = kupiec->sklepZnajdz(argumenty.argument1, argumenty.ktory1);
 	if (przed == NULL) 
 	{
-		playerMsg("|^|0 nie sprzedaje takiego przedmiotu.", kupiec->imie);
+		playerMsg(L"|^|0 nie sprzedaje takiego przedmiotu.", kupiec->imie);
 		return;
 	}
 	Gracz &gracz = gra->gracz;
 	int cena = przed->wartoscKupna();
 	if (cena > gracz.zloto)
 	{
-		playerMsg("Aby kupiæ |0 potrzenujesz |1 szt. z³.", przed->nazwa, intToStr(cena));
+		playerMsg(L"Aby kupiæ |0 potrzenujesz |1 szt. z³.", przed->nazwa, intToStr(cena));
 		return;
 	}
 	kupiec->sklepSprzedaj(przed, cena);
 	gracz.zloto-=cena;
 	gracz.przedmioty->dodaj(przed);
 
-	playerMsg("Kupi³eœ |0 za |1 szt. z³.", przed->nazwa, intToStr(cena));
+	playerMsg(L"Kupi³eœ |0 za |1 szt. z³.", przed->nazwa, intToStr(cena));
 }
 
 void Buy::manual()
 {
-	playerMsg(	"Synonimy:\n"
-				"   buy(b)\n\n"
-				"U¿ycia:\n\n"
-				"   buy <nazwa_przedmiotu> - kupuje wskazany przedmiot od pierwszego znalezionego w danej lokacji kupca. Gracz musi posiadaæ wymagan¹ iloœæ z³ota, kupiec musi posiadaæ podany przedmiot w swoim sklepie, przedmiot zostaje dodany do inwentarza gracza.\n\n"
-				"   buy <nazwa_przedmiotu> <nazwa_kupca> - to co wy¿ej tylko sprecyzowane którego kupca dotyczy.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   list, offer, sell");
+	playerMsg(	L"Synonimy:\n"
+				L"   buy(b)\n\n"
+				L"U¿ycia:\n\n"
+				L"   buy <nazwa_przedmiotu> - kupuje wskazany przedmiot od pierwszego znalezionego w danej lokacji kupca. Gracz musi posiadaæ wymagan¹ iloœæ z³ota, kupiec musi posiadaæ podany przedmiot w swoim sklepie, przedmiot zostaje dodany do inwentarza gracza.\n\n"
+				L"   buy <nazwa_przedmiotu> <nazwa_kupca> - to co wy¿ej tylko sprecyzowane którego kupca dotyczy.\n\n"
+				L"SprawdŸ równie¿:\n"
+				L"   list, offer, sell");
 }
 
-Postac* Buy::znajdzKupca(string kupiec, int ktory)
+Postac* Buy::znajdzKupca(wstring kupiec, int ktory)
 {
 	Postac *postac = NULL;
 	Lokacja *polozenie = gra->gracz.polozenie;
@@ -75,13 +75,13 @@ Postac* Buy::znajdzKupca(string kupiec, int ktory)
 
 	if (postac == NULL)
 	{
-		playerMsg("Nie ma tu nikogo, kto chcia³by z tob¹ handlowaæ.");
+		playerMsg(L"Nie ma tu nikogo, kto chcia³by z tob¹ handlowaæ.");
 		return NULL;
 	}
 
 	if ( !postac->jestKupcem() )
 	{
-		playerMsg("|^|0 nie sprzedaje ani nie kupuje ¿adnych przedmiotów.", postac->imie);
+		playerMsg(L"|^|0 nie sprzedaje ani nie kupuje ¿adnych przedmiotów.", postac->imie);
 		return NULL;
 	}
 

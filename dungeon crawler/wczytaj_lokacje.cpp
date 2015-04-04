@@ -1,8 +1,9 @@
-#include "gra.h"
+ï»¿#include "gra.h"
 #include "item.h"
 #include "ListaItemow.h"
 #include "ListaPostaci.h"
 #include "ListaQuestow.h"
+#include "ListaZdarzenGlobalnych.h"
 #include "Lokacja.h"
 #include "randomGenerator.h"
 #include "midi.h"
@@ -27,10 +28,10 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	0	//////////////////
 	aktualny=getLokacja(0);
-	aktualny->nazwa="Pocz¹tek korytarza";
+	aktualny->nazwa = L"PoczÄ…tek korytarza";
 	aktualny->jednorazoweZdGlob=2;
 	aktualny->opis=
-		"Rozgl¹daj¹c siê dooko³a dostrzegasz g³ównie ciemnoœæ. W¹ski s³up œwiat³a wpadaj¹cy z dziury w suficie jest jedynym Ÿród³em œwiat³a. Miejsce to wygl¹da na jakiœ stary, podziemny tunel. Przejœcie za twoimi plecami zosta³o zasypane gruzem, kamieniami i ziemi¹, któr¹ teraz porastaj¹ chwasty i trawa. Patrz¹c wprost widzisz morze kamienia gin¹ce w mroku poza œwiat³em. Interesuj¹ca wydaje siê jedynie dziura w pod³odze, umieszczona bezpoœrednia pod t¹ w suficie. S³up œwiat³a nurkuje do niej gin¹c gdzieœ du¿o, du¿o ni¿ej.";
+	 L"RozglÄ…dajÄ…c siÄ™ dookoÅ‚a dostrzegasz gÅ‚Ã³wnie ciemnoÅ›Ä‡. WÄ…ski sÅ‚up Å›wiatÅ‚a wpadajÄ…cy z dziury w suficie jest jedynym ÅºrÃ³dÅ‚em Å›wiatÅ‚a. Miejsce to wyglÄ…da na jakiÅ› stary, podziemny tunel. PrzejÅ›cie za twoimi plecami zostaÅ‚o zasypane gruzem, kamieniami i ziemiÄ…, ktÃ³rÄ… teraz porastajÄ… chwasty i trawa. PatrzÄ…c wprost widzisz morze kamienia ginÄ…ce w mroku poza Å›wiatÅ‚em. InteresujÄ…ca wydaje siÄ™ jedynie dziura w podÅ‚odze, umieszczona bezpoÅ›rednia pod tÄ… w suficie. SÅ‚up Å›wiatÅ‚a nurkuje do niej ginÄ…c gdzieÅ› duÅ¼o, duÅ¼o niÅ¼ej.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(1);
 
 	(aktualny->przedmioty)->dodaj(create_item(Bronie::DragDrewniany));
@@ -38,21 +39,21 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	1	//////////////////
 	aktualny=getLokacja(1);
-	aktualny->nazwa="Podziemny korytarz";
+	aktualny->nazwa = L"Podziemny korytarz";
 	aktualny->backgroundMusic=MidiFiles::LVL1;
 	aktualny->jednorazoweZdGlob=3;
 	aktualny->opis= 
-		"Korytarz wy³o¿ony jest starymi kamiennymi p³ytami. Takie same p³ytki na œcianach, pod³odze, suficie, od tego kamienia zaczyna krêciæ ci siê w g³owie. Niektóre z nich powypada³y ze swoich miejsc, tworz¹ teraz warstwê gruzu na pod³odze. Wiêkszoœæ z tych, które pozosta³y jest poroœniêta mchem. Sztucznie uformowany kamieñ powoli poddaje siê otaczaj¹cej go naturze.";
+	 L"Korytarz wyÅ‚oÅ¼ony jest starymi kamiennymi pÅ‚ytami. Takie same pÅ‚ytki na Å›cianach, podÅ‚odze, suficie, od tego kamienia zaczyna krÄ™ciÄ‡ ci siÄ™ w gÅ‚owie. NiektÃ³re z nich powypadaÅ‚y ze swoich miejsc, tworzÄ… teraz warstwÄ™ gruzu na podÅ‚odze. WiÄ™kszoÅ›Ä‡ z tych, ktÃ³re pozostaÅ‚y jest poroÅ›niÄ™ta mchem. Sztucznie uformowany kamieÅ„ powoli poddaje siÄ™ otaczajÄ…cej go naturze.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(2);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(0);
 	(aktualny->postacie)->dodaj( createChar(ListaPostaci::SzczurJaskiniowy) );
 
 	//////////////////	2	//////////////////
 	aktualny=getLokacja(2);
-	aktualny->nazwa="Podziemny korytarz";
+	aktualny->nazwa = L"Podziemny korytarz";
 	aktualny->jednorazoweZdGlob=4;
 	aktualny->opis=
-		"Im dalej od Ÿród³a œwiat³a tym bardziej korytarz pog³êbia siê ciemnoœci i dostrzegasz coraz mniej. Cienie robi¹ siê nadzwyczaj d³ugie, nikn¹ce w ciemnoœci znajduj¹cej siê przed tob¹. Refleksje œwiat³a na nieporoœniêtych mchem p³ytkach staj¹ siê coraz s³absze, natomiast pod³oga wydaje siê byæ pokryta dywanem mroku.";
+	 L"Im dalej od ÅºrÃ³dÅ‚a Å›wiatÅ‚a tym bardziej korytarz pogÅ‚Ä™bia siÄ™ ciemnoÅ›ci i dostrzegasz coraz mniej. Cienie robiÄ… siÄ™ nadzwyczaj dÅ‚ugie, niknÄ…ce w ciemnoÅ›ci znajdujÄ…cej siÄ™ przed tobÄ…. Refleksje Å›wiatÅ‚a na nieporoÅ›niÄ™tych mchem pÅ‚ytkach stajÄ… siÄ™ coraz sÅ‚absze, natomiast podÅ‚oga wydaje siÄ™ byÄ‡ pokryta dywanem mroku.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(3);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(1);
 
@@ -63,10 +64,10 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	3	//////////////////
 	aktualny=getLokacja(3);
-	aktualny->nazwa="Podziemny korytarz";
+	aktualny->nazwa = L"Podziemny korytarz";
 	aktualny->jednorazoweZdGlob=5;
 	aktualny->opis=
-		"Patrz¹c pod œwiat³o mo¿esz podziwiaæ dzie³o zniszczenia dokonane przez naturê. Grube korzenie str¹ci³y kamienn¹ kostkê z sufitu i wpe³z³y do korytarza. Czêœæ z nich wbi³a siê w œcianê, reszta natomiast smêtnie wisi w powietrzu. Na pod³odze le¿a pot³uczone kawa³ki kamiennych p³ytek, które spadaj¹c z sufitu roztrzaska³y siê i porozlatywa³y na wszystkie strony. Zgromadzona na nich wilgoæ odbija drobiny œwiat³a dobiegaj¹ce z oddali, reszta natomiast ginie we wszechogarniaj¹cej ciemnoœci.";
+	 L"PatrzÄ…c pod Å›wiatÅ‚o moÅ¼esz podziwiaÄ‡ dzieÅ‚o zniszczenia dokonane przez naturÄ™. Grube korzenie strÄ…ciÅ‚y kamiennÄ… kostkÄ™ z sufitu i wpeÅ‚zÅ‚y do korytarza. CzÄ™Å›Ä‡ z nich wbiÅ‚a siÄ™ w Å›cianÄ™, reszta natomiast smÄ™tnie wisi w powietrzu. Na podÅ‚odze leÅ¼a potÅ‚uczone kawaÅ‚ki kamiennych pÅ‚ytek, ktÃ³re spadajÄ…c z sufitu roztrzaskaÅ‚y siÄ™ i porozlatywaÅ‚y na wszystkie strony. Zgromadzona na nich wilgoÄ‡ odbija drobiny Å›wiatÅ‚a dobiegajÄ…ce z oddali, reszta natomiast ginie we wszechogarniajÄ…cej ciemnoÅ›ci.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(4);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(2);
 
@@ -78,10 +79,10 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	4	//////////////////
 	aktualny=getLokacja(4);
-	aktualny->nazwa="Koniec korytarza";
+	aktualny->nazwa = L"Koniec korytarza";
 	aktualny->jednorazoweZdGlob=6;
 	aktualny->opis=
-		"Koniec korytarza jest kompletnie ciemny. Macaj¹c rêkami na oœlep okreœlasz i¿ drzwi s¹ przeciêtnej wysokoœci, wykonane z drewna. Klamka jest umieszczona mniej wiêcej w po³owie wysokoœci drzwi ma zakrzywiony kszta³t z ga³k¹ na koñcu. Dotykaj¹c jej czujesz wygrawerowane na jej powierzchni zdobienia. Z powodu ciemnoœci nie mo¿esz okreœliæ z jakiego metalu jest wykonana.";
+	 L"Koniec korytarza jest kompletnie ciemny. MacajÄ…c rÄ™kami na oÅ›lep okreÅ›lasz iÅ¼ drzwi sÄ… przeciÄ™tnej wysokoÅ›ci, wykonane z drewna. Klamka jest umieszczona mniej wiÄ™cej w poÅ‚owie wysokoÅ›ci drzwi ma zakrzywiony ksztaÅ‚t z gaÅ‚kÄ… na koÅ„cu. DotykajÄ…c jej czujesz wygrawerowane na jej powierzchni zdobienia. Z powodu ciemnoÅ›ci nie moÅ¼esz okreÅ›liÄ‡ z jakiego metalu jest wykonana.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(5);
 	(aktualny->zamek)[NORTH]=1;
 	(aktualny->wyjscie)[SOUTH]=getLokacja(3);
@@ -95,16 +96,16 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	5	//////////////////
 	aktualny=getLokacja(5);
-	aktualny->nazwa="Wejœcie do piwniczki";
+	aktualny->nazwa = L"WejÅ›cie do piwniczki";
 	aktualny->backgroundMusic=MidiFiles::LVL1;
 	aktualny->opis=
-		"To niewielkie pomieszczenie wygl¹da na piwniczkê. Drewniana drabina zamocowana "
-		"do wschodniej œciany prowadzi do zamkniêtej klapy w suficie. Przy przeciwleg³ej "
-		"œcianie znajduje siê podobna klapa prowadz¹ca na dó³. Œciany i pod³ogi "
-		"pomieszczenia s¹ wykonane z kamiennych cegie³, jednak te s¹ czyste, "
-		"nieporoœniête mchami. W pó³nocnej œcianie znajduj¹ siê drzwi prowadz¹ce do "
-		"dalszych piwniczek. Ko³o drzwi zamontowana w œcianie jest pochodnia rzucaj¹ce "
-		"jasne œwiat³o na ca³e pomieszczenie.";
+	 L"To niewielkie pomieszczenie wyglÄ…da na piwniczkÄ™. Drewniana drabina zamocowana "
+	 L"do wschodniej Å›ciany prowadzi do zamkniÄ™tej klapy w suficie. Przy przeciwlegÅ‚ej "
+	 L"Å›cianie znajduje siÄ™ podobna klapa prowadzÄ…ca na dÃ³Å‚. Åšciany i podÅ‚ogi "
+	 L"pomieszczenia sÄ… wykonane z kamiennych cegieÅ‚, jednak te sÄ… czyste, L"
+	 L"nieporoÅ›niÄ™te mchami. W pÃ³Å‚nocnej Å›cianie znajdujÄ… siÄ™ drzwi prowadzÄ…ce do "
+	 L"dalszych piwniczek. KoÅ‚o drzwi zamontowana w Å›cianie jest pochodnia rzucajÄ…ce "
+	 L"jasne Å›wiatÅ‚o na caÅ‚e pomieszczenie.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(6);
 	(aktualny->zamek)[NORTH]=1;
 	(aktualny->wyjscie)[SOUTH]=getLokacja(4);
@@ -119,15 +120,15 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	6	//////////////////
 	aktualny=getLokacja(6);
-	aktualny->nazwa="Wyjœcie z piwniczki";
+	aktualny->nazwa = L"WyjÅ›cie z piwniczki";
 	//aktualny->backgroundMusic=MIDI_BATTLE1;
 	aktualny->opis=
-		"Œciany i pod³ogi piwniczki podobnie jak ca³a piwnica s¹ wymurowane starann¹ "
-		"kamienn¹ kostk¹. Wnêtrza nie oœwietla ¿adna pochodnia a blask bij¹cy od wejœcie "
-		"oœwietla niewielk¹ czêœæ pomieszczenia.  Widaæ i¿ s³u¿y³o ono do sk³adowania "
-		"trunków- ca³¹ piwniczkê zajmuje 5 d³ugich, ci¹gn¹cych siê a¿ po zasiêg œwiat³a, "
-		"stojaków do przechowywania wina. W zasiêgu wzroku nie dostrzegasz jednak "
-		"¿adnej butelki. Ciche szuranie i piski rozchodz¹ siê po pomieszczeniu.";
+	 L"Åšciany i podÅ‚ogi piwniczki podobnie jak caÅ‚a piwnica sÄ… wymurowane starannÄ… "
+	 L"kamiennÄ… kostkÄ…. WnÄ™trza nie oÅ›wietla Å¼adna pochodnia a blask bijÄ…cy od wejÅ›cie "
+	 L"oÅ›wietla niewielkÄ… czÄ™Å›Ä‡ pomieszczenia.  WidaÄ‡ iÅ¼ sÅ‚uÅ¼yÅ‚o ono do skÅ‚adowania "
+	 L"trunkÃ³w- caÅ‚Ä… piwniczkÄ™ zajmuje 5 dÅ‚ugich, ciÄ…gnÄ…cych siÄ™ aÅ¼ po zasiÄ™g Å›wiatÅ‚a, L"
+	 L"stojakÃ³w do przechowywania wina. W zasiÄ™gu wzroku nie dostrzegasz jednak "
+	 L"Å¼adnej butelki. Ciche szuranie i piski rozchodzÄ… siÄ™ po pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(10);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(5);
 	(aktualny->zamek)[SOUTH]=1;
@@ -138,29 +139,29 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	7	//////////////////
 	aktualny=getLokacja(7);
-	aktualny->nazwa="Pocz¹tek alejki stojaków";
+	aktualny->nazwa = L"PoczÄ…tek alejki stojakÃ³w";
 	aktualny->opis=
-		"Przed tob¹ ci¹gn¹ siê dwa d³ugie stojaki na wino. S¹ one wykonane z "
-		"podniszcza³ego ju¿ drewna i siêgaj¹ od pod³ogi do sufitu. Stojak po twojej "
-		"lewej przylega do œciany natomiast ten po prawej stoi niczym œciana dzia³owa. "
-		"Deski stojaków krzy¿uj¹ siê ze sob¹ tworz¹c kratê w której przechowuje siê "
-		"trunki. Niestety ¿adnego nie dostrzegasz. Pomiêdzy stojakami jest alejka "
-		"wystarczaj¹co szeroka aby jedna osoba mog³a swobodnie spacerowaæ pomiêdzy nimi. "
-		"Ciche szuranie i piski rozchodz¹ siê po pomieszczeniu.";
+	 L"Przed tobÄ… ciÄ…gnÄ… siÄ™ dwa dÅ‚ugie stojaki na wino. SÄ… one wykonane z "
+	 L"podniszczaÅ‚ego juÅ¼ drewna i siÄ™gajÄ… od podÅ‚ogi do sufitu. Stojak po twojej "
+	 L"lewej przylega do Å›ciany natomiast ten po prawej stoi niczym Å›ciana dziaÅ‚owa. "
+	 L"Deski stojakÃ³w krzyÅ¼ujÄ… siÄ™ ze sobÄ… tworzÄ…c kratÄ™ w ktÃ³rej przechowuje siÄ™ "
+	 L"trunki. Niestety Å¼adnego nie dostrzegasz. PomiÄ™dzy stojakami jest alejka "
+	 L"wystarczajÄ…co szeroka aby jedna osoba mogÅ‚a swobodnie spacerowaÄ‡ pomiÄ™dzy nimi. "
+	 L"Ciche szuranie i piski rozchodzÄ… siÄ™ po pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(8);
 	(aktualny->wyjscie)[EAST]=getLokacja(6);
 
 	//////////////////	8	//////////////////
 	aktualny=getLokacja(8);
-	aktualny->nazwa="Alejka pomiêdzy stojakami";
+	aktualny->nazwa = L"Alejka pomiÄ™dzy stojakami";
 	aktualny->opis=
-		"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. S¹ one wykonane z "
-		"podniszcza³ego ju¿ drewna i siêgaj¹ od pod³ogi do sufitu. Deski stojaków "
-		"krzy¿uj¹ siê ze sob¹ tworz¹c kratê w której przechowuje siê trunki. Niestety "
-		"¿adnego w pobli¿u nie dostrzegasz. Pomiêdzy stojakami jest alejka wystarczaj¹co "
-		"szeroka aby jedna osoba mog³a swobodnie spacerowaæ pomiêdzy nimi. Alejka "
-		"ci¹gnie siê prosto i ginie w mrokach. Ciche szuranie i piski rozchodz¹ siê po "
-		"pomieszczeniu.";
+	 L"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. SÄ… one wykonane z "
+	 L"podniszczaÅ‚ego juÅ¼ drewna i siÄ™gajÄ… od podÅ‚ogi do sufitu. Deski stojakÃ³w "
+	 L"krzyÅ¼ujÄ… siÄ™ ze sobÄ… tworzÄ…c kratÄ™ w ktÃ³rej przechowuje siÄ™ trunki. Niestety "
+	 L"Å¼adnego w pobliÅ¼u nie dostrzegasz. PomiÄ™dzy stojakami jest alejka wystarczajÄ…co "
+	 L"szeroka aby jedna osoba mogÅ‚a swobodnie spacerowaÄ‡ pomiÄ™dzy nimi. Alejka "
+	 L"ciÄ…gnie siÄ™ prosto i ginie w mrokach. Ciche szuranie i piski rozchodzÄ… siÄ™ po "
+	 L"pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(9);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(7);
 
@@ -168,11 +169,11 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	9	//////////////////
 	aktualny=getLokacja(9);
-	aktualny->nazwa="Koniec alejki";
+	aktualny->nazwa = L"Koniec alejki";
 	aktualny->opis=
-		"Dotar³eœ do koñca alejki. Stojak po twojej prawej koñczy siê pozostawiaj¹c "
-		"przejœcie do równoleg³ych alejek. Na wprost ciebie kamienna œciana znaczy "
-		"kraniec piwniczki. Ciche szuranie i piski rozchodz¹ siê po pomieszczeniu.";
+	 L"DotarÅ‚eÅ› do koÅ„ca alejki. Stojak po twojej prawej koÅ„czy siÄ™ pozostawiajÄ…c "
+	 L"przejÅ›cie do rÃ³wnolegÅ‚ych alejek. Na wprost ciebie kamienna Å›ciana znaczy "
+	 L"kraniec piwniczki. Ciche szuranie i piski rozchodzÄ… siÄ™ po pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(15);
 	(aktualny->zamek)[NORTH]=-1;
 	(aktualny->wyjscie)[SOUTH]=getLokacja(8);
@@ -185,15 +186,15 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	10	//////////////////
 	aktualny=getLokacja(10);
-	aktualny->nazwa="Alejka pomiêdzy stojakami";
+	aktualny->nazwa = L"Alejka pomiÄ™dzy stojakami";
 	aktualny->opis=
-		"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. S¹ one wykonane z "
-		"podniszcza³ego ju¿ drewna i siêgaj¹ od pod³ogi do sufitu. Deski stojaków "
-		"krzy¿uj¹ siê ze sob¹ tworz¹c kratê w której przechowuje siê trunki. Niestety "
-		"¿adnego w pobli¿u nie dostrzegasz. Pomiêdzy stojakami jest alejka wystarczaj¹co "
-		"szeroka aby jedna osoba mog³a swobodnie spacerowaæ pomiêdzy nimi. Alejka "
-		"ci¹gnie siê prosto i ginie w mrokach. Ciche szuranie i piski rozchodz¹ siê po "
-		"pomieszczeniu.";
+	 L"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. SÄ… one wykonane z "
+	 L"podniszczaÅ‚ego juÅ¼ drewna i siÄ™gajÄ… od podÅ‚ogi do sufitu. Deski stojakÃ³w "
+	 L"krzyÅ¼ujÄ… siÄ™ ze sobÄ… tworzÄ…c kratÄ™ w ktÃ³rej przechowuje siÄ™ trunki. Niestety "
+	 L"Å¼adnego w pobliÅ¼u nie dostrzegasz. PomiÄ™dzy stojakami jest alejka wystarczajÄ…co "
+	 L"szeroka aby jedna osoba mogÅ‚a swobodnie spacerowaÄ‡ pomiÄ™dzy nimi. Alejka "
+	 L"ciÄ…gnie siÄ™ prosto i ginie w mrokach. Ciche szuranie i piski rozchodzÄ… siÄ™ po "
+	 L"pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(11);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(6);	
 
@@ -202,12 +203,12 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	11	//////////////////
 	aktualny=getLokacja(11);
-	aktualny->nazwa="Koniec alejki";
+	aktualny->nazwa = L"Koniec alejki";
 	aktualny->opis=
-		"Dotar³eœ do koñca alejki. Stojaki po twoich obu stronach koñcz¹ siê "
-		"pozostawiaj¹c przejœcie do równoleg³ych alejek. Na wprost ciebie kamienna "
-		"œciana znaczy kraniec piwniczki. Ciche szuranie i piski rozchodz¹ siê po "
-		"pomieszczeniu.";
+	 L"DotarÅ‚eÅ› do koÅ„ca alejki. Stojaki po twoich obu stronach koÅ„czÄ… siÄ™ "
+	 L"pozostawiajÄ…c przejÅ›cie do rÃ³wnolegÅ‚ych alejek. Na wprost ciebie kamienna "
+	 L"Å›ciana znaczy kraniec piwniczki. Ciche szuranie i piski rozchodzÄ… siÄ™ po "
+	 L"pomieszczeniu.";
 	(aktualny->wyjscie)[SOUTH]=getLokacja(10);
 	(aktualny->wyjscie)[EAST]=getLokacja(14);
 	(aktualny->wyjscie)[WEST]=getLokacja(9);	
@@ -216,15 +217,15 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	12	//////////////////
 	aktualny=getLokacja(12);
-	aktualny->nazwa="Pocz¹tek alejki stojaków";
+	aktualny->nazwa = L"PoczÄ…tek alejki stojakÃ³w";
 	aktualny->opis=
-		"Przed tob¹ ci¹gn¹ siê dwa d³ugie stojaki na wino. S¹ one wykonane z "
-		"podniszcza³ego ju¿ drewna i siêgaj¹ od pod³ogi do sufitu. Stojak po twojej "
-		"prawej przylega do œciany natomiast ten po lewej stoi niczym œciana dzia³owa. "
-		"Deski stojaków krzy¿uj¹ siê ze sob¹ tworz¹c kratê w której przechowuje siê "
-		"trunki. Niestety ¿adnego nie dostrzegasz. Pomiêdzy stojakami jest alejka "
-		"wystarczaj¹co szeroka aby jedna osoba mog³a swobodnie spacerowaæ pomiêdzy nimi. "
-		"Ciche szuranie i piski rozchodz¹ siê po pomieszczeniu.";
+	 L"Przed tobÄ… ciÄ…gnÄ… siÄ™ dwa dÅ‚ugie stojaki na wino. SÄ… one wykonane z "
+	 L"podniszczaÅ‚ego juÅ¼ drewna i siÄ™gajÄ… od podÅ‚ogi do sufitu. Stojak po twojej "
+	 L"prawej przylega do Å›ciany natomiast ten po lewej stoi niczym Å›ciana dziaÅ‚owa. "
+	 L"Deski stojakÃ³w krzyÅ¼ujÄ… siÄ™ ze sobÄ… tworzÄ…c kratÄ™ w ktÃ³rej przechowuje siÄ™ "
+	 L"trunki. Niestety Å¼adnego nie dostrzegasz. PomiÄ™dzy stojakami jest alejka "
+	 L"wystarczajÄ…co szeroka aby jedna osoba mogÅ‚a swobodnie spacerowaÄ‡ pomiÄ™dzy nimi. "
+	 L"Ciche szuranie i piski rozchodzÄ… siÄ™ po pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(13);
 	(aktualny->wyjscie)[WEST]=getLokacja(6);	
 
@@ -232,15 +233,15 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	13	//////////////////
 	aktualny=getLokacja(13);
-	aktualny->nazwa="Alejka pomiêdzy stojakami";
+	aktualny->nazwa = L"Alejka pomiÄ™dzy stojakami";
 	aktualny->opis=
-		"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. S¹ one wykonane z "
-		"podniszcza³ego ju¿ drewna i siêgaj¹ od pod³ogi do sufitu. Deski stojaków "
-		"krzy¿uj¹ siê ze sob¹ tworz¹c kratê w której przechowuje siê trunki. Niestety "
-		"¿adnego w pobli¿u nie dostrzegasz. Pomiêdzy stojakami jest alejka wystarczaj¹co "
-		"szeroka aby jedna osoba mog³a swobodnie spacerowaæ pomiêdzy nimi. Alejka "
-		"ci¹gnie siê prosto i ginie w mrokach. Ciche szuranie i piski rozchodz¹ siê po "
-		"pomieszczeniu.";
+	 L"Po swojej lewej i prawej masz dwa drewniane stojaki na wino. SÄ… one wykonane z "
+	 L"podniszczaÅ‚ego juÅ¼ drewna i siÄ™gajÄ… od podÅ‚ogi do sufitu. Deski stojakÃ³w "
+	 L"krzyÅ¼ujÄ… siÄ™ ze sobÄ… tworzÄ…c kratÄ™ w ktÃ³rej przechowuje siÄ™ trunki. Niestety "
+	 L"Å¼adnego w pobliÅ¼u nie dostrzegasz. PomiÄ™dzy stojakami jest alejka wystarczajÄ…co "
+	 L"szeroka aby jedna osoba mogÅ‚a swobodnie spacerowaÄ‡ pomiÄ™dzy nimi. Alejka "
+	 L"ciÄ…gnie siÄ™ prosto i ginie w mrokach. Ciche szuranie i piski rozchodzÄ… siÄ™ po "
+	 L"pomieszczeniu.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(14);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(12);		
 
@@ -249,32 +250,32 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	14	//////////////////
 	aktualny=getLokacja(14);
-	aktualny->nazwa="Koniec alejki";
+	aktualny->nazwa = L"Koniec alejki";
 	aktualny->opis=
-		"Dotar³eœ do koñca alejki. Stojak po twojej lewej koñczy siê pozostawiaj¹c "
-		"przejœcie do równoleg³ych alejek. Na wprost ciebie kamienna œciana znaczy "
-		"kraniec piwniczki. Ciche szuranie i piski rozchodz¹ siê po pomieszczeniu.";
+	 L"DotarÅ‚eÅ› do koÅ„ca alejki. Stojak po twojej lewej koÅ„czy siÄ™ pozostawiajÄ…c "
+	 L"przejÅ›cie do rÃ³wnolegÅ‚ych alejek. Na wprost ciebie kamienna Å›ciana znaczy "
+	 L"kraniec piwniczki. Ciche szuranie i piski rozchodzÄ… siÄ™ po pomieszczeniu.";
 	(aktualny->wyjscie)[SOUTH]=getLokacja(13);
 	(aktualny->wyjscie)[WEST]=getLokacja(11);		
 
 	//////////////////	15	//////////////////
 	aktualny=getLokacja(15);
-	aktualny->nazwa="Ukryte przejœcie";
+	aktualny->nazwa = L"Ukryte przejÅ›cie";
 	aktualny->opis=
-		"Ukryte przejœcie by³o najwidoczniej od pocz¹tku zaplanowane- jego œciany s¹ "
-		"pokryte t¹ sam¹ starann¹ kamienn¹ kostk¹, jedynie bardziej zaroœniêt¹ mchem i "
-		"porostami. Przejœcie jest w¹skie ale wystarczaj¹co wysokie aby mo¿na by³o "
-		"przejœæ bez schylania siê. Jednak pierwsze co rzuca ci siê w oczy to mnogoœæ "
-		"ludzkich szcz¹tek le¿¹cych na pod³odze oraz z³owieszczy smród œmierci.";
+	 L"Ukryte przejÅ›cie byÅ‚o najwidoczniej od poczÄ…tku zaplanowane- jego Å›ciany sÄ… "
+	 L"pokryte tÄ… samÄ… starannÄ… kamiennÄ… kostkÄ…, jedynie bardziej zaroÅ›niÄ™tÄ… mchem i "
+	 L"porostami. PrzejÅ›cie jest wÄ…skie ale wystarczajÄ…co wysokie aby moÅ¼na byÅ‚o "
+	 L"przejÅ›Ä‡ bez schylania siÄ™. Jednak pierwsze co rzuca ci siÄ™ w oczy to mnogoÅ›Ä‡ "
+	 L"ludzkich szczÄ…tek leÅ¼Ä…cych na podÅ‚odze oraz zÅ‚owieszczy smrÃ³d Å›mierci.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(16);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(9);	
 
 
 	//////////////////	16	//////////////////
 	aktualny=getLokacja(16);
-	aktualny->nazwa="Legowisko ogara";
+	aktualny->nazwa = L"Legowisko ogara";
 	aktualny->opis=
-		"Jakiœ opis";
+	 L"JakiÅ› opis";
 	(aktualny->wyjscie)[SOUTH]=getLokacja(15);
 
 	(aktualny->postacie)->dodaj(createChar(ListaPostaci::OgarStrazniczy));
@@ -294,9 +295,9 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	20	//////////////////
 	aktualny=getLokacja(20);
-	aktualny->nazwa="Room 20";
+	aktualny->nazwa = L"WyjÅ›cie z jaskiÅ„";
 	aktualny->opis=
-		"Znajdujesz siê w wysokim podziemnym korytarzu, bêd¹cym czêœci¹ jakiejœ jaskini. Pod³o¿e jest nierówne, us³ane kamieniami, a z nikn¹cego w mroku sufitu zwisaj¹ pojedyncze stalagmity. Pieczara wygl¹dn¹ na niemal nietkniêt¹ przez cz³owieka, gdzieniegdzie pod œcianami poustawiano zagradzaj¹ce przejœcie kamienie, ale to jedyne oznaki ingerencji w naturalny chaos. Korytarz w tym miejscu bierze ostry zakrêt na wschód, jednak panuj¹ca ciemnoœæ nie pozwala ci dostrzec gdzie biegnie dalej. W zag³êbieniu zakrêtu stoi oparta o œcianê drabina, oœwietlona przez œwiat³o dobywaj¹ce siê z góry.";
+	 L"Znajdujesz siÄ™ w wysokim podziemnym korytarzu, bÄ™dÄ…cym czÄ™Å›ciÄ… jakiejÅ› jaskini. PodÅ‚oÅ¼e jest nierÃ³wne, usÅ‚ane kamieniami, a z niknÄ…cego w mroku sufitu zwisajÄ… pojedyncze stalagmity. Pieczara wyglÄ…dnÄ… na niemal nietkniÄ™tÄ… przez czÅ‚owieka, gdzieniegdzie pod Å›cianami poustawiano zagradzajÄ…ce przejÅ›cie kamienie, ale to jedyne oznaki ingerencji w naturalny chaos. Korytarz w tym miejscu bierze ostry zakrÄ™t na wschÃ³d, jednak panujÄ…ca ciemnoÅ›Ä‡ nie pozwala ci dostrzec gdzie biegnie dalej. W zagÅ‚Ä™bieniu zakrÄ™tu stoi oparta o Å›cianÄ™ drabina, oÅ›wietlona przez Å›wiatÅ‚o dobywajÄ…ce siÄ™ z gÃ³ry.";
 	aktualny->wyjscie[SOUTH]=getLokacja(21);
 	aktualny->wyjscie[EAST] = getLokacja(22);
 	aktualny->wyjscie[UP] = getLokacja(5);
@@ -304,221 +305,221 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	21	//////////////////
 	aktualny=getLokacja(21);
-	aktualny->nazwa="Room 21";
+	aktualny->nazwa = L"Drzwi w jaskini";
 	aktualny->opis=
-		"W tym miejscu korytarz szybko siê zwê¿a i kurczy, a jedyne przejœcie prowadzi przez mocarne drewniane drzwi. Portal drzwi zakreœla idealnie owalny kszta³t i jest starannie wykonany z kamiennych cegie³ek. Same drzwi wygl¹daj¹ raczej prosto ale wytrzymale, ich powierzchniê zajmuj¹ wypuk³e kwadraty, ale poza nimi nie ma ¿adnych zdobieñ. Drzewo nie wygl¹da staro i jest zapewne w œwietnej kondycji. Z prawej strony drzwi znajduje siê mosiê¿ny uchwyt do ich otwierania, a poni¿ej niego du¿a dziura na klucz. Dooko³a drzwi zauwa¿asz mnóstwo grzybów, zajmuj¹cych wszystkie wg³êbienia w œcianie i pod³odze.";
+	 L"W tym miejscu korytarz szybko siÄ™ zwÄ™Å¼a i kurczy, a jedyne przejÅ›cie prowadzi przez mocarne drewniane drzwi. Portal drzwi zakreÅ›la idealnie owalny ksztaÅ‚t i jest starannie wykonany z kamiennych cegieÅ‚ek. Same drzwi wyglÄ…dajÄ… raczej prosto ale wytrzymale, ich powierzchniÄ™ zajmujÄ… wypukÅ‚e kwadraty, ale poza nimi nie ma Å¼adnych zdobieÅ„. Drzewo nie wyglÄ…da staro i jest zapewne w Å›wietnej kondycji. Z prawej strony drzwi znajduje siÄ™ mosiÄ™Å¼ny uchwyt do ich otwierania, a poniÅ¼ej niego duÅ¼a dziura na klucz. DookoÅ‚a drzwi zauwaÅ¼asz mnÃ³stwo grzybÃ³w, zajmujÄ…cych wszystkie wgÅ‚Ä™bienia w Å›cianie i podÅ‚odze.";
 	aktualny->wyjscie[NORTH]=getLokacja(20);
 	aktualny->wyjscie[SOUTH]=getLokacja(55);
 	aktualny->zamek[SOUTH]=4;
 
 	//////////////////	22	//////////////////
 	aktualny=getLokacja(22);
-	aktualny->nazwa="Room 22";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Dwie du¿e ska³y niemal blokuj¹ przejœcie w tym miejscu, znajduje siê jednak pomiêdzy nimi w¹skie przejœcie. Lekki wiatr przep³ywaj¹cy przez jaskinie kumuluje siê w tym miejscu, gwi¿d¿¹c leciutko. Spogl¹daj¹c przez zwê¿enie zauwa¿asz i¿ korytarz znowu skrêca, tym razem na pó³noc.";
+	 L"Dwie duÅ¼e skaÅ‚y niemal blokujÄ… przejÅ›cie w tym miejscu, znajduje siÄ™ jednak pomiÄ™dzy nimi wÄ…skie przejÅ›cie. Lekki wiatr przepÅ‚ywajÄ…cy przez jaskinie kumuluje siÄ™ w tym miejscu, gwiÅ¼dÅ¼Ä…c leciutko. SpoglÄ…dajÄ…c przez zwÄ™Å¼enie zauwaÅ¼asz iÅ¼ korytarz znowu skrÄ™ca, tym razem na pÃ³Å‚noc.";
 	aktualny->wyjscie[WEST]=getLokacja(20);
 	aktualny->wyjscie[NORTH]=getLokacja(23);
 
 	//////////////////	23	//////////////////
 	aktualny=getLokacja(23);
-	aktualny->nazwa="Room 23";
+	aktualny->nazwa = L"Rozwidlenie korytarza";
 	aktualny->opis=
-		"G³ówny korytarz jaskini ci¹gnie siê dalej na pó³noc, jednak na zachodniej œcianie znajduje siê du¿ej wielkoœci dziura prowadz¹ca do jakiejœ odnogi. Poniewa¿ nie czujesz ¿adnego wiatru dochodz¹cego z tamtego kierunku, wnioskujesz i¿ musi byæ ona œlepym zau³kiem.";
+	 L"GÅ‚Ã³wny korytarz jaskini ciÄ…gnie siÄ™ dalej na pÃ³Å‚noc, jednak na zachodniej Å›cianie znajduje siÄ™ duÅ¼ej wielkoÅ›ci dziura prowadzÄ…ca do jakiejÅ› odnogi. PoniewaÅ¼ nie czujesz Å¼adnego wiatru dochodzÄ…cego z tamtego kierunku, wnioskujesz iÅ¼ musi byÄ‡ ona Å›lepym zauÅ‚kiem.";
 	aktualny->wyjscie[SOUTH]=getLokacja(22);
 	aktualny->wyjscie[EAST]=getLokacja(24);
 	aktualny->wyjscie[NORTH]=getLokacja(27);
 
 	//////////////////	24	//////////////////
 	aktualny=getLokacja(24);
-	aktualny->nazwa="Room 24";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Odnoga okazuje siê byæ du¿¹ dziur¹ utworzon¹ przy pêkniêciu ska³y. Olbrzymi¹ szczelinê w skale przywali³ ogromny g³az, s³u¿¹cy teraz za sufit. W efekcie powsta³a w¹ska ale ca³kiem wysoka dziura w skale. Jej œciany s¹ proste i niemal¿e g³adkie, miejscami znajduj¹ siê tylko bruzdy po przedwiecznym pêkniêciu. Dno szczeliny zajê³y drobne kamienie i ziemia, tworz¹c ca³kiem solidne, choæ nierówne pod³o¿e.";
+	 L"Odnoga okazuje siÄ™ byÄ‡ duÅ¼Ä… dziurÄ… utworzonÄ… przy pÄ™kniÄ™ciu skaÅ‚y. OlbrzymiÄ… szczelinÄ™ w skale przywaliÅ‚ ogromny gÅ‚az, sÅ‚uÅ¼Ä…cy teraz za sufit. W efekcie powstaÅ‚a wÄ…ska ale caÅ‚kiem wysoka dziura w skale. Jej Å›ciany sÄ… proste i niemalÅ¼e gÅ‚adkie, miejscami znajdujÄ… siÄ™ tylko bruzdy po przedwiecznym pÄ™kniÄ™ciu. Dno szczeliny zajÄ™Å‚y drobne kamienie i ziemia, tworzÄ…c caÅ‚kiem solidne, choÄ‡ nierÃ³wne podÅ‚oÅ¼e.";
 	aktualny->wyjscie[WEST]=getLokacja(23);
 	aktualny->wyjscie[EAST]=getLokacja(25);
 
 	//////////////////	25	//////////////////
 	aktualny=getLokacja(25);
-	aktualny->nazwa="Room 25";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Id¹c wzd³u¿ szczeliny zauwa¿asz i¿ staje siê ona coraz szersza, pod³o¿e schodzi lekko w dó³ i staje siê coraz bardziej wilgotne. W pewnym momencie pêkniêcie zmienia kierunek, przez co szelina skrêca na po³udnie.";
+	 L"IdÄ…c wzdÅ‚uÅ¼ szczeliny zauwaÅ¼asz iÅ¼ staje siÄ™ ona coraz szersza, podÅ‚oÅ¼e schodzi lekko w dÃ³Å‚ i staje siÄ™ coraz bardziej wilgotne. W pewnym momencie pÄ™kniÄ™cie zmienia kierunek, przez co szelina skrÄ™ca na poÅ‚udnie.";
 	aktualny->wyjscie[WEST]=getLokacja(24);
 	aktualny->wyjscie[SOUTH]=getLokacja(26);
 
 	//////////////////	26	//////////////////
 	aktualny=getLokacja(26);
-	aktualny->nazwa="Room 26";
+	aktualny->nazwa = L"Wilgotny zakÄ…tek";
 	aktualny->opis=
-		"W tym miejscu widaæ koniec g³azu bêd¹cego sufitem szczeliny- wiêksze i mniejsze ska³y zasypa³y jej dalsz¹ czêœæ a wraz z czasem uformowa³y niemal¿e lit¹ œcianê. Utworzone w ten sposób pomieszczenie ma ca³kiem du¿e rozmiary, choæ pod³oga jest nierówna a w jej najg³êbszym miejscu stoi spora ka³u¿a wody. Wokó³ niej roœnie sporo mchu, a na nim nieznane ci gatunki grzybów.";
+	 L"W tym miejscu widaÄ‡ koniec gÅ‚azu bÄ™dÄ…cego sufitem szczeliny- wiÄ™ksze i mniejsze skaÅ‚y zasypaÅ‚y jej dalszÄ… czÄ™Å›Ä‡ a wraz z czasem uformowaÅ‚y niemalÅ¼e litÄ… Å›cianÄ™. Utworzone w ten sposÃ³b pomieszczenie ma caÅ‚kiem duÅ¼e rozmiary, choÄ‡ podÅ‚oga jest nierÃ³wna a w jej najgÅ‚Ä™bszym miejscu stoi spora kaÅ‚uÅ¼a wody. WokÃ³Å‚ niej roÅ›nie sporo mchu, a na nim nieznane ci gatunki grzybÃ³w.";
 	aktualny->wyjscie[NORTH]=getLokacja(25);
 
 	//////////////////	27	//////////////////
 	aktualny=getLokacja(27);
-	aktualny->nazwa="Room 27";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Le¿¹cy na pod³o¿u g³az utworzy³ w tym miejscu wysoki stopieñ. Wspinaj¹c siê na niego dostrzegasz i¿ niewiele dalej korytarz skrêca na zachód po czym ginie w mroku.";
+	 L"LeÅ¼Ä…cy na podÅ‚oÅ¼u gÅ‚az utworzyÅ‚ w tym miejscu wysoki stopieÅ„. WspinajÄ…c siÄ™ na niego dostrzegasz iÅ¼ niewiele dalej korytarz skrÄ™ca na zachÃ³d po czym ginie w mroku.";
 	aktualny->wyjscie[SOUTH]=getLokacja(23);
 	aktualny->wyjscie[WEST]=getLokacja(28);
 
 	//////////////////	28	//////////////////
 	aktualny=getLokacja(28);
-	aktualny->nazwa="Room 28";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 28.";
+	 L"Room 28.";
 	aktualny->wyjscie[EAST]=getLokacja(27);
 	aktualny->wyjscie[WEST]=getLokacja(29);
 
 	//////////////////	29	//////////////////
 	aktualny=getLokacja(29);
-	aktualny->nazwa="Room 29";
+	aktualny->nazwa = L"Rozwidlenie korytarza";
 	aktualny->opis=
-		"Room 29.";
+	 L"Room 29.";
 	aktualny->wyjscie[EAST]=getLokacja(28);
 	aktualny->wyjscie[SOUTH]=getLokacja(30);
 	aktualny->wyjscie[NORTH]=getLokacja(31);
 
 	//////////////////	30	//////////////////
 	aktualny=getLokacja(30);
-	aktualny->nazwa="Room 30";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 30.";
+	 L"Room 30.";
 	aktualny->wyjscie[NORTH]=getLokacja(29);
 
 	//////////////////	31	//////////////////
 	aktualny=getLokacja(31);
-	aktualny->nazwa="Room 31";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 31.";
+	 L"Room 31.";
 	aktualny->wyjscie[SOUTH]=getLokacja(29);
 	aktualny->wyjscie[NORTH]=getLokacja(32);
 
 	//////////////////	32	//////////////////
 	aktualny=getLokacja(32);
-	aktualny->nazwa="Room 32";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 32.";
+	 L"Room 32.";
 	aktualny->wyjscie[NORTH]=getLokacja(33);
 	aktualny->wyjscie[SOUTH]=getLokacja(31);
 
 	//////////////////	33	//////////////////
 	aktualny=getLokacja(33);
-	aktualny->nazwa="Room 33";
+	aktualny->nazwa = L"WejÅ›cie na cmentarz";
 	aktualny->opis=
-		"Room 33.";
+	 L"Room 33.";
 	aktualny->wyjscie[SOUTH]=getLokacja(32);
 	aktualny->wyjscie[WEST]=getLokacja(34);
 	aktualny->wyjscie[NORTH]=getLokacja(38);
 
 	//////////////////	34	//////////////////
 	aktualny=getLokacja(34);
-	aktualny->nazwa="Room 34";
+	aktualny->nazwa = L"Cmentarz w jaskini";
 	aktualny->opis=
-		"Room 34.";
+	 L"Room 34.";
 	aktualny->wyjscie[EAST]=getLokacja(33);
 	aktualny->wyjscie[WEST]=getLokacja(35);
 	aktualny->wyjscie[SOUTH]=getLokacja(37);
 
 	//////////////////	35	//////////////////
 	aktualny=getLokacja(35);
-	aktualny->nazwa="Room 35";
+	aktualny->nazwa = L"Cmentarz w jaskini";
 	aktualny->opis=
-		"Room 35.";
+	 L"Room 35.";
 	aktualny->wyjscie[EAST]=getLokacja(34);
 	aktualny->wyjscie[SOUTH]=getLokacja(36);
 
 	//////////////////	36	//////////////////
 	aktualny=getLokacja(36);
-	aktualny->nazwa="Room 36";
+	aktualny->nazwa = L"Cmentarz w jaskini";
 	aktualny->opis=
-		"Room 36.";
+	 L"Room 36.";
 	aktualny->wyjscie[NORTH]=getLokacja(35);
 	aktualny->wyjscie[EAST]=getLokacja(37);
 
 	//////////////////	37	//////////////////
 	aktualny=getLokacja(37);
-	aktualny->nazwa="Room 37";
+	aktualny->nazwa = L"Cmentarz w jaskini";
 	aktualny->opis=
-		"Room 37.";
+	 L"Room 37.";
 	aktualny->wyjscie[WEST]=getLokacja(36);
 	aktualny->wyjscie[NORTH]=getLokacja(34);
 
 	//////////////////	38	//////////////////
 	aktualny=getLokacja(38);
-	aktualny->nazwa="Room 38";
+	aktualny->nazwa = L"Rozwidlenie korytarza";
 	aktualny->opis=
-		"Room 38.";
+	 L"Room 38.";
 	aktualny->wyjscie[SOUTH]=getLokacja(33);
 	aktualny->wyjscie[NORTH]=getLokacja(39);
 	aktualny->wyjscie[EAST]=getLokacja(41);
 
 	//////////////////	39	//////////////////
 	aktualny=getLokacja(39);
-	aktualny->nazwa="Room 39";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 39.";
+	 L"Room 39.";
 	aktualny->wyjscie[SOUTH]=getLokacja(38);
 	aktualny->wyjscie[NORTH]=getLokacja(40);
 
 	//////////////////	40	//////////////////
 	aktualny=getLokacja(40);
-	aktualny->nazwa="Room 40";
+	aktualny->nazwa = L"Gruzowisko";
 	aktualny->opis=
-		"Room 40.";
+	 L"Room 40.";
 	aktualny->wyjscie[SOUTH]=getLokacja(39);
 
 	//////////////////	41	//////////////////
 	aktualny=getLokacja(41);
-	aktualny->nazwa="Room 41";
+	aktualny->nazwa = L"Korytarz w jaskini";
 	aktualny->opis=
-		"Room 41.";
+	 L"Room 41.";
 	aktualny->wyjscie[WEST]=getLokacja(38);
 	aktualny->wyjscie[EAST]=getLokacja(42);
 
 	//////////////////	42	//////////////////
 	aktualny=getLokacja(42);
-	aktualny->nazwa="Room 42";
+	aktualny->nazwa = L"StrÃ³Å¼Ã³wka goblinÃ³w";
 	aktualny->opis=
-		"Room 42.";
+	 L"Room 42.";
 	aktualny->wyjscie[WEST]=getLokacja(41);
 	aktualny->wyjscie[SOUTH]=getLokacja(43);
 
 	//////////////////	43	//////////////////
 	aktualny=getLokacja(43);
-	aktualny->nazwa="Room 43";
+	aktualny->nazwa = L"StrÃ³Å¼Ã³wka goblinÃ³w";
 	aktualny->opis=
-		"Room 43.";
+	 L"Room 43.";
 	aktualny->wyjscie[NORTH]=getLokacja(42);
 	aktualny->wyjscie[EAST]=getLokacja(44);
 
 	//////////////////	44	//////////////////
 	aktualny=getLokacja(44);
-	aktualny->nazwa="Room 44";
+	aktualny->nazwa = L"StrÃ³Å¼Ã³wka goblinÃ³w";
 	aktualny->opis=
-		"Room 44.";
+	 L"Room 44.";
 	aktualny->wyjscie[WEST]=getLokacja(43);
 	aktualny->wyjscie[SOUTH]=getLokacja(45);
 
 	//////////////////	45	//////////////////
 	aktualny=getLokacja(45);
-	aktualny->nazwa="Room 45";
+	aktualny->nazwa = L"WejÅ›cie do jaskiÅ„ goblinÃ³w";
 	aktualny->opis=
-		"Room 45.";
+	 L"Room 45.";
 	aktualny->wyjscie[NORTH]=getLokacja(44);
 	aktualny->wyjscie[EAST]=getLokacja(46);
 
 	//////////////////	46	//////////////////
 	aktualny=getLokacja(46);
-	aktualny->nazwa="Room 46";
+	aktualny->nazwa = L"Jaskinia goblinÃ³w";
 	aktualny->opis=
-		"Room 46.";
+	 L"Room 46.";
 	aktualny->wyjscie[WEST]=getLokacja(45);
 	aktualny->wyjscie[EAST]=getLokacja(47);
 
 
 	//////////////////	47	//////////////////
 	aktualny=getLokacja(47);
-	aktualny->nazwa="Room 47";
+	aktualny->nazwa = L"Jaskinia goblinÃ³w";
 	aktualny->opis=
-		"Room 47.";
+	 L"Room 47.";
 	aktualny->wyjscie[WEST]=getLokacja(46);
 	aktualny->wyjscie[SOUTH]=getLokacja(48);
 	aktualny->wyjscie[EAST]=getLokacja(50);
@@ -526,87 +527,88 @@ void Gra::wczytaj_lokacje()
 
 	//////////////////	48	//////////////////
 	aktualny=getLokacja(48);
-	aktualny->nazwa="Room 48";
+	aktualny->nazwa = L"WejÅ›cie do skarbca goblinÃ³w";
 	aktualny->opis=
-		"Room 48.";
+	 L"Room 48.";
 	aktualny->wyjscie[NORTH]=getLokacja(47);
 	aktualny->wyjscie[SOUTH]=getLokacja(49);
 
 	//////////////////	49	//////////////////
 	aktualny=getLokacja(49);
-	aktualny->nazwa="Room 49";
+	aktualny->nazwa = L"Skarbiec goblinÃ³w";
 	aktualny->opis=
-		"Room 49.";
+	 L"Room 49.";
 	aktualny->wyjscie[NORTH]=getLokacja(48);
+	aktualny->zdGlob = ListaZdarzenGlobalnych::ZagrodzenieDrogiPrzezGwardzisteGoblinow;
 
 	//////////////////	50	//////////////////
 	aktualny=getLokacja(50);
-	aktualny->nazwa="Room 50";
+	aktualny->nazwa = L"Room 50";
 	aktualny->opis=
-		"Room 50.";
+	 L"Room 50.";
 	aktualny->wyjscie[WEST]=getLokacja(47);
 	aktualny->wyjscie[EAST]=getLokacja(51);
 
 	//////////////////	51	//////////////////
 	aktualny=getLokacja(51);
-	aktualny->nazwa="Room 51";
+	aktualny->nazwa = L"Room 51";
 	aktualny->opis=
-		"Room 51.";
+	 L"Room 51.";
 	aktualny->wyjscie[WEST]=getLokacja(50);
 
 	//////////////////	52	//////////////////
 	aktualny=getLokacja(52);
-	aktualny->nazwa="Room 52";
+	aktualny->nazwa = L"Room 52";
 	aktualny->opis=
-		"Room 52.";
+	 L"Room 52.";
 	aktualny->wyjscie[SOUTH]=getLokacja(47);
 	aktualny->wyjscie[EAST]=getLokacja(53);
 
 	//////////////////	53	//////////////////
 	aktualny=getLokacja(53);
-	aktualny->nazwa="Room 53";
+	aktualny->nazwa = L"Room 53";
 	aktualny->opis=
-		"Room 54.";
+	 L"Room 54.";
 	aktualny->wyjscie[WEST]=getLokacja(52);
 	aktualny->wyjscie[EAST]=getLokacja(54);
 
 	//////////////////	54	//////////////////
 	aktualny=getLokacja(54);
-	aktualny->nazwa="Room 54";
+	aktualny->nazwa = L"Room 54";
 	aktualny->opis=
-		"Room 54.";
+	 L"Room 54.";
 	aktualny->wyjscie[WEST]=getLokacja(53);
 
 	//////////////////	55	//////////////////
 	aktualny=getLokacja(55);
-	aktualny->nazwa="Room 55";
+	aktualny->nazwa = L"Room 55";
 	aktualny->opis=
-		"Room 55.";
+	 L"Room 55.";
 	aktualny->wyjscie[NORTH]=getLokacja(21);
 	aktualny->zamek[NORTH]=4;
 	aktualny->wyjscie[SOUTH]=getLokacja(56);
 
 	//////////////////	56	//////////////////
 	aktualny=getLokacja(56);
-	aktualny->nazwa="Room 56";
+	aktualny->nazwa = L"Room 56";
 	aktualny->opis=
-		"Room 56.";
+	 L"Room 56.";
 	aktualny->wyjscie[NORTH]=getLokacja(55);
 	aktualny->wyjscie[EAST]=getLokacja(57);
 
 	//////////////////	57	//////////////////
 	aktualny=getLokacja(57);
-	aktualny->nazwa="Room 57";
+	aktualny->nazwa = L"Room 57";
 	aktualny->opis=
-		"Room 57.";
+	 L"Room 57.";
 	aktualny->wyjscie[WEST]=getLokacja(56);
 	aktualny->wyjscie[NORTH]=getLokacja(58);
 
 	//////////////////	58	//////////////////
 	aktualny=getLokacja(58);
-	aktualny->nazwa="Room 58";
+	aktualny->nazwa = L"Room 58";
 	aktualny->opis=
-		"Room 58.";
+	 L"Room 58.";
 	aktualny->wyjscie[DOWN]=getLokacja(59);
 
 #pragma endregion

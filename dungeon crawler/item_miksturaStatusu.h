@@ -7,7 +7,7 @@ class Status;
 class miksturaStatusu: public Item
 {
 public:
-	miksturaStatusu(int id, string nazwa, string opis, string iddle, int wartosc, Status *status);
+	miksturaStatusu(int id, wstring nazwa, wstring opis, wstring iddle, int wartosc, Status *status);
 	
 	bool drink(Postac *postac);
 	Status *status;				//status ten potem zostaje przeniesiony do listy statusow gracza

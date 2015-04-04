@@ -6,7 +6,7 @@
 Turn::Turn(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="turn";
+	nazwa = L"turn";
 }
 
 
@@ -18,37 +18,37 @@ void Turn::execute(ParseDTO argumenty)
 {
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("W któr¹ stronê chcesz krêciæ.?");
+		playerMsg(L"W któr¹ stronê chcesz krêciæ.?");
 		return;
 	}
 
-	string kierunek;
+	wstring kierunek;
 	switch (argumenty.argument1[0])
 	{
 	case 'l':
-		kierunek = "left";
+		kierunek = L"left";
 		if (kierunek.find(argumenty.argument1, 0) == -1)
 		{
-			playerMsg("W któr¹ stronê chcesz krêciæ?");
+			playerMsg(L"W któr¹ stronê chcesz krêciæ?");
 			return;
 		}
 		break;
 	case 'r':
-		kierunek = "right";
+		kierunek = L"right";
 		if (kierunek.find(argumenty.argument1, 0) == -1)
 		{
-			playerMsg("W któr¹ stronê chcesz krêciæ?");
+			playerMsg(L"W któr¹ stronê chcesz krêciæ?");
 			return;
 		}
 		break;
 	default:
-		playerMsg("W któr¹ stronê chcesz krêciæ?");
+		playerMsg(L"W któr¹ stronê chcesz krêciæ?");
 		return;
 	}
 	
 	if (argumenty.argument2.empty())
 	{
-		playerMsg("Co chcesz przekrêciæ?");
+		playerMsg(L"Co chcesz przekrêciæ?");
 		return;
 	}
 
@@ -56,15 +56,15 @@ void Turn::execute(ParseDTO argumenty)
 
 	if (!dzwignia)
 	{
-		playerMsg("Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument2);
+		playerMsg(L"Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument2);
 		return;
 	}
 
-	if (kierunek == "left")
+	if (kierunek == L"left")
 	{
 		if (!dzwignia->dzwigniaUzycie(DZWIGNIA_TURN_LEFT))
 		{
-			playerMsg("Tego nie da siê przekrêciæ w lewo.");
+			playerMsg(L"Tego nie da siê przekrêciæ w lewo.");
 			return;
 		}
 
@@ -75,7 +75,7 @@ void Turn::execute(ParseDTO argumenty)
 	{
 		if (!dzwignia->dzwigniaUzycie(DZWIGNIA_TURN_RIGHT))
 		{
-			playerMsg("Tego nie da siê przekrêciæ w prawo.");
+			playerMsg(L"Tego nie da siê przekrêciæ w prawo.");
 			return;
 		}
 
@@ -88,10 +88,10 @@ void Turn::execute(ParseDTO argumenty)
 
 void Turn::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   turn(tu)\n\n"
-				"U¿ycia:\n\n"
-				"   turn <kierunek> <nazwa_przedmiotu> - gracz próbuje krêciæ wskazan¹ wajch¹ we wskazanym kierunku. Kierunkiem mo¿e byæ: left(l), right(r).\n\n"
-				"SprawdŸ równie¿:\n"
-				"   push, pull");
+	playerMsg(L"Synonimy:\n"
+			 L"   turn(tu)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   turn <kierunek> <nazwa_przedmiotu> - gracz próbuje krêciæ wskazan¹ wajch¹ we wskazanym kierunku. Kierunkiem mo¿e byæ: left(l), right(r).\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   push, pull");
 }

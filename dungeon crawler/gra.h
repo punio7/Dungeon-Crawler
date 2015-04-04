@@ -35,19 +35,19 @@ public:
 	void wczytajQuesty();
 	void zakonczGre();
 	//void wykonaj_komende(Ekomenda command, ParseDTO argumenty);
-	void prompt();				//wypisuje na cout prompt
+	void prompt();				//wypisuje na wcout prompt
 	Item* create_item(int id);	//tworzy Item o podanym id
-	Item* create_item(int id, ItemTyp typ, string nazwa, string opis, string idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc);
-	Item* create_item(int id, ItemTyp typ, string nazwa, string opis, string idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc, int wymSila, int wymZr, int wymZw, int wymWyt, int wymZyw);
+	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc);
+	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc, int wymSila, int wymZr, int wymZw, int wymWyt, int wymZyw);
 	//tworzy item o podanej w argumentach specyfikacji, u¿ywany w funkcji wy¿ej
 
 	Postac* createChar(int id);
 	Postac* createChar(int id, int quest, int questFaza);
-	Postac* createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, string imie, string opis, string idle, int sila, int zr, int zw, int wyt, int zyw);
-	PostacNpc* createNpc(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, string imie, string opis, string idle, int sila, int zr, int zw, int wyt, int zyw);
+	Postac* createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, wstring imie, wstring opis, wstring idle, int sila, int zr, int zw, int wyt, int zyw);
+	PostacNpc* createNpc(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, wstring imie, wstring opis, wstring idle, int sila, int zr, int zw, int wyt, int zyw);
 	void wczytajRozmowe(int id, PostacNpc* postac);
 
-	Quest *znajdzQuest(string nazwa, int ktory);	//przeszukuje tylko aktywne i zakonczone questy
+	Quest *znajdzQuest(wstring nazwa, int ktory);	//przeszukuje tylko aktywne i zakonczone questy
 
 	bool gra_zakoncz();
 

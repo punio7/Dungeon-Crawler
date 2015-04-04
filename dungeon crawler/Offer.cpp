@@ -8,7 +8,7 @@ extern ListaKomend *listaKomend;
 Offer::Offer(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="offer";
+	nazwa = L"offer";
 }
 
 
@@ -22,14 +22,14 @@ void Offer::execute(ParseDTO argumenty)
 
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcia³byœ zaoferowaæ na sprzeda¿?");
+		playerMsg(L"Co chcia³byœ zaoferowaæ na sprzeda¿?");
 		return;
 	}
 
 	Item *przed = gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1);
 	if (przed == NULL) 
 	{
-		playerMsg("Nie posiadasz takiego przedmiotu.");
+		playerMsg(L"Nie posiadasz takiego przedmiotu.");
 		return;
 	}
 	
@@ -40,28 +40,28 @@ void Offer::execute(ParseDTO argumenty)
 
 	if (kupiec->zloto == 0)
 	{
-		playerMsg("|^|0 nie ma ju¿ z³ota na handel.", kupiec->imie);
+		playerMsg(L"|^|0 nie ma ju¿ z³ota na handel.", kupiec->imie);
 		return;
 	}
 
 	int cena = przed->wartoscSprzedazy();
 	if (cena == 0)
 	{
-		playerMsg("|^|0 nie jest zainteresowany kupnem |1.", kupiec->imie,przed->nazwa);
+		playerMsg(L"|^|0 nie jest zainteresowany kupnem |1.", kupiec->imie,przed->nazwa);
 		return;
 	}
 	if (cena > kupiec->zloto)
 		cena = kupiec->zloto;
 
-	playerMsg("|^|0 kupi |1 za |2 szt. z³.", kupiec->imie, przed->nazwa, intToStr(cena));
+	playerMsg(L"|^|0 kupi |1 za |2 szt. z³.", kupiec->imie, przed->nazwa, intToStr(cena));
 }
 
 void Offer::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   offer(of)\n\n"
-				"U¿ycia:\n\n"
-				"   offer <nazwa_przedmiotu> - sk³ada ofertê sprzeda¿y wskazanego przedmiotu pierwszemu kupcowi w lokacji gracza. Przedmiot musi siê znajdowaæ w inwentarzu gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   sell, buy, list");
+	playerMsg(L"Synonimy:\n"
+			 L"   offer(of)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   offer <nazwa_przedmiotu> - sk³ada ofertê sprzeda¿y wskazanego przedmiotu pierwszemu kupcowi w lokacji gracza. Przedmiot musi siê znajdowaæ w inwentarzu gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   sell, buy, list");
 }

@@ -1,4 +1,7 @@
 #include <iostream>
+#include <io.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <string>
 #include "gra.h"
 #include "Quest.h"
@@ -12,9 +15,9 @@
 
 void segmentationFaultHandler( int signum )
 {
-    cout << endl << "Otrzymano sygna³ SEGV (" << signum <<endl;
-	cout << "Najwidoczniej ktoœ chcia³ pomazaæ tam gdzie mu nie wolno by³o."<<endl;
-	cout << "Nasza przyjazna u¿ytkownikom biblioteka wygenerowa³a kilka wskazówek:"<<endl<<endl;
+    wcout << endl << "Otrzymano sygna³ SEGV (L" << signum <<endl;
+	wcout << "Najwidoczniej ktoœ chcia³ pomazaæ tam gdzie mu nie wolno by³o."<<endl;
+	wcout << "Nasza przyjazna u¿ytkownikom biblioteka wygenerowa³a kilka wskazówek:"<<endl<<endl;
 
     // cleanup and close up stuff here  
     // terminate program  
@@ -31,7 +34,7 @@ void wykonaj_komende(Ekomenda command, ParseDTO argumenty, Gra &gra)
 	gra.zdarzeniaCiagle();
 	
 	gra.licznikWywolanKomend.zwieksz(command);
-	cout<<endl;
+	wcout<<endl;
 	
 	if (command != COMM_NOCOMM)
 	{
@@ -44,12 +47,14 @@ void wykonaj_komende(Ekomenda command, ParseDTO argumenty, Gra &gra)
 
 int main(int argc, const char* argv[])
 {
-	system ("chcp 1250");
+	//system (L"chcp 1250");
+	_setmode(_fileno(stdout), _O_U16TEXT);
+	_setmode(_fileno(stdin), _O_U16TEXT);
 	//Log4CppLogger *logger = new Log4CppLogger();
-	//if ( !logger->Init("res\\log4cpp.property"))
+	//if ( !logger->Init(L"res\\log4cpp.property"))
 	//	return 0;
-	//logger->LogDebug("Enter main...");
-	//logger->LogInfo("Main...");
+	//logger->LogDebug(L"Enter main...");
+	//logger->LogInfo(L"Main...");
 
 	signal(SIGSEGV, segmentationFaultHandler);
 	Gra gra(argc, argv);
@@ -61,7 +66,7 @@ int main(int argc, const char* argv[])
 		wykonaj_komende(parser.komenda, parser.argumenty, gra);
 	}
 
-	//logger->LogDebug("Exit main");
+	//logger->LogDebug(L"Exit main");
 	system("PAUSE");
 }
 

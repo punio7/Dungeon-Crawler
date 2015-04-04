@@ -6,7 +6,7 @@
 Journal::Journal(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="journal";
+	nazwa = L"journal";
 }
 
 
@@ -26,7 +26,7 @@ void Journal::execute(ParseDTO argumenty)
 
 		if (!aktualny)	//jezeli nie znaleziono zadnego zadania
 		{
-			playerMsg("Brak aktywnego zadania o podanej nazwie");
+			playerMsg(L"Brak aktywnego zadania o podanej nazwie");
 			return;
 		}
 		journalQuestInfo(aktualny);
@@ -35,52 +35,52 @@ void Journal::execute(ParseDTO argumenty)
 
 void Journal::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   journal(j)\n\n"
-				"U¿ycia:\n\n"
-				"   journal - wyœwietla listê podjêtych oraz wykonanych zadañ.\n\n"
-				"   journal <nazwa_zadania> - wyœwietla szczegó³y, cele oraz notatki dotycz¹ce wskazanego zadania.");
+	playerMsg(L"Synonimy:\n"
+			 L"   journal(j)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   journal - wyœwietla listê podjêtych oraz wykonanych zadañ.\n\n"
+			 L"   journal <nazwa_zadania> - wyœwietla szczegó³y, cele oraz notatki dotycz¹ce wskazanego zadania.");
 }
 
 void Journal::journalList()
 {
-	playerMsg("Obecnie aktywne zadania:\n");
+	playerMsg(L"Obecnie aktywne zadania:\n");
 	bool jakiekolwiekAktywne=false;
 	for (size_t i = 1; i < gra->questy.size(); i++)
 	{
 		if ( gra->questy[i] != NULL && gra->questy[i]->aktywny() )
 		{
 			jakiekolwiekAktywne = true;
-			playerMsg("\t|^|0.", gra->questy[i]->nazwa);
+			playerMsg(L"\t|^|0.", gra->questy[i]->nazwa);
 		}
 	}
 	if (!jakiekolwiekAktywne) 
-		playerMsg("\tBrak.");
+		playerMsg(L"\tBrak.");
 
-	playerMsg("\nZadania zakoñczone:\n");
+	playerMsg(L"\nZadania zakoñczone:\n");
 	jakiekolwiekAktywne=false;
 	for (size_t i = 1; i < gra->questy.size(); i++)
 	{
 		if ( gra->questy[i] != NULL && gra->questy[i]->zakonczony() )
 		{
 			jakiekolwiekAktywne = true;
-			playerMsg("\t|^|0.", gra->questy[i]->nazwa);
+			playerMsg(L"\t|^|0.", gra->questy[i]->nazwa);
 		}
 	}
 	if (!jakiekolwiekAktywne) 
-		playerMsg("\tBrak.");
+		playerMsg(L"\tBrak.");
 }
 
 void Journal::journalQuestInfo(Quest *quest)
 {
-	playerMsg("Szczegó³y zadania |G|^|0 |W.", quest->nazwa);
-	playerMsg("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-	playerMsg("|GObecny cel:");
+	playerMsg(L"Szczegó³y zadania |G|^|0 |W.", quest->nazwa);
+	playerMsg(L"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	playerMsg(L"|GObecny cel:");
 	if (!quest->zakonczony())
 		playerMsg(quest->faza->cel);
 	else
-		playerMsg("Zadanie zakoñczone.");
-	playerMsg("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-	playerMsg("|GNotatki:");
+		playerMsg(L"Zadanie zakoñczone.");
+	playerMsg(L"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	playerMsg(L"|GNotatki:");
 	playerMsg(quest->notatki());
 }

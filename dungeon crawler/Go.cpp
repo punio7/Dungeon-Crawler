@@ -5,10 +5,10 @@
 
 extern ListaKomend *listaKomend;
 
-Go::Go(Gra *gra):
-	Komenda(gra)
+Go::Go(Gra *gra) :
+Komenda(gra)
 {
-	nazwa="";
+	nazwa = L"";
 }
 
 
@@ -20,7 +20,7 @@ void Go::execute(ParseDTO argumenty)
 {
 	if (argumenty.kierunek1 == KIERUNEK_NIEPOPRAWNY)
 	{
-		playerMsg("Mo¿e lepiej zostaæ tutaj i zjeœæ kilka pierogów?");
+		playerMsg(L"Mo¿e lepiej zostaæ tutaj i zjeœæ kilka pierogów?");
 		return;
 	}
 
@@ -30,26 +30,31 @@ void Go::execute(ParseDTO argumenty)
 void Go::GoKierunek(KierunekSwiata kierunek)
 {
 	Gracz &gracz = gra->gracz;
-	if ((gracz.polozenie->wyjscie)[kierunek]==NULL || (gracz.polozenie->zamek)[kierunek]==-1) 
+	if ((gracz.polozenie->wyjscie)[kierunek] == NULL || (gracz.polozenie->zamek)[kierunek] == -1)
 	{
-		playerMsg("Nie mo¿esz tam pójœæ.");
+		playerMsg(L"Nie mo¿esz tam pójœæ.");
 	}
-	else 
+	else
 	{
-		if ((gracz.polozenie->zamek)[kierunek]>0) 
+		if ((gracz.polozenie->zamek)[kierunek] > 0)
 		{
-			playerMsg("Przejœcie jest zamkniête.");
+			playerMsg(L"Przejœcie jest zamkniête.");
 		}
-		else 
+		else
 		{
-			gracz.polozenie=(gracz.polozenie->wyjscie)[kierunek];
 			gracz.poprzedniePolozenie = kierunekPrzeciwny(kierunek);
-			if (gra->zdarzeniaGlobalnePrzySpotkaniu())	//jezeli zdarzenie zwroci true to przerywamy reszte
-				return;
-			dynamic_cast<Look*>(listaKomend->komendy[COMM_LOOK])->LookMiejsce(gracz.polozenie);
-			gra->zdarzeniaPrzySpotkaniu();
+			ZmianaPolozenia((gracz.polozenie->wyjscie)[kierunek]);
 		}
 	}
+}
+
+void Go::ZmianaPolozenia(Lokacja* nowaLokacja)
+{
+	gra->gracz.polozenie = nowaLokacja;
+	if (gra->zdarzeniaGlobalnePrzySpotkaniu())	//jezeli zdarzenie zwroci true to przerywamy reszte
+		return;
+	dynamic_cast<Look*>(listaKomend->komendy[COMM_LOOK])->LookMiejsce(gra->gracz.polozenie);
+	gra->zdarzeniaPrzySpotkaniu();
 }
 
 void Go::manual()

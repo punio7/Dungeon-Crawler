@@ -14,7 +14,7 @@ public:
 	
 	void zwieksz(Ekomenda komenda);
 	int sprawdz(Ekomenda komenda);
-	void wypiszLicznik();			//wypisuje na cout ilosc wywolan wszystkich funkcji
+	void wypiszLicznik();			//wypisuje na wcout ilosc wywolan wszystkich funkcji
 
 private:
 	int iloscWywolan[ILOSC_KOMEND];

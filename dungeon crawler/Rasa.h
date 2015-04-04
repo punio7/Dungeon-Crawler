@@ -28,9 +28,9 @@ class Rasa
 {
 public:
 	RasaNazwa rasaEnum;
-	string nazwa;
-	string nazwaGoblinska;
-	string nazwaZwlok;
+	wstring nazwa;
+	wstring nazwaGoblinska;
+	wstring nazwaZwlok;
 	float si, zr, zw, wyt, zyw;
 };
 

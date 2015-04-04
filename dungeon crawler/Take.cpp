@@ -3,10 +3,10 @@
 #include "item.h"
 #include "Lokacja.h"
 
-Take::Take(Gra *gra):
-	Komenda(gra)
+Take::Take(Gra *gra) :
+Komenda(gra)
 {
-	nazwa="take";
+	nazwa = L"take";
 }
 
 
@@ -18,13 +18,13 @@ void Take::execute(ParseDTO argumenty)
 {
 	Gracz &gracz = gra->gracz;
 
-	if (argumenty.argument1.empty()) 
-		playerMsg("Wzi¹æ co?");
-	else 
+	if (argumenty.argument1.empty())
+		playerMsg(L"Wzi¹æ co?");
+	else
 	{
-		if (argumenty.argument2.empty()) 
+		if (argumenty.argument2.empty())
 		{
-			if (argumenty.argument1=="all")
+			if (argumenty.argument1 == L"all")
 			{
 				TakeAllOtoczenie();
 			}
@@ -35,7 +35,7 @@ void Take::execute(ParseDTO argumenty)
 		}
 		else
 		{
-			if (argumenty.argument1=="all")
+			if (argumenty.argument1 == L"all")
 			{
 				TakeAllPojemnik(argumenty.argument2, argumenty.ktory2);
 			}
@@ -49,38 +49,38 @@ void Take::execute(ParseDTO argumenty)
 
 void Take::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   take(t), get(g)\n\n"
-				"U¿ycia:\n\n"
-				"   take <nazwa_przedmiotu> - gracz bierze wskazany przedmiot z lokacji i umieszca go w inwentarzu.\n\n"
-				"   take <nazwa_przedmiotu> <nazwa_pojemnika> - gracz wyjmuje wskazany przedmiot z wskazanego pojemnika i umeiszcza go w inwentarzu.\n\n"
-				"W obu przypadkach u¿yj 'all' zamiast nazwy_przedmiotu aby zastosowaæ do wszystkich przedmiotów w lokacji/pojemniku.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   inventory, drop, put");
+	playerMsg(L"Synonimy:\n"
+		L"   take(t), get(g)\n\n"
+		L"U¿ycia:\n\n"
+		L"   take <nazwa_przedmiotu> - gracz bierze wskazany przedmiot z lokacji i umieszca go w inwentarzu.\n\n"
+		L"   take <nazwa_przedmiotu> <nazwa_pojemnika> - gracz wyjmuje wskazany przedmiot z wskazanego pojemnika i umeiszcza go w inwentarzu.\n\n"
+		L"W obu przypadkach u¿yj 'all' zamiast nazwy_przedmiotu aby zastosowaæ do wszystkich przedmiotów w lokacji/pojemniku.\n\n"
+		L"SprawdŸ równie¿:\n"
+		L"   inventory, drop, put");
 }
 
-void Take::TakePrzedmiotOtoczenie(string cel, int ktory)
+void Take::TakePrzedmiotOtoczenie(wstring cel, int ktory)
 {
 	ItemList *lista = gra->gracz.polozenie->przedmioty;
 	Item *przedmiot = lista->znajdz(cel, ktory);
 	if (przedmiot == NULL)
 	{
-		playerMsg("Tutaj nie ma czegoœ takiego jak |0.", cel);
+		playerMsg(L"Tutaj nie ma czegoœ takiego jak |0.", cel);
 		return;
 	}
 
 	if (!przedmiot->daSieWziac())
 	{
-		playerMsg("Nie mo¿esz tego podnieœæ.");
+		playerMsg(L"Nie mo¿esz tego podnieœæ.");
 		return;
 	}
 
 	TakePrzedmiot(przedmiot, lista);
-	playerMsg("Podnosisz |0.",przedmiot->nazwa);
+	playerMsg(L"Podnosisz |0.", przedmiot->nazwa);
 
 }
 
-void Take::TakePrzedmiotPojemnik(string cel1, int ktory1, string cel2, int ktory2)
+void Take::TakePrzedmiotPojemnik(wstring cel1, int ktory1, wstring cel2, int ktory2)
 {
 	Item *pojemnik = gra->gracz.polozenie->przedmioty->znajdz(cel2, ktory2);
 	if (pojemnik == NULL)
@@ -88,19 +88,19 @@ void Take::TakePrzedmiotPojemnik(string cel1, int ktory1, string cel2, int ktory
 
 	if (pojemnik == NULL)
 	{
-		playerMsg("Tutaj nie ma czegoœ takiego jak |0.", cel2);
+		playerMsg(L"Tutaj nie ma czegoœ takiego jak |0.", cel2);
 		return;
 	}
 
 	if (!pojemnik->jestPojemnikiem())
 	{
-		playerMsg("|^|0 nie jest pojemnikiem.", pojemnik->nazwa);
+		playerMsg(L"|^|0 nie jest pojemnikiem.", pojemnik->nazwa);
 		return;
 	}
 
 	if (pojemnik->numerZamka())
 	{
-		playerMsg("Pojemnik jest zamkniêty.");
+		playerMsg(L"Pojemnik jest zamkniêty.");
 		return;
 	}
 
@@ -109,19 +109,19 @@ void Take::TakePrzedmiotPojemnik(string cel1, int ktory1, string cel2, int ktory
 	Item *przedmiot = lista->znajdz(cel1, ktory1);
 	if (przedmiot == NULL)
 	{
-		playerMsg("|^|0 nie zawiera w sobie czegoœ takiego jak |1.", pojemnik->nazwa, cel1);
+		playerMsg(L"|^|0 nie zawiera w sobie czegoœ takiego jak |1.", pojemnik->nazwa, cel1);
 		return;
 	}
 
 	if (!przedmiot->daSieWziac())
 	{
-		playerMsg("Nie mo¿esz tego podnieœæ.");
+		playerMsg(L"Nie mo¿esz tego podnieœæ.");
 		return;
 	}
 
 	TakePrzedmiot(przedmiot, lista);
-	playerMsg("Wyjmujesz |0 z |1.", przedmiot->nazwa, pojemnik->nazwa);
-	
+	playerMsg(L"Wyjmujesz |0 z |1.", przedmiot->nazwa, pojemnik->nazwa);
+
 }
 
 void Take::TakePrzedmiot(Item *przedmiot, ItemList *lista)
@@ -130,7 +130,7 @@ void Take::TakePrzedmiot(Item *przedmiot, ItemList *lista)
 	gra->gracz.przedmioty->dodaj(przedmiot);
 }
 
-void Take::TakeAllPojemnik(string cel, int ktory)
+void Take::TakeAllPojemnik(wstring cel, int ktory)
 {
 	Item *pojemnik = gra->gracz.polozenie->przedmioty->znajdz(cel, ktory);
 	if (pojemnik == NULL)
@@ -138,19 +138,19 @@ void Take::TakeAllPojemnik(string cel, int ktory)
 
 	if (pojemnik == NULL)
 	{
-		playerMsg("Tutaj nie ma czegoœ takiego jak |0.");
+		playerMsg(L"Tutaj nie ma czegoœ takiego jak |0.");
 		return;
 	}
 
-		if (!pojemnik->jestPojemnikiem())
+	if (!pojemnik->jestPojemnikiem())
 	{
-		playerMsg("Hahaha, bardzo zabawne.");
+		playerMsg(L"Hahaha, bardzo zabawne.");
 		return;
 	}
 
 	if (pojemnik->numerZamka())
 	{
-		playerMsg("Pojemnik jest zamkniêty.");
+		playerMsg(L"Pojemnik jest zamkniêty.");
 		return;
 	}
 
@@ -158,20 +158,20 @@ void Take::TakeAllPojemnik(string cel, int ktory)
 	Gracz &gracz = gra->gracz;
 	if (lista->pusta())
 	{
-		playerMsg("|^|0 nie zawiera w sobie niczego godnego uwagi.", pojemnik->nazwa);
+		playerMsg(L"|^|0 nie zawiera w sobie niczego godnego uwagi.", pojemnik->nazwa);
 		return;
 	}
-	int i=1;
-	for (Item* aktualny = lista->znajdz(i); aktualny != NULL; aktualny=lista->znajdz(i))
+	int i = 1;
+	for (Item* aktualny = lista->znajdz(i); aktualny != NULL; aktualny = lista->znajdz(i))
 	{
 		if (aktualny->daSieWziac())
 		{
-			playerMsg("Wyjmujesz |0 z |1.", aktualny->nazwa, pojemnik->nazwa);
+			playerMsg(L"Wyjmujesz |0 z |1.", aktualny->nazwa, pojemnik->nazwa);
 			TakePrzedmiot(aktualny, lista);
 		}
 		else
 		{
-			playerMsg("Nie mo¿esz tego wyj¹æ.");	//jezeli przedmiotu nie da sie podniesc
+			playerMsg(L"Nie mo¿esz tego wyj¹æ.");	//jezeli przedmiotu nie da sie podniesc
 			i++;									//to opuszczamy go i patrzymy na nastepny
 		}
 	}
@@ -184,20 +184,20 @@ void Take::TakeAllOtoczenie()
 	ItemList *lista = gracz.polozenie->przedmioty;
 	if (lista->pusta())
 	{
-		playerMsg("Nic tu nie ma.");
+		playerMsg(L"Nic tu nie ma.");
 		return;
 	}
-	int i=1;
+	int i = 1;
 	for (Item* aktualny = lista->znajdz(i); aktualny != NULL; aktualny = lista->znajdz(i))
 	{
 		if (aktualny->daSieWziac())
 		{
-			playerMsg("Podnosisz |0.", aktualny->nazwa);
+			playerMsg(L"Podnosisz |0.", aktualny->nazwa);
 			TakePrzedmiot(aktualny, lista);
 		}
 		else
 		{
-			playerMsg("Nie mo¿esz tego podnieœæ.");	//jezeli przedmiotu nie da sie podniesc
+			playerMsg(L"Nie mo¿esz tego podnieœæ.");	//jezeli przedmiotu nie da sie podniesc
 			i++;									//to opuszczamy go i patrzymy na nastepny
 		}
 	}
@@ -207,7 +207,7 @@ void Take::zabierzZloto(Item* cel)
 {
 	if (cel->zloto())	//je¿eli przedmiot zawiera z³oto
 	{
-		playerMsg("Przeszukuj¹c |0 znalaz³eœ |Y|1 szt. z³ota|W.", cel->nazwa, intToStr(cel->zloto()));
+		playerMsg(L"Przeszukuj¹c |0 znalaz³eœ |Y|1 szt. z³ota|W.", cel->nazwa, intToStr(cel->zloto()));
 		gra->gracz.dodajZloto(cel->zloto());			//dodajemy zloto graczowi
 		cel->usunZloto(cel->zloto());	//i usuwamy je z pojemnika
 	}

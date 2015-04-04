@@ -20,10 +20,10 @@ public:
 	virtual bool isBattleOnly();						//true jeøeli znika po walce
 	virtual bool isPositive();							//true jeøeli to status pozytywny (buff) false jeøeli to debuff
 
-	string nazwa;
-	string opis;
-	string enterMsg;	//wiadomosc wyswietlana kiedy gracz otrzymuje dany stan
-	string exitMsg;		//wiadomosc wysietlana kiedy gracz wychodzi z danego stanu
+	wstring nazwa;
+	wstring opis;
+	wstring enterMsg;	//wiadomosc wyswietlana kiedy gracz otrzymuje dany stan
+	wstring exitMsg;		//wiadomosc wysietlana kiedy gracz wychodzi z danego stanu
 	int czas;
 	//item *zrodlo;		//przedmiot bedacy zrodlem statusu albo NULL, jezeli przedmiot ten zostanie
 };
@@ -33,11 +33,11 @@ class StatusList : public list<Status*>
 public:
 	StatusList();
 	~StatusList();
-	string wypisz();
+	wstring wypisz();
 	void dodaj(Status* status);
 	void usun(Status* status);			//usuwa status z listy ale nie usuwa go z pamieci
 	void usunPierwszy();				//kasuje z listy pierwszy status nie usuwa statusu z pamieci
 	bool pusta();						//True jeøeli lista jest pusta
-	Status* znajdz(string szukany, int ktory=1);	//zwraca wskaünik na status z listy o zadanej nazwie, NULL jezeli nie ma takiego
+	Status* znajdz(wstring szukany, int ktory=1);	//zwraca wskaünik na status z listy o zadanej nazwie, NULL jezeli nie ma takiego
 	Status* znajdz(int ktory);						//zwraca status bÍdπcy na ktory-m miejscu na liscie
 };

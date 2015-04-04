@@ -5,8 +5,8 @@
 
 Staty::Staty()
 {
-	sil=0, zr=0, zw=0, wyt=0, zyw=0;
-	atak=0, obrona=0, dmg=0, ochrona=0, pancerz=0, hp=0, cw=0;
+	sil = 0, zr = 0, zw = 0, wyt = 0, zyw = 0;
+	atak = 0, obrona = 0, dmg = 0, ochrona = 0, pancerz = 0, hp = 0, cw = 0;
 }
 
 ItemList::ItemList()
@@ -19,20 +19,20 @@ ItemList::~ItemList()
 
 }
 
-string ItemList::wypisz(ItemList_wypisz_tryb tryb)
+wstring ItemList::wypisz(ItemList_wypisz_tryb tryb)
 {
-	string temp;
+	wstring temp;
 	if (empty())
 	{
-		if (tryb!=WYPISZ_LOOK) temp+="\tOgólnie nic";
+		if (tryb != WYPISZ_LOOK) temp += L"\tOgólnie nic";
 		return temp;
 	}
 
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
 		int ilosc = 1;
-		temp+="\t";
-		temp+=(*aktualny)->nazwa;
+		temp += L"\t";
+		temp += (*aktualny)->nazwa;
 		iterator nastepny = aktualny;
 		nastepny++;
 		while (nastepny != end())
@@ -48,44 +48,44 @@ string ItemList::wypisz(ItemList_wypisz_tryb tryb)
 				break;
 			}
 		}
-		if (ilosc>1)
+		if (ilosc > 1)
 		{
-			temp+=" (";
-			temp+=intToStr(ilosc);
-			temp+=")";
+			temp += L" (L";
+			temp += intToStr(ilosc);
+			temp += L")";
 		}
-		if (tryb==WYPISZ_LOOK) 
+		if (tryb == WYPISZ_LOOK)
 		{
-			temp+=" ";
-			temp+=(*aktualny)->idle;
+			temp += L" ";
+			temp += (*aktualny)->idle;
 		}
 		if (nastepny != end())
-			temp+="\n";
+			temp += L"\n";
 	}
 	return temp;
 }
 
-void ItemList::wypisz(string& cel, ItemList_wypisz_tryb tryb)
+void ItemList::wypisz(wstring& cel, ItemList_wypisz_tryb tryb)
 {
 	if (empty())
 	{
-		cel+="\tOgólnie nic.";
+		cel += L"\tOgólnie nic.";
 		return;
 	}
 	iterator aktualny;
 	int num = 0;
 	for (aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		int ilosc=1;	//ilosc przedmiotow o takiej samej nazwie, jezeli >1 to bedzie wyswietlona w nawiasie
+		int ilosc = 1;	//ilosc przedmiotow o takiej samej nazwie, jezeli >1 to bedzie wyswietlona w nawiasie
 		num++;			//numer przedmiotu wyswietlany tylko w sklepie
 		if (tryb == WYPISZ_SKLEP)
 		{
-			ostringstream ss;
-			ss<<num<<'\t'<<(*aktualny)->wartosc;
-			cel+=ss.str();
+			wstringstream ss;
+			ss << num << '\t' << (*aktualny)->wartosc;
+			cel += ss.str();
 		}
-		cel+="\t";
-		cel+=(*aktualny)->nazwa;
+		cel += L"\t";
+		cel += (*aktualny)->nazwa;
 		iterator nastepny = aktualny;
 		nastepny++;
 		while (nastepny != end())
@@ -101,24 +101,24 @@ void ItemList::wypisz(string& cel, ItemList_wypisz_tryb tryb)
 				break;
 			}
 		}
-		if (ilosc>1) 
+		if (ilosc > 1)
 		{
-			ostringstream ss;
-			ss<<" ("<<ilosc<<")";
-			cel+=ss.str();
+			wstringstream ss;
+			ss << " (L" << ilosc << ")";
+			cel += ss.str();
 		}
 		if (nastepny != end())
-			cel+='\n';
+			cel += '\n';
 	}
 }
 
-Item* ItemList::znajdz(string szukany, int ktory)
+Item* ItemList::znajdz(wstring szukany, int ktory)
 {
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if ((*aktualny)->nazwa.find(szukany) != -1) 
+		if ((*aktualny)->nazwa.find(szukany) != -1)
 		{
-			if (ktory<2) return *aktualny;
+			if (ktory < 2) return *aktualny;
 			else ktory--;
 		}
 	}
@@ -130,7 +130,7 @@ Item* ItemList::znajdz(int ktory)
 {
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if (ktory<2) return *aktualny;
+		if (ktory < 2) return *aktualny;
 		else ktory--;
 	}
 
@@ -141,9 +141,9 @@ Item* ItemList::znajdz(int id, int ktory)
 {
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if ((*aktualny)->id == id) 
+		if ((*aktualny)->id == id)
 		{
-			if (ktory<2) return *aktualny;
+			if (ktory < 2) return *aktualny;
 			else ktory--;
 		}
 	}
@@ -155,30 +155,30 @@ list<Item*>::iterator ItemList::znajdzOstatni(int id)
 {
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if ((*aktualny)->id == id) 
+		if ((*aktualny)->id == id)
 		{
 			iterator nastepny = aktualny;
 			nastepny++;
-			if (nastepny == end()) 
+			if (nastepny == end())
 				return aktualny;
-			if ( (*nastepny)->id != id ) return aktualny;
+			if ((*nastepny)->id != id) return aktualny;
 		}
 	}
 
 	return end();
 }
 
-list<Item*>::iterator ItemList::znajdzOstatni(string nazwa)
+list<Item*>::iterator ItemList::znajdzOstatni(wstring nazwa)
 {
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if ((*aktualny)->nazwa == nazwa) 
+		if ((*aktualny)->nazwa == nazwa)
 		{
 			iterator nastepny = aktualny;
 			nastepny++;
-			if (nastepny == end()) 
+			if (nastepny == end())
 				return aktualny;
-			if ( (*nastepny)->nazwa != nazwa ) return aktualny;
+			if ((*nastepny)->nazwa != nazwa) return aktualny;
 		}
 	}
 
@@ -192,8 +192,8 @@ void ItemList::dodaj(Item* przedmiot)
 	{
 		aktualny++;
 	}
-	
-	insert(aktualny, przedmiot);	
+
+	insert(aktualny, przedmiot);
 }
 
 void ItemList::przenies(ItemList* lista)
@@ -231,20 +231,20 @@ bool ItemList::pusta()
 
 Item::Item()
 {
-	nazwa="bezimienny przedmiot";
+	nazwa = L"bezimienny przedmiot";
 	rodzaj = RodzajRzeczownika::MESKI;
-	opis="Brak opisu.";
-	idle="le¿y tutaj";
-	wartosc=0;
-	typ=ITEM_UNKNOWN;
+	opis = L"Brak opisu.";
+	idle = L"le¿y tutaj";
+	wartosc = 0;
+	typ = ITEM_UNKNOWN;
 }
 
-string Item::look()
+wstring Item::look()
 {
 	return opis;
 }
 
-string Item::examine()
+wstring Item::examine()
 {
 	return opis;
 }
@@ -261,7 +261,7 @@ void Item::ustaw_wymagania(int sila, int zre, int zwi, int wyt, int zyw)
 
 Staty Item::czytaj_staty()
 {
-	Staty *staty=new Staty;
+	Staty *staty = new Staty;
 	return *staty;
 }
 
@@ -272,8 +272,8 @@ ItemSlot Item::getSlot()
 
 int Item::wartoscSprzedazy()
 {
-	if (wartosc==0) return 0;	//wartosc 0 zawsze bedzie rowna 0
-	if (wartosc==1) return 1;	//wartosc 1 nie jest zaokraglana w dol
+	if (wartosc == 0) return 0;	//wartosc 0 zawsze bedzie rowna 0
+	if (wartosc == 1) return 1;	//wartosc 1 nie jest zaokraglana w dol
 	return (int)(wartosc * 0.5);
 }
 
@@ -284,15 +284,15 @@ int Item::wartoscKupna()
 
 bool Item::daSieWziac()
 {
-	if (typ==ITEM_STATIC_CONTAINER) return false;
-	if (typ==ITEM_STATIC_QUEST) return false;
-	if (typ==ITEM_DZWIGNIA) return false;
+	if (typ == ITEM_STATIC_CONTAINER) return false;
+	if (typ == ITEM_STATIC_QUEST) return false;
+	if (typ == ITEM_DZWIGNIA) return false;
 	return true;
 }
 
 bool Item::jestPojemnikiem()
 {
-	if ((typ==ITEM_STATIC_CONTAINER)||(typ==ITEM_CONTAINER)) return true;
+	if ((typ == ITEM_STATIC_CONTAINER) || (typ == ITEM_CONTAINER)) return true;
 	else return false;
 }
 
@@ -348,13 +348,13 @@ bool Item::jestBronia()
 
 bool Item::jestTarcza()
 {
-	if (typ==ITEM_TARCZA) return true;
+	if (typ == ITEM_TARCZA) return true;
 	else return false;
 }
 
 bool Item::jestMikstura()
 {
-	if (typ==ITEM_MIKSTURA) return true;
+	if (typ == ITEM_MIKSTURA) return true;
 	else return false;
 }
 
@@ -408,7 +408,7 @@ ItemList* Item::getItemList()
 	return NULL;
 }
 
-Item* Item::lista_znajdz(string szukany, int ktory)
+Item* Item::lista_znajdz(wstring szukany, int ktory)
 {
 	return NULL;
 }

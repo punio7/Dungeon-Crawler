@@ -16,7 +16,7 @@
 //	log4cpp::Category::shutdown();
 //}
 //
-//bool Log4CppLogger::Init(string initFileName)
+//bool Log4CppLogger::Init(wstring initFileName)
 //{
 //	try
 //	{
@@ -24,43 +24,43 @@
 //	}
 //	catch(log4cpp::ConfigureFailure& f)
 //	{
-//		std::cout << "Configure Problem" << f.what() << std::endl;
+//		std::wcout << "Configure Problem" << f.what() << std::endl;
 //		return false;
 //	}
 //	return true;
 //}
 //
-//void Log4CppLogger::LogDebug(string message)
+//void Log4CppLogger::LogDebug(wstring message)
 //{
-//	//log4cpp::Category &mylogger = log4cpp::Category::getInstance("sub1");
+//	//log4cpp::Category &mylogger = log4cpp::Category::getInstance(L"sub1");
 //	//mylogger.debug(message);
 //
 //	log4cpp::Category& sub1 = 
-//		log4cpp::Category::getInstance(std::string("sub1"));
+//		log4cpp::Category::getInstance(std::wstring(L"sub1"));
 //
 //	log4cpp::Category& sub2 = 
-//		log4cpp::Category::getInstance(std::string("sub1.sub2"));
+//		log4cpp::Category::getInstance(std::wstring(L"sub1.sub2"));
 //
 //	log4cpp::Category& root = log4cpp::Category::getRoot();
 //
-//	//root.warn("Storm is coming");
+//	//root.warn(L"Storm is coming");
 //
-//	//sub1.debug("Received storm warning");
-//	//sub1.info("Closing all hatches");
+//	//sub1.debug(L"Received storm warning");
+//	//sub1.info(L"Closing all hatches");
 //
-//	//sub2.debug("Hiding solar panels");
-//	//sub2.error("Solar panels are blocked");
-//	//sub2.debug("Applying protective shield");
-//	//sub2.warn("Unfolding protective shield");
-//	//sub2.info("Solar panels are shielded");
+//	//sub2.debug(L"Hiding solar panels");
+//	//sub2.error(L"Solar panels are blocked");
+//	//sub2.debug(L"Applying protective shield");
+//	//sub2.warn(L"Unfolding protective shield");
+//	//sub2.info(L"Solar panels are shielded");
 //
-//	//sub1.info("All hatches closed");
+//	//sub1.info(L"All hatches closed");
 //
-//	//root.info("Ready for storm.");
+//	//root.info(L"Ready for storm.");
 //}
 //
-//void Log4CppLogger::LogInfo(string message)
+//void Log4CppLogger::LogInfo(wstring message)
 //{
-//	log4cpp::Category &mylogger = log4cpp::Category::getInstance("sub1");
+//	log4cpp::Category &mylogger = log4cpp::Category::getInstance(L"sub1");
 //	mylogger.info(message);
 //}

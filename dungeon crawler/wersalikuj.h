@@ -5,4 +5,4 @@
 
 using namespace std;
 
-string wersalikuj(string wejsciowy, int dlugoscWiersza = 80);
+wstring wersalikuj(wstring wejsciowy, int dlugoscWiersza = 80);

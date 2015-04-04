@@ -7,7 +7,7 @@ extern ListaKomend *listaKomend;
 North::North(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="north";
+	nazwa = L"north";
 }
 
 
@@ -23,10 +23,10 @@ void North::execute(ParseDTO argumenty)
 
 void North::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   north(n)\n\n"
-				"U¿ycia:\n\n"
-				"   north - przemieszcza gracza na pó³noc.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   south, west, east, up, down");
+	playerMsg(L"Synonimy:\n"
+			 L"   north(n)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   north - przemieszcza gracza na pó³noc.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   south, west, east, up, down");
 }

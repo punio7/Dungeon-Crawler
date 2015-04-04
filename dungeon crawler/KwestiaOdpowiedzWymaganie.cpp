@@ -51,7 +51,7 @@ bool KwestiaOdpowiedzWymaganie::czySpelnia(Gra *gra)
 	case WymaganieZdarzenieGlobalne:
 		return true;
 	default:
-		throw new string("Nieznany typ wymagania odpowiedzi w rozmowie.");
+		throw new wstring(L"Nieznany typ wymagania odpowiedzi w rozmowie.");
 		break;
 	}
 }
@@ -68,13 +68,13 @@ void KwestiaOdpowiedzWymaganie::zabierzWymagane(Gra* gra, Postac *npc)
 	case WymaganieGraczZloto:
 		gra->gracz.usunZloto(argumenty[0]);
 		npc->dodajZloto(argumenty[0]);
-		playerMsg("|YOddajesz |0 szt. z³ota.", intToStr(argumenty[0]));
+		playerMsg(L"|YOddajesz |0 szt. z³ota.", intToStr(argumenty[0]));
 		break;
 	case WymaganieGraczItem:
 		przedmiot = (gra->gracz.przedmioty)->znajdz(argumenty[0], 1);
 		gra->gracz.usunPrzedmiot(przedmiot);
 		npc->dodajPrzedmiot(przedmiot);
-		playerMsg("|YOdda³eœ |0.", przedmiot->nazwa);
+		playerMsg(L"|YOdda³eœ |0.", przedmiot->nazwa);
 		break;
 	case WymaganieGraczItemIlosc:
 		for (int i = 0; i < argumenty[1]; i++)
@@ -82,7 +82,7 @@ void KwestiaOdpowiedzWymaganie::zabierzWymagane(Gra* gra, Postac *npc)
 			przedmiot = (gra->gracz.przedmioty)->znajdz(argumenty[0], 1);
 			gra->gracz.usunPrzedmiot(przedmiot);
 			npc->dodajPrzedmiot(przedmiot);
-			playerMsg("|YOdda³eœ |0.", przedmiot->nazwa);
+			playerMsg(L"|YOdda³eœ |0.", przedmiot->nazwa);
 		}
 		break;
 	case WymaganieGraczRasa:
@@ -91,7 +91,7 @@ void KwestiaOdpowiedzWymaganie::zabierzWymagane(Gra* gra, Postac *npc)
 		wywolajZdarzenieGlobalne(argumenty[0]);
 		break;
 	default:
-		throw new string("Nieznany typ wymagania odpowiedzi w rozmowie.");
+		throw new wstring(L"Nieznany typ wymagania odpowiedzi w rozmowie.");
 		break;
 	}
 }

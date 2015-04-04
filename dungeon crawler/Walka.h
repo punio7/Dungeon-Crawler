@@ -15,10 +15,10 @@ class OpisyWalki
 public:
 	OpisyWalki();
 	
-	vector<string> opisyGraczTrafienie;
-	vector<string> opisyGraczPudlo;
-	vector<string> opisyWrogTrafienie;
-	vector<string> opisyWrogPudlo;
+	vector<wstring> opisyGraczTrafienie;
+	vector<wstring> opisyGraczPudlo;
+	vector<wstring> opisyWrogTrafienie;
+	vector<wstring> opisyWrogPudlo;
 };
 
 class Walka

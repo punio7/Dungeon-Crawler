@@ -86,7 +86,7 @@ Quest::~Quest(void)
 }
 
 
-QuestFaza* Quest::dodajFaze(int id, string cel, string notatki)
+QuestFaza* Quest::dodajFaze(int id, wstring cel, wstring notatki)
 {
 	QuestFaza *temp= new QuestFaza;
 	temp->id=id;
@@ -124,10 +124,10 @@ int Quest::obecnaFaza()
 	return faza->id;
 }
 
-string Quest::notatki()
+wstring Quest::notatki()
 {
 	QuestFaza *aktualna=listaFaz[0];
-	string temp = aktualna->notatki;
+	wstring temp = aktualna->notatki;
 	bool pierwszaNotatka=true; //pierwsza notatka nie ma /n na poczatku
 	for (int i=0; i<(int)przebieg.size(); i++)
 	{
@@ -146,14 +146,14 @@ string Quest::notatki()
 			aktualna=znajdzFaze(aktualna->d);
 			break;
 		default:
-			playerMsg("B³¹d czytania przebiegu questa.");
+			playerMsg(L"B³¹d czytania przebiegu questa.");
 			return temp;
 		}
-		if (!aktualna) {cout<<"Nie znaleziono fazy podczas wyœwietlania notatek.\n";return temp;}
+		if (!aktualna) {wcout<<"Nie znaleziono fazy podczas wyœwietlania notatek.\n";return temp;}
 		if ( !(aktualna->notatki).empty() )
 		{
 			if (pierwszaNotatka) pierwszaNotatka=false;
-			else temp += "\n\n";
+			else temp += L"\n\n";
 			temp += aktualna->notatki;
 		}
 	}
@@ -192,7 +192,7 @@ bool Quest::sprawdzWymagania()
 		faza = temp;
 		if ( !nazwa.empty() )
 		{
-			playerMsg("|YUaktualniono dziennik: |0", nazwa);
+			playerMsg(L"|YUaktualniono dziennik: |0", nazwa);
 		}
 		wywolajZdarzenieGlobalne(faza->zdarzenieGlobalne);
 		sprawdzWymagania();

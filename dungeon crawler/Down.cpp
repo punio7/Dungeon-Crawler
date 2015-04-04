@@ -7,7 +7,7 @@ extern ListaKomend *listaKomend;
 Down::Down(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="down";
+	nazwa = L"down";
 }
 
 
@@ -22,10 +22,10 @@ void Down::execute(ParseDTO argumenty)
 
 void Down::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   down(d)\n\n"
-				"U¿ycia:\n\n"
-				"   down - przemieszcza gracza w dó³ drabiny/schodów itp.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   north, south, east, west, up");
+	playerMsg(L"Synonimy:\n"
+				L"   down(d)\n\n"
+				L"U¿ycia:\n\n"
+				L"   down - przemieszcza gracza w dó³ drabiny/schodów itp.\n\n"
+				L"SprawdŸ równie¿:\n"
+				L"   north, south, east, west, up");
 }

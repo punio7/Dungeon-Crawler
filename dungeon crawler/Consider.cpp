@@ -6,7 +6,7 @@
 Consider::Consider(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="consider";
+	nazwa = L"consider";
 }
 
 
@@ -28,18 +28,18 @@ void Consider::execute(ParseDTO argumenty)
 		consider(item);
 		return;
 	}
-	playerMsg("Niby z czym chcia³byœ siê porównaæ?");
+	playerMsg(L"Niby z czym chcia³byœ siê porównaæ?");
 }
 
 void Consider::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   consider(cons)\n\n"
-				"U¿ycia:\n\n"
-				"   consider <nazwa_przedmiotu> - porównuje wskazany przedmiot z wyekwipowanym przedmiotem tego samego typu. Porównywany przedmiot musi siê znajdowaæ w inwentarzu.\n\n"
-				"   consider <nazwa_postaci> - porównuje zdolnoœci bitewne gracza ze wskazan¹ postaci¹.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   wear, wield, hold, remove, kill");
+	playerMsg(L"Synonimy:\n"
+				L"   consider(cons)\n\n"
+				L"U¿ycia:\n\n"
+				L"   consider <nazwa_przedmiotu> - porównuje wskazany przedmiot z wyekwipowanym przedmiotem tego samego typu. Porównywany przedmiot musi siê znajdowaæ w inwentarzu.\n\n"
+				L"   consider <nazwa_postaci> - porównuje zdolnoœci bitewne gracza ze wskazan¹ postaci¹.\n\n"
+				L"SprawdŸ równie¿:\n"
+				L"   wear, wield, hold, remove, kill");
 }
 
 void Consider::consider(Item *porownywany)
@@ -48,7 +48,7 @@ void Consider::consider(Item *porownywany)
 	ItemSlot slot = porownywany->getSlot();
 	if (slot == -1)
 	{
-		playerMsg("Mo¿esz porównywaæ tylko elementy ekwipunku.");
+		playerMsg(L"Mo¿esz porównywaæ tylko elementy ekwipunku.");
 		return;
 	}
 
@@ -56,7 +56,7 @@ void Consider::consider(Item *porownywany)
 
 	if (aktualny == NULL)
 	{
-		playerMsg("Lepszy |0 ni¿ powietrze.", porownywany->nazwa);
+		playerMsg(L"Lepszy |0 ni¿ powietrze.", porownywany->nazwa);
 		return;
 	}
 	Item *lepszy = aktualny;
@@ -66,31 +66,31 @@ void Consider::consider(Item *porownywany)
 	if (aktualnyS.dmg != porownywanyS.dmg)
 	{
 		lepszy = (aktualnyS.dmg > porownywanyS.dmg ? aktualny : porownywany);
-		playerMsg("|^|0 mo¿e wyrz¹dziæ przeciwnikowi wiêcej szkód.", lepszy->nazwa);
+		playerMsg(L"|^|0 mo¿e wyrz¹dziæ przeciwnikowi wiêcej szkód.", lepszy->nazwa);
 	}
 	else 
 	{
-		playerMsg("Oba przedmioty mog¹ wyrz¹dziæ przeciwnikowi podobne szkody.");
+		playerMsg(L"Oba przedmioty mog¹ wyrz¹dziæ przeciwnikowi podobne szkody.");
 	}
 
 	if (aktualnyS.atak != porownywanyS.atak)
 	{
 		lepszy = (aktualnyS.atak > porownywanyS.atak ? aktualny : porownywany);
-		playerMsg("|^|0 bardziej ci pomo¿e w wyprowadzaniu ciosów.", lepszy->nazwa);
+		playerMsg(L"|^|0 bardziej ci pomo¿e w wyprowadzaniu ciosów.", lepszy->nazwa);
 	}
 	else 
 	{
-		playerMsg("Oba przedmioty s¹ równie u¿yteczne przy wyprowadzaniu ciosów.");
+		playerMsg(L"Oba przedmioty s¹ równie u¿yteczne przy wyprowadzaniu ciosów.");
 	}
 
 	if (aktualnyS.obrona != porownywanyS.obrona)
 	{
 		lepszy = (aktualnyS.obrona > porownywanyS.obrona ? aktualny : porownywany);
-		playerMsg("|^|0 bardziej u³atwi ci obronê.", lepszy->nazwa);
+		playerMsg(L"|^|0 bardziej u³atwi ci obronê.", lepszy->nazwa);
 	}
 	else 
 	{
-		playerMsg("Oba przedmioty równie dobrze u³atwiaj¹ obronê.");
+		playerMsg(L"Oba przedmioty równie dobrze u³atwiaj¹ obronê.");
 	}
 
 
@@ -100,21 +100,21 @@ void Consider::consider(Item *porownywany)
 	if (aktualnyS.ochrona != porownywanyS.ochrona)
 	{
 		lepszy = (aktualnyS.ochrona > porownywanyS.ochrona ? aktualny : porownywany);
-		playerMsg("|^|0 zapewnia dok³adniejsz¹ ochronê.", lepszy->nazwa);
+		playerMsg(L"|^|0 zapewnia dok³adniejsz¹ ochronê.", lepszy->nazwa);
 	}
 	else 
 	{
-		playerMsg("Oba pancerze zapewniaj¹ podobn¹ ochronê.");
+		playerMsg(L"Oba pancerze zapewniaj¹ podobn¹ ochronê.");
 	}
 
 	if (aktualnyS.pancerz != porownywanyS.pancerz)
 	{
 		lepszy = (aktualnyS.pancerz > porownywanyS.pancerz ? aktualny : porownywany);
-		playerMsg("|^|0 jest bardziej wytrzyma³y.", lepszy->nazwa);
+		playerMsg(L"|^|0 jest bardziej wytrzyma³y.", lepszy->nazwa);
 	}
 	else 
 	{
-		playerMsg("Oba pancerze s¹ równie wytrzyma³e.");
+		playerMsg(L"Oba pancerze s¹ równie wytrzyma³e.");
 	}
 }
 
@@ -125,22 +125,22 @@ void Consider::consider(Postac *przeciwnik)
 
 	if (roznica > poziom*1.2)
 	{
-		playerMsg("|^|0 jest od ciebie znacznie potê¿niejszy.", przeciwnik->imie);
+		playerMsg(L"|^|0 jest od ciebie znacznie potê¿niejszy.", przeciwnik->imie);
 	}
 	else if (roznica > 0)
 	{
-		playerMsg("|^|0 wygl¹da na godnego przeciwnika.", przeciwnik->imie);
+		playerMsg(L"|^|0 wygl¹da na godnego przeciwnika.", przeciwnik->imie);
 	}
 	else if (roznica > poziom*(-1.2))
 	{
-		playerMsg("|^|0 wygl¹da na ³atwego przeciwnika.", przeciwnik->imie);
+		playerMsg(L"|^|0 wygl¹da na ³atwego przeciwnika.", przeciwnik->imie);
 	}
 	else
 	{
-		playerMsg("|^|0 nie stanowi dla ciebie wyzwania.", przeciwnik->imie);
+		playerMsg(L"|^|0 nie stanowi dla ciebie wyzwania.", przeciwnik->imie);
 	}
 	
-	playerMsg("G³ówne cechy przeciwnika to: |G|0|W oraz |G|1|W.",
-		przeciwnik->cechaToString(przeciwnik->najwyzszaCecha(0)), 
-		przeciwnik->cechaToString(przeciwnik->najwyzszaCecha(1)) );
+	playerMsg(L"G³ówne cechy przeciwnika to: |G|0|W oraz |G|1|W.",
+		przeciwnik->cechaTowstring(przeciwnik->najwyzszaCecha(0)), 
+		przeciwnik->cechaTowstring(przeciwnik->najwyzszaCecha(1)) );
 }

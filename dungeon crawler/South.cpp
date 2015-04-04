@@ -6,7 +6,7 @@ extern ListaKomend *listaKomend;
 South::South(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="south";
+	nazwa = L"south";
 }
 
 
@@ -22,10 +22,10 @@ void South::execute(ParseDTO argumenty)
 
 void South::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   south(s)\n\n"
-				"U¿ycia:\n\n"
-				"   south - przemieszcza gracza na po³udnie.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   north, west, east, up, down");
+	playerMsg(L"Synonimy:\n"
+			 L"   south(s)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   south - przemieszcza gracza na po³udnie.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   north, west, east, up, down");
 }

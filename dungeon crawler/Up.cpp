@@ -7,7 +7,7 @@ extern ListaKomend *listaKomend;
 Up::Up(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="up";
+	nazwa = L"up";
 }
 
 
@@ -22,10 +22,10 @@ void Up::execute(ParseDTO argumenty)
 
 void Up::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   up(u)\n\n"
-				"U¿ycia:\n\n"
-				"   up - przemieszcza gracza w górê pod drabinie, schodach itp.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   north, south, west, east, down");
+	playerMsg(L"Synonimy:\n"
+			 L"   up(u)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   up - przemieszcza gracza w górê pod drabinie, schodach itp.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   north, south, west, east, down");
 }

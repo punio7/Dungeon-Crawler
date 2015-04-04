@@ -11,7 +11,7 @@ extern ListaKomend *listaKomend;
 Examine::Examine(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="examine";
+	nazwa = L"examine";
 }
 
 
@@ -31,7 +31,7 @@ void Examine::execute(ParseDTO argumenty)
 	Gracz &gracz= gra->gracz;
 	if (aktualny = (gracz.polozenie->postacie)->znajdz(argumenty.argument1, argumenty.ktory1) )
 	{
-		playerMsg("|^|0 wygl¹da ca³kiem normalnie.", aktualny->imie);
+		playerMsg(L"|^|0 wygl¹da ca³kiem normalnie.", aktualny->imie);
 		dynamic_cast<Score*>(listaKomend->komendy[COMM_SCORE])->wypiszStaty(aktualny);
 		playerMsg(aktualny->wypiszEQ());
 	}
@@ -52,7 +52,7 @@ void Examine::execute(ParseDTO argumenty)
 			}
 			else
 			{
-				playerMsg("Tutaj nie ma czegoœ takiego jak |0.", argumenty.argument1);
+				playerMsg(L"Tutaj nie ma czegoœ takiego jak |0.", argumenty.argument1);
 			}
 		}
 	}
@@ -60,12 +60,12 @@ void Examine::execute(ParseDTO argumenty)
 
 void Examine::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   examine(ex)\n\n"
-				"U¿ycia:\n\n"
-				"   examine - dzia³a tak samo jak scan.\n\n"
-				"   examine <nazwa_przedmiotu> - wyœwietla opis wskazanego przedmiotu, oraz jego zawartoœæ w przypadku pojemników. Przedmiot mo¿e siê znajdowaæ w inwentarzu gracza lub w jego obecnej lokacji.\n\n"
-				"   examine <nazwa_postaci> - wyœwietla opis oraz wyposa¿enie wskazanej postaci. Postaæ musi znajdowaæ siê w lokacji gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   look, scan, take, put");
+	playerMsg(L"Synonimy:\n"
+			 L"   examine(ex)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   examine - dzia³a tak samo jak scan.\n\n"
+			 L"   examine <nazwa_przedmiotu> - wyœwietla opis wskazanego przedmiotu, oraz jego zawartoœæ w przypadku pojemników. Przedmiot mo¿e siê znajdowaæ w inwentarzu gracza lub w jego obecnej lokacji.\n\n"
+			 L"   examine <nazwa_postaci> - wyœwietla opis oraz wyposa¿enie wskazanej postaci. Postaæ musi znajdowaæ siê w lokacji gracza.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   look, scan, take, put");
 }

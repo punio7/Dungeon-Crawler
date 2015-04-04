@@ -19,8 +19,8 @@ class Lokacja
 public:
 	Lokacja();
 
-	string nazwa;
-	string opis;
+	wstring nazwa;
+	wstring opis;
 	ItemList* przedmioty;
 	CharList* postacie;
 	int zamek[6];		//0- drzwi otwarte; 1- zamkniete, x>1; zakluczune kluczem nr. x; -1- przejœcie ukryte

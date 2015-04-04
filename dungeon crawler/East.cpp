@@ -6,7 +6,7 @@ extern ListaKomend *listaKomend;
 East::East(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="east";
+	nazwa = L"east";
 }
 
 
@@ -21,10 +21,10 @@ void East::execute(ParseDTO argumenty)
 
 void East::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   east(e)\n\n"
-				"U¿ycia:\n\n"
-				"   east - przemieszcza gracza na wschód.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   north, south, west, up, down");
+	playerMsg(L"Synonimy:\n"
+			 L"   east(e)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   east - przemieszcza gracza na wschód.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   north, south, west, up, down");
 }

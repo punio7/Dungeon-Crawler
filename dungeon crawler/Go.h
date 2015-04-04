@@ -2,6 +2,8 @@
 #include "komenda.h"
 #include "kierunkiSwiata.h"
 
+class Lokacja;
+
 class Go :
 	public Komenda
 {
@@ -12,5 +14,6 @@ public:
 	void manual();
 
 	void GoKierunek(KierunekSwiata kierunek);
+	void ZmianaPolozenia(Lokacja* nowaLokacja);
 };
 

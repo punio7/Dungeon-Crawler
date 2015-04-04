@@ -11,40 +11,40 @@ StatusList::~StatusList()
 
 }
 
-string StatusList::wypisz()
+wstring StatusList::wypisz()
 {
-	string temp;
-	temp += "Obecnie znajdujesz siê pod wp³ywem:\n\n";
+	wstringstream temp;
+	temp << L"Obecnie znajdujesz siê pod wp³ywem:\n\n";
 	if (empty())
 	{
-		temp += "W sumie to czujesz siê ca³kiem normalnie.";
-		return temp;
+		temp << L"W sumie to czujesz siê ca³kiem normalnie.";
+		return temp.str();
 	}
-	
-	for (iterator aktualny = begin();aktualny != end();aktualny++)
+
+	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if ((*aktualny)->isPositive()) 
-			temp+="|G";
-		else 
-			temp+="|R";
-		temp += (*aktualny)->nazwa;
-		temp += "|W - ";
-		temp += (*aktualny)->opis;
+		if ((*aktualny)->isPositive())
+			temp << L"|G";
+		else
+			temp << L"|R";
+		temp << (*aktualny)->nazwa;
+		temp << L"|W - ";
+		temp << (*aktualny)->opis;
 		if (aktualny != end()--)
-			temp += '\n';
+			temp << endl;
 	}
-	return temp;
+	return temp.str();
 }
 
-Status* StatusList::znajdz(string szukany, int ktory)
+Status* StatusList::znajdz(wstring szukany, int ktory)
 {
 	if (empty()) return NULL;
 
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
-		if (((*aktualny)->nazwa.find(szukany))!=-1) 
+		if (((*aktualny)->nazwa.find(szukany)) != -1)
 		{
-			if (ktory<2) return *aktualny;
+			if (ktory < 2) return *aktualny;
 			else ktory--;
 		}
 	}
@@ -58,7 +58,7 @@ Status* StatusList::znajdz(int ktory)
 		return NULL;
 
 	iterator aktualny = begin();
-	for (int i=0; i < ktory; i++)
+	for (int i = 0; i < ktory; i++)
 	{
 		aktualny++;
 		if (aktualny == end())
@@ -80,10 +80,10 @@ bool StatusList::pusta()
 
 Status::Status()
 {
-	nazwa = "";
-	opis = "";
-	enterMsg = "";
-	exitMsg = "";
+	nazwa = L"";
+	opis = L"";
+	enterMsg = L"";
+	exitMsg = L"";
 	czas = 0;
 }
 

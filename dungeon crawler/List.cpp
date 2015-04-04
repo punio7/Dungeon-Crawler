@@ -7,7 +7,7 @@ extern ListaKomend *listaKomend;
 List::List(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="list";
+	nazwa = L"list";
 }
 
 
@@ -27,11 +27,11 @@ void List::execute(ParseDTO argumenty)
 
 void List::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   list(li)\n\n"
-				"U¿ycia:\n\n"
-				"   list - wyœwietla asortyment oraz cennik pierwszego kupca w lokacji gracza.\n\n"
-				"   list <nazwa_postaci> - to co wy¿ej tylko sprecyzowane którego kupca dotyczy.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   buy, sell, offer");
+	playerMsg(L"Synonimy:\n"
+			 L"   list(li)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   list - wyœwietla asortyment oraz cennik pierwszego kupca w lokacji gracza.\n\n"
+			 L"   list <nazwa_postaci> - to co wy¿ej tylko sprecyzowane którego kupca dotyczy.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   buy, sell, offer");
 }

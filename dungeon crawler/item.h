@@ -78,8 +78,8 @@ class Item
 public:
 	Item();
 
-	virtual string look();
-	virtual string examine();
+	virtual wstring look();
+	virtual wstring examine();
 	virtual void ustaw_staty(int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw);
 	virtual void ustaw_wymagania(int sila, int zre, int zwi, int wyt, int zyw);
 	virtual Staty czytaj_staty();
@@ -106,7 +106,7 @@ public:
 	//id klucza do zamka, 0-otwarte
 	virtual int numerZamka();
 	virtual ItemList* getItemList();
-	virtual Item* lista_znajdz(string szukany, int ktory);
+	virtual Item* lista_znajdz(wstring szukany, int ktory);
 	virtual Item* lista_znajdz(int ktory);
 	virtual bool lista_pusta();
 
@@ -125,10 +125,10 @@ public:
 	virtual bool drink(Postac *postac);
 
 	int id;
-	string nazwa;	//identyfikacyjna nazwa przedmiotu napisana z ma³ej litery
+	wstring nazwa;	//identyfikacyjna nazwa przedmiotu napisana z ma³ej litery
 	RodzajRzeczownika::RodzajRzeczownikaEnum rodzaj;
-	string opis;	//d³u¿szy opis wyœwietlany przy komendzie look
-	string idle;	//krótki opis przedmiotu znajdujacego sie w pomeiszczeniu np. le¿y na ziemi
+	wstring opis;	//d³u¿szy opis wyœwietlany przy komendzie look
+	wstring idle;	//krótki opis przedmiotu znajdujacego sie w pomeiszczeniu np. le¿y na ziemi
 	ItemTyp typ;
 
 	int wartosc;	//wartoœæ przedmiotu w z³ocie
@@ -139,8 +139,8 @@ class ItemList : public list<Item*>
 public:
 	ItemList();
 	~ItemList();
-	string wypisz(ItemList_wypisz_tryb tryb=WYPISZ_LOOK);
-	void wypisz(string& cel, ItemList_wypisz_tryb tryb=WYPISZ_EXAMINE);		//wypisuje liste przedmiotow do stringu podanego w argumencie
+	wstring wypisz(ItemList_wypisz_tryb tryb=WYPISZ_LOOK);
+	void wypisz(wstring& cel, ItemList_wypisz_tryb tryb=WYPISZ_EXAMINE);		//wypisuje liste przedmiotow do wstringu podanego w argumencie
 	void dodaj(Item* przedmiot);
 	//przenosi Itemy z podanej listy do obecnej listy
 	void przenies(ItemList* lista);
@@ -152,9 +152,9 @@ public:
 	bool pusta();					
 	//zwraca wskaŸnik na najdalszy element listy zawieraj¹cy dany przedmiot
 	list<Item*>::iterator znajdzOstatni(int id);
-	list<Item*>::iterator znajdzOstatni(string nazwa);
+	list<Item*>::iterator znajdzOstatni(wstring nazwa);
 	//zwraca wskaŸnik na przedmiot z listy o zadanej nazwie, NULL jezeli nie ma takiego
-	Item* znajdz(string szukany, int ktory=1);
+	Item* znajdz(wstring szukany, int ktory=1);
 	//zwraca przedmiot bêd¹cy na ktory-m miejscu na liscie zaczynajac od 1
 	Item* znajdz(int ktory);
 	//zwraca wskaŸnik  na przedmiot o zadanym id z listy, NULL je¿eli nie ma takiego

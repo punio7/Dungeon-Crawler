@@ -4,9 +4,9 @@
 #include "Lokacja.h"
 
 Look::Look(Gra *gra) :
-	Komenda(gra)
+Komenda(gra)
 {
-	nazwa="look";
+	nazwa = L"look";
 }
 
 
@@ -23,24 +23,24 @@ void Look::execute(ParseDTO argumenty)
 	else
 	{
 		Postac* postac;		//podano nazwe czegos, szukamy jej w liscie postaci
-		if (postac = (gracz.polozenie->postacie)->znajdz(argumenty.argument1, argumenty.ktory1) )
+		if (postac = (gracz.polozenie->postacie)->znajdz(argumenty.argument1, argumenty.ktory1))
 			LookPostac(postac);
 		else
 		{
 			Item* przedmiot;
-			if (przedmiot=gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))	//to nie byla postac szukamy przedmiotu w plecaku
+			if (przedmiot = gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))	//to nie byla postac szukamy przedmiotu w plecaku
 			{
 				LookPrzedmiot(przedmiot);
 			}
 			else
 			{
-				if (przedmiot=gracz.polozenie->przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))	//nie ma przedmiotu w plecaku, szukamy wokol nas
+				if (przedmiot = gracz.polozenie->przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))	//nie ma przedmiotu w plecaku, szukamy wokol nas
 				{
 					LookPrzedmiot(przedmiot);
 				}
 				else
 				{
-					playerMsg("Tutaj nie ma czegoœ takiego jak |0.", argumenty.argument1);
+					playerMsg(L"Tutaj nie ma czegoœ takiego jak |0.", argumenty.argument1);
 				}
 			}
 		}
@@ -49,14 +49,14 @@ void Look::execute(ParseDTO argumenty)
 
 void Look::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   look(l)\n\n"
-				"U¿ycia:\n\n"
-				"   look - wyœwietla opis lokacji w której obecnie znajduje siê gracz.\n\n"
-				"   look <nazwa_przedmiotu> - wyœwietla opis wskazanego przedmiotu. Przedmiot mo¿e siê znajdowaæ w inwentarzu gracza lub w jego obecnej lokacji.\n\n"
-				"   look <nazwa_postaci> - wyœwietla opis wskazanej postaci. Postaæ musi siê znajdowaæ w lokacji gracza.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   examine, scan");
+	playerMsg(L"Synonimy:\n"
+		L"   look(l)\n\n"
+		L"U¿ycia:\n\n"
+		L"   look - wyœwietla opis lokacji w której obecnie znajduje siê gracz.\n\n"
+		L"   look <nazwa_przedmiotu> - wyœwietla opis wskazanego przedmiotu. Przedmiot mo¿e siê znajdowaæ w inwentarzu gracza lub w jego obecnej lokacji.\n\n"
+		L"   look <nazwa_postaci> - wyœwietla opis wskazanej postaci. Postaæ musi siê znajdowaæ w lokacji gracza.\n\n"
+		L"SprawdŸ równie¿:\n"
+		L"   examine, scan");
 }
 
 void Look::LookMiejsce(Lokacja *polozenie)
@@ -67,35 +67,35 @@ void Look::LookMiejsce(Lokacja *polozenie)
 void Look::LookMiejsceOswietlone(Lokacja *polozenie)
 {
 	playerMsg(polozenie->nazwa);
-	string temp;	//bedzie zawieral spis wszystkich wyjsc
+	wstring temp;	//bedzie zawieral spis wszystkich wyjsc
 
-	if((polozenie->zamek)[NORTH]>0) temp+="*";		//jezeli wyjscie jest zamkniete to na liscie wyjsc bedzie gwiazdka
-	if((polozenie->wyjscie)[NORTH] && (polozenie->zamek)[NORTH]!=-1) temp+="pó³noc ";	//je¿eli przejœcie do nik¹d nie prowadzi, b¹dŸ jest ukryte to nie bedzie go na liscie lokacji
+	if ((polozenie->zamek)[NORTH] > 0) temp += L"*";		//jezeli wyjscie jest zamkniete to na liscie wyjsc bedzie gwiazdka
+	if ((polozenie->wyjscie)[NORTH] && (polozenie->zamek)[NORTH] != -1) temp += L"pó³noc ";	//je¿eli przejœcie do nik¹d nie prowadzi, b¹dŸ jest ukryte to nie bedzie go na liscie lokacji
 
-	if((polozenie->zamek)[SOUTH]>0) temp+="*";
-	if((polozenie->wyjscie)[SOUTH] && (polozenie->zamek)[SOUTH]!=-1) temp+="po³udnie ";
+	if ((polozenie->zamek)[SOUTH] > 0) temp += L"*";
+	if ((polozenie->wyjscie)[SOUTH] && (polozenie->zamek)[SOUTH] != -1) temp += L"po³udnie ";
 
-	if((polozenie->zamek)[WEST]>0) temp+="*";
-	if((polozenie->wyjscie)[WEST] && (polozenie->zamek)[WEST]!=-1) temp+="zachód ";
+	if ((polozenie->zamek)[WEST] > 0) temp += L"*";
+	if ((polozenie->wyjscie)[WEST] && (polozenie->zamek)[WEST] != -1) temp += L"zachód ";
 
-	if((polozenie->zamek)[EAST]>0) temp+="*";
-	if((polozenie->wyjscie)[EAST] && (polozenie->zamek)[EAST]!=-1) temp+="wschód ";
+	if ((polozenie->zamek)[EAST] > 0) temp += L"*";
+	if ((polozenie->wyjscie)[EAST] && (polozenie->zamek)[EAST] != -1) temp += L"wschód ";
 
-	if((polozenie->zamek)[UP]>0) temp+="*";
-	if((polozenie->wyjscie)[UP] && (polozenie->zamek)[UP]!=-1) temp+="góra ";
+	if ((polozenie->zamek)[UP] > 0) temp += L"*";
+	if ((polozenie->wyjscie)[UP] && (polozenie->zamek)[UP] != -1) temp += L"góra ";
 
-	if((polozenie->zamek)[DOWN]>0) temp+="*";
-	if((polozenie->wyjscie)[DOWN] && (polozenie->zamek)[DOWN]!=-1) temp+="dó³ ";
+	if ((polozenie->zamek)[DOWN] > 0) temp += L"*";
+	if ((polozenie->wyjscie)[DOWN] && (polozenie->zamek)[DOWN] != -1) temp += L"dó³ ";
 
-	playerMsg("|gWyjscia: [ |0]|W\n", temp);
+	playerMsg(L"|gWyjscia: [ |0]|W\n", temp);
 	playerMsg(polozenie->opis);
-	if ( !(polozenie->postacie)->pusta() ) 
+	if (!(polozenie->postacie)->pusta())
 	{
-		playerMsg("\n|0", (polozenie->postacie)->wypisz());
+		playerMsg(L"\n|0", (polozenie->postacie)->wypisz());
 	}
-	if ( !(polozenie->przedmioty)->pusta() ) 
+	if (!(polozenie->przedmioty)->pusta())
 	{
-		playerMsg("\n|0", polozenie->przedmioty->wypisz());
+		playerMsg(L"\n|0", polozenie->przedmioty->wypisz());
 	}
 }
 
@@ -112,5 +112,5 @@ void Look::LookPrzedmiot(Item *cel)
 void Look::LookPostac(Postac *cel)
 {
 	playerMsg(cel->opis);
-	playerMsg("\n|0 jest |1.", cel->imie, cel->poziomZdrowia(1));
+	playerMsg(L"\n|0 jest |1.", cel->imie, cel->poziomZdrowia(1));
 }

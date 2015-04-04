@@ -3,10 +3,10 @@
 #include "item.h"
 #include "Lokacja.h"
 
-Drop::Drop(Gra *gra):
-	Komenda(gra)
+Drop::Drop(Gra *gra) :
+Komenda(gra)
 {
-	nazwa="drop";
+	nazwa = L"drop";
 }
 
 
@@ -16,19 +16,19 @@ Drop::~Drop(void)
 
 void Drop::execute(ParseDTO argumenty)
 {
-	if (argumenty.argument1.empty()) 
+	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz wyrzuciæ?");
+		playerMsg(L"Co chcesz wyrzuciæ?");
 		return;
 	}
-	
+
 	Gracz &gracz = gra->gracz;
 
-	if (argumenty.argument1=="all")
+	if (argumenty.argument1 == L"all")
 	{
 		if (gracz.przedmioty->pusta())
 		{
-			playerMsg("Przecie¿ nic nie masz biedaku.");
+			playerMsg(L"Przecie¿ nic nie masz biedaku.");
 			return;
 		}
 		while (!gracz.przedmioty->pusta())
@@ -39,31 +39,31 @@ void Drop::execute(ParseDTO argumenty)
 	else
 	{
 		Item* aktualny;
-		if (aktualny=gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))
+		if (aktualny = gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))
 		{
 			drop(aktualny);
 		}
 		else
 		{
-			playerMsg("Nie masz czegoœ takiego jak |0.", argumenty.argument1);
+			playerMsg(L"Nie masz czegoœ takiego jak |0.", argumenty.argument1);
 		}
 	}
-	
+
 }
 
 void Drop::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   drop(dro)\n\n"
-				"U¿ycia:\n\n"
-				"   drop <nazwa_przedmiotu> - upuszcza wskazany przedmiot na ziemiê.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   take");
+	playerMsg(L"Synonimy:\n"
+		L"   drop(dro)\n\n"
+		L"U¿ycia:\n\n"
+		L"   drop <nazwa_przedmiotu> - upuszcza wskazany przedmiot na ziemiê.\n\n"
+		L"SprawdŸ równie¿:\n"
+		L"   take");
 }
 
 void Drop::drop(Item *przedmiot)
 {
 	gra->gracz.przedmioty->usun(przedmiot);
 	gra->gracz.polozenie->przedmioty->dodaj(przedmiot);
-	playerMsg("Upuszczasz |0.", przedmiot->nazwa);
+	playerMsg(L"Upuszczasz |0.", przedmiot->nazwa);
 }

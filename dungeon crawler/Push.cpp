@@ -6,7 +6,7 @@
 Push::Push(Gra *gra):
 	Komenda(gra)
 {
-	nazwa="push";
+	nazwa = L"push";
 }
 
 
@@ -18,7 +18,7 @@ void Push::execute(ParseDTO argumenty)
 {
 	if (argumenty.argument1.empty())
 	{
-		playerMsg("Co chcesz nacisn¹æ b¹dŸ pchn¹æ?");
+		playerMsg(L"Co chcesz nacisn¹æ b¹dŸ pchn¹æ?");
 		return;
 	}
 
@@ -26,13 +26,13 @@ void Push::execute(ParseDTO argumenty)
 
 	if (!dzwignia)
 	{
-		playerMsg("Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument1);
+		playerMsg(L"Tutaj nie ma ¿adnego ¿adnego |0.", argumenty.argument1);
 		return;
 	}
 
 	if (!dzwignia->dzwigniaUzycie(DZWIGNIA_PUSH))
 	{
-		playerMsg("Tego nie da siê ani nacisn¹æ ani pchn¹æ.");
+		playerMsg(L"Tego nie da siê ani nacisn¹æ ani pchn¹æ.");
 		return;
 	}
 
@@ -41,10 +41,10 @@ void Push::execute(ParseDTO argumenty)
 
 void Push::manual()
 {
-	playerMsg("Synonimy:\n"
-				"   push(pus)\n\n"
-				"U¿ycia:\n\n"
-				"   push <nazwa_przedmiotu> - gracz podejmie próbê naciœniêcia albo pchniêcia wskazanego przedmiotu.\n\n"
-				"SprawdŸ równie¿:\n"
-				"   pull, turn");
+	playerMsg(L"Synonimy:\n"
+			 L"   push(pus)\n\n"
+			 L"U¿ycia:\n\n"
+			 L"   push <nazwa_przedmiotu> - gracz podejmie próbê naciœniêcia albo pchniêcia wskazanego przedmiotu.\n\n"
+			 L"SprawdŸ równie¿:\n"
+			 L"   pull, turn");
 }

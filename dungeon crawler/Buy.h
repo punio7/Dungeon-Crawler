@@ -14,6 +14,6 @@ public:
 	void manual();
 
 	//szuka kupca o wskazanej nazwie, jezeli nic nie podano szuka dowolnego, sprawdza czy znaleziony jest kupcem, sprawdza czy cokolwiek znaleziono, wypisuje komunikaty
-	Postac *znajdzKupca(string kupiec, int ktory);
+	Postac *znajdzKupca(wstring kupiec, int ktory);
 };
 

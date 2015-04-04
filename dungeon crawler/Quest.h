@@ -22,9 +22,9 @@ public:
 
 
 	int id;				//id==0 -faza poczatkowa, quest nie zosta³ jeszcze zaczety
-	string cel;			//cel questa jaki widzi gracz w dzienniku
+	wstring cel;			//cel questa jaki widzi gracz w dzienniku
 						//cel ma dotyczyc wymagan nastepnej fazy, niezaleznie od tego jakie sa jej rozgalezienia
-	string notatki;		//notatki, które zostan¹ dodane do dziennika po przejœciu do tej fazy
+	wstring notatki;		//notatki, które zostan¹ dodane do dziennika po przejœciu do tej fazy
 	int zdarzenieGlobalne;	//numer zdarzenia globalnego uruchomianego, po przejsciu do tej fazy
 
 						//wymogi jakie musza byc spelnione aby przejsc do tej fazy
@@ -42,18 +42,18 @@ public:
 	Quest(void);
 	~Quest(void);
 	void inicjujFazy(int iloscFaz);		//tworzy liste faz
-	QuestFaza *dodajFaze(int id, string cel, string notatki);
+	QuestFaza *dodajFaze(int id, wstring cel, wstring notatki);
 	QuestFaza* znajdzFaze(int id);		//zwraca wsk na waze o danym id
 
-	string nazwa;		//nazwa questa, jezeli brak to quest jest ukryty (nie widac go w dzienniku)
-	string przebieg;	//ciag typu "abcdaaabc" jest to zapis sciezek jakie zostaly wybrane
+	wstring nazwa;		//nazwa questa, jezeli brak to quest jest ukryty (nie widac go w dzienniku)
+	wstring przebieg;	//ciag typu "abcdaaabc" jest to zapis sciezek jakie zostaly wybrane
 	QuestFaza *faza;	//obecna faza questa, NULL- quest ukonczony
 	vector<QuestFaza*> listaFaz;	//lista wszystkich faz numerycznie
 
 	bool aktywny();				//czy quest ma sie znalezc w dzienniku?
 	bool zakonczony();			//czy quest ma widniec jako zakonczony?
 	int obecnaFaza();			//zwraca id obecnej fazy, 0-quest nie zaczety, -1= quest skonczony
-	string notatki();
+	wstring notatki();
 	bool sprawdzWymagania();		//sprawdza wymagania przejscia do nast fazy i zmienia ja jezeli spelnione i zwraca true
 	void spelnijRozmowa(int faza);		//spelnia wymaganie danej fazy oraz sprawdzWymagania()
 	void spelnijSpecjalny(int faza);

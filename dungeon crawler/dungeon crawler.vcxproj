@@ -166,6 +166,7 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClCompile Include="Turn.cpp" />
     <ClCompile Include="Unlock.cpp" />
     <ClCompile Include="Up.cpp" />
+    <ClCompile Include="UtfHelpercpp.cpp" />
     <ClCompile Include="Walka.cpp" />
     <ClCompile Include="wczytajKlasy.cpp" />
     <ClCompile Include="wczytajOpisyWalki.cpp" />
@@ -247,6 +248,7 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClInclude Include="Unlock.h" />
     <ClInclude Include="Up.h" />
     <ClInclude Include="Upadek.h" />
+    <ClInclude Include="UtfHelper.h" />
     <ClInclude Include="Wear.h" />
     <ClInclude Include="West.h" />
     <ClInclude Include="Wield.h" />
@@ -286,16 +288,6 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <None Include="res\midi\bitwa_podziemia_Rod Lazo.mid" />
     <None Include="res\midi\calm.mid" />
     <None Include="res\midi\explore.mid" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\log4cpp\msvc10\log4cppLIB\log4cppLIB.vcxproj">
-      <Project>{afa856a0-2388-4673-9277-ce4061709569}</Project>
-      <Private>false</Private>
-      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
-      <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

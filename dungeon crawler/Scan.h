@@ -9,7 +9,7 @@ public:
 
 	void execute(ParseDTO argumenty);
 	void manual();
-	string celownikKierunkuSwiata(KierunekSwiata kierunek);
+	wstring celownikKierunkuSwiata(KierunekSwiata kierunek);
 	void scan();
 };
 

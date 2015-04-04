@@ -347,6 +347,9 @@
     <ClCompile Include="Klasa.cpp">
       <Filter>Pliki źródłowe\modele</Filter>
     </ClCompile>
+    <ClCompile Include="UtfHelpercpp.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="item.h">
@@ -630,6 +633,9 @@
     </ClInclude>
     <ClInclude Include="Rasa.h">
       <Filter>Pliki nagłówkowe\modele</Filter>
+    </ClInclude>
+    <ClInclude Include="UtfHelper.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

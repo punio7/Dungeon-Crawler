@@ -8,7 +8,7 @@ enum Cecha;
 class zwiekszenieCechy: public Status
 {
 public:
-	zwiekszenieCechy(string nazwa, string opis, string enterMsg, string exitMsg, Cecha cecha, int moc, int czas);
+	zwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas);
 
 	void aktywujPasyw(Postac *postac);
 	void aktywujExplor(Gracz *gracz, int time);

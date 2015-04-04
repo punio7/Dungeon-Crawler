@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <math.h>
+#include <list>
 #include "ItemSlot.h"
 #include "Rasa.h"
 #include "Klasa.h"
@@ -43,8 +44,8 @@ public:
 	void dodaj_staty(Staty staty);			//dodaje statystyki przedmiotu, automatycznie zmniejsza je ejzeli wymagania przemdiotu nie sa spelnione
 	void odejmij_staty(Staty staty);		//nic nie robi
 	Cecha najwyzszaCecha(int n);			//zwraca n-ta najwyzsza ceche calkowita 0-najwyzsza, 1- druga najwyzsza
-	string cechaToString(Cecha cecha);		//zwraca string z danej cechy
-	ItemSlot znajdzEQ(string cel, int ktory);	//znajduje item w eq postaci i zwraca jego slot
+	wstring cechaTowstring(Cecha cecha);		//zwraca wstring z danej cechy
+	ItemSlot znajdzEQ(wstring cel, int ktory);	//znajduje item w eq postaci i zwraca jego slot
 	virtual Rozmowa* wskRozmowa();
 	virtual Kwestia* wskObecnaKwestia();
 	void aktywujStatusyPasywne();			//dodaje premie pasywne statusow do statystyk postaci
@@ -58,22 +59,22 @@ public:
 	virtual bool jestKupcem();			//true, je¿eli postaæ ma coœ na sprzedaz
 	virtual bool jestGraczem();
 
-	virtual string list();				//wypisuje wszystkie przedmioty na sprzedaz
+	virtual wstring list();				//wypisuje wszystkie przedmioty na sprzedaz
 	virtual void setSklep(Item *sklep);	//ustawia magazyn sklepowy
 	virtual void sklepSprzedaj(Item *Item, int cena);	//usuwa item ze sklepu i dodaje zloto
 	virtual void sklepKup(Item *Item, int cena);		//dodaje item do sklepu i odejmuje zloto
-	virtual Item* sklepZnajdz(string cel, int ktory);	//znajduje w sklepie item
+	virtual Item* sklepZnajdz(wstring cel, int ktory);	//znajduje w sklepie item
 
 	virtual int trener(Cecha atrybut);
 	virtual void ustawRozmowny(bool cel);	//dziala tylko dla klasy PostacNpc
-	string poziomZdrowia(int tryb=0);				//zwraca poziom zdrowia postaci, tryb 0-kó³ka 1-opis
-	void look();		//wypisuje na cout look postaci
-	string wypiszEQ();	//wypisuje na cout zawartoœæ eq
+	wstring poziomZdrowia(int tryb=0);				//zwraca poziom zdrowia postaci, tryb 0-kó³ka 1-opis
+	void look();		//wypisuje na wcout look postaci
+	wstring wypiszEQ();	//wypisuje na wcout zawartoœæ eq
 
 	int id;
-	string imie;
-	string opis;
-	string idle;
+	wstring imie;
+	wstring opis;
+	wstring idle;
 	bool agresywny;					//gdy true, postac atakuje gracza przy spotkaniu
 	int quest, questFaza;			//zabicie tej postaci jest wymogiem podanego questu i podanej fazy
 	int poziom;
@@ -105,24 +106,20 @@ enum CharListWypiszTryb
 	CHARLIST_WYPISZ_SCAN
 };
 
-class CharList
+class CharList : public list<Postac*>
 {
 public:
 	CharList();
 	~CharList();
 
-	string wypisz(CharListWypiszTryb tryb=CHARLIST_WYPISZ_LOOK);
+	wstring wypisz(CharListWypiszTryb tryb=CHARLIST_WYPISZ_LOOK);
 
 	void dodaj(Postac* przedmiot);
 	void usun(Postac* przedmiot);
-	Postac* znajdz(string szukany, int ktory=1);
+	Postac* znajdz(wstring szukany, int ktory=1);
 	Postac* znajdzAgresywny(int ktory=1);		//zwraca wskaŸnik na pierwsza agresywna postac na liscie
 	Postac* znajdzRozmowny(int ktory=1);		//zwraca wskaŸnik na pierwsza rozmowna postac na liscie
 	Postac* znajdzTrener(int ktory=1);			//zwraca wskaŸnik na pierwszego trenera na liscie
 	Postac* znajdzKupiec(int ktory=1);			//zwraca wskaŸnik na pierwszego kupca na liœcie
-	CharList* ostatni();			//zwraca wskaŸnik na ostatni element listy, NULL je¿eli lista pusta
 	bool pusta();
-
-	Postac* element;
-	CharList* nast;
 };

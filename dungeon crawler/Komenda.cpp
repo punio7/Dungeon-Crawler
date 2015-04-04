@@ -14,11 +14,11 @@ Komenda::~Komenda(void)
 
 void Komenda::execute(ParseDTO argumenty)
 {
-	playerMsg("Chyba ty.");
+	playerMsg(L"Chyba ty.");
 }
 
 
 void Komenda::manual()
 {
-	playerMsg("Brak pomocy na dany temat.");
+	playerMsg(L"Brak pomocy na dany temat.");
 }

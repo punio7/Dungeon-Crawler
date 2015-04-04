@@ -3,7 +3,7 @@
 #include "status.h"
 #include "color.h"
 
-miksturaStatusu::miksturaStatusu(int id, string nazwa, string opis, string iddle, int wartosc, Status *status)
+miksturaStatusu::miksturaStatusu(int id, wstring nazwa, wstring opis, wstring iddle, int wartosc, Status *status)
 {
 	this->id = id;
 	this->typ = ITEM_MIKSTURA;
@@ -18,7 +18,7 @@ bool miksturaStatusu::drink(Postac *postac)
 {
 	postac->statusy->dodaj(status);
 	color(CYAN);
-	cout<<status->enterMsg<<endl;
+	wcout<<status->enterMsg<<endl;
 	color(HWHITE);
 	return true;
 }
