@@ -1,6 +1,7 @@
 #include "gra.h"
 #include "Quest.h"
 #include "ListaQuestow.h"
+#include "ListaZdarzenGlobalnych.h"
 
 void Gra::wczytajQuesty()
 {
@@ -52,8 +53,8 @@ void Gra::wczytajQuesty()
 	temp->dodajFaze(1,
 		L"Zbadaj gobliny zamieszkuj¹ce podziemia",
 		L"Nieznajomy powiedzia³ ci, ¿e wódz goblinów ma klucz.")
-		->ustawWymaganieSpecjalny()
-		->ustawPrzejscia(3, 4, 5);
+		->ustawWymaganieRozmowa()
+		->ustawPrzejscia(2, 3, 4, 5);
 	temp->dodajFaze(2,
 		L"Zbadaj gobliny zamieszkuj¹ce podziemia",
 		L"W podziemiach spotka³eœ gobliny.")
@@ -68,10 +69,11 @@ void Gra::wczytajQuesty()
 		L"",
 		L"Wkurzy³eœ gobliny, zapomnij o pokojowym rozwi¹zaniu.")
 		->ustawWymaganiePotwor(1)
-		->ustawPrzejscia(-1);
+		->ustawPrzejscia(-1)
+		->ustawZdarzenieGlobalne(ListaZdarzenGlobalnych::AgresjaGoblinow);
 	temp->dodajFaze(5,
 		L"",
-		L"Wódz goblinów zechia³ z tob¹ rozmawiaæ, postanowi³eœ go wys³uchaæ.")
+		L"Wódz goblinów zechcia³ z tob¹ rozmawiaæ, postanowi³eœ go wys³uchaæ.")
 		->ustawWymaganieRozmowa()
 		->ustawPrzejscia(6);
 	temp->dodajFaze(6,

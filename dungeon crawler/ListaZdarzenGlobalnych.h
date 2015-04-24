@@ -4,6 +4,7 @@ namespace ListaZdarzenGlobalnych
 {
 	enum ListaZdarzenGlobalnyhEnum
 	{
+		//Otwiera ukryte przejscie po nacisnieciu butelki w piwniczce
 		ButelkaWPiwniczce = 1,
 		TekstWKorytarzu1,
 		TekstWKorytarzu2,

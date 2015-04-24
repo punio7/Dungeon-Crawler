@@ -74,6 +74,20 @@ Postac* CharList::znajdz(wstring szukany, int ktory)
 	return NULL;	//jeżeli przeszukano całą listę i nic nie znaleziono
 }
 
+Postac* CharList::znajdz(int id, int ktory)
+{
+	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
+	{
+		if ((*aktualny)->id == id)
+		{
+			if (ktory < 2) return *aktualny;
+			else ktory--;
+		}
+	}
+
+	return NULL;
+}
+
 Postac* CharList::znajdzAgresywny(int ktory)
 {
 	if (empty()) return NULL;	//jeżeli lista pusta to i tak nic nie znajdziemy

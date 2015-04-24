@@ -17,6 +17,7 @@
 
 using namespace std;
 
+extern Gra* instanceOfGra;
 
 Gra::Gra(int argc, const char* argv[])
 {

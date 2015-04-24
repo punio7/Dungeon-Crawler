@@ -1,4 +1,5 @@
 ﻿#include "gracz.h"
+#include "Walka.h"
 #include "Lokacja.h"
 #include "item_types.h"
 #include "color.h"
@@ -185,14 +186,17 @@ void Gracz::ulecz(int ile)
 
 void Gracz::dodajEXP(int ile)
 {
+	if (DEBUG_WALKA)
+		playerMsg(L"|YZdobywasz |0 pkt. doświadczenia.", intToStr(ile));
 	exp += ile;
-	if (exp >= expDoNastPoziomu()) awansOPoziom();
+	if (exp >= expDoNastPoziomu())
+		awansOPoziom();
 }
 
 void Gracz::awansOPoziom()
 {
 	color(HYELLOW);
-	wcout << "Awansowałeś o poziom!" << endl;
+	playerMsg(L"Awansowałeś o poziom!");
 	color(HWHITE);
 
 	exp -= expDoNastPoziomu();

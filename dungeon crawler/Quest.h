@@ -16,9 +16,11 @@ public:
 	QuestFaza* ustawWymaganieSpecjalny();
 	QuestFaza* ustawWymaganiePotwor(int ilosc);
 	QuestFaza* ustawPrzejscia(int a, int b = -1, int c = -1, int d = -1);
+	QuestFaza* ustawZdarzenieGlobalne(int numer);
 	void spelnijWymaganieRozmowa();
 	void spelnijWymaganieSpecjalny();
 	void spelnijWymaganiePotwor();
+
 
 
 	int id;				//id==0 -faza poczatkowa, quest nie zosta³ jeszcze zaczety

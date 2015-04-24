@@ -41,6 +41,13 @@ QuestFaza* QuestFaza::ustawPrzejscia(int a, int b, int c, int d)
 	this->d = d;
 	return this;
 }
+
+QuestFaza* QuestFaza::ustawZdarzenieGlobalne(int numer)
+{
+	this->zdarzenieGlobalne = numer;
+	return this;
+}
+
 void QuestFaza::spelnijWymaganieRozmowa()
 {
 	wymRozmowa = false;
@@ -106,6 +113,7 @@ bool Quest::aktywny()
 	if (!faza) return false;
 	if (faza->id==0) return false;
 	if (nazwa.empty()) return false;
+	if (faza->a == -1) return false;
 
 	return true;
 }

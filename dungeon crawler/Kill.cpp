@@ -81,8 +81,6 @@ void Kill::rozpocznijWalke(Postac *wrog)
 
 		if (wrog->dawaneDoswiadczenie > 0)
 		{
-			if (DEBUG_WALKA)
-				playerMsg(L"|YZdobywasz |0 pkt. doœwiadczenia.", intToStr(wrog->poziom));
 			gracz.dodajEXP(wrog->dawaneDoswiadczenie);
 		}
 		else

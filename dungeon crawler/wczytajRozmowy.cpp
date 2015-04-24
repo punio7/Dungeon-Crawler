@@ -196,6 +196,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 				  L"zdecydujesz jak go zdobêdziesz. Kiedy ju¿ to zrobisz ruszaj w g³¹b podziemi, twój cel znajduje siê na "
 				  L"samym dole.  Jeszcze siê spotkamy. Powodzenia.\"");
 			  kwestia->dodajNagrodeQuestFaza(ListaQuestow::TajemniczyNieznajomy, 3);
+			  kwestia->dodajNagrodeQuestFaza(ListaQuestow::GoblinyWPodziemiach, 2);
 			  kwestia->dodajNagrodeGraczItem(ListaItemow::Klucze::KluczZBrazuLvl2);
 			  kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê.", -1);
 			  postac->dodajKwestie(kwestia);

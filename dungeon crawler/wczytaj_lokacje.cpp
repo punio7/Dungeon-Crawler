@@ -506,6 +506,8 @@ void Gra::wczytaj_lokacje()
 	aktualny->wyjscie[NORTH]=getLokacja(44);
 	aktualny->wyjscie[EAST]=getLokacja(46);
 
+	aktualny->postacie->dodaj(createChar(ListaPostaci::GoblinSzaman, ListaQuestow::GoblinyWPodziemiach, 4));
+
 	//////////////////	46	//////////////////
 	aktualny=getLokacja(46);
 	aktualny->nazwa = L"Jaskinia goblinów";
@@ -513,6 +515,8 @@ void Gra::wczytaj_lokacje()
 	 L"Room 46.";
 	aktualny->wyjscie[WEST]=getLokacja(45);
 	aktualny->wyjscie[EAST]=getLokacja(47);
+
+	aktualny->postacie->dodaj(createChar(ListaPostaci::GoblinGwardzista, ListaQuestow::GoblinyWPodziemiach, 4));
 
 
 	//////////////////	47	//////////////////

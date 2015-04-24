@@ -23,7 +23,7 @@ enum Estan_gry
 	STAN_QUIT
 };
 
-const int LICZBA_QUESTOW = 50;
+const int LICZBA_QUESTOW = 3;
 
 class Gra
 {

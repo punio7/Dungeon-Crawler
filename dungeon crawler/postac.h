@@ -114,9 +114,10 @@ public:
 
 	wstring wypisz(CharListWypiszTryb tryb=CHARLIST_WYPISZ_LOOK);
 
-	void dodaj(Postac* przedmiot);
-	void usun(Postac* przedmiot);
+	void dodaj(Postac* postac);
+	void usun(Postac* postac);
 	Postac* znajdz(wstring szukany, int ktory=1);
+	Postac* znajdz(int id, int ktory);
 	Postac* znajdzAgresywny(int ktory=1);		//zwraca wskaünik na pierwsza agresywna postac na liscie
 	Postac* znajdzRozmowny(int ktory=1);		//zwraca wskaünik na pierwsza rozmowna postac na liscie
 	Postac* znajdzTrener(int ktory=1);			//zwraca wskaünik na pierwszego trenera na liscie
