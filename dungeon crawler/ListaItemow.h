@@ -11,6 +11,8 @@ namespace ListaItemow
 			DragDrewniany,
 			KamienMaly,
 			MieczKrotkiBraz,
+			ToporekMalyBraz,
+			WloczniaMalaKrzemien,
 			KoniecBronie
 		};
 	}  
@@ -26,7 +28,6 @@ namespace ListaItemow
 		};
 	}
 #pragma endregion
-
 
 #pragma region Pancerze
 	namespace Pancerze
@@ -51,6 +52,10 @@ namespace ListaItemow
 			StartPancerzeDzikie = Pancerze::KoniecPancerze,
 			SkoraSzczura,
 			SkoraOgara,
+			Szmaty,
+			ZbrojaGoblinGwadzista,
+			ZbrojaGoblinBerserker,
+			ZbrojaGoblinSzaman,
 			KoniecPancerzeDzikie
 		};
 	}
@@ -71,7 +76,6 @@ namespace ListaItemow
 	}  
 #pragma endregion
 
-
 #pragma region Consumables
 	namespace Consumables
 	{
@@ -83,7 +87,6 @@ namespace ListaItemow
 		};
 	}  
 #pragma endregion
-
 
 #pragma region Questowe
 	namespace Questowe
@@ -100,7 +103,6 @@ namespace ListaItemow
 	}  
 #pragma endregion
 
-
 #pragma region Dzwignie
 	namespace Dzwignie
 	{
@@ -113,13 +115,13 @@ namespace ListaItemow
 	}  
 #pragma endregion
 
-
 #pragma region Klucze
 	namespace Klucze
 	{
 		enum ItemKluczeList
 		{
 			StartKlucze = Dzwignie::KoniecDzwignie,
+			KluczZZelazaProsty,
 			KluczZBrazuLvl2,
 			KluczZSrebraLvl3,
 			KoniecKlucze
@@ -127,13 +129,14 @@ namespace ListaItemow
 	}  
 #pragma endregion
 
-
 #pragma region Magiczne
 	namespace Magiczne
 	{
 		enum ItemMagiczneList
 		{
 			StartMagiczne = Klucze::KoniecKlucze,
+			KoszulaLniana,
+			SpodnieLniane,
 			KoniecMagiczne
 		};
 	}  

@@ -6,5 +6,10 @@
 
 ;using namespace std;
 
-int rzucaj(int zakres);
+//zwraca liczbe od 1 do maks
+int rzucaj(int max);
+
+//zwraca liczbe od min do max
+int rzucaj(int min, int max);
+
 void rzucajInic();

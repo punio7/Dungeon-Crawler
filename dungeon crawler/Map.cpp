@@ -1,4 +1,4 @@
-#include <array>
+ï»¿#include <array>
 #include <list>
 #include <vector>
 #include "Map.h"
@@ -45,22 +45,22 @@ void Map::execute(ParseDTO argumenty)
 		array<int, 2> wsp = stosWspolrzednych.front();
 		stosWspolrzednych.pop_front();
 
-		mapa[wsp[0]][wsp[1]] = 'O';
+		mapa[wsp[0]][wsp[1]] = L'O';
 		if (lokacja == gra->gracz.polozenie)
 		{
-			mapa[wsp[0]][wsp[1]] = '×';
+			mapa[wsp[0]][wsp[1]] = L'X';
 		}
 		else if (lokacja->wyjscie[UP] || lokacja->wyjscie[DOWN])
 		{
-			mapa[wsp[0]][wsp[1]] = 'ô';
+			mapa[wsp[0]][wsp[1]] = L'Ã´';
 		}
 		if (lokacja->wyjscie[NORTH])
 		{
 			if (czyPoprawneWspolrzedne(wsp[0] - 1, wsp[1], dlugosc, wysokosc))
 			{
-				mapa[wsp[0] - 1][wsp[1]] = '|';
+				mapa[wsp[0] - 1][wsp[1]] = L'|';
 				if (czyPoprawneWspolrzedne(wsp[0] - 2, wsp[1], dlugosc, wysokosc)
-					&& mapa[wsp[0]-2][wsp[1]] == ' ')
+					&& mapa[wsp[0]-2][wsp[1]] == L' ')
 				{
 					stosLokacji.push_front(lokacja->wyjscie[NORTH]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0] - 2, wsp[1]));
@@ -71,9 +71,9 @@ void Map::execute(ParseDTO argumenty)
 		{
 			if (czyPoprawneWspolrzedne(wsp[0] + 1, wsp[1], dlugosc, wysokosc))
 			{
-				mapa[wsp[0] + 1][wsp[1]] = '|';
+				mapa[wsp[0] + 1][wsp[1]] = L'|';
 				if (czyPoprawneWspolrzedne(wsp[0] + 2, wsp[1], dlugosc, wysokosc)
-					&& mapa[wsp[0]+2][wsp[1]] == ' ')
+					&& mapa[wsp[0]+2][wsp[1]] == L' ')
 				{
 					stosLokacji.push_front(lokacja->wyjscie[SOUTH]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0] + 2, wsp[1]));
@@ -84,7 +84,7 @@ void Map::execute(ParseDTO argumenty)
 		{
 			if (czyPoprawneWspolrzedne(wsp[0], wsp[1] - 1, dlugosc, wysokosc))
 			{
-				mapa[wsp[0]][wsp[1] - 1] = '—';
+				mapa[wsp[0]][wsp[1] - 1] = L'-';
 				if (czyPoprawneWspolrzedne(wsp[0], wsp[1] - 2, dlugosc, wysokosc)
 					&& mapa[wsp[0]][wsp[1]-2] == ' ')
 				{
@@ -97,9 +97,9 @@ void Map::execute(ParseDTO argumenty)
 		{
 			if (czyPoprawneWspolrzedne(wsp[0], wsp[1] + 1, dlugosc, wysokosc))
 			{
-				mapa[wsp[0]][wsp[1] + 1] = '—';
+				mapa[wsp[0]][wsp[1] + 1] = L'â€”';
 				if (czyPoprawneWspolrzedne(wsp[0], wsp[1] + 2, dlugosc, wysokosc)
-					&& mapa[wsp[0]][wsp[1]+2] == ' ')
+					&& mapa[wsp[0]][wsp[1]+2] == L' ')
 				{
 					stosLokacji.push_front(lokacja->wyjscie[EAST]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0], wsp[1] + 2));

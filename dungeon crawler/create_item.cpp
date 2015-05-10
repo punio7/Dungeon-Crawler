@@ -1,7 +1,9 @@
 #include "gra.h"
+#include <vector>
 #include "zwiekszenieCechy.h"
 #include "ListaItemow.h"
 #include "item_types.h"
+#include "randomGenerator.h"
 
 Item* Gra::create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc)
 {
@@ -130,11 +132,11 @@ Item* Gra::create_item(int id)
 
 #pragma region Bronie
 	case Bronie::DragDrewniany:
-		return create_item(Bronie::DragDrewniany, ITEM_1HWEAPON,
+		return create_item(Bronie::DragDrewniany, ITEM_2HWEAPON,
 			L"drewniany dr¹g",
-			L"Opis drewnianego drêga.",
+			L"Ten kawa³ kija wygl¹da na oderwan¹ i wyschniêt¹ ga³êŸ jakiegoœ drzewa. Nie jest on ca³kiem prosty, zawiera kilka sêków i nieregularnoœci ale jest d³ugi na kilka ³okci i mo¿e ca³kiem sprawnie pos³u¿yæ jako improwizowana broñ.",
 			L"le¿y u twoich stóp",
-			2, 2, 1, 0, 0, 0, 0,
+			2, 2, 2, 0, 0, 0, 0,
 			1,
 			0, 0, 0, 0, 0);
 		break;
@@ -142,8 +144,8 @@ Item* Gra::create_item(int id)
 	case Bronie::MieczKrotkiBraz:
 		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
 			L"krótki miecz z br¹zu",
-			L"Opis krótkiego miecza.",
-			L"le¿y u twoich stóp",
+			L"Miecze s¹ jedn¹ z najpowszechniejszych broni spotykanych w krainie. S¹ to no¿e o podwójnym i wyd³u¿onym ostrzu, oraz z kling¹ przystosowan¹ do wygodnego dzier¿enia oraz walki. Krótkie miecze maj¹ d³ugoœæ oko³o pó³torej ³okcia, podwójne zaostrzone ostrze, jednak z powodu ma³ej wagi najlepiej nadaj¹ siê do wykonywania pchniêæ sztychem. Rêkojeœæ jest krótka, jednorêczna a jelec prosty i ma³y. Miecz ten jest szybki jednak z powody ma³ej d³ugoœci trudniej trafiæ nim przeciwnika ni¿ odpowiednio d³u¿szymi bronami.",
+			L"le¿y na ziemi",
 			4, 4, 3, 0, 0, 0, 0,
 			10,
 			0, 0, 0, 0, 0);
@@ -151,11 +153,26 @@ Item* Gra::create_item(int id)
 	case Bronie::KamienMaly:
 		return create_item(Bronie::KamienMaly, ITEM_1HWEAPON,
 			L"ma³y kamieñ",
-			L"Opis kamionka.",
+			L"Jest to zwyk³y szary kawa³ek kamienia, wielkoœci oko³o piêœci doros³ego cz³owieka. Jego masa mo¿e byæ niebezpieczna w bliskim kontakcie, jednak ostre krawêdzie s¹ niebezpieczne dla d³oni dzier¿¹cego.",
 			L"le¿y na ziemi",
 			-3, -3, 1, 0, 0, 0, 0,
 			0);
 		break;
+	case Bronie::ToporekMalyBraz:
+		return create_item(id, ITEM_1HWEAPON,
+			L"Ma³y toporek z br¹zu",
+			L"Topory to broñ bazuj¹ca na siekierach drwalów. Dziêki du¿ej masie ostrza, oraz wywa¿eniu skupionemu na koñcu broni topory posiadaj¹ wiêksz¹ si³ê uderzenia ni¿ miecze, zdoln¹ do przebijania grubszych pancerzy oraz rozbijania tarcz. Brak d³ugiego ostrza, czyni jednak t¹ broñ ma³o u¿yteczn¹ w parowaniu.",
+			L"le¿y na ziemi",
+			1, 1, 3, 0, 0, 0, 0,
+			2);
+	case Bronie::WloczniaMalaKrzemien:
+		return create_item(id, ITEM_2HWEAPON,
+			L"Prymitywna w³ócznia",
+			L"W³ócznie s¹ jednymi z najstarszych typów broni stosowanych przez rasy rozumne. Prosty pomys³ zwiêkszenia zasiêgu ostrza, poprzez umieszczenie go na drewnianym kiju daje u¿ytkownikowi du¿¹ przewagê zasiêgu, sam drzewiec mo¿e byæ równie¿ ³atwo u¿yty w parowaniu ciosów. Ostrze jest jednak ma³e i nie jest zdolne wyrz¹dziæ tak du¿ych szkód jak topór czy miecz. W tym egzemplarzu ostrze jest wykonane z ociosanego krzemienia, ca³a konstrukcja jest bardzo prymitywna i wykonana prostymi metodami.",
+			L"le¿y na ziemi",
+			2, 2, 1, 0, 0, 0, 0,
+			2);
+
 #pragma endregion
 
 #pragma region BronieDzikie
@@ -267,10 +284,7 @@ Item* Gra::create_item(int id)
 	case Pojemniki::StarySzkielet:
 		return create_item(Pojemniki::StarySzkielet, ITEM_STATIC_CONTAINER,
 			L"stary szkielet",
-			L"Nie jesteœ pewien jakiej rasy by³ ten nieboszczyk, ale po wielkoœci i "
-			L"kszta³cie czaski domyœlasz siê i¿ móg³ to byæ cz³owiek. Czas zostawi³ swój "
-			L"œlad na koœciach- widaæ na nich ubytki i wrêby. Nie zauwa¿asz ¿adnych "
-			L"szczegó³ów, które by wskazywa³y na to jak zmar³ jego posiadacz.",
+			L"Nie jesteœ pewien jakiej rasy by³ ten nieboszczyk, ale po wielkoœci i kszta³cie czaski domyœlasz siê i¿ móg³ to byæ cz³owiek. Czas zostawi³ swój œlad na koœciach- widaæ na nich ubytki i wrêby. Nie zauwa¿asz ¿adnych szczegó³ów, które by wskazywa³y na to jak zmar³ jego posiadacz.",
 			L"le¿y pod œcian¹",
 			0, 0, 0, 0, 0, 0, 0, 0);
 		break;
@@ -288,7 +302,7 @@ Item* Gra::create_item(int id)
 	case Questowe::OkraglySzafir:
 		return create_item(Questowe::OkraglySzafir, ITEM_QUEST,
 			L"okr¹g³y szafir",
-			L"Opis okr¹g³ego szafitu.",
+			L"Szafir jest kamieniem szlachetnym o barwie ciemno niebieskiej. Zazwyczaj klejnoty szlifowane s¹ w szeœcienne lub inne kanciaste kszta³ty, ten jednak jest uformowany w kszta³t kuli. Przygl¹daj¹c siê bli¿ej nie zauwa¿asz ¿adnych œladów szlifowania, zachwyca ciê równie¿ niezwyk³a perfekcja kuli.",
 			L"le¿y tutaj",
 			0, 0, 0, 0, 0, 0, 0, 0);
 		break;
@@ -304,23 +318,35 @@ Item* Gra::create_item(int id)
 	case Questowe::StluczoneLustro:
 		return create_item(Questowe::StluczoneLustro, ITEM_STATIC_QUEST,
 			L"st³uczone lustro",
-			L"Opis st³uczonego lustra.",
+			L"Przed tob¹ stoi wykonana z br¹zu zdobiona oprawa lustra. Lustro by³o wykonane ze szk³a, którego kawa³ki zalegaj¹ woko³o na pod³odze. Oprawa jest prostok¹tna o wysokoœci ma³ego cz³owieka. Jej krawêdzie zajmuj¹ wykwintne zdobienia, wœród których najbardziej rzuca siê w oczy symbol czaski, umieszczony na samym szczycie oprawy.",
 			L"stoi w k¹cie",
 			0, 0, 0, 0, 0, 0, 0, 0);
 		break;
 	case Questowe::Mapa:
 		return create_item(Questowe::Mapa, ITEM_QUEST,
 			L"mapa",
-			L"Jest to kawa³ek czystego pergaminu, na którym mo¿esz rysowaæ mapê odwiedzonych miejsc.",
+			L"Mapa jest kawa³kiem wyprawianej skóry lub pergaminu. Powierzenie mu informacji o po³o¿eniu interesuj¹cych miejsc w terenie okaza³o siê lepszym pomys³em ni¿ powierzanie na zawodnej pamiêci. Równie¿ dla poszukiwaczy przygód rysowanie schematów przebytych miejsc okaza³o siê zbawienne w skomplikowanych labiryntach, b¹dŸ grobowcach.",
 			L"le¿y na ziemi",
 			0, 0, 0, 0, 0, 0, 0, 50);
 #pragma endregion
 
 #pragma region Klucze
+	case Klucze::KluczZZelazaProsty:
+		return create_item(Klucze::KluczZZelazaProsty, ITEM_QUEST,
+			L"prosty klucz z ¿elaza",
+			L"opis klucza do drewnianych skrzyñ.",
+			L"le¿y na ziemi",
+			0, 0, 0, 0, 0, 0, 0, 0);
 	case Klucze::KluczZBrazuLvl2:
 		return create_item(Klucze::KluczZBrazuLvl2, ITEM_QUEST,
 			L"zdobiony klucz z br¹zu",
 			L"opis klucza na poziom 2.",
+			L"le¿y na ziemi",
+			0, 0, 0, 0, 0, 0, 0, 0);
+	case Klucze::KluczZSrebraLvl3:
+		return create_item(Klucze::KluczZSrebraLvl3, ITEM_QUEST,
+			L"zdobiony klucz ze srebra",
+			L"opis klucza na poziom 3.",
 			L"le¿y na ziemi",
 			0, 0, 0, 0, 0, 0, 0, 0);
 #pragma endregion
@@ -329,7 +355,7 @@ Item* Gra::create_item(int id)
 	case Dzwignie::ButelkaPoWinie:
 		return create_item(Dzwignie::ButelkaPoWinie, ITEM_DZWIGNIA,
 			L"butelka po winie",
-			L"Tajemnicza butelka le¿y samotnie na swoim miejscu w stojaku. Rozgl¹daj¹c siê po piwniczce nie znalaz³eœ ¿adnej innej butelki wiêc ta jedyna skupia twoj¹ ciekawoœæ. Wykonana jest z ciemnego, grubego szk³a, korek zatykaj¹cy szyjkê gdzieœ znikn¹³ wiêc jedyn¹ zawartoœci¹ naczynia jest powietrze. Prubujesz wyj¹æ butelke ze stojaka, jednak ta nie chce siê ruszyæ ani na w³os.",
+			L"Tajemnicza butelka le¿y samotnie na swoim miejscu w stojaku. Rozgl¹daj¹c siê po piwniczce nie znalaz³eœ ¿adnej innej butelki wiêc ta jedyna skupia twoj¹ ciekawoœæ. Wykonana jest z ciemnego, grubego szk³a, korek zatykaj¹cy szyjkê gdzieœ znikn¹³ wiêc jedyn¹ zawartoœci¹ naczynia jest powietrze. Prubójesz wyj¹æ butelkê ze stojaka, jednak ta nie chce siê ruszyæ ani na w³os.",
 			L"le¿y samotnie na stojaku",
 			0, 0, 0, 0, 0, 0, 0, 0);
 		break;
@@ -339,7 +365,7 @@ Item* Gra::create_item(int id)
 	case Consumables::MiksturaZrecznosciSlaba:
 		return new miksturaStatusu(Consumables::MiksturaZrecznosciSlaba,
 			L"s³absza mikstura zrêcznoœci",
-			L"Jak w przypadku wszystkich magicznych mikstur, ich zapach zmusza do d³u¿szego przemyœlenia z jakich ochydnoœci zosta³ przygotowany dany specyfik. Nikt jednak nie chcia³by zastanawiaæ siê nad tym przy obiedzie. W ka¿dym razie etykieta tego specyfiku sugeruje i¿ d³onie pij¹cego stan¹ siê szybkie i precyzyjne niczym wê¿e. Uwaga! Efekty uboczne obejmuj¹ niekontrolwoan¹ zmianê koloru w³osów.",
+			L"Jak w przypadku wszystkich magicznych mikstur, ich zapach zmusza do d³u¿szego przemyœlenia z jakich ohydnoœci zosta³ przygotowany dany specyfik. Nikt jednak nie chcia³by zastanawiaæ siê nad tym przy obiedzie. W ka¿dym razie etykieta tego specyfiku sugeruje i¿ d³onie pij¹cego stan¹ siê szybkie i precyzyjne niczym wê¿e. Uwaga! Efekty uboczne obejmuj¹ niekontrolowan¹  zmianê koloru w³osów.",
 			L"le¿y tutaj",
 			15,
 			new zwiekszenieCechy(L"zwiêkszona zrêcznoœæ",
@@ -351,7 +377,18 @@ Item* Gra::create_item(int id)
 #pragma endregion
 
 #pragma region Magiczne
-		//////////////// magiczne ////////////  
+	case Magiczne::KoszulaLniana:
+		return create_item(id, ITEM_KOSZULA,
+			L"lniana koszula",
+			L"Opis.",
+			L"le¿y na ziemi",
+			4, 2, 0, 0, 10, 0, 0, 5);
+	case Magiczne::SpodnieLniane:
+		return create_item(id, ITEM_SPODNIE,
+			L"lniane spodnie",
+			L"Opis.",
+			L"le¿y na ziemi",
+			2, 4, 0, 0, 10, 0, 0, 5);
 #pragma endregion
 
 
@@ -360,4 +397,10 @@ Item* Gra::create_item(int id)
 	}
 
 	return NULL;
+}
+
+Item* Gra::create_item(vector<int> listaMozliwych)
+{
+	int wybrany = rzucaj(0, listaMozliwych.size() - 1);
+	return(create_item(listaMozliwych[wybrany]));
 }

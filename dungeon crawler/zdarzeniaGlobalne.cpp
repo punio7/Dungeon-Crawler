@@ -117,7 +117,7 @@ bool Gra::zdarzenieGlobalne(int id)
 		return false;
 
 	case ListaZdarzenGlobalnych::AgresjaGoblinow:
-		for (size_t i = 42; i < 55; i++)
+		for (int i = 42; i < 55; i++)
 		{
 			for (Postac* postac : *(getLokacja(i)->postacie))
 			{

@@ -50,7 +50,7 @@ wstring ItemList::wypisz(ItemList_wypisz_tryb tryb)
 		}
 		if (ilosc > 1)
 		{
-			temp += L" (L";
+			temp += L" (";
 			temp += intToStr(ilosc);
 			temp += L")";
 		}

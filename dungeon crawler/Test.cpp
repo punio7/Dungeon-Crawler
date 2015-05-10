@@ -37,7 +37,8 @@ void Test::execute(ParseDTO argumenty)
 	Sleep(20000);
 	wcout<<"go BATTLE"<<endl;
 	midiPlayer->play(MIDI_BATTLE1);*/
-	wcout<<wersalikuj(L"12345678\t12345678\t12345678\t12345678\t12345678\t12345678\t12345678\n");
+	wcout << wersalikuj(L"12345678901234567890123456789012345678901234567890123456789012345678901234567890\n");
+	wcout << wersalikuj(L"12345678\t12345678\t12345678\t12345678\t12345678\t12345678\t12345678\n");
 	wcout<<wersalikuj(L"Jakis\ttam\ttekst\tz\tduza\tiloscia\ttabulatorow\tktore\tnajwidoczniej\tjuz\ttak\tzle\tnie\twplywaja\tna\twer\ttekstu.\n\n");
 
 	playerMsg(L"Nazywam siê |b|0|W. Tak |B|0|W to w³aœnie moje imiê. A nie, mo¿e to jednak |R|1|W? "

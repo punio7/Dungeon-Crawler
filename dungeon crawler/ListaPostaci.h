@@ -11,6 +11,9 @@ namespace ListaPostaci
 		GoblinZbieracz,
 		GoblinGwardzista,
 		GoblinBerserker,
-		GoblinSzaman
+		GoblinSzaman,
+		GrzybniaMala,
+		GrzybniaSrednia,
+		GrzybniaDuza
 	};
 }

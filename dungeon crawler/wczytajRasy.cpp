@@ -21,4 +21,5 @@ void Gra::wczytajRasy()
 	rasy[RASA_SZCZUR] = new Rasa{ RASA_SZCZUR, L"szczur", L"", L"szczurze zw³oki", -0.10f, 0.02f, 0.10f, 0, -0.07f };
 	rasy[RASA_GOBLIN] = new Rasa{ RASA_GOBLIN, L"goblin", L"", L"zw³oki goblina", -0.05f, 0.05f, -0.02f, 0.04f, -0.03f };
 	rasy[RASA_OGAR] = new Rasa{ RASA_OGAR, L"ogar", L"", L"zw³oki ogara", 0.05f, 0.06f, 0.03f, 0.07f, 0 };
+	rasy[RASA_GRZYBNIA] = new Rasa{ RASA_GRZYBNIA, L"grzybnia", L"", L"resztki grzybni", 0.01f, -0.07f, -0.07f, 0.07f, 0.06f };
 }

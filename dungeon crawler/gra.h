@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <vector>
 #include <string>
 #include "gracz.h"
 #include "licznikKomend.h"
@@ -36,10 +37,14 @@ public:
 	void zakonczGre();
 	//void wykonaj_komende(Ekomenda command, ParseDTO argumenty);
 	void prompt();				//wypisuje na wcout prompt
-	Item* create_item(int id);	//tworzy Item o podanym id
+	//tworzy Item o podanym id
+	Item* create_item(int id);
+	//Tworzy item o podanych cechach
 	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc);
+	//Tworzy item o podanych cechac i wymaganiach
 	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc, int wymSila, int wymZr, int wymZw, int wymWyt, int wymZyw);
-	//tworzy item o podanej w argumentach specyfikacji, u¿ywany w funkcji wy¿ej
+	//Tworzy jeden losowo wybrany przedmiot z podanej listy ID
+	Item* create_item(vector<int> listaMozliwych);
 
 	Postac* createChar(int id);
 	Postac* createChar(int id, int quest, int questFaza);

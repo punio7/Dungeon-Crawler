@@ -46,7 +46,9 @@ void Gra::wczytaj_lokacje()
 	 L"Korytarz wyłożony jest starymi kamiennymi płytami. Takie same płytki na ścianach, podłodze, suficie, od tego kamienia zaczyna kręcić ci się w głowie. Niektóre z nich powypadały ze swoich miejsc, tworzą teraz warstwę gruzu na podłodze. Większość z tych, które pozostały jest porośnięta mchem. Sztucznie uformowany kamień powoli poddaje się otaczającej go naturze.";
 	(aktualny->wyjscie)[NORTH]=getLokacja(2);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(0);
-	(aktualny->postacie)->dodaj( createChar(ListaPostaci::SzczurJaskiniowy) );
+	postac = createChar(ListaPostaci::SzczurJaskiniowy);
+	postac->agresywny = true;
+	aktualny->postacie->dodaj(postac);
 
 	//////////////////	2	//////////////////
 	aktualny=getLokacja(2);
@@ -72,8 +74,9 @@ void Gra::wczytaj_lokacje()
 	(aktualny->wyjscie)[SOUTH]=getLokacja(2);
 
 	temp = create_item(Pojemniki::DrewnianaSkrzynia);
-	temp->ustawZamek(1);	//zamknieta skrzynia
-	temp->lista_dodaj(create_item(Questowe::OkraglySzafir));
+	temp->ustawZamek(Klucze::KluczZZelazaProsty);
+	temp->dodajZloto(rzucaj(5, 15));
+	temp->lista_dodaj(create_item({Pancerze::ZbrojaSkora, Pancerze::NagolennikiSkora, Pancerze::NaramiennikiSkora, Pancerze::ButySkora, Pancerze::RekawiceSkora}));
 	(aktualny->przedmioty)->dodaj(temp);
 
 
@@ -245,8 +248,10 @@ void Gra::wczytaj_lokacje()
 	(aktualny->wyjscie)[NORTH]=getLokacja(14);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(12);		
 
-	(aktualny->postacie)->dodaj(createChar(ListaPostaci::SzczurJaskiniowy, ListaQuestow::TajemniczyNieznajomy, 2));
-	(aktualny->przedmioty)->dodaj(create_item(Questowe::KawalkiPotluczonegoSzkla));
+	postac = createChar(ListaPostaci::SzczurJaskiniowy, ListaQuestow::TajemniczyNieznajomy, 2);
+	postac->dodajPrzedmiot(create_item(Klucze::KluczZZelazaProsty));
+	aktualny->postacie->dodaj(postac);
+	aktualny->przedmioty->dodaj(create_item(Questowe::KawalkiPotluczonegoSzkla));
 
 	//////////////////	14	//////////////////
 	aktualny=getLokacja(14);
@@ -536,6 +541,8 @@ void Gra::wczytaj_lokacje()
 	 L"Room 48.";
 	aktualny->wyjscie[NORTH]=getLokacja(47);
 	aktualny->wyjscie[SOUTH]=getLokacja(49);
+	aktualny->postacie->dodaj(createChar(ListaPostaci::GoblinGwardzista, ListaQuestow::GoblinyWPodziemiach, 4));
+	aktualny->postacie->dodaj(createChar(ListaPostaci::GoblinGwardzista, ListaQuestow::GoblinyWPodziemiach, 4));
 
 	//////////////////	49	//////////////////
 	aktualny=getLokacja(49);

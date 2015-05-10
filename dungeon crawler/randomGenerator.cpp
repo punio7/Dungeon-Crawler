@@ -1,10 +1,13 @@
 #include "randomGenerator.h"
 
-int rzucaj(int zakres)
+int rzucaj(int max)
 {
-	int i;
-	i = rand() % zakres +1;
-	return i;
+	return rand() % max + 1;
+}
+
+int rzucaj(int min, int max)
+{
+	return rand() % max + min;
 }
 
 void rzucajInic()
