@@ -23,10 +23,6 @@ void Test::execute(ParseDTO argumenty)
 	gracz.dodajEXP(20);
 	wcout<<gracz.expDoNastPoziomu()<<endl;
 	gracz.dodajEXP(31);
-	//wcout<<gracz.cechaTowstring(gracz.najwyzszaCecha(0))<<" "<<gracz.cechaTowstring(gracz.najwyzszaCecha(1))<<endl;
-	//questy[1].spelnijRozmowa(1);
-	//questy[1].spelnijPotwor(2);
-	//questy[1].spelnijPotwor(2);
 
 	//test segv
 	//Gracz* cos = 0;
