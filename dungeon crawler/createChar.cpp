@@ -25,6 +25,7 @@ Postac* Gra::createChar(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, ws
 	aktualny->ustawStatyBazowe(sila, zr, zw, wyt, zyw);
 	aktualny->przelicz();
 	aktualny->currentHP = aktualny->zdr_calk;
+	aktualny->zloto = 10 * poziom + rzucaj(5 * poziom);
 
 	return aktualny;
 }
@@ -44,6 +45,7 @@ PostacNpc* Gra::createNpc(int id, int poziom, RasaNazwa rasa, KlasaNazwa klasa, 
 	aktualny->ustawStatyBazowe(sila, zr, zw, wyt, zyw);
 	aktualny->przelicz();
 	aktualny->currentHP = aktualny->zdr_calk;
+	aktualny->zloto = 10 * poziom + rzucaj(5 * poziom);
 
 	return aktualny;
 }
@@ -61,7 +63,6 @@ using namespace ListaItemow;
 Postac* Gra::createChar(int id)
 {
 	Postac* temp = NULL;
-	PostacNpc* tempNpc = NULL;
 	Kwestia* kwestia = NULL;
 	switch (id)
 	{
@@ -78,63 +79,69 @@ Postac* Gra::createChar(int id)
 			L"szpera dooko³a",
 			5, 6, 6, 4, 3);
 		temp->equip(create_item(BronieDzikie::SzczurzeKly));
-		temp->zloto = rzucaj(2);
+		temp->zloto = 0;
 		temp->equip(create_item(PancerzeDzikie::SkoraSzczura));
 		return temp;
 #pragma endregion
 
 #pragma region zakapturzona_postac
 	case ListaPostaci::ZakapturzonaPostac:
-		tempNpc = createNpc(id, 50, RASA_CZLOWIEK, KLASA_BRAK, L"zakapturzona postaæ",
+		temp = createNpc(id, 50, RASA_CZLOWIEK, KLASA_BRAK, L"zakapturzona postaæ",
 			L"Wpatruj¹c siê w zakapturzonego cz³owieka nie dostrzegasz w nim nic "
 			L"nadzwyczajnego. Nosi on d³ugie br¹zowe szaty, które dok³adnie zakrywaj¹ "
 			L"jego cia³o. Kaptur ca³kowicie zas³ania mu twarz. Nieznajomy wpatruje siê "
 			L"ca³y czas w pod³ogê, nie wykonuj¹c przy tym nawet najmniejszych ruchów.",
 			L"wpatruje siê w pod³ogê",
 			80, 80, 80, 80, 80);
-		(tempNpc->trening)[SILA] = 34;
-		(tempNpc->trening)[ZRECZNOSC] = 34;
-		(tempNpc->trening)[ZWINNOSC] = 34;
-		(tempNpc->trening)[WYTRZYMALOSC] = 34;
-		(tempNpc->trening)[ZYWOTNOSC] = 34;
-		tempNpc->rozmowny = true;
-		tempNpc->przedmioty->dodaj(create_item(Bronie::MieczKrotkiBraz));
-		tempNpc->przedmioty->dodaj(create_item(Klucze::KluczZBrazuLvl2));
+		(dynamic_cast<PostacNpc*>(temp)->trening)[SILA] = 34;
+		(dynamic_cast<PostacNpc*>(temp)->trening)[ZRECZNOSC] = 34;
+		(dynamic_cast<PostacNpc*>(temp)->trening)[ZWINNOSC] = 34;
+		(dynamic_cast<PostacNpc*>(temp)->trening)[WYTRZYMALOSC] = 34;
+		(dynamic_cast<PostacNpc*>(temp)->trening)[ZYWOTNOSC] = 34;
+		dynamic_cast<PostacNpc*>(temp)->rozmowny = true;
+		temp->przedmioty->dodaj(create_item(Bronie::MieczKrotkiBraz));
+		temp->przedmioty->dodaj(create_item(Klucze::KluczZBrazuLvl2));
 
-		wczytajRozmowe(tempNpc->id, tempNpc);
+		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
 
-		return tempNpc;
+		return temp;
 
 #pragma endregion
 
 #pragma region test_NPC
 	case ListaPostaci::TestNPC:
-		tempNpc = createNpc(id, 50, RASA_CZLOWIEK, KLASA_BRAK, L"test NPC",
+		temp = createNpc(id, 50, RASA_CZLOWIEK, KLASA_BRAK, L"test NPC",
 			L"To tylko testowy NPC, nie oczekuj epickich opisów. "
 			L"Jedyne czego mo¿esz siê spodziewaæ to sztucznie wyd³u¿one opisy "
 			L"maj¹ce na celu sprawdzenie wersalikowania opisów postaci.",
 			L"stoi i zachêca do rozmowy",
 			80, 80, 80, 80, 80);
 
-		tempNpc->zloto = 100;
-		(tempNpc->przedmioty)->dodaj(create_item(Questowe::OkraglySzafir));
+		temp->zloto = 100;
+		(temp->przedmioty)->dodaj(create_item(Questowe::OkraglySzafir));
 
-		wczytajRozmowe(tempNpc->id, tempNpc);
+		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
 
-		return tempNpc;
+		return temp;
 #pragma endregion
 
+	case ListaPostaci::Manekin:
+		return createChar(id, 1, RASA_BRAK, KLASA_MNICH,
+			L"manekin",
+			L"Ta postac s³u¿y do przechowywania przedmiotów gracza na czas snu.",
+			L"stoi w bezruchu",
+			10, 10, 10, 10, 10);
 
 	case ListaPostaci::OgarStrazniczy:
 		temp = createChar(id, 10, RASA_OGAR, KLASA_BRAK,
-			L"ogar stra¿niczy",															 //poza lini¹ konsoli
+			L"ogar stra¿niczy",
 			L"Alan napisz opis.",
 			L"szpera dooko³a",
 			27, 26, 22, 21, 22);
 		temp->agresywny = true;
 		temp->equip(create_item(BronieDzikie::KlyOgara));
 		temp->equip(create_item(PancerzeDzikie::SkoraOgara));
-		temp->zloto = rzucaj(10) + 3;
+		temp->zloto = 0;
 		return temp;
 
 #pragma region Gobliny
@@ -154,6 +161,8 @@ Postac* Gra::createChar(int id)
 			L"Zadaniem gobliñskich gwardzistów jest pilnowanie obozowiska, oraz alarmowanie o zbli¿aj¹cym siê zagro¿eniu. Ich ubiór stanowi najciê¿szy pancerz jaki mo¿na znaleŸæ wœród goblinów- daje to wiêksz¹ szansê na wydanie alarmuj¹cego okrzyku zanim gwardzista siê zu¿yje. Jego zbrojê stanowi¹ metalowe przedmioty zrabowane od ludzi- garnki, p³ytki, kawa³ki w³aœciwych zbroi lub kolczug, czy tarcz, powi¹zane razem linami b¹dŸ paskami. Co do reszty wygl¹du to gobliñscy gwardziœci s¹ równie paskudni co reszta przedstawicieli ich rasy.",
 			L"opiera siê na w³óczni",
 			12, 14, 12, 14, 12);
+		temp->equip(create_item(Bronie::WloczniaMalaKrzemien));
+		temp->equip(create_item(PancerzeDzikie::ZbrojaGoblinGwadzista));
 		return temp;
 
 	case ListaPostaci::GoblinBerserker:
@@ -162,16 +171,45 @@ Postac* Gra::createChar(int id)
 			L"Berserkerzy nale¿¹ do najzdolniejszych wojowników wœród gobliñskiego plemienia. Za ubranie s³u¿¹ im jedynie skurzane spodnie, wytworzone rêcznie ze skóry jednej ze swoich ofiar. Ich odkryt¹ klatê ozdabiaj¹ im blizny a twarzy zazwyczaj brakuje jednego ucha, nosa, b¹dŸ oka. Pe³ni dumy berserkerzy zachowuj¹ siê pogardliwie do innych goblinów oraz ogólnie do innych stworzeñ. Maj¹ szacunek jedynie do szamana, stanowi¹c jego osobist¹ ochronê.",
 			L"bacznie siê tobie przygl¹da",
 			14, 16, 14, 10, 15);
+		temp->equip(create_item(Bronie::ToporekBraz));
+		temp->equip(create_item(PancerzeDzikie::SpodnieGoblinBerserker));
 		return temp;
 
 	case ListaPostaci::GoblinSzaman:
-		tempNpc = createNpc(id, 5, RASA_GOBLIN, KLASA_MNICH,
+		temp = createNpc(id, 5, RASA_GOBLIN, KLASA_MNICH,
 			L"goblin szaman",
 			L"Szamani s¹ jednoczeœnie przywódcami goblinœkiego plemienia. Ich wygl¹d ma u reszty goblinów wywo³aæ strach przed mocami dysponowanymi przez szamana, nawet je¿eli takowych on nie ma. Jego cia³o jest pokryte dziwnymi tatua¿ami i malunkami z b³ota i krwi a w uszach i nosie ma mnóstwo kolczyków. Jego szata jest gruba i wykonana z lnu. Wszyto w ni¹ kawa³ki zwierzêcego futra, oraz namalowano jakimiœ barwnikami dziwne symbole. Na szyi szaman nosi naszyjnik z rzemienia, oraz zwierzêcych koœci, a na g³owie nosi koronê wykonan¹ z poro¿a jelenia. Szaman stara siê robiæ mistyczne wra¿enie, machaj¹c co chwila rêkami oraz podskakuj¹c bez powodu.",
 			L"nerwowo rozgl¹da siê dooko³a",
 			13, 14, 14, 18, 19);
-		wczytajRozmowe(tempNpc->id, tempNpc);
-		return tempNpc;
+		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
+		temp->equip(create_item(Bronie::DragDrewniany));
+		temp->equip(create_item(PancerzeDzikie::ZbrojaGoblinSzaman));
+		temp->equip(create_item(PancerzeDzikie::HelmGoblinSzaman));
+		temp->przedmioty->dodaj(create_item(Klucze::KluczZSrebraLvl3));
+		return temp;
+
+#pragma endregion
+
+#pragma region Sen 1
+
+	case ListaPostaci::Cz³owiekZTlumu:
+		temp = createNpc(id, 1, RASA_CZLOWIEK, KLASA_ROBOTNIK,
+			L"cz³owiek z t³umu",
+			L"Cz³owiek ten jest zwrócony do ciebie ty³em i podobnie jak reszta t³umu krzyczy coœ i macha rêkami. Próbujesz siê mu przyjrzeæ jednak jedyne co zauwa¿asz, to ¿e wygl¹da on… zwyczajnie. Nie potrafisz dostrzec nic szczególnego w jego wygl¹dzie.",
+			L"krzyczy i wymachuje rêkami",
+			10, 10, 10, 10, 10);
+		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
+		return temp;
+
+	case ListaPostaci::Kucharka:
+		temp = createNpc(id, 1, RASA_CZLOWIEK, KLASA_ROBOTNIK,
+			L"kucharka",
+			L"Kucharka posiada wszelkie stereotypowe cechy wygl¹du swojej profesji. Jest gruba, stara i ubrana w bia³y fartuch. Próbujesz siê jej lepiej przyjrzeæ jednak coœ ciê rozprasza i zwracasz wzrok gdzieœ indziej. Kucharka wykonuje dalej swoj¹ pracê nie zwracaj¹c na ciebie najmniejszej uwagi.",
+			L"krzêta siê po kuchni",
+			10, 10, 10, 10, 10);
+		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
+		temp->ustawRozmowny(true);
+		return temp;
 
 #pragma endregion
 

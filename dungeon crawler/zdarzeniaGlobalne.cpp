@@ -98,6 +98,21 @@ bool Gra::zdarzenieGlobalne(int id)
 		return false;
 		break;
 #pragma endregion
+#pragma region Zdarzenia poziom 2
+
+	case ListaZdarzenGlobalnych::ZejscieDoJaskini:
+		drukuj(L"Ciemnoœæ. Patrz¹c w g³¹b otworu dostrzegasz jedynie czerñ. Powoli ustawiasz siê ty³em do klapy, po czym zaczynasz ostro¿nie schodziæ po drabinie w dó³. Zejœcie jest d³ugie a drewno drabiny ugina siê pod tob¹ przy ka¿dym ruchu. Pocz¹tkowo nie mo¿esz dostrzec niczego w panuj¹cej dooko³a ciemnoœci, ale twoje oczy powoli siê do niej przyzwyczajaj¹. Kiedy ju¿ jesteœ blisko ziemi zeskakujesz i starasz siê rozejrzeæ dooko³a siebie. Wtedy zauwa¿asz naprzeciw siebie drobny cieñ, skulony pod œcian¹. Kiedy wykonujesz krok w jego kierunku, cieñ nagle wstaje i zaczyna uciekaæ na po³udnie. Dosyæ szybko tracisz go z oczu i pozostajesz sam w ciemnoœci.");
+		return false;
+
+	case ListaZdarzenGlobalnych::DogonienieGoblinaWJaskini:
+		drukuj(L"W koñcu doganiasz uciekiniera. Du¿e drewniane drzwi blokuj¹ przejœcie dalej, natomiast tajemniczy cieñ okazuje siê byæ zaledwie goblinem. Szybkim spojrzeniem zauwa¿asz i¿ trzyma coœ w rêce, nim jednak zd¹¿asz cokolwiek zrobiæ rzuca siê on na ciebie, g³oœno krzycz¹c.");
+		return false;
+
+	case ListaZdarzenGlobalnych::PrzejsciePrzezDrzwiDemona:
+		drukuj(L"Przechodz¹c przez drzwi zauwa¿asz nag³¹ zmianê w jaskini. Œciany przesta³y byæ pustymi ska³ami a zape³ni³y siê ró¿norakiej maœci grzybami i mchami. Wszelakie wg³êbienia w skale zarastaj¹ ma³e grzyby o w¹skich trzonach, na œcianach wisi coœ podobnego do huby, natomiast na pod³odze rosn¹ nieznane ci odmiany o du¿ych i kolorowych kapeluszach. Powietrze jest gêste i duszne, ledwo zdatne do oddychania, zdaje siê i¿ wisz¹ w nim jakieœ drobiny. Przygl¹daj¹c siê tym wszystkim dziwom powolnym krokiem ruszasz do przodu. Próbujesz oceniæ zapach panuj¹cy dooko³a, coœ jakby w zamkniêtym pomieszczeniu zaczêto obieraæ grzyby, ale du¿o bardziej stêch³y i niepokoj¹cy. Nagle czujesz i¿ zdepta³eœ coœ nog¹, zanim zd¹¿y³byœ spojrzeæ na dó³ s³yszysz œwist i powietrze dooko³a zaczê³o gêstnieæ od czegoœ bia³ego. Zarodniki dostaj¹ ci siê do nosa i gard³a przez co nie mo¿esz z³apaæ oddechu. £apiesz siê za klatkê i zaczynasz dyszeæ jak szalony, upadasz na kolana i nieoczekiwanie wszystko znika.");
+		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(60));
+		return true;
+#pragma endregion
 
 #pragma region Zdarzenia z goblinami
 	case ListaZdarzenGlobalnych::MorderstwoSzamanaGoblinow:
@@ -135,6 +150,32 @@ bool Gra::zdarzenieGlobalne(int id)
 		return true;
 #pragma endregion
 
+#pragma region Sen 1 Wstawki
+
+	case ListaZdarzenGlobalnych::Sen1Wstawka1:
+		midiPlayer->play(MidiFiles::DREAM);
+		drukuj(L"Czujesz zaduch i œcisk. Z daleka dobiegaj¹ do ciebie odg³osy t³umu, przyt³umione i g³uche. Powoli staj¹ siê coraz g³oœniejsze, jakbyœ wynurza³ siê z wody. Scena widziana z oddali, szybko zbli¿a siê do ciebie, nim zd¹¿ysz zauwa¿yæ sam znajdujesz siê w jej œrodku.");
+		return false;
+
+	case ListaZdarzenGlobalnych::Sen1Wstawka2:
+		drukuj(L"Wytê¿aj¹c wzrok dostrzegasz na horyzoncie szubienicê. Próbujesz przyjrzeæ siê co na niej siê dzieje jednak w jednej chwili szubienica oraz ca³y t³um znika.");
+		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(61));
+		return false;
+
+	case ListaZdarzenGlobalnych::Sen1Wstawka3:
+		drukuj(L"Z za zamkniêtych drzwi gabinetu dochodz¹ ciê krzyki. Cicho podchodzisz i zaczynasz pods³uchiwaæ.\n"
+			L"- Jakim prawem masz czelnoœæ proponowaæ mi coœ takiego?\n"
+			L"- Poniewa¿ s¹ rzeczy gorsze ni¿ œmieræ. Mam przyjació³ którzy pomog¹ to zrealizowaæ...\n"
+			L"- Wynoœ siê z mojego domu, albo zawiœniesz razem z nim! Won!\n"
+			L"- Gdyby waszmoœæ  zmieni³ zdanie, przyjdê jeszcze w przeddzieñ egzekucji. Proszê o wybaczenie za zak³ócenie spokoju.\n"
+			L"Szybko odskakujesz od drzwi chwilê zanim siê otwieraj¹, goœæ widz¹c ciebie pochyla g³owê. Wykorzystujesz chwilê aby mu siê przyjrzeæ. Ubrany jest w d³ugie, szarobure szaty, z kapturem, za to jego twarz... Bia³a skóra, bia³e w³osy, bia³a broda, oraz to spojrzenie... Udaj¹ce ¿yczliwoœæ, ale w rzeczywistoœci kamienne i bez uczuæ.\n"
+			L"- Panienka wybaczy, w³aœnie wychodzê.\n");
+		drukuj(L"Powoli budzi ciê pulsuj¹cy ból g³owy w miejscu, w którym uderzy³eœ siê o ziemiê upadaj¹c. Twoj¹ twarz muska delikatny podmuch wiatru, który musia³ rozwiaæ zarodniki, ratuj¹c ci tym samym ¿ycie. Oddychasz swobodnie i g³êboko, czuj¹c niezwyk³¹ radoœæ z ka¿dego wdechu i wydechu. Stêkaj¹c podpierasz siê d³oni¹ o pod³ogê i powoli wstajesz. Na chwilê robi ci siê ciemno przed oczyma, wiêc opierasz siê o œcianê jaskini, nudnoœæ jednak szybko mija. Wyprostowujesz siê, w pe³ni gotów do dalszej podró¿y.");
+		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(55));
+		midiPlayer->play(MidiFiles::LVL2);
+		return true;
+
+#pragma endregion
 	default:
 		playerMsg(L"|RPróbowano uruchomiæ nieznane zdarzenie globalne o id |0.", intToStr(id));
 		return false;

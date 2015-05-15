@@ -31,7 +31,7 @@ Kwestia* PostacNpc::wskObecnaKwestia()
 
 bool PostacNpc::chceRozmawiac()
 {
-	return true;
+	return rozmowa != NULL && rozmowa->obecnaKwestia != -1;
 }
 
 bool PostacNpc::jestRozmowny()

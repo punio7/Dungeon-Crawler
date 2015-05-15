@@ -11,8 +11,11 @@ namespace ListaItemow
 			DragDrewniany,
 			KamienMaly,
 			MieczKrotkiBraz,
-			ToporekMalyBraz,
+			MieczBraz,
+			ToporekBraz,
+			MlotBojowyBraz,
 			WloczniaMalaKrzemien,
+			WloczniaBraz,
 			KoniecBronie
 		};
 	}  
@@ -54,8 +57,9 @@ namespace ListaItemow
 			SkoraOgara,
 			Szmaty,
 			ZbrojaGoblinGwadzista,
-			ZbrojaGoblinBerserker,
+			SpodnieGoblinBerserker,
 			ZbrojaGoblinSzaman,
+			HelmGoblinSzaman,
 			KoniecPancerzeDzikie
 		};
 	}
@@ -82,6 +86,7 @@ namespace ListaItemow
 		enum ItemConsumablesList
 		{
 			StartConsumables = Pojemniki::KoniecPojemniki,
+			PsiaPurchawka,
 			MiksturaZrecznosciSlaba,
 			KoniecConsumables
 		};
@@ -97,6 +102,7 @@ namespace ListaItemow
 			OkraglySzafir,
 			KawalkiPotluczonegoSzkla,
 			StluczoneLustro,
+			ZardzewialyHelm,
 			Mapa,
 			KoniecQuestowe
 		};

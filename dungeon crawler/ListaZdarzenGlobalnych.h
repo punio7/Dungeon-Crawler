@@ -13,18 +13,22 @@ namespace ListaZdarzenGlobalnych
 		TekstWKorytarzu5,
 		TestNpcKoniecRozmowy,
 
+		ZejscieDoJaskini,
+		DogonienieGoblinaWJaskini,
+
 		//Zabicie postaci, dodanie expa, stworzenie zw³ok
 		MorderstwoSzamanaGoblinow,
-
 		//Przeniesienie szamana do chaty
 		UcieczkaSzamanaGoblinow,
-
 		//Powoduje ¿e wszystkie gobliny staj¹ sie agresywne
 		AgresjaGoblinow,
-
 		TeleportacjaDoChatySzamanaGoblinow,
 		TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni,
+		ZagrodzenieDrogiPrzezGwardzisteGoblinow,
 
-		ZagrodzenieDrogiPrzezGwardzisteGoblinow
+		PrzejsciePrzezDrzwiDemona,
+		Sen1Wstawka1,
+		Sen1Wstawka2,
+		Sen1Wstawka3
 	};
 }

@@ -47,7 +47,6 @@ void Gra::wczytaj_lokacje()
 	(aktualny->wyjscie)[NORTH]=getLokacja(2);
 	(aktualny->wyjscie)[SOUTH]=getLokacja(0);
 	postac = createChar(ListaPostaci::SzczurJaskiniowy);
-	postac->agresywny = true;
 	aktualny->postacie->dodaj(postac);
 
 	//////////////////	2	//////////////////
@@ -307,15 +306,18 @@ void Gra::wczytaj_lokacje()
 	aktualny->wyjscie[EAST] = getLokacja(22);
 	aktualny->wyjscie[UP] = getLokacja(5);
 	(aktualny->zamek)[UP]=Klucze::KluczZBrazuLvl2;
+	aktualny->jednorazoweZdGlob = ListaZdarzenGlobalnych::ZejscieDoJaskini;
 
 	//////////////////	21	//////////////////
 	aktualny=getLokacja(21);
 	aktualny->nazwa = L"Drzwi w jaskini";
-	aktualny->opis=
+	aktualny->backgroundMusic = MidiFiles::LVL2;
+	aktualny->opis =
 	 L"W tym miejscu korytarz szybko się zwęża i kurczy, a jedyne przejście prowadzi przez mocarne drewniane drzwi. Portal drzwi zakreśla idealnie owalny kształt i jest starannie wykonany z kamiennych cegiełek. Same drzwi wyglądają raczej prosto ale wytrzymale, ich powierzchnię zajmują wypukłe kwadraty, ale poza nimi nie ma żadnych zdobień. Drzewo nie wygląda staro i jest zapewne w świetnej kondycji. Z prawej strony drzwi znajduje się mosiężny uchwyt do ich otwierania, a poniżej niego duża dziura na klucz. Dookoła drzwi zauważasz mnóstwo grzybów, zajmujących wszystkie wgłębienia w ścianie i podłodze.";
 	aktualny->wyjscie[NORTH]=getLokacja(20);
 	aktualny->wyjscie[SOUTH]=getLokacja(55);
-	aktualny->zamek[SOUTH]=4;
+	aktualny->zamek[SOUTH]= Klucze::KluczZSrebraLvl3;
+	aktualny->jednorazoweZdGlob = ListaZdarzenGlobalnych::DogonienieGoblinaWJaskini;
 
 	//////////////////	22	//////////////////
 	aktualny=getLokacja(22);
@@ -438,6 +440,7 @@ void Gra::wczytaj_lokacje()
 	 L"Room 36.";
 	aktualny->wyjscie[NORTH]=getLokacja(35);
 	aktualny->wyjscie[EAST]=getLokacja(37);
+	aktualny->przedmioty->dodaj(create_item(Questowe::ZardzewialyHelm));
 
 	//////////////////	37	//////////////////
 	aktualny=getLokacja(37);
@@ -446,6 +449,7 @@ void Gra::wczytaj_lokacje()
 	 L"Room 37.";
 	aktualny->wyjscie[WEST]=getLokacja(36);
 	aktualny->wyjscie[NORTH]=getLokacja(34);
+	aktualny->przedmioty->dodaj(create_item({ Bronie::MieczKrotkiBraz, Bronie::MieczBraz, Bronie::ToporekBraz, Bronie::MlotBojowyBraz }));
 
 	//////////////////	38	//////////////////
 	aktualny=getLokacja(38);
@@ -596,8 +600,9 @@ void Gra::wczytaj_lokacje()
 	aktualny->opis=
 	 L"Room 55.";
 	aktualny->wyjscie[NORTH]=getLokacja(21);
-	aktualny->zamek[NORTH]=4;
+	aktualny->zamek[NORTH]=Klucze::KluczZSrebraLvl3;
 	aktualny->wyjscie[SOUTH]=getLokacja(56);
+	aktualny->jednorazoweZdGlob = ListaZdarzenGlobalnych::PrzejsciePrzezDrzwiDemona;
 
 	//////////////////	56	//////////////////
 	aktualny=getLokacja(56);
@@ -620,27 +625,70 @@ void Gra::wczytaj_lokacje()
 	aktualny->nazwa = L"Room 58";
 	aktualny->opis=
 	 L"Room 58.";
-	aktualny->wyjscie[DOWN]=getLokacja(59);
+	aktualny->wyjscie[DOWN]=getLokacja(65);
 
 #pragma endregion
 
+#pragma region Sen 1
 	//////////////////	59	//////////////////
 		
-		
+	aktualny = getLokacja(59);
+	aktualny->nazwa = L"Śniąca skrytka";
+	aktualny->opis = L"Gracz nigdy nie odwiedzi tej lokacji, jest ona tylko po to, by przechować jego przedmioty na czas snu.";
+	aktualny->postacie->dodaj(createChar(ListaPostaci::Manekin));
+
 	//////////////////	60	//////////////////
-		
-		
+	aktualny = getLokacja(60);
+	aktualny->nazwa = L"Tłum ludzi";
+	aktualny->opis =
+		L"Tłum napiera na ciebie ze wszystkich stron. Nieprzebrane morze głów wydaje się ciągnąć aż po horyzont. Ludzie wiercą się, wymachują rękami i coś krzyczą, jednak nie możesz zrozumieć co. Nawet gdybyś chciał nie możesz się poruszyć, tłum ci na to nie pozwala.";
+	aktualny->jednorazoweZdGlob = ListaZdarzenGlobalnych::Sen1Wstawka1;
+	aktualny->postacie->dodaj(createChar(ListaPostaci::CzłowiekZTlumu));
+
 	//////////////////	61	//////////////////
-		
-		
+	aktualny = getLokacja(61);
+	aktualny->nazwa = L"Kuchnia";
+	aktualny->opis =
+		L"Znajdujesz się w kuchni, rozglądając się dostrzegasz mnóstwo  kuchennego sprzętu: kocioł, garnki, miski, noże. Przyglądając się im nie możesz jednak dostrzec żadnych szczegółów ich budowy, ani tym  bardziej umieścić w konkretnym miejscu przestrzeni. Wszystko zdaje się pływać wokół ciebie i jednocześnie być dokładnie na swoim miejscu.";
+	aktualny->wyjscie[DOWN] = getLokacja(62);
+	aktualny->wyjscie[UP] = getLokacja(62);
+	aktualny->wyjscie[NORTH] = getLokacja(62);
+	aktualny->wyjscie[EAST] = getLokacja(62);
+	aktualny->wyjscie[WEST] = getLokacja(62);
+	aktualny->wyjscie[SOUTH] = getLokacja(62);
+	aktualny->postacie->dodaj(createChar(ListaPostaci::Kucharka));
+
 	//////////////////	62	//////////////////
-		
-		
+	aktualny = getLokacja(62);
+	aktualny->nazwa = L"Korytarz na parterze";
+	aktualny->opis =
+		L"Znajdujesz się w głównym korytarzu domu. Podłoga, ściany i sufit pokryte są jakimś drogim, ciemnym drewnem, nie potrafisz ustalić jaki to gatunek. Na wprost znajduje się wyjście na ganek, z lewej duże wejście do Sali jadalnej, z prawej drzwi do pokoiku gościnnego.  Obok drzwi do kuchni znajdują się duże drewniane schody na piętro. Drewniana podłoga skrzypi przy każdym twoim kroku.";
+	aktualny->wyjscie[DOWN] = getLokacja(63);
+	aktualny->wyjscie[UP] = getLokacja(63);
+	aktualny->wyjscie[NORTH] = getLokacja(63);
+	aktualny->wyjscie[EAST] = getLokacja(63);
+	aktualny->wyjscie[WEST] = getLokacja(63);
+	aktualny->wyjscie[SOUTH] = getLokacja(63);
+
 	//////////////////	63	//////////////////
-		
-		
+	aktualny = getLokacja(63);
+	aktualny->nazwa = L"Korytarz na piętrze";
+	aktualny->opis =
+		L"Powoli wchodzisz po schodach opierając rękę na drewnianej poręczy. Na piętrze również znajduje się korytarz, tutaj jednak tylko podłoga jest wykonana z drewna. Zdobione panele i obicia idealnie komponują się z ciemnymi, drewnianymi drzwiami. Prowadzą one do sypialni domowników i gości, gabinet znajduje się na samym końcu korytarza.";
+	aktualny->wyjscie[DOWN] = getLokacja(64);
+	aktualny->wyjscie[UP] = getLokacja(64);
+	aktualny->wyjscie[NORTH] = getLokacja(64);
+	aktualny->wyjscie[EAST] = getLokacja(64);
+	aktualny->wyjscie[WEST] = getLokacja(64);
+	aktualny->wyjscie[SOUTH] = getLokacja(64);
+
 	//////////////////	64	//////////////////
-		
+	aktualny = getLokacja(64);
+	aktualny->nazwa = L"Wejście do gabinetu";
+	aktualny->opis = L"";
+	aktualny->jednorazoweZdGlob = ListaZdarzenGlobalnych::Sen1Wstawka3;
+#pragma endregion
+
 		
 	//////////////////	65	//////////////////
 		

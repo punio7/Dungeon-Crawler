@@ -26,11 +26,15 @@ void MidiPlayer::loadFiles()
 	fileNames[LVL1] = "res\\midi\\calm.mid";
 	fileLen[LVL1] = 73;
 
+	fileNames[LVL2] = "res\\midi\\dungeon1.mid";
+	fileLen[LVL2] = 75;
+
 	fileNames[DREAM] = "res\\midi\\explore.mid";
 	fileLen[DREAM] = 51;
 
 	fileNames[BATTLE1] = "res\\midi\\bitwa_podziemia_Rod Lazo.mid";
 	fileLen[BATTLE1] = 261;
+
 }
 
 void MidiPlayer::play(MidiFile midi)
@@ -57,10 +61,11 @@ void MidiPlayer::loopPlay()
 	int currentTime = 0;
 	int repeatTime = fileLen[current] * 1000;
 	string comm = "open \"";
+	string filepath = path + fileNames[current];
 	comm.append(path);
 	comm.append(fileNames[current]);
 	comm.append("\" type sequencer alias midi");
-	mciSendString(comm.c_str(), NULL, 0, NULL);
+	mciSendString(TEXT(comm.c_str()), NULL, 0, NULL);
 	mciSendString("play midi", NULL, 0, NULL);
 	while (1)
 	{

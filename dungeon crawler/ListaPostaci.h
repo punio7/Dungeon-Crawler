@@ -7,6 +7,7 @@ namespace ListaPostaci
 		SzczurJaskiniowy = 1,
 		ZakapturzonaPostac,
 		TestNPC,
+		Manekin,
 		OgarStrazniczy,
 		GoblinZbieracz,
 		GoblinGwardzista,
@@ -14,6 +15,8 @@ namespace ListaPostaci
 		GoblinSzaman,
 		GrzybniaMala,
 		GrzybniaSrednia,
-		GrzybniaDuza
+		GrzybniaDuza,
+		Cz³owiekZTlumu,
+		Kucharka
 	};
 }

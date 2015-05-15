@@ -12,6 +12,7 @@ namespace MidiFiles
 {
 	enum MidiFile {
 		LVL1,
+		LVL2,
 		DREAM,
 		BATTLE1,
 		COUNT

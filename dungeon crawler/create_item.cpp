@@ -131,6 +131,7 @@ Item* Gra::create_item(int id)
 	{
 
 #pragma region Bronie
+#pragma region Prymitywne
 	case Bronie::DragDrewniany:
 		return create_item(Bronie::DragDrewniany, ITEM_2HWEAPON,
 			L"drewniany dr¹g",
@@ -138,16 +139,6 @@ Item* Gra::create_item(int id)
 			L"le¿y u twoich stóp",
 			2, 2, 2, 0, 0, 0, 0,
 			1,
-			0, 0, 0, 0, 0);
-		break;
-
-	case Bronie::MieczKrotkiBraz:
-		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
-			L"krótki miecz z br¹zu",
-			L"Miecze s¹ jedn¹ z najpowszechniejszych broni spotykanych w krainie. S¹ to no¿e o podwójnym i wyd³u¿onym ostrzu, oraz z kling¹ przystosowan¹ do wygodnego dzier¿enia oraz walki. Krótkie miecze maj¹ d³ugoœæ oko³o pó³torej ³okcia, podwójne zaostrzone ostrze, jednak z powodu ma³ej wagi najlepiej nadaj¹ siê do wykonywania pchniêæ sztychem. Rêkojeœæ jest krótka, jednorêczna a jelec prosty i ma³y. Miecz ten jest szybki jednak z powody ma³ej d³ugoœci trudniej trafiæ nim przeciwnika ni¿ odpowiednio d³u¿szymi bronami.",
-			L"le¿y na ziemi",
-			4, 4, 3, 0, 0, 0, 0,
-			10,
 			0, 0, 0, 0, 0);
 		break;
 	case Bronie::KamienMaly:
@@ -158,20 +149,64 @@ Item* Gra::create_item(int id)
 			-3, -3, 1, 0, 0, 0, 0,
 			0);
 		break;
-	case Bronie::ToporekMalyBraz:
-		return create_item(id, ITEM_1HWEAPON,
-			L"Ma³y toporek z br¹zu",
-			L"Topory to broñ bazuj¹ca na siekierach drwalów. Dziêki du¿ej masie ostrza, oraz wywa¿eniu skupionemu na koñcu broni topory posiadaj¹ wiêksz¹ si³ê uderzenia ni¿ miecze, zdoln¹ do przebijania grubszych pancerzy oraz rozbijania tarcz. Brak d³ugiego ostrza, czyni jednak t¹ broñ ma³o u¿yteczn¹ w parowaniu.",
-			L"le¿y na ziemi",
-			1, 1, 3, 0, 0, 0, 0,
-			2);
 	case Bronie::WloczniaMalaKrzemien:
-		return create_item(id, ITEM_2HWEAPON,
+		return create_item(id, ITEM_1HWEAPON,
 			L"Prymitywna w³ócznia",
 			L"W³ócznie s¹ jednymi z najstarszych typów broni stosowanych przez rasy rozumne. Prosty pomys³ zwiêkszenia zasiêgu ostrza, poprzez umieszczenie go na drewnianym kiju daje u¿ytkownikowi du¿¹ przewagê zasiêgu, sam drzewiec mo¿e byæ równie¿ ³atwo u¿yty w parowaniu ciosów. Ostrze jest jednak ma³e i nie jest zdolne wyrz¹dziæ tak du¿ych szkód jak topór czy miecz. W tym egzemplarzu ostrze jest wykonane z ociosanego krzemienia, ca³a konstrukcja jest bardzo prymitywna i wykonana prostymi metodami.",
 			L"le¿y na ziemi",
-			2, 2, 1, 0, 0, 0, 0,
+			3, 3, 2, 0, 5, 0, 0,
 			2);
+#pragma endregion
+
+
+#pragma region Br¹z
+	case Bronie::MieczKrotkiBraz:
+		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
+			L"krótki miecz z br¹zu",
+			L"Miecze s¹ jedn¹ z najpowszechniejszych broni spotykanych w krainie. S¹ to no¿e o podwójnym i wyd³u¿onym ostrzu, oraz z kling¹ przystosowan¹ do wygodnego dzier¿enia oraz walki. Krótkie miecze maj¹ d³ugoœæ oko³o pó³torej ³okcia, podwójne zaostrzone ostrze, jednak z powodu ma³ej wagi najlepiej nadaj¹ siê do wykonywania pchniêæ sztychem. Rêkojeœæ jest krótka, jednorêczna a jelec prosty i ma³y. Miecz ten jest szybki jednak z powody ma³ej d³ugoœci trudniej trafiæ nim przeciwnika ni¿ odpowiednio d³u¿szymi bronami.",
+			L"le¿y na ziemi",
+			2, 4, 2, 0, 6, 0, 0,
+			36,
+			9, 6, 15, 6, 0);
+
+	case Bronie::MieczBraz:
+		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
+			L"miecz z br¹zu",
+			L"Opis miecza z br¹zu.",
+			L"le¿y na ziemi",
+			4, 4, 3, 0, 0, 0, 0,
+			48,
+			16, 16, 16, 0, 0);
+
+	case Bronie::ToporekBraz:
+		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
+			L"toporek z br¹zu",
+			L"Opis toporka z br¹zu.",
+			L"le¿y na ziemi",
+			4, 1, 3, 0, 3, 0, 0,
+			36,
+			15, 15, 3, 3, 0);
+
+	case Bronie::MlotBojowyBraz:
+		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
+			L"m³ot bojowy z br¹zu",
+			L"Opis m³ota bojowego z br¹zu.",
+			L"le¿y na ziemi",
+			2, 0, 3, 0, 12, 0, 0,
+			36,
+			18, 6, 0, 12, 0);
+
+	case Bronie::WloczniaBraz:
+		return create_item(Bronie::MieczKrotkiBraz, ITEM_1HWEAPON,
+			L"w³ócznia z br¹zu",
+			L"Opis w³óczni z br¹zu.",
+			L"le¿y na ziemi",
+			6, 6, 4, 0, 12, 0, 0,
+			36,
+			6, 12, 12, 6, 0);
+
+#pragma endregion
+
 
 #pragma endregion
 
@@ -269,6 +304,38 @@ Item* Gra::create_item(int id)
 			L"le¿y tutaj",
 			0, 4, 0, 210, 37, 0, 0,
 			5);
+
+#pragma region Gobliñskie
+	case PancerzeDzikie::ZbrojaGoblinGwadzista:
+		return create_item(id, ITEM_WILD_ZBROJA,
+			L"œmieciowy pancerz",
+			L"Opis œmieciowego pancerza",
+			L"le¿y tutaj",
+			1, 1, 0, 56, 10, 0, 0,
+			20);
+	case PancerzeDzikie::SpodnieGoblinBerserker:
+		return create_item(id, ITEM_WILD_NAGOLENNIKI,
+			L"ma³e skórzane spodnie",
+			L"Opis spodni goblina",
+			L"le¿y tutaj",
+			2, 3, 0, 36, 6, 0, 0,
+			24);
+	case PancerzeDzikie::ZbrojaGoblinSzaman:
+		return create_item(id, ITEM_WILD_ZBROJA,
+			L"strój gobliñskiego szamana",
+			L"Opis stroju gobliñskiego szamana",
+			L"le¿y tutaj",
+			4, 2, 0, 36, 8, 0, 0,
+			32);
+	case PancerzeDzikie::HelmGoblinSzaman:
+		return create_item(id, ITEM_WILD_HELM,
+			L"nakrycie g³ówy gobliœnkiego szamana",
+			L"Opis okrycia g³owy gobliñskiego szamana",
+			L"le¿y tutaj",
+			1, 3, 0, 56, 14, 0, 0,
+			28);
+#pragma endregion
+
 #pragma endregion
 
 #pragma region Pojemniki
@@ -322,6 +389,12 @@ Item* Gra::create_item(int id)
 			L"stoi w k¹cie",
 			0, 0, 0, 0, 0, 0, 0, 0);
 		break;
+	case Questowe::ZardzewialyHelm:
+		return create_item(Questowe::StluczoneLustro, ITEM_QUEST,
+			L"zardzewia³y he³m",
+			L"He³m ten nosi wszelkie znaki staroœci i zu¿ycia: jest pordzewia³y i pogiêty a w jego czo³owej czêœci znajduje siê du¿a dziura. Pomijaj¹c fakt, ¿e jest ma³y i nie pasowa³by na twoj¹ g³owê i tak nie zapewni³by on ¿adnej u¿ytecznoœci.",
+			L"le¿y na jednej z kurhan",
+			0, 0, 0, 0, 0, 0, 0, 2);
 	case Questowe::Mapa:
 		return create_item(Questowe::Mapa, ITEM_QUEST,
 			L"mapa",

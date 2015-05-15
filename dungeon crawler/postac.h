@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include <list>
+#include <array>
 #include "ItemSlot.h"
 #include "Rasa.h"
 #include "Klasa.h"
@@ -94,7 +95,7 @@ public:
 	Rasa *rasa;
 	Klasa *klasa;
 
-	Item *eq[SLOT_ILOSC];
+	array<Item*, SLOT_ILOSC> eq;
 	ItemList *przedmioty;
 	int zloto;
 	StatusList *statusy;

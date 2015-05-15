@@ -30,7 +30,7 @@ void Equipment::manual()
 
 void Equipment::equipment()
 {
-	Item **eq = gra->gracz.eq;
+	auto eq = gra->gracz.eq;
 	
 	playerMsg(L"Obecnie u¿ywasz:\n");
 	
