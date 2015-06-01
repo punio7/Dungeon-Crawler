@@ -1,5 +1,5 @@
 #include "Scan.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Lokacja.h"
 
 Scan::Scan(Gra *gra):

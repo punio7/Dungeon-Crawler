@@ -4,7 +4,14 @@
 // Project>>Project Options>>Parameters>>Add Lib>>libwinmm.a
 // a Dev-C++  console application
 #include "midi.h"
+#include <iostream>
+#include <windows.h>
+#include <mmsystem.h>  // mciSendwstring()
+#include <iostream>
+#include <conio.h>
+#include <thread>
 
+using namespace std;
 using namespace MidiFiles;
 
 bool MidiPlayer::stopped;
@@ -65,8 +72,10 @@ void MidiPlayer::loopPlay()
 	comm.append(path);
 	comm.append(fileNames[current]);
 	comm.append("\" type sequencer alias midi");
-	mciSendString(TEXT(comm.c_str()), NULL, 0, NULL);
-	mciSendString("play midi", NULL, 0, NULL);
+	MCIERROR ret = mciSendString(TEXT(comm.c_str()), NULL, 0, NULL);
+	ret = mciSendString("play midi", NULL, 0, NULL);
+	wchar_t buffer[1000];
+	mciGetErrorStringW(ret, buffer, 1000);
 	while (1)
 	{
 		for (currentTime = 0; currentTime < repeatTime; currentTime += 200)

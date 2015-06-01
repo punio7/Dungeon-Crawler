@@ -1,12 +1,13 @@
 #include "Talk.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Quest.h"
 #include "Rozmowa.h"
 #include "KwestiaOdpowiedzWymaganie.h"
 #include "Kwestia.h"
 #include "Lokacja.h"
 #include "Kill.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 

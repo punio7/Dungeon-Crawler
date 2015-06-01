@@ -1,6 +1,6 @@
 #include "Equipment.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 
 Equipment::Equipment(Gra *gra):
 	Komenda(gra)

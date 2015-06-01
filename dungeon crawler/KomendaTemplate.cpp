@@ -1,5 +1,5 @@
 #include "KomendaTemplate.h"
-#include "gra.h"
+#include "Gra.h"
 
 
 KomendaTemplate::KomendaTemplate(Gra *gra):

@@ -1,4 +1,4 @@
-#include "gra.h"
+#include "Gra.h"
 #include <array>
 
 //Rasa **rasy = NULL;

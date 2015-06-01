@@ -1,4 +1,4 @@
-#include "gra.h"
+#include "Gra.h"
 #include "PostacNpc.h"
 #include "Rozmowa.h"
 #include "Kwestia.h"
@@ -196,7 +196,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 			L"zdecydujesz jak go zdobêdziesz. Kiedy ju¿ to zrobisz ruszaj w g³¹b podziemi, twój cel znajduje siê na "
 			L"samym dole.  Jeszcze siê spotkamy. Powodzenia.\"");
 		kwestia->dodajNagrodeQuestFaza(ListaQuestow::TajemniczyNieznajomy, 3);
-		kwestia->dodajNagrodeQuestFaza(ListaQuestow::GoblinyWPodziemiach, 2);
+		kwestia->dodajNagrodeQuestFaza(ListaQuestow::GoblinyWPodziemiach, 1);
 		kwestia->dodajNagrodeGraczItem(ListaItemow::Klucze::KluczZBrazuLvl2);
 		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê.", -1);
 		postac->dodajKwestie(kwestia);
@@ -266,7 +266,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 
 		kwestia = new Kwestia(1, 1,
 			L"„Staæ! Ty zabijaæ nie wiêcej. Torag Mora, m¹dry, jego bracia martwi. Nie wiêcej! My rozmawiaæ.”");
-		kwestia->dodajOdpowiedz(L"„Nie obchodzi mnie co masz do powiedzenia. Broñ siê!”", -2);
+		kwestia->dodajOdpowiedz(L"„Nie obchodzi mnie co masz do powiedzenia. Broñ siê!”", KoniecRozmowyWalka);
 		kwestia->dodajOdpowiedz(L"Zabij go na miejscu", 2, -10)
 			->DodajWymaganieRasa(RASA_ELF | RASA_POLELF | RASA_MROCZNYELF | RASA_NIZIOLEK | RASA_SIDAN | RASA_CZLOWIEK);
 		kwestia->dodajOdpowiedz(L"Zabij go na miejscu", 3, -5)
@@ -277,16 +277,16 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 
 		kwestia = new Kwestia(2, 2,
 			L"Wykorzystuj¹c element zaskoczenia podnosisz broñ i atakujesz ni¹ rozmówcê. Trafiasz go prosto w g³owê i goblin pada na ziemiê. Reszta plemienia widz¹c to, z krzykiem rzuca siê na ciebie.");
-		kwestia->dodajNagrodeZdarzenieGlobalne(ListaZdarzenGlobalnych::MorderstwoSzamanaGoblinow);
-		kwestia->dodajNagrodeZdarzenieGlobalne(ListaZdarzenGlobalnych::AgresjaGoblinow);
-		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", -1);
+		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", KoniecRozmowy)
+			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::MorderstwoSzamanaGoblinow)
+			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::AgresjaGoblinow);
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(3, 3,
 			L"Wykorzystuj¹c element zaskoczenia podnosisz broñ i atakujesz ni¹ rozmówcê. Robisz to jednak niezdarnie i goblin wykonuje unik, po czym zaczyna uciekaæ. Drogê zastêpuje ci reszta plemienia.");
 		kwestia->dodajNagrodeZdarzenieGlobalne(ListaZdarzenGlobalnych::UcieczkaSzamanaGoblinow);
 		kwestia->dodajNagrodeZdarzenieGlobalne(ListaZdarzenGlobalnych::AgresjaGoblinow);
-		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", -1);
+		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", KoniecRozmowy);
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(4, 4,
@@ -300,7 +300,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		kwestia = new Kwestia(5, 5,
 			L"„Twoja broñ mieæ krew goba, Torag martwiæ siê nie zgin¹æ. " + temp + L" oddaæ broñ i my iœæ do chata, tam my rozmawiaæ.”");
 		kwestia->dodajOdpowiedz(L"Oddaj mu broñ", 7);
-		kwestia->dodajOdpowiedz(L"„Nie nabierzesz mnie na takie sztuczki! Giñ!”", -2);
+		kwestia->dodajOdpowiedz(L"„Nie nabierzesz mnie na takie sztuczki! Giñ!”", KoniecRozmowyWalka);
 		kwestia->dodajOdpowiedz(L"Zabij go na miejscu", 2, -10)
 			->DodajWymaganieRasa(RASA_ELF | RASA_POLELF | RASA_MROCZNYELF | RASA_NIZIOLEK | RASA_SIDAN | RASA_CZLOWIEK);
 		kwestia->dodajOdpowiedz(L"Zabij go na miejscu", 3, -5)
@@ -314,7 +314,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 
 		kwestia = new Kwestia(7, 9,
 			L"„Torag rad, L" + temp + L" wiedza.Rozmowa du¿o dobra.My iœæ.”");
-		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", -1)
+		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê", KoniecRozmowy)
 			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni);
 		postac->dodajKwestie(kwestia);
 
@@ -322,9 +322,9 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 			L"„" + temp + L" zabiæ silne goba.My nie wiêcej tutaj, nie chcieæ gin¹æ.Bia³y demon s³uchaæ.Torag mówiæ tutaj demon zabijaæ goba.Isæ!Iœæ!”");
 		kwestia->dodajOdpowiedz(L"„Niech bêdzie. ProwadŸ.”", -1)
 			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinow);
-		kwestia->dodajOdpowiedz(L"„Nie ufam Ci ropucho. ProwadŸ, ale nie wykonuj ¿adnych gwa³townych ruchów.”", -1)
+		kwestia->dodajOdpowiedz(L"„Nie ufam Ci ropucho. ProwadŸ, ale nie wykonuj ¿adnych gwa³townych ruchów.”", KoniecRozmowy)
 			->DodajWymaganieZdarzenieGlobalne(ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinow);
-		kwestia->dodajOdpowiedz(L"„Bardzo sprytne, jednak chyba wolê po prostu zabiæ.”", -2);
+		kwestia->dodajOdpowiedz(L"„Bardzo sprytne, jednak chyba wolê po prostu zabiæ.”", KoniecRozmowyWalka);
 		kwestia->dodajOdpowiedz(L"Zabij go na miejscu”", 2);
 		postac->dodajKwestie(kwestia);
 
@@ -332,6 +332,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 			L"„My tu mówiæ bezpiecznie. Ja Torag Mora, byæ kiedyœ silny wielki wódz. Zabiæ i zjeœæ inne Goba, zbieraæ ich samice. Ale Torag zhañbiony, nie godzien swoje imiê. Nie godzien wielki wódz.”");
 		kwestia->dodajOdpowiedz(L"Dalej", 10);
 		kwestia->dodajOdpowiedz(L"„Streszczaj siê, twoje stêkanie dzia³a mi ju¿ na nerwy.”", 11, -2);
+		kwestia->dodajNagrodeQuestFaza(ListaQuestow::GoblinyWPodziemiach, 5);
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(10, 10,
@@ -358,6 +359,7 @@ void Gra::wczytajRozmowe(int id, PostacNpc* postac)
 		kwestia = new Kwestia(13, 17,
 			L"„|^" + temp + L" ruszaæ natychmiast. Bia³y demon wielka magia, wiedzieæ du¿o. Torag zmartwiony o ¿ycie goba. Iœæ! Iœæ!”");
 		kwestia->dodajOdpowiedz(L"Zakoñcz rozmowê.", KoniecRozmowy);
+		kwestia->dodajNagrodeQuestFaza(ListaQuestow::GoblinyWPodziemiach, 6);
 		postac->dodajKwestie(kwestia);
 
 		kwestia = new Kwestia(14, 14,

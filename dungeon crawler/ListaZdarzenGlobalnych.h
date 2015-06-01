@@ -25,6 +25,7 @@ namespace ListaZdarzenGlobalnych
 		TeleportacjaDoChatySzamanaGoblinow,
 		TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni,
 		ZagrodzenieDrogiPrzezGwardzisteGoblinow,
+		ZjedzeniePurchawki,
 
 		PrzejsciePrzezDrzwiDemona,
 		Sen1Wstawka1,

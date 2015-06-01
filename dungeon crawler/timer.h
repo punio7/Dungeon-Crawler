@@ -1,7 +1,5 @@
 #pragma once
 
-#include <time.h>
-
 class timer
 {
 public:

@@ -1,6 +1,6 @@
 #include "Drink.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 
 Drink::Drink(Gra *gra):
 	Komenda(gra)
@@ -16,6 +16,13 @@ Drink::~Drink(void)
 void Drink::execute(ParseDTO argumenty)
 {
 	Gracz &gracz = gra->gracz;
+
+	if (argumenty.argument1.empty())
+	{
+		playerMsg(L"Co chcesz wypiæ?");
+		return;
+	}
+
 	Item* mikstura = gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1);
 
 	if (mikstura == NULL)
@@ -47,5 +54,5 @@ void Drink::manual()
 			 L"U¿ycia:\n\n"
 			 L"   drink <nazwa_mikstury> - wypija wskazan¹ miksturê. Mikstura musi siê znajdowaæ w inwentarzu, po wypicu zostanie ona zniszczona.\n\n"
 			 L"SprawdŸ równie¿:\n"
-			 L"   condition");
+			 L"   condition eat");
 }

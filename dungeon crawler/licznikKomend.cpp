@@ -1,10 +1,12 @@
+#include <iostream>
+#include "CommandTree.h"
 #include "licznikKomend.h"
 
 licznikKomend::licznikKomend()
 {
-	for (int i=0;i<ILOSC_KOMEND;i++)
+	for (int i = 0; i < LICZBA_KOMEND; i++)
 	{
-		iloscWywolan[i]=0;
+		iloscWywolan[i] = 0;
 	}
 }
 
@@ -20,8 +22,8 @@ int licznikKomend::sprawdz(Ekomenda komenda)
 
 void licznikKomend::wypiszLicznik()
 {
-	for (int i=0;i<ILOSC_KOMEND;i++)
+	for (int i = 0; i < LICZBA_KOMEND; i++)
 	{
-		wcout<<iloscWywolan[i]<<' ';
+		wcout << iloscWywolan[i] << ' ';
 	}
 }

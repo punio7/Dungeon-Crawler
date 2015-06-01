@@ -1,11 +1,5 @@
 #pragma once
-
-#define ILOSC_KOMEND 100
-
-#include <iostream>
-#include "command_tree.h"
-
-;using namespace std;
+#include "EnumKomendy.h"
 
 class licznikKomend
 {
@@ -17,5 +11,5 @@ public:
 	void wypiszLicznik();			//wypisuje na wcout ilosc wywolan wszystkich funkcji
 
 private:
-	int iloscWywolan[ILOSC_KOMEND];
+	int iloscWywolan[LICZBA_KOMEND];
 };

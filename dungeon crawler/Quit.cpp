@@ -1,5 +1,5 @@
 #include "Quit.h"
-#include "gra.h"
+#include "Gra.h"
 
 
 Quit::Quit(Gra *gra):

@@ -1,7 +1,8 @@
 #include "Sell.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Buy.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 
@@ -52,7 +53,7 @@ void Sell::execute(ParseDTO argumenty)
 	kupiec->sklepKup(przed, cena);
 	gracz.przedmioty->usun(przed);
 	gracz.zloto += cena;
-	wcout<<"Sprzedajesz "<<przed->nazwa<<" za "<<cena<<" szt. z³."<<endl;
+	playerMsg(L"Sprzedajesz |0 za |1 szt. z³.", przed->nazwa, intToStr(cena));
 }
 
 void Sell::manual()

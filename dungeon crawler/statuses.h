@@ -1,5 +1,5 @@
 #pragma once
 
 #include "odpoczynek.h"
-#include "zwiekszenieCechy.h"
+#include "ZwiekszenieCechy.h"
 #include "Upadek.h"

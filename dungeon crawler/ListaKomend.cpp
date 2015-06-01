@@ -7,6 +7,7 @@
 #include "Drink.h"
 #include "Drop.h"
 #include "Equipment.h"
+#include "Eat.h"
 #include "East.h"
 #include "Examine.h"
 #include "List.h"
@@ -60,6 +61,7 @@ ListaKomend::ListaKomend(Gra *gra)
 	komendy[(int)COMM_DOWN] = new Down(gra);
 	komendy[(int)COMM_DRINK] = new Drink(gra);
 	komendy[(int)COMM_DROP] = new Drop(gra);
+	komendy[(int)COMM_EAT] = new Eat(gra);
 	komendy[(int)COMM_EAST] = new East(gra);
 	komendy[(int)COMM_EQUIPMENT] = new Equipment(gra);
 	komendy[(int)COMM_EXAMINE] = new Examine(gra);

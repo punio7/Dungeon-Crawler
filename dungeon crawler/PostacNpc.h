@@ -1,5 +1,5 @@
 #pragma once
-#include "postac.h"
+#include "Postac.h"
 
 class Rozmowa;
 

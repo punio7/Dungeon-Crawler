@@ -1,9 +1,9 @@
 #include "KwestiaOdpowiedzWymaganie.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Quest.h"
 #include "zdarzeniaGlobalne.h"
-
+#include "playerMsg.h"
 
 KwestiaOdpowiedzWymaganie::KwestiaOdpowiedzWymaganie(KwestiaOdpowiedzWymaganieTyp::KwestiaOdpowiedzWymaganieEnum typWymagania, vector<int> argumenty)
 {

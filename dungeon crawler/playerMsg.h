@@ -1,10 +1,5 @@
 #pragma once
 #include <string>
-#include <sstream>
-#include <iostream>
-#include <locale>
-#include "wersalikuj.h"
-#include "color.h"
 
 using namespace std;
 
@@ -28,5 +23,5 @@ wstring czystyTekst(wstring text);
 	|+ |- -zamiana wszystkich znakow na duze/male, uzyj ponownie aby wylaczyc
 	|^ -nastepny znak bedzie duzy natomiast reszta bedzie normalna
 	|b |g |c |r |p |y |s
-	|S |B |G |C |R |P |Y |W -roznorakie kolory sprawdz color.h
+	|S |B |G |C |R |P |Y |W -roznorakie kolory sprawdz Color.h
 */

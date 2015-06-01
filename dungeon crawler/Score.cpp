@@ -1,5 +1,5 @@
 #include "Score.h"
-#include "gra.h"
+#include "Gra.h"
 
 
 Score::Score(Gra *gra):
@@ -15,7 +15,6 @@ Score::~Score(void)
 
 void Score::execute(ParseDTO argumenty)
 {
-	//gra->gracz.wypisz_staty();
 	wypiszStaty(&(gra->gracz));
 }
 

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <string>
-#include "gra.h"
+#include "Gra.h"
 #include "Quest.h"
 #include "parser.h"
 #include <csignal>

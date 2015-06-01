@@ -1,5 +1,6 @@
-#include "status.h"
-#include "color.h"
+#include <sstream>
+#include "Status.h"
+#include "Color.h"
 #include "playerMsg.h"
 
 StatusList::StatusList() : list<Status*>()

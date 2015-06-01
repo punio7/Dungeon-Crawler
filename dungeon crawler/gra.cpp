@@ -1,4 +1,4 @@
-﻿#include "gra.h"
+﻿#include "Gra.h"
 #include <thread>
 #include <iostream>
 #include <sstream>
@@ -14,6 +14,7 @@
 #include "randomGenerator.h"
 #include "midi.h"
 #include "Look.h"
+#include "ListaKomend.h"
 
 using namespace std;
 
@@ -36,14 +37,15 @@ Gra::Gra(int argc, const char* argv[])
 	wczytaj_lokacje();
 	wczytajQuesty();
 	gracz.polozenie = getLokacja(0);
-	gracz.dodajPrzedmiot(create_item(ListaItemow::Pojemniki::TorbaPodrozna));
-	gracz.dodajPrzedmiot(create_item(ListaItemow::Questowe::Mapa));
-	gracz.dodajPrzedmiot(create_item(ListaItemow::Questowe::Mapa));
-	gracz.equip(create_item(ListaItemow::Pancerze::ButySkora));
-	gracz.equip(create_item(ListaItemow::Pancerze::NagolennikiSkora));
-	gracz.equip(create_item(ListaItemow::Pancerze::NaramiennikiSkora));
-	gracz.equip(create_item(ListaItemow::Pancerze::RekawiceSkora));
-	gracz.equip(create_item(ListaItemow::Pancerze::ZbrojaSkora));
+	gracz.equip(createItem(ListaItemow::Magiczne::KoszulaLniana));
+	gracz.equip(createItem(ListaItemow::Magiczne::SpodnieLniane));
+	//gracz.dodajPrzedmiot(createItem(ListaItemow::Pojemniki::TorbaPodrozna));
+	//gracz.dodajPrzedmiot(createItem(ListaItemow::Questowe::Mapa));
+	//gracz.equip(createItem(ListaItemow::Pancerze::ButySkora));
+	//gracz.equip(createItem(ListaItemow::Pancerze::NagolennikiSkora));
+	//gracz.equip(createItem(ListaItemow::Pancerze::NaramiennikiSkora));
+	//gracz.equip(createItem(ListaItemow::Pancerze::RekawiceSkora));
+	//gracz.equip(createItem(ListaItemow::Pancerze::ZbrojaSkora));
 	//gracz.polozenie = getLokacja(20);	//DEBUG ZMIANA POLOZENIA GRACZA
 	(gracz.statusy)->dodaj(new StatusOdpoczynek());
 	gracz.przelicz();

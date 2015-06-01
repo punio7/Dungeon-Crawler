@@ -56,7 +56,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>$(SolutionDir)log4cpp\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)lib\WINMM.LIB;$(SolutionDir)log4cpp\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -89,33 +89,34 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
   <ItemGroup>
     <ClCompile Include="Buy.cpp" />
     <ClCompile Include="Cheat.cpp" />
-    <ClCompile Include="color.cpp" />
-    <ClCompile Include="command_tree.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="CommandTree.cpp" />
     <ClCompile Include="Condition.cpp" />
     <ClCompile Include="Consider.cpp" />
     <ClCompile Include="ConsoleSize.cpp" />
     <ClCompile Include="createChar.cpp" />
     <ClCompile Include="create_command_tree.cpp" />
-    <ClCompile Include="create_item.cpp" />
+    <ClCompile Include="createItem.cpp" />
     <ClCompile Include="Down.cpp" />
     <ClCompile Include="Drink.cpp" />
     <ClCompile Include="Drop.cpp" />
     <ClCompile Include="drukuj.cpp" />
     <ClCompile Include="East.cpp" />
+    <ClCompile Include="Eat.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Examine.cpp" />
     <ClCompile Include="Go.cpp" />
-    <ClCompile Include="gra.cpp" />
-    <ClCompile Include="gracz.cpp" />
+    <ClCompile Include="Gra.cpp" />
+    <ClCompile Include="Gracz.cpp" />
     <ClCompile Include="Hold.cpp" />
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="item.cpp" />
-    <ClCompile Include="item_1hbron.cpp" />
-    <ClCompile Include="item_container.cpp" />
-    <ClCompile Include="item_dzwignia.cpp" />
-    <ClCompile Include="item_miksturaStatusu.cpp" />
-    <ClCompile Include="item_quest.cpp" />
-    <ClCompile Include="item_zbroja.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Item1hBron.cpp" />
+    <ClCompile Include="ItemContainer.cpp" />
+    <ClCompile Include="ItemDzwignia.cpp" />
+    <ClCompile Include="MiksturaStatusu.cpp" />
+    <ClCompile Include="ItemQuest.cpp" />
+    <ClCompile Include="ItemZbroja.cpp" />
     <ClCompile Include="Journal.cpp" />
     <ClCompile Include="Kill.cpp" />
     <ClCompile Include="Klasa.cpp" />
@@ -127,18 +128,19 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClCompile Include="List.cpp" />
     <ClCompile Include="ListaKomend.cpp" />
     <ClCompile Include="Log4CppLogger.cpp" />
-    <ClCompile Include="lokacja.cpp" />
+    <ClCompile Include="Lokacja.cpp" />
     <ClCompile Include="Look.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manual.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MiksturaZdarzeniaGlobalnego.cpp" />
     <ClCompile Include="North.cpp" />
     <ClCompile Include="Offer.cpp" />
     <ClCompile Include="Open.cpp" />
     <ClCompile Include="ParseDTO.cpp" />
     <ClCompile Include="parser.cpp" />
     <ClCompile Include="playerMsg.cpp" />
-    <ClCompile Include="postac.cpp" />
+    <ClCompile Include="Postac.cpp" />
     <ClCompile Include="PostacNpc.cpp" />
     <ClCompile Include="Pull.cpp" />
     <ClCompile Include="Push.cpp" />
@@ -147,17 +149,17 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClCompile Include="Quit.cpp" />
     <ClCompile Include="randomGenerator.cpp" />
     <ClCompile Include="Rasa.cpp" />
-    <ClCompile Include="odpoczynek.cpp" />
+    <ClCompile Include="Odpoczynek.cpp" />
     <ClCompile Include="Remove.cpp" />
     <ClCompile Include="Rozmowa.cpp" />
-    <ClCompile Include="midi.cpp" />
+    <ClCompile Include="Midi.cpp" />
     <ClCompile Include="Scan.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Sell.cpp" />
     <ClCompile Include="Upadek.cpp" />
     <ClCompile Include="South.cpp" />
     <ClCompile Include="StackWalker\StackWalker.cpp" />
-    <ClCompile Include="status.cpp" />
+    <ClCompile Include="Status.cpp" />
     <ClCompile Include="Take.cpp" />
     <ClCompile Include="Talk.cpp" />
     <ClCompile Include="Test.cpp" />
@@ -173,7 +175,7 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClCompile Include="wczytajQuesty.cpp" />
     <ClCompile Include="wczytajRasy.cpp" />
     <ClCompile Include="wczytajRozmowy.cpp" />
-    <ClCompile Include="wczytaj_lokacje.cpp" />
+    <ClCompile Include="wczytajLokacje.cpp" />
     <ClCompile Include="Wear.cpp" />
     <ClCompile Include="wersalikuj.cpp" />
     <ClCompile Include="West.cpp" />
@@ -181,13 +183,13 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClCompile Include="zdarzeniaCiagle.cpp" />
     <ClCompile Include="zdarzeniaGlobalne.cpp" />
     <ClCompile Include="zdarzeniaPrzySpotkaniu.cpp" />
-    <ClCompile Include="zwiekszenieCechy.cpp" />
+    <ClCompile Include="ZwiekszenieCechy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Buy.h" />
     <ClInclude Include="Cheat.h" />
-    <ClInclude Include="color.h" />
-    <ClInclude Include="command_tree.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="CommandTree.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="Consider.h" />
     <ClInclude Include="ConsoleSize.h" />
@@ -196,13 +198,15 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClInclude Include="Drop.h" />
     <ClInclude Include="drukuj.h" />
     <ClInclude Include="East.h" />
+    <ClInclude Include="Eat.h" />
     <ClInclude Include="EnumKomendy.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="errors.h" />
     <ClInclude Include="Examine.h" />
     <ClInclude Include="Go.h" />
-    <ClInclude Include="gra.h" />
-    <ClInclude Include="gracz.h" />
+    <ClInclude Include="Gra.h" />
+    <ClInclude Include="Gracz.h" />
+    <ClInclude Include="MiksturaZdarzeniaGlobalnego.h" />
     <ClInclude Include="ItemSlot.h" />
     <ClInclude Include="KwestiaOdpowiedzWymaganie.h" />
     <ClInclude Include="languageUtils.h" />
@@ -210,7 +214,7 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClInclude Include="Hold.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Journal.h" />
-    <ClInclude Include="kierunkiSwiata.h" />
+    <ClInclude Include="KierunkiSwiata.h" />
     <ClInclude Include="Kill.h" />
     <ClInclude Include="Komenda.h" />
     <ClInclude Include="KomendaTemplate.h" />
@@ -223,7 +227,7 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClInclude Include="Look.h" />
     <ClInclude Include="Manual.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="midi.h" />
+    <ClInclude Include="Midi.h" />
     <ClInclude Include="North.h" />
     <ClInclude Include="Offer.h" />
     <ClInclude Include="Open.h" />
@@ -252,29 +256,29 @@ copy "$(ProjectDir)res\midi\*.mid" "$(TargetDir)res\midi\"</Command>
     <ClInclude Include="Wear.h" />
     <ClInclude Include="West.h" />
     <ClInclude Include="Wield.h" />
-    <ClInclude Include="zwiekszenieCechy.h" />
-    <ClInclude Include="item.h" />
-    <ClInclude Include="item_1hbron.h" />
-    <ClInclude Include="item_container.h" />
-    <ClInclude Include="item_dzwignia.h" />
-    <ClInclude Include="item_miksturaStatusu.h" />
-    <ClInclude Include="item_quest.h" />
-    <ClInclude Include="item_types.h" />
-    <ClInclude Include="item_zbroja.h" />
+    <ClInclude Include="ZwiekszenieCechy.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Item1hBron.h" />
+    <ClInclude Include="ItemContainer.h" />
+    <ClInclude Include="ItemDzwignia.h" />
+    <ClInclude Include="MiksturaStatusu.h" />
+    <ClInclude Include="ItemQuest.h" />
+    <ClInclude Include="ItemTypes.h" />
+    <ClInclude Include="ItemZbroja.h" />
     <ClInclude Include="Klasa.h" />
     <ClInclude Include="Kwestia.h" />
     <ClInclude Include="licznikKomend.h" />
-    <ClInclude Include="lokacja.h" />
+    <ClInclude Include="Lokacja.h" />
     <ClInclude Include="parser.h" />
-    <ClInclude Include="postac.h" />
+    <ClInclude Include="Postac.h" />
     <ClInclude Include="PostacNpc.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="randomGenerator.h" />
     <ClInclude Include="Rasa.h" />
-    <ClInclude Include="odpoczynek.h" />
+    <ClInclude Include="Odpoczynek.h" />
     <ClInclude Include="Rozmowa.h" />
-    <ClInclude Include="status.h" />
-    <ClInclude Include="statuses.h" />
+    <ClInclude Include="Status.h" />
+    <ClInclude Include="Statuses.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="Walka.h" />
     <ClInclude Include="wersalikuj.h" />

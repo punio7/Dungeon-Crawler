@@ -1,6 +1,8 @@
 #include "East.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Go.h"
+#include "ListaKomend.h"
+
 extern ListaKomend *listaKomend;
 
 East::East(Gra *gra):

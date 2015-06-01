@@ -1,5 +1,5 @@
 #include "Open.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Lokacja.h"
 
 Open::Open(Gra *gra):

@@ -1,8 +1,9 @@
-#include "gra.h"
+#include "Gra.h"
 #include "Lokacja.h"
 #include "midi.h"
 #include "Talk.h"
 #include "Kill.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 

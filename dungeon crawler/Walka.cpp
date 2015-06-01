@@ -1,5 +1,5 @@
 #include "Walka.h"
-#include "gracz.h"
+#include "Gracz.h"
 #include "randomGenerator.h"
 #include "Upadek.h"
 #include "playerMsg.h"

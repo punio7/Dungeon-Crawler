@@ -1,4 +1,5 @@
-#include "item.h"
+#include <sstream>
+#include "Item.h"
 #include "languageUtils.h"
 #include "ItemSlot.h"
 #include "playerMsg.h"
@@ -355,6 +356,12 @@ bool Item::jestTarcza()
 bool Item::jestMikstura()
 {
 	if (typ == ITEM_MIKSTURA) return true;
+	else return false;
+}
+
+bool Item::jestJedzeniem()
+{
+	if (typ == ITEM_JEDZENIE) return true;
 	else return false;
 }
 

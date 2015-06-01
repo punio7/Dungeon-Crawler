@@ -1,7 +1,5 @@
 #pragma once
 #include <string>
-#include <iostream>
-#include <math.h>
 #include <list>
 #include <array>
 #include "ItemSlot.h"
@@ -69,7 +67,6 @@ public:
 	virtual int trener(Cecha atrybut);
 	virtual void ustawRozmowny(bool cel);	//dziala tylko dla klasy PostacNpc
 	wstring poziomZdrowia(int tryb=0);				//zwraca poziom zdrowia postaci, tryb 0-kó³ka 1-opis
-	void look();		//wypisuje na wcout look postaci
 	wstring wypiszEQ();	//wypisuje na wcout zawartoœæ eq
 
 	int id;

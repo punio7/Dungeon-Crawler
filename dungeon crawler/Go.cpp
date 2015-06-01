@@ -1,9 +1,8 @@
 #include "Go.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Lokacja.h"
 #include "Look.h"
-
-extern ListaKomend *listaKomend;
+#include "ListaKomend.h"
 
 Go::Go(Gra *gra) :
 Komenda(gra)
@@ -51,6 +50,7 @@ void Go::GoKierunek(KierunekSwiata kierunek)
 void Go::ZmianaPolozenia(Lokacja* nowaLokacja)
 {
 	gra->gracz.polozenie = nowaLokacja;
+	nowaLokacja->odwiedzona = true;
 	if (gra->zdarzeniaGlobalnePrzySpotkaniu())	//jezeli zdarzenie zwroci true to przerywamy reszte
 		return;
 	dynamic_cast<Look*>(listaKomend->komendy[COMM_LOOK])->LookMiejsce(gra->gracz.polozenie);

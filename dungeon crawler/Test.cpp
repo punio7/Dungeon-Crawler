@@ -1,7 +1,9 @@
-#include "Test.h"
-#include "gra.h"
+#include <iostream>
 #include <vector>
+#include "Test.h"
+#include "Gra.h"
 #include "ConsoleSize.h"
+#include "wersalikuj.h"
 
 Test::Test(Gra *gra):
 	Komenda(gra)

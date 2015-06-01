@@ -2,9 +2,11 @@
 #include "ListaPostaci.h"
 #include "ListaQuestow.h"
 #include "ListaItemow.h"
+#include "ListaKomend.h"
 #include "ListaZdarzenGlobalnych.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
+#include "Quest.h"
 #include "drukuj.h"
 #include "Lokacja.h"
 #include "midi.h"
@@ -12,12 +14,37 @@
 
 #include "Kill.h"
 #include "Go.h"
+#include "Remove.h"
 
 Gra *instanceOfGra = NULL;
 
 void wywolajZdarzenieGlobalne(int id)
 {
 	instanceOfGra->zdarzenieGlobalne(id);
+}
+
+void zamienEkwipunki(Postac* zrodlo, Postac* cel)
+{
+	for (int i = 0; i < SLOT_ILOSC; i++)
+	{
+		if (zrodlo->eq[i] != NULL)
+		{
+			Item* temp = zrodlo->eq[i];
+			cel->equip(temp);
+			zrodlo->eq[i] = NULL;
+		}
+	}
+	zrodlo->przelicz();
+}
+
+void zamienInventory(Postac* zrodlo, Postac* cel)
+{
+	while (!zrodlo->przedmioty->pusta())
+	{
+		Item* temp = zrodlo->przedmioty->znajdz(1);
+		zrodlo->przedmioty->usunPierwszy();
+		cel->przedmioty->dodaj(temp);
+	}
 }
 
 bool Gra::zdarzenieGlobalne(int id)
@@ -102,6 +129,7 @@ bool Gra::zdarzenieGlobalne(int id)
 
 	case ListaZdarzenGlobalnych::ZejscieDoJaskini:
 		drukuj(L"Ciemnoœæ. Patrz¹c w g³¹b otworu dostrzegasz jedynie czerñ. Powoli ustawiasz siê ty³em do klapy, po czym zaczynasz ostro¿nie schodziæ po drabinie w dó³. Zejœcie jest d³ugie a drewno drabiny ugina siê pod tob¹ przy ka¿dym ruchu. Pocz¹tkowo nie mo¿esz dostrzec niczego w panuj¹cej dooko³a ciemnoœci, ale twoje oczy powoli siê do niej przyzwyczajaj¹. Kiedy ju¿ jesteœ blisko ziemi zeskakujesz i starasz siê rozejrzeæ dooko³a siebie. Wtedy zauwa¿asz naprzeciw siebie drobny cieñ, skulony pod œcian¹. Kiedy wykonujesz krok w jego kierunku, cieñ nagle wstaje i zaczyna uciekaæ na po³udnie. Dosyæ szybko tracisz go z oczu i pozostajesz sam w ciemnoœci.");
+		questy[ListaQuestow::GoblinyWPodziemiach]->spelnijSpecjalny(2);
 		return false;
 
 	case ListaZdarzenGlobalnych::DogonienieGoblinaWJaskini:
@@ -110,8 +138,12 @@ bool Gra::zdarzenieGlobalne(int id)
 
 	case ListaZdarzenGlobalnych::PrzejsciePrzezDrzwiDemona:
 		drukuj(L"Przechodz¹c przez drzwi zauwa¿asz nag³¹ zmianê w jaskini. Œciany przesta³y byæ pustymi ska³ami a zape³ni³y siê ró¿norakiej maœci grzybami i mchami. Wszelakie wg³êbienia w skale zarastaj¹ ma³e grzyby o w¹skich trzonach, na œcianach wisi coœ podobnego do huby, natomiast na pod³odze rosn¹ nieznane ci odmiany o du¿ych i kolorowych kapeluszach. Powietrze jest gêste i duszne, ledwo zdatne do oddychania, zdaje siê i¿ wisz¹ w nim jakieœ drobiny. Przygl¹daj¹c siê tym wszystkim dziwom powolnym krokiem ruszasz do przodu. Próbujesz oceniæ zapach panuj¹cy dooko³a, coœ jakby w zamkniêtym pomieszczeniu zaczêto obieraæ grzyby, ale du¿o bardziej stêch³y i niepokoj¹cy. Nagle czujesz i¿ zdepta³eœ coœ nog¹, zanim zd¹¿y³byœ spojrzeæ na dó³ s³yszysz œwist i powietrze dooko³a zaczê³o gêstnieæ od czegoœ bia³ego. Zarodniki dostaj¹ ci siê do nosa i gard³a przez co nie mo¿esz z³apaæ oddechu. £apiesz siê za klatkê i zaczynasz dyszeæ jak szalony, upadasz na kolana i nieoczekiwanie wszystko znika.");
-		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(60));
+		teleportacjaGracza(60);
 		return true;
+
+	case ListaZdarzenGlobalnych::ZjedzeniePurchawki:
+		playerMsg(L"Prze³ykasz kês grzyba, po czym zaczynasz siê g³oœno krztusiæ. Zaczynasz pluæ na pod³ogê, dopóki nie udaje ci siê wypluæ wszystkiego co pozosta³o ci jeszcze w ustach. W ¿yciu nie jad³eœ czegoœ tak obrzydliwego!");
+		return false;
 #pragma endregion
 
 #pragma region Zdarzenia z goblinami
@@ -142,6 +174,28 @@ bool Gra::zdarzenieGlobalne(int id)
 				}
 			}
 		}
+		getLokacja(48)->zdGlob = 0;
+		getLokacja(53)->zdGlob = 0;
+		return false;
+
+	case ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinow:
+		polozenie = getLokacja(45);
+		postac = polozenie->postacie->znajdz(ListaPostaci::GoblinSzaman, 1);
+		polozenie->postacie->usun(postac);
+		polozenie = getLokacja(51);
+		polozenie->postacie->dodaj(postac);
+		teleportacjaGracza(51);
+		return false;
+
+	case ListaZdarzenGlobalnych::TeleportacjaDoChatySzamanaGoblinowZOddaniemBroni:
+		polozenie = getLokacja(45);
+		postac = polozenie->postacie->znajdz(ListaPostaci::GoblinSzaman, 1);
+		polozenie->postacie->usun(postac);
+		polozenie = getLokacja(51);
+		polozenie->postacie->dodaj(postac);
+		dynamic_cast<Remove*>(listaKomend->komendy[COMM_REMOVE])->remove(SLOT_LREKA);
+		dynamic_cast<Remove*>(listaKomend->komendy[COMM_REMOVE])->remove(SLOT_PREKA);
+		teleportacjaGracza(51);
 		return false;
 
 	case ListaZdarzenGlobalnych::ZagrodzenieDrogiPrzezGwardzisteGoblinow:
@@ -154,12 +208,15 @@ bool Gra::zdarzenieGlobalne(int id)
 
 	case ListaZdarzenGlobalnych::Sen1Wstawka1:
 		midiPlayer->play(MidiFiles::DREAM);
+		postac = getLokacja(59)->postacie->znajdz(ListaPostaci::Manekin, 1);
+		zamienEkwipunki(&gracz, postac);
+		zamienInventory(&gracz, postac);
 		drukuj(L"Czujesz zaduch i œcisk. Z daleka dobiegaj¹ do ciebie odg³osy t³umu, przyt³umione i g³uche. Powoli staj¹ siê coraz g³oœniejsze, jakbyœ wynurza³ siê z wody. Scena widziana z oddali, szybko zbli¿a siê do ciebie, nim zd¹¿ysz zauwa¿yæ sam znajdujesz siê w jej œrodku.");
 		return false;
 
 	case ListaZdarzenGlobalnych::Sen1Wstawka2:
 		drukuj(L"Wytê¿aj¹c wzrok dostrzegasz na horyzoncie szubienicê. Próbujesz przyjrzeæ siê co na niej siê dzieje jednak w jednej chwili szubienica oraz ca³y t³um znika.");
-		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(61));
+		teleportacjaGracza(61);
 		return false;
 
 	case ListaZdarzenGlobalnych::Sen1Wstawka3:
@@ -171,7 +228,10 @@ bool Gra::zdarzenieGlobalne(int id)
 			L"Szybko odskakujesz od drzwi chwilê zanim siê otwieraj¹, goœæ widz¹c ciebie pochyla g³owê. Wykorzystujesz chwilê aby mu siê przyjrzeæ. Ubrany jest w d³ugie, szarobure szaty, z kapturem, za to jego twarz... Bia³a skóra, bia³e w³osy, bia³a broda, oraz to spojrzenie... Udaj¹ce ¿yczliwoœæ, ale w rzeczywistoœci kamienne i bez uczuæ.\n"
 			L"- Panienka wybaczy, w³aœnie wychodzê.\n");
 		drukuj(L"Powoli budzi ciê pulsuj¹cy ból g³owy w miejscu, w którym uderzy³eœ siê o ziemiê upadaj¹c. Twoj¹ twarz muska delikatny podmuch wiatru, który musia³ rozwiaæ zarodniki, ratuj¹c ci tym samym ¿ycie. Oddychasz swobodnie i g³êboko, czuj¹c niezwyk³¹ radoœæ z ka¿dego wdechu i wydechu. Stêkaj¹c podpierasz siê d³oni¹ o pod³ogê i powoli wstajesz. Na chwilê robi ci siê ciemno przed oczyma, wiêc opierasz siê o œcianê jaskini, nudnoœæ jednak szybko mija. Wyprostowujesz siê, w pe³ni gotów do dalszej podró¿y.");
-		dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(55));
+		postac = getLokacja(59)->postacie->znajdz(ListaPostaci::Manekin, 1);
+		zamienEkwipunki(postac, &gracz);
+		zamienInventory(postac, &gracz);
+		teleportacjaGracza(55);
 		midiPlayer->play(MidiFiles::LVL2);
 		return true;
 
@@ -182,4 +242,9 @@ bool Gra::zdarzenieGlobalne(int id)
 
 		return false;
 	}
+}
+
+void Gra::teleportacjaGracza(int idLokacji)
+{
+	dynamic_cast<Go*>(listaKomend->komendy[COMM_GO])->ZmianaPolozenia(getLokacja(idLokacji));
 }

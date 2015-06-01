@@ -1,10 +1,11 @@
 #include "Examine.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Lokacja.h"
 #include "Scan.h"
 #include "Score.h"
 #include "Take.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 
@@ -41,14 +42,20 @@ void Examine::execute(ParseDTO argumenty)
 		if (aktualny=gracz.przedmioty->znajdz(argumenty.argument1, argumenty.ktory1))	//najpierw przeszukujemy inv
 		{
 			playerMsg(aktualny->examine());
-			dynamic_cast<Take*>(listaKomend->komendy[COMM_TAKE])->zabierzZloto(aktualny);
+			if (!aktualny->numerZamka())
+			{
+				dynamic_cast<Take*>(listaKomend->komendy[COMM_TAKE])->zabierzZloto(aktualny);
+			}
 		}
 		else
 		{
 			if (aktualny=(gracz.polozenie->przedmioty)->znajdz(argumenty.argument1, argumenty.ktory1))	//potem otoczenie
 			{
 				playerMsg(aktualny->examine());
-				dynamic_cast<Take*>(listaKomend->komendy[COMM_TAKE])->zabierzZloto(aktualny);
+				if (!aktualny->numerZamka())
+				{
+					dynamic_cast<Take*>(listaKomend->komendy[COMM_TAKE])->zabierzZloto(aktualny);
+				}
 			}
 			else
 			{

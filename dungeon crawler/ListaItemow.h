@@ -87,7 +87,11 @@ namespace ListaItemow
 		{
 			StartConsumables = Pojemniki::KoniecPojemniki,
 			PsiaPurchawka,
+			MiksturaSilySlaba,
 			MiksturaZrecznosciSlaba,
+			MiksturaZwinnosciSlaba,
+			MiksturaWytrzymalosciSlaba,
+			MiksturaZywotnosciSlaba,
 			KoniecConsumables
 		};
 	}  

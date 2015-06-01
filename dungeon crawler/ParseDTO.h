@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "kierunkiSwiata.h"
+#include "KierunkiSwiata.h"
 #include "EnumKomendy.h"
 
 using namespace std;

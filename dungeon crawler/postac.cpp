@@ -1,6 +1,8 @@
-﻿#include "postac.h"
-#include "item.h"
-#include "status.h"
+﻿#include <math.h>
+#include <sstream>
+#include "Postac.h"
+#include "Item.h"
+#include "Status.h"
 #include "playerMsg.h"
 #include "Rozmowa.h"
 
@@ -23,22 +25,27 @@ wstring CharList::wypisz(CharListWypiszTryb tryb)
 			return L"\t|gnikogo nie ma.";
 	}
 
-
-	wstring temp;
+	wstringstream temp;
 	for (iterator aktualny = begin(); aktualny != end(); aktualny++)
 	{
+		if (aktualny != begin())
+		{
+			temp << endl;
+		}
+
 		if (tryb == CHARLIST_WYPISZ_SCAN)
-			temp += L"\t|C";
-		temp += (*aktualny)->imie;
+			temp << L"\t|C";
+
+		temp << (*aktualny)->imie;
+
 		if (tryb == CHARLIST_WYPISZ_LOOK)
 		{
-			temp += ' ';
-			temp += (*aktualny)->idle;	//idle dodajemy tylko w look
+			temp << ' ';
+			temp << (*aktualny)->idle;	//idle dodajemy tylko w look
 		}
-		temp += '\n';
 	}
 
-	return temp;
+	return temp.str();
 }
 
 void CharList::dodaj(Postac *przedmiot)
@@ -273,30 +280,6 @@ void Postac::przelicz()
 	dmg_calk *= (1 + ((float)dmg_mod / 100));
 }
 
-void Postac::wypisz_staty()
-{
-	wcout << "Wojownik L" << imie << " L" << rasa->nazwa << L" L" << klasa->nazwa << " poziomu L" << poziom << endl << endl;
-
-	color(BLUE);
-	wcout << "Cecha\t\tBazowa\tRasowy\tKlasowy\tBonusy\tLaczna" << endl;
-	wcout << "Sila\t\t" << sil_baz << "\t" << rasa->si << "%\t" << klasa->getSi(poziom) << "%\t" << sil_bon << "\t" << sil_calk << endl;
-	wcout << "Zrecznosc\t" << zr_baz << "\t" << rasa->zr << "%\t" << klasa->getZr(poziom) << "%\t" << zr_bon << "\t" << zr_calk << endl;
-	wcout << "Zwinnosc\t" << zw_baz << "\t" << rasa->zw << "%\t" << klasa->getZw(poziom) << "%\t" << zw_bon << "\t" << zw_calk << endl;
-	wcout << "Wytrzymalosc\t" << wyt_baz << "\t" << rasa->wyt << "%\t" << klasa->getWyt(poziom) << "%\t" << wyt_bon << "\t" << wyt_calk << endl;
-	wcout << "Zywotnosc\t" << zyw_baz << "\t" << rasa->zyw << "%\t" << klasa->getZyw(poziom) << "%\t" << zyw_bon << "\t" << zyw_calk << endl << endl;
-
-	color(HBLUE);
-	wcout << "Atrybut\t\tCecha\tPoziom\tSprzet\tBonusy\tModyf.\tRazem" << endl;
-	wcout << "Atak\t\t" << at_cecha << "\t" << at_poz << "\t" << at_eq << "\t" << at_bon << "\t+" << at_mod << "%\t" << at_calk << endl;
-	wcout << "Obrona\t\t" << obr_cecha << "\t" << obr_poz << "\t" << obr_eq << "\t" << obr_bon << "\t+" << obr_mod << "%\t" << obr_calk << endl;
-	wcout << "Zdrowie\t\t" << zdr_cecha << "\t" << zdr_poz << "\t" << zdr_eq << "\t" << zdr_bon << "\t+" << zdr_mod << "%\t" << zdr_calk << endl;
-	wcout << "Pancerz\t\t" << panc_cecha << "\t\t" << panc_eq << "\t" << panc_bon << "\t+" << panc_mod << "%\t" << panc_calk << "\t" << ochr_calk / 6 << '%' << endl;
-	wcout << "Zmeczenie\t" << zm_cecha << "\t" << zm_poz << "\t" << zm_eq << "\t" << zm_bon << "\t+" << zm_mod << "%\t" << zm_calk << endl;
-	wcout << "Obrazenia\t" << dmg << "\t\t" << dmg_eq << "\t" << dmg_bon << "\t+" << dmg_mod << "%\t" << dmg_calk << endl << endl;
-
-	color(HWHITE);
-}
-
 void Postac::przelicz_eq()
 {
 	at_eq = 0, obr_eq = 0, zdr_eq = 0, panc_eq = 0, ochr_eq = 0, zm_eq = 0, dmg_eq = 0;
@@ -312,9 +295,6 @@ void Postac::equip(Item* przedmiot)
 	ItemSlot slot = przedmiot->getSlot();
 	if (slot == -1 || slot >= SLOT_ILOSC)
 	{
-		color(HRED);
-		wcout << "Nielegelna próba wyekwpipowania przedmiotu L" << przedmiot->nazwa << " typ: L" << przedmiot->typ << endl;
-		color(HWHITE);
 		return;
 	}
 	eq[slot] = przedmiot;
@@ -630,11 +610,6 @@ wstring Postac::poziomZdrowia(int tryb)
 	}
 
 	return L"";
-}
-
-void Postac::look()
-{
-	wcout << opis << endl;
 }
 
 wstring Postac::wypiszEQ()

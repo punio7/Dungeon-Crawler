@@ -1,7 +1,8 @@
 #include "Offer.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Buy.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 

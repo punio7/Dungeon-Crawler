@@ -1,4 +1,4 @@
-#include "gra.h"
+#include "Gra.h"
 #include "Quest.h"
 #include "ListaQuestow.h"
 #include "ListaZdarzenGlobalnych.h"
@@ -45,11 +45,11 @@ void Gra::wczytajQuesty()
 
 #pragma region 2 - Gobliny
 	temp = questy[ListaQuestow::GoblinyWPodziemiach] = new Quest();
-	temp->inicjujFazy(7);
+	temp->inicjujFazy(8);
 	temp->nazwa = L"gobliny w podziemiach";
 
 	temp->dodajFaze(0, L"", L"")
-		->ustawPrzejscia(1);
+		->ustawPrzejscia(1, 2);
 	temp->dodajFaze(1,
 		L"Zbadaj gobliny zamieszkuj¹ce podziemia",
 		L"Nieznajomy powiedzia³ ci, ¿e wódz goblinów ma klucz.")
@@ -63,7 +63,7 @@ void Gra::wczytajQuesty()
 	temp->dodajFaze(3,
 		L"Zbadaj gobliny zamieszkuj¹ce podziemia",
 		L"Zabi³eœ wszystkich zbieraczy.")
-		->ustawWymaganieSpecjalny()
+		->ustawWymaganiePotwor(5)
 		->ustawPrzejscia(4, 5);
 	temp->dodajFaze(4,
 		L"",
@@ -75,10 +75,15 @@ void Gra::wczytajQuesty()
 		L"",
 		L"Wódz goblinów zechcia³ z tob¹ rozmawiaæ, postanowi³eœ go wys³uchaæ.")
 		->ustawWymaganieRozmowa()
-		->ustawPrzejscia(6);
+		->ustawPrzejscia(6, 4);
 	temp->dodajFaze(6,
 		L"OswobódŸ gobliny",
 		L"Wódz goblinów zleci³ ci misjê zabicia maga")
+		->ustawWymaganieRozmowa()
+		->ustawPrzejscia(4, 7);
+	temp->dodajFaze(7,
+		L"",
+		L"Uda³o ci siê oswobodziæ gobliny.")
 		->ustawWymaganieRozmowa()
 		->ustawPrzejscia(-1);
 #pragma endregion

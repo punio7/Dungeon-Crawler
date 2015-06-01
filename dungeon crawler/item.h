@@ -1,13 +1,10 @@
 #pragma once
 
-#include <iostream>
+#include <vector>
 #include <string>
-#include <sstream>
 #include <list>
 #include "ItemSlot.h"
 #include "languageUtils.h"
-
-;using namespace std;
 
 class Postac;
 enum ItemSlot;
@@ -42,7 +39,8 @@ enum ItemTyp
 	ITEM_WILD_NAGOLENNIKI,
 	ITEM_WILD_BUTY,
 	ITEM_WILD_HELM,
-	ITEM_MIKSTURA
+	ITEM_MIKSTURA,
+	ITEM_JEDZENIE
 };
 
 enum ItemList_wypisz_tryb
@@ -78,8 +76,8 @@ class Item
 public:
 	Item();
 
-	virtual wstring look();
-	virtual wstring examine();
+	virtual std::wstring look();
+	virtual std::wstring examine();
 	virtual void ustaw_staty(int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw);
 	virtual void ustaw_wymagania(int sila, int zre, int zwi, int wyt, int zyw);
 	virtual Staty czytaj_staty();
@@ -93,6 +91,7 @@ public:
 	bool jestBronia();
 	bool jestTarcza();
 	bool jestMikstura();
+	bool jestJedzeniem();
 
 	//dla typu container
 	virtual void lista_dodaj(Item* przedmiot);
@@ -106,7 +105,7 @@ public:
 	//id klucza do zamka, 0-otwarte
 	virtual int numerZamka();
 	virtual ItemList* getItemList();
-	virtual Item* lista_znajdz(wstring szukany, int ktory);
+	virtual Item* lista_znajdz(std::wstring szukany, int ktory);
 	virtual Item* lista_znajdz(int ktory);
 	virtual bool lista_pusta();
 
@@ -122,25 +121,25 @@ public:
 	//dla typu mikstura
 
 	//zwraca true jezeli mikstura ma zostac zniszczona
-	virtual bool drink(Postac *postac);
+	virtual bool drink(Postac* postac);
 
 	int id;
-	wstring nazwa;	//identyfikacyjna nazwa przedmiotu napisana z ma³ej litery
+	std::wstring nazwa;	//identyfikacyjna nazwa przedmiotu napisana z ma³ej litery
 	RodzajRzeczownika::RodzajRzeczownikaEnum rodzaj;
-	wstring opis;	//d³u¿szy opis wyœwietlany przy komendzie look
-	wstring idle;	//krótki opis przedmiotu znajdujacego sie w pomeiszczeniu np. le¿y na ziemi
+	std::wstring opis;	//d³u¿szy opis wyœwietlany przy komendzie look
+	std::wstring idle;	//krótki opis przedmiotu znajdujacego sie w pomeiszczeniu np. le¿y na ziemi
 	ItemTyp typ;
 
 	int wartosc;	//wartoœæ przedmiotu w z³ocie
 };
 
-class ItemList : public list<Item*>
+class ItemList : public std::list<Item*>
 {
 public:
 	ItemList();
 	~ItemList();
-	wstring wypisz(ItemList_wypisz_tryb tryb=WYPISZ_LOOK);
-	void wypisz(wstring& cel, ItemList_wypisz_tryb tryb=WYPISZ_EXAMINE);		//wypisuje liste przedmiotow do wstringu podanego w argumencie
+	std::wstring wypisz(ItemList_wypisz_tryb tryb=WYPISZ_LOOK);
+	void wypisz(std::wstring& cel, ItemList_wypisz_tryb tryb=WYPISZ_EXAMINE);		//wypisuje liste przedmiotow do std::wstringu podanego w argumencie
 	void dodaj(Item* przedmiot);
 	//przenosi Itemy z podanej listy do obecnej listy
 	void przenies(ItemList* lista);
@@ -152,9 +151,9 @@ public:
 	bool pusta();					
 	//zwraca wskaŸnik na najdalszy element listy zawieraj¹cy dany przedmiot
 	list<Item*>::iterator znajdzOstatni(int id);
-	list<Item*>::iterator znajdzOstatni(wstring nazwa);
+	list<Item*>::iterator znajdzOstatni(std::wstring nazwa);
 	//zwraca wskaŸnik na przedmiot z listy o zadanej nazwie, NULL jezeli nie ma takiego
-	Item* znajdz(wstring szukany, int ktory=1);
+	Item* znajdz(std::wstring szukany, int ktory=1);
 	//zwraca przedmiot bêd¹cy na ktory-m miejscu na liscie zaczynajac od 1
 	Item* znajdz(int ktory);
 	//zwraca wskaŸnik  na przedmiot o zadanym id z listy, NULL je¿eli nie ma takiego

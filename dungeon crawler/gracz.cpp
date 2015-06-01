@@ -1,8 +1,9 @@
-﻿#include "gracz.h"
+﻿#include <math.h>
+#include "Gracz.h"
 #include "Walka.h"
 #include "Lokacja.h"
-#include "item_types.h"
-#include "color.h"
+#include "ItemTypes.h"
+#include "Color.h"
 #include "wersalikuj.h"
 #include "ListaKomend.h"
 
@@ -195,9 +196,7 @@ void Gracz::dodajEXP(int ile)
 
 void Gracz::awansOPoziom()
 {
-	color(HYELLOW);
-	playerMsg(L"Awansowałeś o poziom!");
-	color(HWHITE);
+	playerMsg(L"|YAwansowałeś o poziom!");
 
 	exp -= expDoNastPoziomu();
 	poziom++;

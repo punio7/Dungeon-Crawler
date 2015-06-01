@@ -1,5 +1,5 @@
 #pragma once
-#include "status.h"
+#include "Status.h"
 
 class Postac;
 class Gracz;

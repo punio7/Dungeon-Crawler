@@ -10,6 +10,7 @@ class Down;
 class Drink;
 class Drop;
 class Equipment;
+class Eat;
 class East;
 class Examine;
 class List;

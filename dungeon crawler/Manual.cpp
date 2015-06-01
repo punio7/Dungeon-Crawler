@@ -1,6 +1,6 @@
 #include "Manual.h"
 #include <math.h>
-#include "gra.h"
+#include "Gra.h"
 #include "ListaKomend.h"
 #include "EnumKomendy.h"
 

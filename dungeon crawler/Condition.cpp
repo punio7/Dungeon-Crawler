@@ -1,6 +1,6 @@
 #include "Condition.h"
-#include "gra.h"
-#include "status.h"
+#include "Gra.h"
+#include "Status.h"
 
 Condition::Condition(Gra *gra):
 	Komenda(gra)

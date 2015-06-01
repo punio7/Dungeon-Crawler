@@ -1,5 +1,5 @@
 #include "PostacNpc.h"
-#include "item.h"
+#include "Item.h"
 #include "playerMsg.h"
 #include "Rozmowa.h"
 

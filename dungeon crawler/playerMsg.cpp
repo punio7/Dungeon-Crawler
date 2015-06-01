@@ -1,4 +1,9 @@
 #include "playerMsg.h"
+#include <sstream>
+#include <iostream>
+#include <locale>
+#include "wersalikuj.h"
+#include "Color.h"
 
 static locale loc;
 

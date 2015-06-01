@@ -1,6 +1,6 @@
 #include "Buy.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Lokacja.h"
 
 

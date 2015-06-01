@@ -1,5 +1,5 @@
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "errors.h"
 #include "ListaItemow.h"
 #include "ListaPostaci.h"
@@ -64,6 +64,7 @@ Postac* Gra::createChar(int id)
 {
 	Postac* temp = NULL;
 	Kwestia* kwestia = NULL;
+	ItemList przedmioty;
 	switch (id)
 	{
 
@@ -78,9 +79,9 @@ Postac* Gra::createChar(int id)
 			L"ruchowi szczura.",
 			L"szpera dooko³a",
 			5, 6, 6, 4, 3);
-		temp->equip(create_item(BronieDzikie::SzczurzeKly));
+		temp->equip(createItem(BronieDzikie::SzczurzeKly));
 		temp->zloto = 0;
-		temp->equip(create_item(PancerzeDzikie::SkoraSzczura));
+		temp->equip(createItem(PancerzeDzikie::SkoraSzczura));
 		return temp;
 #pragma endregion
 
@@ -99,8 +100,8 @@ Postac* Gra::createChar(int id)
 		(dynamic_cast<PostacNpc*>(temp)->trening)[WYTRZYMALOSC] = 34;
 		(dynamic_cast<PostacNpc*>(temp)->trening)[ZYWOTNOSC] = 34;
 		dynamic_cast<PostacNpc*>(temp)->rozmowny = true;
-		temp->przedmioty->dodaj(create_item(Bronie::MieczKrotkiBraz));
-		temp->przedmioty->dodaj(create_item(Klucze::KluczZBrazuLvl2));
+		temp->przedmioty->dodaj(createItem(Bronie::MieczKrotkiBraz));
+		temp->przedmioty->dodaj(createItem(Klucze::KluczZBrazuLvl2));
 
 		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
 
@@ -118,7 +119,7 @@ Postac* Gra::createChar(int id)
 			80, 80, 80, 80, 80);
 
 		temp->zloto = 100;
-		(temp->przedmioty)->dodaj(create_item(Questowe::OkraglySzafir));
+		(temp->przedmioty)->dodaj(createItem(Questowe::OkraglySzafir));
 
 		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
 
@@ -139,8 +140,8 @@ Postac* Gra::createChar(int id)
 			L"szpera dooko³a",
 			27, 26, 22, 21, 22);
 		temp->agresywny = true;
-		temp->equip(create_item(BronieDzikie::KlyOgara));
-		temp->equip(create_item(PancerzeDzikie::SkoraOgara));
+		temp->equip(createItem(BronieDzikie::KlyOgara));
+		temp->equip(createItem(PancerzeDzikie::SkoraOgara));
 		temp->zloto = 0;
 		return temp;
 
@@ -151,8 +152,11 @@ Postac* Gra::createChar(int id)
 			L"Goblin ten jest przedstawicielem najni¿szej kasty w spo³eczeñstwie goblinów. Jak ka¿dy goblin ma on ciemno zielon¹ skórê, pokryt¹ licznymi zmarszczkami i bruzdami. Wysoki na oko³o dwa ³okcie, ma nieproporcjonalnie d³ugie rêce i du¿¹ g³owê raz pochylon¹ postawê. Jego twarz to g³ównie para wy³upiastych oczu, du¿y spiczasty nos, oraz równie du¿e i stercz¹ce na boki uszy. Zbieracz ubrany jest w jedynie stary, lniany wór, którego równie¿ u¿ywa do przechowywania zebranych grzybów.",
 			L"rozgl¹da siê dooko³a",
 			7, 9, 9, 10, 7);
-		temp->equip(create_item(Bronie::KamienMaly));
+		temp->equip(createItem(Bronie::KamienMaly));
+		//temp->equip(createItem(PancerzeDzikie::Szmaty));
 		temp->zloto = rzucaj(2) + 1;
+		przedmioty = createItemMany(Consumables::PsiaPurchawka, rzucaj(0, 2));
+		temp->przedmioty->przenies(&przedmioty);
 		return temp;
 
 	case ListaPostaci::GoblinGwardzista:
@@ -161,8 +165,8 @@ Postac* Gra::createChar(int id)
 			L"Zadaniem gobliñskich gwardzistów jest pilnowanie obozowiska, oraz alarmowanie o zbli¿aj¹cym siê zagro¿eniu. Ich ubiór stanowi najciê¿szy pancerz jaki mo¿na znaleŸæ wœród goblinów- daje to wiêksz¹ szansê na wydanie alarmuj¹cego okrzyku zanim gwardzista siê zu¿yje. Jego zbrojê stanowi¹ metalowe przedmioty zrabowane od ludzi- garnki, p³ytki, kawa³ki w³aœciwych zbroi lub kolczug, czy tarcz, powi¹zane razem linami b¹dŸ paskami. Co do reszty wygl¹du to gobliñscy gwardziœci s¹ równie paskudni co reszta przedstawicieli ich rasy.",
 			L"opiera siê na w³óczni",
 			12, 14, 12, 14, 12);
-		temp->equip(create_item(Bronie::WloczniaMalaKrzemien));
-		temp->equip(create_item(PancerzeDzikie::ZbrojaGoblinGwadzista));
+		temp->equip(createItem(Bronie::WloczniaMalaKrzemien));
+		temp->equip(createItem(PancerzeDzikie::ZbrojaGoblinGwadzista));
 		return temp;
 
 	case ListaPostaci::GoblinBerserker:
@@ -171,8 +175,8 @@ Postac* Gra::createChar(int id)
 			L"Berserkerzy nale¿¹ do najzdolniejszych wojowników wœród gobliñskiego plemienia. Za ubranie s³u¿¹ im jedynie skurzane spodnie, wytworzone rêcznie ze skóry jednej ze swoich ofiar. Ich odkryt¹ klatê ozdabiaj¹ im blizny a twarzy zazwyczaj brakuje jednego ucha, nosa, b¹dŸ oka. Pe³ni dumy berserkerzy zachowuj¹ siê pogardliwie do innych goblinów oraz ogólnie do innych stworzeñ. Maj¹ szacunek jedynie do szamana, stanowi¹c jego osobist¹ ochronê.",
 			L"bacznie siê tobie przygl¹da",
 			14, 16, 14, 10, 15);
-		temp->equip(create_item(Bronie::ToporekBraz));
-		temp->equip(create_item(PancerzeDzikie::SpodnieGoblinBerserker));
+		temp->equip(createItem(Bronie::ToporekBraz));
+		temp->equip(createItem(PancerzeDzikie::SpodnieGoblinBerserker));
 		return temp;
 
 	case ListaPostaci::GoblinSzaman:
@@ -181,11 +185,12 @@ Postac* Gra::createChar(int id)
 			L"Szamani s¹ jednoczeœnie przywódcami goblinœkiego plemienia. Ich wygl¹d ma u reszty goblinów wywo³aæ strach przed mocami dysponowanymi przez szamana, nawet je¿eli takowych on nie ma. Jego cia³o jest pokryte dziwnymi tatua¿ami i malunkami z b³ota i krwi a w uszach i nosie ma mnóstwo kolczyków. Jego szata jest gruba i wykonana z lnu. Wszyto w ni¹ kawa³ki zwierzêcego futra, oraz namalowano jakimiœ barwnikami dziwne symbole. Na szyi szaman nosi naszyjnik z rzemienia, oraz zwierzêcych koœci, a na g³owie nosi koronê wykonan¹ z poro¿a jelenia. Szaman stara siê robiæ mistyczne wra¿enie, machaj¹c co chwila rêkami oraz podskakuj¹c bez powodu.",
 			L"nerwowo rozgl¹da siê dooko³a",
 			13, 14, 14, 18, 19);
-		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
-		temp->equip(create_item(Bronie::DragDrewniany));
-		temp->equip(create_item(PancerzeDzikie::ZbrojaGoblinSzaman));
-		temp->equip(create_item(PancerzeDzikie::HelmGoblinSzaman));
-		temp->przedmioty->dodaj(create_item(Klucze::KluczZSrebraLvl3));
+		wczytajRozmowe(id, dynamic_cast<PostacNpc*>(temp));
+		dynamic_cast<PostacNpc*>(temp)->rozmowny = true;
+		temp->equip(createItem(Bronie::DragDrewniany));
+		temp->equip(createItem(PancerzeDzikie::ZbrojaGoblinSzaman));
+		temp->equip(createItem(PancerzeDzikie::HelmGoblinSzaman));
+		temp->przedmioty->dodaj(createItem(Klucze::KluczZSrebraLvl3));
 		return temp;
 
 #pragma endregion
@@ -207,7 +212,7 @@ Postac* Gra::createChar(int id)
 			L"Kucharka posiada wszelkie stereotypowe cechy wygl¹du swojej profesji. Jest gruba, stara i ubrana w bia³y fartuch. Próbujesz siê jej lepiej przyjrzeæ jednak coœ ciê rozprasza i zwracasz wzrok gdzieœ indziej. Kucharka wykonuje dalej swoj¹ pracê nie zwracaj¹c na ciebie najmniejszej uwagi.",
 			L"krzêta siê po kuchni",
 			10, 10, 10, 10, 10);
-		wczytajRozmowe(temp->id, dynamic_cast<PostacNpc*>(temp));
+		wczytajRozmowe(id, dynamic_cast<PostacNpc*>(temp));
 		temp->ustawRozmowny(true);
 		return temp;
 

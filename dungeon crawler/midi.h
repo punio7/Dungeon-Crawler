@@ -1,12 +1,6 @@
 #pragma once
-
-#include <iostream>
-#include <windows.h>
-#include <mmsystem.h>  // mciSendwstring()
-#include <iostream>
-#include <conio.h>
 #include <thread>
-using namespace std;   // std::wcout, std::cin
+#include <string>
 
 namespace MidiFiles
 {
@@ -24,15 +18,15 @@ int midi();
 class MidiPlayer
 {
 public:
-	MidiPlayer(string path);
+	MidiPlayer(std::string path);
 
-	friend class thread;
+	friend class std::thread;
 
 	static bool stopped;
 	static MidiFiles::MidiFile current;
-	thread *player;
-	static string path;
-	static string fileNames[MidiFiles::COUNT];
+	std::thread *player;
+	static std::string path;
+	static std::string fileNames[MidiFiles::COUNT];
 	static int fileLen[MidiFiles::COUNT];
 
 	void play(MidiFiles::MidiFile midi);

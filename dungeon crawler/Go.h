@@ -1,6 +1,6 @@
 #pragma once
 #include "komenda.h"
-#include "kierunkiSwiata.h"
+#include "KierunkiSwiata.h"
 
 class Lokacja;
 

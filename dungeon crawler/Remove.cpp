@@ -1,6 +1,6 @@
 #include "Remove.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 
 Remove::Remove(Gra *gra):
 	Komenda(gra)

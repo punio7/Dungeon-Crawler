@@ -1,9 +1,10 @@
 #include "Cheat.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Look.h"
-#include "item.h"
+#include "Item.h"
 #include "Quest.h"
 #include "zdarzeniaGlobalne.h"
+#include "ListaKomend.h"
 
 Cheat::Cheat(Gra *gra):
 	Komenda(gra)
@@ -20,6 +21,11 @@ void Cheat::execute(ParseDTO argumenty)
 {
 	Gracz &gracz = gra->gracz;
 	playerMsg(L"arg2: |0 ktory2: |1", argumenty.argument2, intToStr(argumenty.ktory2));
+
+	if (argumenty.argument1 == L"lvl")
+	{
+		gracz.awansOPoziom();
+	}
 
 	if (argumenty.argument1 == L"tp")
 	{
@@ -38,7 +44,7 @@ void Cheat::execute(ParseDTO argumenty)
 	{
 		if (argumenty.argument2.empty())
 			return;
-		gracz.przedmioty->dodaj(gra->create_item(stoi(argumenty.argument2)));
+		gracz.przedmioty->dodaj(gra->createItem(stoi(argumenty.argument2)));
 		return;
 	}
 
@@ -54,7 +60,7 @@ void Cheat::execute(ParseDTO argumenty)
 	{
 		if (argumenty.argument2.empty())
 			return;
-		auto pozycja = argumenty.argument2.find(':');
+		auto pozycja = argumenty.argument2.find(L':');
 		if (pozycja == -1)
 		{
 			return;

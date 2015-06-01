@@ -1,6 +1,8 @@
 #include "West.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Go.h"
+#include "ListaKomend.h"
+
 extern ListaKomend *listaKomend;
 
 West::West(Gra *gra):

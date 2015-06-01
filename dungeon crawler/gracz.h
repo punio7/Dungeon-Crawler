@@ -1,8 +1,5 @@
 #pragma once
-
-#include <iostream>
-#include <math.h>
-#include "postac.h"
+#include "Postac.h"
 
 class ListaKomend;
 class Lokacja;

@@ -1,14 +1,14 @@
 #pragma once
-#include "status.h"
+#include "Status.h"
 
 class Postac;
 class Gracz;
 enum Cecha;
 
-class zwiekszenieCechy: public Status
+class ZwiekszenieCechy: public Status
 {
 public:
-	zwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas);
+	ZwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas);
 
 	void aktywujPasyw(Postac *postac);
 	void aktywujExplor(Gracz *gracz, int time);

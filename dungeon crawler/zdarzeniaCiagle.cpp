@@ -1,5 +1,5 @@
-#include "gra.h"
-#include "status.h"
+#include "Gra.h"
+#include "Status.h"
 
 void Gra::zdarzeniaCiagle()
 {

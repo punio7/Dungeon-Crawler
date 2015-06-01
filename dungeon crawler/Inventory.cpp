@@ -1,6 +1,6 @@
 #include "Inventory.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 
 Inventory::Inventory(Gra *gra):
 	Komenda(gra)

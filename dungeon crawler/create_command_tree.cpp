@@ -25,6 +25,7 @@ void Parser::create_command_tree()
 	///////////// E //////////////
 	create_command(L"equipment", COMM_EQUIPMENT);
 	create_command(L"examine",COMM_EXAMINE);
+	create_command(L"eat", COMM_EAT);
 	create_command(L"east", COMM_EAST);
 
 	///////////// F //////////////

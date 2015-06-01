@@ -2,7 +2,7 @@
 #include <array>
 #include <vector>
 #include <string>
-#include "gracz.h"
+#include "Gracz.h"
 #include "licznikKomend.h"
 #include "timer.h"
 
@@ -38,13 +38,14 @@ public:
 	//void wykonaj_komende(Ekomenda command, ParseDTO argumenty);
 	void prompt();				//wypisuje na wcout prompt
 	//tworzy Item o podanym id
-	Item* create_item(int id);
+	Item* createItem(int id);
 	//Tworzy item o podanych cechach
-	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc);
+	Item* createItem(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc);
 	//Tworzy item o podanych cechac i wymaganiach
-	Item* create_item(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc, int wymSila, int wymZr, int wymZw, int wymWyt, int wymZyw);
+	Item* createItem(int id, ItemTyp typ, wstring nazwa, wstring opis, wstring idle, int atak, int obrona, int dmg, int ochrona, int pancerz, int hp, int cw, int wartosc, int wymSila, int wymZr, int wymZw, int wymWyt, int wymZyw);
 	//Tworzy jeden losowo wybrany przedmiot z podanej listy ID
-	Item* create_item(vector<int> listaMozliwych);
+	Item* createItem(vector<int> listaMozliwych);
+	ItemList createItemMany(int id, int ile);
 
 	Postac* createChar(int id);
 	Postac* createChar(int id, int quest, int questFaza);
@@ -64,6 +65,8 @@ public:
 	void zdarzeniaPrzySpotkaniu();	
 	//zdarzenia globalne zachodzace przed LOOK, zwraca true jezeli ma byc przerwane wykonywanie innych zdarzen
 	bool zdarzeniaGlobalnePrzySpotkaniu();
+	//zmienia polozenia, wykonuje wszystkie elementy normalnej zmiany lokacji 
+	void teleportacjaGracza(int idLokacji);
 
 	Lokacja* getLokacja(int id);
 

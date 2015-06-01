@@ -1,7 +1,7 @@
 #pragma once
 
-#include "status.h"
-#include "gracz.h"
+#include "Status.h"
+#include "Gracz.h"
 
 using namespace std;
 

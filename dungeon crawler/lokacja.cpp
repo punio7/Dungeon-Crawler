@@ -1,7 +1,7 @@
 #include "Lokacja.h"
 #include "midi.h"
-#include "postac.h"
-#include "item.h"
+#include "Postac.h"
+#include "Item.h"
 
 KierunekSwiata kierunekPrzeciwny(KierunekSwiata kierunek)
 {
@@ -58,4 +58,5 @@ Lokacja::Lokacja()
 	jednorazoweZdGlob = 0;
 	backgroundMusic = (MidiFiles::MidiFile) - 1;
 	naturalneOswietlenie = false;
+	odwiedzona = false;
 }

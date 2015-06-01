@@ -71,24 +71,6 @@
     <ClCompile Include="item.cpp">
       <Filter>Pliki źródłowe\modele\items</Filter>
     </ClCompile>
-    <ClCompile Include="item_container.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
-    </ClCompile>
-    <ClCompile Include="wczytaj_lokacje.cpp">
-      <Filter>Pliki źródłowe\zasoby</Filter>
-    </ClCompile>
-    <ClCompile Include="item_quest.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
-    </ClCompile>
-    <ClCompile Include="item_1hbron.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
-    </ClCompile>
-    <ClCompile Include="item_zbroja.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
-    </ClCompile>
-    <ClCompile Include="create_item.cpp">
-      <Filter>Pliki źródłowe\zasoby</Filter>
-    </ClCompile>
     <ClCompile Include="createChar.cpp">
       <Filter>Pliki źródłowe\zasoby</Filter>
     </ClCompile>
@@ -104,9 +86,6 @@
     <ClCompile Include="zdarzeniaPrzySpotkaniu.cpp">
       <Filter>Pliki źródłowe\modele\Gra</Filter>
     </ClCompile>
-    <ClCompile Include="item_dzwignia.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
-    </ClCompile>
     <ClCompile Include="zdarzeniaGlobalne.cpp">
       <Filter>Pliki źródłowe\modele\Gra</Filter>
     </ClCompile>
@@ -115,9 +94,6 @@
     </ClCompile>
     <ClCompile Include="wczytajRasy.cpp">
       <Filter>Pliki źródłowe\zasoby</Filter>
-    </ClCompile>
-    <ClCompile Include="command_tree.cpp">
-      <Filter>Pliki źródłowe\util</Filter>
     </ClCompile>
     <ClCompile Include="create_command_tree.cpp">
       <Filter>Pliki źródłowe\util</Filter>
@@ -151,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="zwiekszenieCechy.cpp">
       <Filter>Pliki źródłowe\modele\statusy</Filter>
-    </ClCompile>
-    <ClCompile Include="item_miksturaStatusu.cpp">
-      <Filter>Pliki źródłowe\modele\items</Filter>
     </ClCompile>
     <ClCompile Include="midi.cpp">
       <Filter>Pliki źródłowe\util</Filter>
@@ -350,24 +323,42 @@
     <ClCompile Include="UtfHelpercpp.cpp">
       <Filter>Pliki źródłowe\util</Filter>
     </ClCompile>
+    <ClCompile Include="MiksturaZdarzeniaGlobalnego.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="miksturaStatusu.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Eat.cpp">
+      <Filter>Pliki źródłowe\komendy</Filter>
+    </ClCompile>
+    <ClCompile Include="wczytajLokacje.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="createItem.cpp">
+      <Filter>Pliki źródłowe\zasoby</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTree.cpp">
+      <Filter>Pliki źródłowe\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Item1hBron.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemContainer.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDzwignia.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemQuest.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemZbroja.cpp">
+      <Filter>Pliki źródłowe\modele\items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="item.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="item_container.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="item_types.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="item_quest.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="item_1hbron.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="item_zbroja.h">
       <Filter>Pliki nagłówkowe\modele\items</Filter>
     </ClInclude>
     <ClInclude Include="gra.h">
@@ -375,12 +366,6 @@
     </ClInclude>
     <ClInclude Include="licznikKomend.h">
       <Filter>Pliki nagłówkowe\modele\Gra</Filter>
-    </ClInclude>
-    <ClInclude Include="item_dzwignia.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
-    <ClInclude Include="command_tree.h">
-      <Filter>Pliki nagłówkowe\util</Filter>
     </ClInclude>
     <ClInclude Include="randomGenerator.h">
       <Filter>Pliki nagłówkowe\util</Filter>
@@ -411,9 +396,6 @@
     </ClInclude>
     <ClInclude Include="zdarzeniaGlobalne.h">
       <Filter>Pliki nagłówkowe\modele\Gra</Filter>
-    </ClInclude>
-    <ClInclude Include="item_miksturaStatusu.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
     </ClInclude>
     <ClInclude Include="zwiekszenieCechy.h">
       <Filter>Pliki nagłówkowe\modele\statusy</Filter>
@@ -550,9 +532,6 @@
     <ClInclude Include="Pull.h">
       <Filter>Pliki nagłówkowe\komendy</Filter>
     </ClInclude>
-    <ClInclude Include="ListaItemow.h">
-      <Filter>Pliki nagłówkowe\modele\items</Filter>
-    </ClInclude>
     <ClInclude Include="kierunkiSwiata.h">
       <Filter>Pliki nagłówkowe\modele\Gra</Filter>
     </ClInclude>
@@ -635,6 +614,39 @@
       <Filter>Pliki nagłówkowe\modele</Filter>
     </ClInclude>
     <ClInclude Include="UtfHelper.h">
+      <Filter>Pliki nagłówkowe\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaItemow.h">
+      <Filter>Pliki nagłówkowe\modele\Gra</Filter>
+    </ClInclude>
+    <ClInclude Include="MiksturaZdarzeniaGlobalnego.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="MiksturaStatusu.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Eat.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="itemZbroja.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item1hBron.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemContainer.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDzwignia.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemQuest.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemTypes.h">
+      <Filter>Pliki nagłówkowe\modele\items</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandTree.h">
       <Filter>Pliki nagłówkowe\util</Filter>
     </ClInclude>
   </ItemGroup>

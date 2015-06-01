@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <iostream>
 #include <vector>
 
 class Gra;
@@ -20,7 +19,10 @@ public:
 	void spelnijWymaganieRozmowa();
 	void spelnijWymaganieSpecjalny();
 	void spelnijWymaganiePotwor();
-
+	//zwraca true jezeli faza jest faza startowa questa
+	bool czyJestPoczatkowa();
+	//zwraca true jezeli faza jest faza koncowa questa
+	bool czyJestKoncowa();
 
 
 	int id;				//id==0 -faza poczatkowa, quest nie zosta³ jeszcze zaczety

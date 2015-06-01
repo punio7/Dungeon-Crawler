@@ -1,7 +1,7 @@
-#include "zwiekszenieCechy.h"
-#include "gracz.h"
+#include "ZwiekszenieCechy.h"
+#include "Gracz.h"
 
-zwiekszenieCechy::zwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas)
+ZwiekszenieCechy::ZwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg, wstring exitMsg, Cecha cecha, int moc, int czas)
 {
 	this->nazwa = nazwa;
 	this->opis = opis;
@@ -12,7 +12,7 @@ zwiekszenieCechy::zwiekszenieCechy(wstring nazwa, wstring opis, wstring enterMsg
 	this->czas = czas;
 }
 
-void zwiekszenieCechy::aktywujPasyw(Postac *postac)
+void ZwiekszenieCechy::aktywujPasyw(Postac *postac)
 {
 	switch (cecha)
 	{
@@ -36,23 +36,23 @@ void zwiekszenieCechy::aktywujPasyw(Postac *postac)
 	}
 }
 
-void zwiekszenieCechy::aktywujExplor(Gracz *gracz, int time)
+void ZwiekszenieCechy::aktywujExplor(Gracz *gracz, int time)
 {
 	czas -= time;
 }
 
-void zwiekszenieCechy::aktywujWalka(Postac &posiadacz, Postac &wrog)
+void ZwiekszenieCechy::aktywujWalka(Postac &posiadacz, Postac &wrog)
 {
 	czas--;
 }
 
-bool zwiekszenieCechy::isActive()
+bool ZwiekszenieCechy::isActive()
 {
 	if (czas > 0) return true;
 	else return false;
 }
 
-bool zwiekszenieCechy::isPositive()
+bool ZwiekszenieCechy::isPositive()
 {
 	if (moc > 0) return true;
 	else return false;

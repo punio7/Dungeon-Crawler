@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "kierunkiSwiata.h"
+#include "KierunkiSwiata.h"
 
 class ItemList;
 class CharList;
@@ -29,6 +29,7 @@ public:
 	int jednorazoweZdGlob;
 	MidiFiles::MidiFile backgroundMusic;
 	bool naturalneOswietlenie;
+	bool odwiedzona;
 private:
 
 };

@@ -1,6 +1,7 @@
 #include "List.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Buy.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 

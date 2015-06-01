@@ -1,18 +1,19 @@
+#include <sstream>
 #include "Quest.h"
 #include "playerMsg.h"
 #include "zdarzeniaGlobalne.h"
-#include "color.h"
+#include "Color.h"
 #include "wersalikuj.h"
 
 
 QuestFaza::QuestFaza(void)
 {
-	id=0;
-	wymRozmowa=false;
-	wymSpecjalny=false;
-	wymPotwor=0;
-	a=-1;b=-1;c=-1;d=-1;
-	zdarzenieGlobalne=0;
+	id = 0;
+	wymRozmowa = false;
+	wymSpecjalny = false;
+	wymPotwor = 0;
+	a = -1; b = -1; c = -1; d = -1;
+	zdarzenieGlobalne = 0;
 }
 
 QuestFaza* QuestFaza::ustawWymaganieRozmowa()
@@ -63,6 +64,16 @@ void QuestFaza::spelnijWymaganiePotwor()
 	wymPotwor--;
 }
 
+bool QuestFaza::czyJestPoczatkowa()
+{
+	return id == 0;
+}
+
+bool QuestFaza::czyJestKoncowa()
+{
+	return a == -1;
+}
+
 
 QuestFaza* Quest::znajdzFaze(int id)
 {
@@ -73,14 +84,14 @@ QuestFaza* Quest::znajdzFaze(int id)
 
 bool QuestFaza::sprawdzWymagania()
 {
-	return ( !wymSpecjalny && !wymRozmowa && (wymPotwor<=0) );
+	return (!wymSpecjalny && !wymRozmowa && (wymPotwor <= 0));
 }
 
 
 
 Quest::Quest(void)
 {
-	faza=NULL;
+	faza = NULL;
 }
 
 void Quest::inicjujFazy(int iloscFaz)
@@ -95,23 +106,23 @@ Quest::~Quest(void)
 
 QuestFaza* Quest::dodajFaze(int id, wstring cel, wstring notatki)
 {
-	QuestFaza *temp= new QuestFaza;
-	temp->id=id;
-	temp->cel=cel;
-	temp->notatki=notatki;
+	QuestFaza *temp = new QuestFaza;
+	temp->id = id;
+	temp->cel = cel;
+	temp->notatki = notatki;
 
-	if (id==0)	//faze o id 0 standardowo ustawiamy jako aktualna
+	if (id == 0)	//faze o id 0 standardowo ustawiamy jako aktualna
 	{
-		faza=temp;
+		faza = temp;
 	}
-	listaFaz[id]=temp;
+	listaFaz[id] = temp;
 	return temp;
 }
 
 bool Quest::aktywny()
 {
 	if (!faza) return false;
-	if (faza->id==0) return false;
+	if (faza->id == 0) return false;
 	if (nazwa.empty()) return false;
 	if (faza->a == -1) return false;
 
@@ -134,79 +145,98 @@ int Quest::obecnaFaza()
 
 wstring Quest::notatki()
 {
-	QuestFaza *aktualna=listaFaz[0];
-	wstring temp = aktualna->notatki;
-	bool pierwszaNotatka=true; //pierwsza notatka nie ma /n na poczatku
-	for (int i=0; i<(int)przebieg.size(); i++)
+	QuestFaza *aktualna = listaFaz[0];
+	wstringstream temp;
+	temp << aktualna->notatki;
+	bool pierwszaNotatka = true; //pierwsza notatka nie ma /n na poczatku
+	for (int i = 0; i < (int)przebieg.size(); i++)
 	{
 		switch (przebieg.at(i))
 		{
 		case 'a':
-			aktualna=znajdzFaze(aktualna->a);
+			aktualna = znajdzFaze(aktualna->a);
 			break;
 		case 'b':
-			aktualna=znajdzFaze(aktualna->b);
+			aktualna = znajdzFaze(aktualna->b);
 			break;
 		case 'c':
-			aktualna=znajdzFaze(aktualna->c);
+			aktualna = znajdzFaze(aktualna->c);
 			break;
 		case 'd':
-			aktualna=znajdzFaze(aktualna->d);
+			aktualna = znajdzFaze(aktualna->d);
 			break;
 		default:
 			playerMsg(L"B³¹d czytania przebiegu questa.");
-			return temp;
+			return temp.str();
 		}
-		if (!aktualna) {wcout<<"Nie znaleziono fazy podczas wyœwietlania notatek.\n";return temp;}
-		if ( !(aktualna->notatki).empty() )
+		if (!aktualna)
 		{
-			if (pierwszaNotatka) pierwszaNotatka=false;
-			else temp += L"\n\n";
-			temp += aktualna->notatki;
+			playerMsg(L"Nie znaleziono fazy podczas wyœwietlania notatek.");
+			return temp.str();
+		}
+		if (!(aktualna->notatki).empty())
+		{
+			if (pierwszaNotatka) pierwszaNotatka = false;
+			else temp << endl << endl;
+			temp << aktualna->notatki;
 		}
 	}
 
-	return temp;
+	return temp.str();
 }
 
 bool Quest::sprawdzWymagania()
 {
 	if (!faza) return false;		//jezeli quest sie skonczyl
 	char opcja = '0';				//a, b, c, d - mozliwe sciezki rozwoju questa
-	if ( faza->a != -1 && znajdzFaze(faza->a)->sprawdzWymagania() ) opcja= 'a';
-	else if ( faza->b != -1 && znajdzFaze(faza->b)->sprawdzWymagania() ) opcja= 'b';
-	else if ( faza->c != -1 && znajdzFaze(faza->c)->sprawdzWymagania() ) opcja= 'c';
-	else if ( faza->d != -1 && znajdzFaze(faza->d)->sprawdzWymagania() ) opcja= 'd';
+	if (faza->a != -1 && znajdzFaze(faza->a)->sprawdzWymagania()) opcja = 'a';
+	else if (faza->b != -1 && znajdzFaze(faza->b)->sprawdzWymagania()) opcja = 'b';
+	else if (faza->c != -1 && znajdzFaze(faza->c)->sprawdzWymagania()) opcja = 'c';
+	else if (faza->d != -1 && znajdzFaze(faza->d)->sprawdzWymagania()) opcja = 'd';
 
-	if ( opcja != '0')
+	if (opcja != '0')
 	{
 		przebieg += opcja;			//dodajemy do przebiegu questa obecna sciezke
 		QuestFaza* temp = NULL;
 		switch (opcja)
 		{
 		case 'a':
-			temp=znajdzFaze(faza->a);
+			temp = znajdzFaze(faza->a);
 			break;
 		case 'b':
-			temp=znajdzFaze(faza->b);
+			temp = znajdzFaze(faza->b);
 			break;
 		case 'c':
-			temp=znajdzFaze(faza->c);
+			temp = znajdzFaze(faza->c);
 			break;
 		case 'd':
-			temp=znajdzFaze(faza->d);
+			temp = znajdzFaze(faza->d);
 			break;
 		}
-		faza = temp;
-		if ( !nazwa.empty() )
+		if (!nazwa.empty())	//jezeli zadanie nie jest ukryte to wysietlimy powiadomienie dla gracza
 		{
-			playerMsg(L"|YUaktualniono dziennik: |0", nazwa);
+			if (faza->czyJestPoczatkowa())
+			{
+				playerMsg(L"|YNowe zadanie: |0", nazwa);
+			}
+			else if (temp->czyJestKoncowa())
+			{
+				playerMsg(L"|YZadanie zakoñczone: |0", nazwa);
+			}
+			else
+			{
+				playerMsg(L"|YUaktualniono dziennik: |0", nazwa);
+			}
 		}
-		wywolajZdarzenieGlobalne(faza->zdarzenieGlobalne);
+		faza = temp;
+		if (faza != NULL)
+		{
+			wywolajZdarzenieGlobalne(faza->zdarzenieGlobalne);
+		}
 		sprawdzWymagania();
 		return true;
 	}
-	else if (faza->a == -1)		//jezeli opcja a==-1 oznacza to faze koncowa questa
+	else if (faza->czyJestKoncowa())		//jezeli opcja a==-1 oznacza to faze koncowa questa
 	{
 		return true;
 	}

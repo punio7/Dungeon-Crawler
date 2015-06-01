@@ -1,5 +1,5 @@
 #include "Upadek.h"
-#include "gracz.h"
+#include "Gracz.h"
 #include "playerMsg.h"
 
 Upadek::Upadek()

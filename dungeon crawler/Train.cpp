@@ -1,5 +1,5 @@
 #include "Train.h"
-#include "gra.h"
+#include "Gra.h"
 #include "Lokacja.h"
 
 Train::Train(Gra *gra) :
@@ -20,7 +20,7 @@ void Train::execute(ParseDTO argumenty)
 
 	if (gracz.pktCech <= 0)
 	{
-		wcout << wersalikuj(L"Wystarczy tego treningu, idŸ przeæwicz swoje zdolnoœci w walce.") << endl;
+		playerMsg(L"Wystarczy tego treningu, idŸ przeæwicz swoje zdolnoœci w walce.");
 		return;
 	}
 	if (argumenty.argument2.empty())
@@ -28,7 +28,7 @@ void Train::execute(ParseDTO argumenty)
 		trener = (gracz.polozenie->postacie)->znajdzTrener();
 		if (!trener)
 		{
-			wcout << "Tutaj nie ma nikogo z kim móg³byœ potrenowaæ." << endl;
+			playerMsg(L"Tutaj nie ma nikogo z kim móg³byœ potrenowaæ.");
 			return;
 		}
 	}
@@ -37,12 +37,12 @@ void Train::execute(ParseDTO argumenty)
 		trener = (gracz.polozenie->postacie)->znajdz(argumenty.argument2, argumenty.ktory2);
 		if (!trener)
 		{
-			wcout << "Tutaj nie ma nikogo takiego." << endl;
+			playerMsg(L"Tutaj nie ma nikogo takiego.");
 			return;
 		}
 		if (!trener->jestTrenerem())
 		{
-			wcout << trener->imie << " nie oferuje ¿adnego treningu.";
+			playerMsg(L"|^|0 nie oferuje ¿adnego treningu.", trener->imie);
 			return;
 		}
 	}
@@ -124,7 +124,7 @@ Cecha Train::znajdzCeche(wstring cecha)
 			return CECHA_NIEPOPRAWNA;
 	}
 
-	if (cecha[0] == 'z')
+	if (cecha[0] == L'z')
 	{
 		porownawczy = L"zrêcznoœæ";
 		if (porownawczy.find(cecha) != -1)
@@ -137,7 +137,7 @@ Cecha Train::znajdzCeche(wstring cecha)
 		return CECHA_NIEPOPRAWNA;
 	}
 
-	if (cecha[0] == 'w')
+	if (cecha[0] == L'w')
 	{
 		porownawczy = L"wytrzyma³oœæ";
 		if (porownawczy.find(cecha) != -1)
@@ -146,7 +146,7 @@ Cecha Train::znajdzCeche(wstring cecha)
 			return CECHA_NIEPOPRAWNA;
 	}
 
-	if (cecha[0] == '¿')
+	if (cecha[0] == L'¿')
 	{
 		porownawczy = L"¿ywotnoœæ";
 		if (porownawczy.find(cecha) != -1)

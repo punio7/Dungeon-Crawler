@@ -1,4 +1,4 @@
-#include "color.h"
+#include "Color.h"
 #include <Windows.h>
 
 void color(Colors kolor)

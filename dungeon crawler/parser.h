@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Lokacja.h"
-#include "command_tree.h"
+#include "CommandTree.h"
 #include "ParseDTO.h"
 
 ;using namespace std;

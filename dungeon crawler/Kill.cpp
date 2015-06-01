@@ -1,12 +1,13 @@
 #include "Kill.h"
 #include <Windows.h>
 #include "Walka.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Quest.h"
 #include "ListaItemow.h"
 #include "Lokacja.h"
 #include "Take.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 
@@ -28,6 +29,13 @@ void Kill::execute(ParseDTO argumenty)
 		playerMsg(L"ZnajdŸ sobie najpierw jak¹œ broñ.");
 		return;
 	}
+
+	if (argumenty.argument1.empty())
+	{
+		playerMsg(L"Kogo chcesz spróbowaæ zabiæ?");
+		return;
+	}
+
 	Postac* wrog = ((gra->gracz.polozenie)->postacie)->znajdz(argumenty.argument1, argumenty.ktory1);
 
 	if (!wrog)
@@ -104,7 +112,7 @@ void Kill::zabijPostac(Postac *postac, Lokacja *Lokacja)
 
 	Gracz &gracz = gra->gracz;
 
-	Item* temp = gra->create_item(ListaItemow::Pojemniki::Zwloki, ITEM_CONTAINER,
+	Item* temp = gra->createItem(ListaItemow::Pojemniki::Zwloki, ITEM_CONTAINER,
 		postac->rasa->nazwaZwlok,
 	 L"Zw³oki le¿¹ tu i gnij¹.",
 	 L"le¿¹ i gnij¹",

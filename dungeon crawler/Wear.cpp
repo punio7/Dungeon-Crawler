@@ -1,7 +1,8 @@
 #include "Wear.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "Remove.h"
+#include "ListaKomend.h"
 
 extern ListaKomend *listaKomend;
 

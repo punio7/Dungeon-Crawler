@@ -2,10 +2,10 @@
 #include <list>
 #include <vector>
 #include "Map.h"
-#include "gra.h"
-#include "item.h"
+#include "Gra.h"
+#include "Item.h"
 #include "ListaItemow.h"
-#include "lokacja.h"
+#include "Lokacja.h"
 
 Map::Map(Gra *gra):
 	Komenda(gra)
@@ -60,7 +60,8 @@ void Map::execute(ParseDTO argumenty)
 			{
 				mapa[wsp[0] - 1][wsp[1]] = L'|';
 				if (czyPoprawneWspolrzedne(wsp[0] - 2, wsp[1], dlugosc, wysokosc)
-					&& mapa[wsp[0]-2][wsp[1]] == L' ')
+					&& mapa[wsp[0]-2][wsp[1]] == L' '
+					&& lokacja->wyjscie[NORTH]->odwiedzona)
 				{
 					stosLokacji.push_front(lokacja->wyjscie[NORTH]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0] - 2, wsp[1]));
@@ -73,7 +74,8 @@ void Map::execute(ParseDTO argumenty)
 			{
 				mapa[wsp[0] + 1][wsp[1]] = L'|';
 				if (czyPoprawneWspolrzedne(wsp[0] + 2, wsp[1], dlugosc, wysokosc)
-					&& mapa[wsp[0]+2][wsp[1]] == L' ')
+					&& mapa[wsp[0]+2][wsp[1]] == L' '
+					&& lokacja->wyjscie[SOUTH]->odwiedzona)
 				{
 					stosLokacji.push_front(lokacja->wyjscie[SOUTH]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0] + 2, wsp[1]));
@@ -86,7 +88,8 @@ void Map::execute(ParseDTO argumenty)
 			{
 				mapa[wsp[0]][wsp[1] - 1] = L'-';
 				if (czyPoprawneWspolrzedne(wsp[0], wsp[1] - 2, dlugosc, wysokosc)
-					&& mapa[wsp[0]][wsp[1]-2] == ' ')
+					&& mapa[wsp[0]][wsp[1]-2] == ' '
+					&& lokacja->wyjscie[WEST]->odwiedzona)
 				{
 					stosLokacji.push_front(lokacja->wyjscie[WEST]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0], wsp[1] - 2));
@@ -99,7 +102,8 @@ void Map::execute(ParseDTO argumenty)
 			{
 				mapa[wsp[0]][wsp[1] + 1] = L'—';
 				if (czyPoprawneWspolrzedne(wsp[0], wsp[1] + 2, dlugosc, wysokosc)
-					&& mapa[wsp[0]][wsp[1]+2] == L' ')
+					&& mapa[wsp[0]][wsp[1]+2] == L' '
+					&& lokacja->wyjscie[EAST]->odwiedzona)
 				{
 					stosLokacji.push_front(lokacja->wyjscie[EAST]);
 					stosWspolrzednych.push_front(utworzWspolrzedne(wsp[0], wsp[1] + 2));
